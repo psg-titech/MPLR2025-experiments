@@ -1,0 +1,139 @@
+00014 NODE_SCOPE:
+00014   NODE_BEGIN:
+00014     NODE_CALL(.):
+00014       NODE_CONST Copro
+00014       method='gpio_input' (1243)
+00014       args:
+00014         NODE_INT 5 base 10
+00014         NODE_CALL(.):
+00014           NODE_CONST Copro
+00014           method='gpio_pulldown' (1244)
+00015     NODE_CALL(.):
+00015       NODE_CONST Copro
+00015       method='gpio_output' (1245)
+00015       args:
+00015         NODE_INT 4 base 10
+00016     NODE_CALL(.):
+00016       NODE_CONST Copro
+00016       method='sleep_and_run' (1246)
+00027       args:
+00027       block:
+00016         NODE_BLOCK:
+00027           body:
+00017             NODE_BEGIN:
+00017               NODE_ASGN:
+00017                 lhs:
+00017                   NODE_LVAR prevPress
+00017                 rhs:
+00017                   NODE_FALSE
+00018               NODE_ASGN:
+00018                 lhs:
+00018                   NODE_LVAR press
+00018                 rhs:
+00018                   NODE_FALSE
+00019               NODE_WHILE:
+00026                 cond:
+00019                   NODE_BEGIN:
+00019                     NODE_OR:
+00019                       NODE_CALL(.):
+00019                         NODE_LVAR prevPress
+00019                         method='!' (1)
+00019                       NODE_LVAR press
+00026                 body:
+00020                   NODE_BEGIN:
+00020                     NODE_CALL(.):
+00020                       NODE_CONST Copro
+00020                       method='gpio' (138716160)
+00020                       args:
+00020                         NODE_INT 4 base 10
+00020                         NODE_TRUE
+00021                     NODE_CALL(.):
+00021                       NODE_CONST Copro
+00021                       method='delayMs' (1248)
+00021                       args:
+00021                         NODE_INT 30 base 10
+00022                     NODE_CALL(.):
+00022                       NODE_CONST Copro
+00022                       method='gpio' (138716160)
+00022                       args:
+00022                         NODE_INT 4 base 10
+00022                         NODE_FALSE
+00023                     NODE_CALL(.):
+00023                       NODE_CONST Copro
+00023                       method='delayMs' (1248)
+00023                       args:
+00023                         NODE_INT 30 base 10
+00024                     NODE_ASGN:
+00024                       lhs:
+00024                         NODE_LVAR prevPress
+00024                       rhs:
+00024                         NODE_LVAR press
+00025                     NODE_ASGN:
+00025                       lhs:
+00025                         NODE_LVAR press
+00025                       rhs:
+00025                         NODE_CALL(.):
+00025                           NODE_CONST Copro
+00025                           method='gpio?' (1249)
+00025                           args:
+00025                             NODE_INT 5 base 10
+00028     NODE_FCALL:
+00028       method='puts' (280)
+00028       args:
+00028         NODE_STR "End" len 3
+irep 0x55c59a40a750 nregs=5 nlocals=1 pools=1 syms=6 reps=1 ilen=45
+file: test_copro_lchika.rb
+   14 000 GETCONST	R1	Copro	
+   14 003 LOADI_5	R2		
+   14 005 GETCONST	R3	Copro	
+   14 008 SEND		R3	:gpio_pulldown	n=0 (0x00)
+   14 012 SEND		R1	:gpio_input	n=2 (0x02)
+   15 016 GETCONST	R1	Copro	
+   15 019 LOADI_4	R2		
+   15 021 SEND		R1	:gpio_output	n=1 (0x01)
+   16 025 GETCONST	R1	Copro	
+   16 028 BLOCK		R2	I(0:0x55c59a40f920)
+   16 031 SENDB		R1	:sleep_and_run	n=0 (0x00)
+   28 035 STRING	R2	L(0)	; End
+   28 038 SSEND		R1	:puts	n=1 (0x01)
+   28 042 RETURN	R1		
+   28 044 STOP
+
+irep 0x55c59a40f920 nregs=8 nlocals=4 pools=0 syms=5 reps=0 ilen=93
+local variable names:
+  R1:&
+  R2:prevPress
+  R3:press
+file: test_copro_lchika.rb
+   16 000 ENTER		0:0:0:0:0:0:0 (0x0)
+   17 004 LOADF		R2			; R2:prevPress
+   18 006 LOADF		R3			; R3:press
+   19 008 MOVE		R4	R2		; R2:prevPress
+   19 011 SEND		R4	:!	n=0 (0x00)
+   19 015 JMPIF		R4	022	
+   19 019 MOVE		R4	R3		; R3:press
+   19 022 JMPNOT	R4	089	
+   20 026 GETCONST	R4	Copro	
+   20 029 LOADI_4	R5		
+   20 031 LOADT		R6		
+   20 033 SEND		R4	:gpio	n=2 (0x02)
+   21 037 GETCONST	R4	Copro	
+   21 040 LOADI		R5	30	
+   21 043 SEND		R4	:delayMs	n=1 (0x01)
+   22 047 GETCONST	R4	Copro	
+   22 050 LOADI_4	R5		
+   22 052 LOADF		R6		
+   22 054 SEND		R4	:gpio	n=2 (0x02)
+   23 058 GETCONST	R4	Copro	
+   23 061 LOADI		R5	30	
+   23 064 SEND		R4	:delayMs	n=1 (0x01)
+   24 068 MOVE		R4	R3		; R3:press
+   24 071 MOVE		R2	R4		; R2:prevPress
+   25 074 GETCONST	R4	Copro	
+   25 077 LOADI_5	R5		
+   25 079 SEND		R4	:gpio?	n=1 (0x01)
+   25 083 MOVE		R3	R4		; R3:press
+   25 086 JMP		008
+   25 089 LOADNIL	R4		
+   25 091 RETURN	R4		
+

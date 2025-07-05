@@ -1,0 +1,46 @@
+idf_build_get_property(target IDF_TARGET)
+
+set(mruby_srcs "src/value.c"
+	"src/load.c"
+	"src/keyvalue.c"
+	"src/c_object.c"
+	"src/error.c"
+	"src/c_range.c"
+	"src/symbol.c"
+	#"src/vm.c"
+	"src/mrblib.c"
+	"src/c_numeric.c"
+	"src/global.c"
+	"src/c_array.c"
+	"src/c_math.c"
+	"src/alloc.c"
+	"src/rrt0.c"
+	"src/class.c"
+	"src/c_hash.c"
+	"src/console.c"
+	"src/c_string.c"
+  "src/c_proc.c"
+	"hal/esp32/hal.c"
+	"hal/esp32/copro/gc.copro.c"
+	"hal/esp32/copro/dbg.c"
+	"hal/esp32/copro/profiler.c"
+	#"hal/esp32/copro/compile.c"
+	"hal/esp32/copro/compile.merged.c"
+	#"hal/esp32/copro/compile.trimed.c"
+	"hal/esp32/copro/compile.inlined.c"
+	"hal/esp32/copro/copro.c"
+	"hal/esp32/copro/inst_skip.c"
+  "hal/esp32/copro/stack.c"
+  "hal/esp32/copro/vector_t.c"
+  "hal/esp32/copro/globalman.c"
+  "hal/esp32/copro/objman.c"
+  "hal/esp32/copro/addrtransman.c"
+  "hal/esp32/copro/mymem.c"
+)
+
+
+idf_component_register(SRCS "${mruby_srcs}"
+	INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/hal/esp32" "${CMAKE_CURRENT_SOURCE_DIR}/src/"
+	PRIV_REQUIRES driver ulp freertos)
+
+target_compile_options(${COMPONENT_LIB} PRIVATE "-DESP32_COPRO=1")

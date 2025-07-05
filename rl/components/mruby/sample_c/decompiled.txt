@@ -1,0 +1,11 @@
+Inside the Block!
+
+      000 ENTER         0:0:0:0:0:0:0 (0x0)
+      004 LOADI_0       R2                      ; R2:a
+      006 MOVE          R3      R2              ; R2:a
+      009 LOADI         R4      100
+      012 LT            R3      R4
+      014 JMPNOT        R3      024
+      018 ADDI          R2      1               ; R2:a
+      021 JMP           006
+      024 RETURN        R2                      ; R2:a

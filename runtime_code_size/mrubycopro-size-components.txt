@@ -1,0 +1,45 @@
+Executing action: size-components
+Running ninja in directory C:\Workspace\Projects\mplr2025\ours\build
+Executing "ninja all"...
+[1/14] Performing build step for 'ulp_main'
+ninja: no work to do.
+[1/1] C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Workspace\P...ce/Projects/mplr2025/ours/build/bootloader/bootloader.bin"
+Bootloader binary size 0x2ed0 bytes. 0x5130 bytes (63%) free.
+[6/7] C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Workspace\P...C:/Workspace/Projects/mplr2025/ours/build/mplr2025-c6.bin"
+mplr2025-c6.bin binary size 0x2ee30 bytes. Smallest app partition is 0x100000 bytes. 0xd11d0 bytes (82%) free.
+[7/7] Completed 'bootloader'Running ninja in directory C:\Workspace\Projects\mplr2025\ours\build
+Executing "ninja size-components"...
+[0/1] C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Workspace\Projects\mplr2025\ours\build && C:\Workspace\Misc\esp\.espressif\tools\cmake\3.30.2\bin\cmake.exe -D IDF_SIZE_TOOL=C:/Workspace/Misc/esp/.espressif/python_env/idf5.5_py3.11_env/Scripts/python.exe;-m;esp_idf_size -D IDF_SIZE_MODE=--archives -D MAP_FILE=C:/Workspace/Projects/mplr2025/ours/build/mplr2025-c6.map -D OUTPUT_JSON= -P C:/Workspace/Misc/esp/esp-idf/tools/cmake/run_size_tool.cmake"
+                                                                      Per-archive contributions to ELF file             
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Archive File                    | Total Size | DIRAM |  .bss | .data | .text | Flash Code | .rodata | .appdesc | .text | LP SRAM | .rtc_reserved | .data | .force_fast | .text |
+|---------------------------------+------------+-------+-------+-------+-------+------------+---------+----------+-------+---------+---------------+-------+-------------+-------|
+| libmruby.a                      |      82377 |  2663 |  2091 |   572 |     0 |      79714 |    7112 |        0 | 72602 |       0 |             0 |     0 |           0 |     0 |
+| libmain.a                       |      56582 | 40960 | 40960 |     0 |     0 |      15622 |   15538 |        0 |    84 |       0 |             0 |     0 |           0 |     0 |
+| libesp_hw_support.a             |      28939 | 14708 |   126 |  1290 | 13292 |      14097 |     825 |        0 | 13272 |     134 |            24 |    12 |          36 |    62 |
+| libc.a                          |      14241 |   584 |   320 |   264 |     0 |      13657 |    1029 |        0 | 12628 |       0 |             0 |     0 |           0 |     0 |
+| libesp_system.a                 |      12534 |  1819 |   109 |    16 |  1694 |      10715 |    6457 |        0 |  4258 |       0 |             0 |     0 |           0 |     0 |
+| libfreertos.a                   |       9316 |  9218 |  2240 |    14 |  6964 |         98 |       4 |        0 |    94 |       0 |             0 |     0 |           0 |     0 |
+| libhal.a                        |       8948 |  6032 |    12 |     4 |  6016 |       2916 |       0 |        0 |  2916 |       0 |             0 |     0 |           0 |     0 |
+| libspi_flash.a                  |       6266 |  5510 |     6 |   588 |  4916 |        756 |       6 |        0 |   750 |       0 |             0 |     0 |           0 |     0 |
+| libnewlib.a                     |       3364 |  1806 |   200 |   250 |  1356 |       1558 |      16 |        0 |  1542 |       0 |             0 |     0 |           0 |     0 |
+| libefuse.a                      |       2570 |   372 |   364 |     8 |     0 |       2198 |     204 |        0 |  1994 |       0 |             0 |     0 |           0 |     0 |
+| libheap.a                       |       2567 |  1046 |     8 |    12 |  1026 |       1521 |     323 |        0 |  1198 |       0 |             0 |     0 |           0 |     0 |
+| libesp_driver_gpio.a            |       2274 |     0 |     0 |     0 |     0 |       2274 |       0 |        0 |  2274 |       0 |             0 |     0 |           0 |     0 |
+| libesp_mm.a                     |       1782 |   516 |    48 |     0 |   468 |       1266 |      24 |        0 |  1242 |       0 |             0 |     0 |           0 |     0 |
+| libesp_rom.a                    |       1434 |  1372 |    84 |     0 |  1288 |         62 |       4 |        0 |    58 |       0 |             0 |     0 |           0 |     0 |
+| libulp.a                        |       1208 |     4 |     4 |     0 |     0 |       1204 |      24 |        0 |  1180 |       0 |             0 |     0 |           0 |     0 |
+| libriscv.a                      |       1128 |  1022 |   256 |     0 |   766 |        106 |       0 |        0 |   106 |       0 |             0 |     0 |           0 |     0 |
+| libesp_partition.a              |        900 |     8 |     8 |     0 |     0 |        892 |       0 |        0 |   892 |       0 |             0 |     0 |           0 |     0 |
+| libbootloader_support.a         |        812 |   762 |     0 |     0 |   762 |         50 |       0 |        0 |    50 |       0 |             0 |     0 |           0 |     0 |
+| libesp_timer.a                  |        460 |   160 |    20 |     0 |   140 |        300 |       8 |        0 |   292 |       0 |             0 |     0 |           0 |     0 |
+| libesp_app_format.a             |        391 |    17 |    17 |     0 |     0 |        374 |       8 |      256 |   110 |       0 |             0 |     0 |           0 |     0 |
+| libsoc.a                        |        261 |     0 |     0 |     0 |     0 |        261 |     261 |        0 |     0 |       0 |             0 |     0 |           0 |     0 |
+| libesp_driver_usb_serial_jtag.a |        155 |    99 |     5 |     0 |    94 |         56 |       8 |        0 |    48 |       0 |             0 |     0 |           0 |     0 |
+| libapp_update.a                 |        118 |     4 |     4 |     0 |     0 |        114 |       0 |        0 |   114 |       0 |             0 |     0 |           0 |     0 |
+| libesp_pm.a                     |        112 |   112 |    64 |     0 |    48 |          0 |       0 |        0 |     0 |       0 |             0 |     0 |           0 |     0 |
+| libesp_security.a               |         48 |     0 |     0 |     0 |     0 |         48 |       8 |        0 |    40 |       0 |             0 |     0 |           0 |     0 |
+| liblog.a                        |         14 |    14 |     4 |     0 |    10 |          0 |       0 |        0 |     0 |       0 |             0 |     0 |           0 |     0 |
+| libpthread.a                    |         10 |     0 |     0 |     0 |     0 |         10 |       0 |        0 |    10 |       0 |             0 |     0 |           0 |     0 |
+| libcxx.a                        |          4 |     0 |     0 |     0 |     0 |          4 |       0 |        0 |     4 |       0 |             0 |     0 |           0 |     0 |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
