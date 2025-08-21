@@ -34,11 +34,11 @@ static void lp_i2c_init(void)
 extern int ulp_counter;
 void app_main(void)
 {
-    rtc_gpio_init(4);
-    rtc_gpio_set_direction(4, RTC_GPIO_MODE_OUTPUT_ONLY);
-    rtc_gpio_pulldown_dis(4);
-    rtc_gpio_pullup_dis(4);
-    rtc_gpio_set_level(4, 1);
+    rtc_gpio_init(1);
+    rtc_gpio_set_direction(1, RTC_GPIO_MODE_OUTPUT_ONLY);
+    rtc_gpio_pulldown_dis(1);
+    rtc_gpio_pullup_dis(1);
+    rtc_gpio_set_level(1, 1);
     ulp_lp_core_cfg_t cfg = {
       .wakeup_source = ULP_LP_CORE_WAKEUP_SOURCE_HP_CPU
     };
@@ -47,10 +47,10 @@ void app_main(void)
     while(1) {
         ulp_counter = 0;
         ESP_ERROR_CHECK(esp_sleep_enable_ulp_wakeup());
-        rtc_gpio_set_level(4, 0);
+        rtc_gpio_set_level(1, 0);
         ESP_ERROR_CHECK(ulp_lp_core_run(&cfg));
         esp_light_sleep_start();
-        rtc_gpio_set_level(4, 1);
+        rtc_gpio_set_level(1, 1);
         for(int i = 0; i < 30; ++i) {
             printf("tmp:%ld rh:%ld\n", ulp_tmp[i], ulp_rh[i]);
         }vTaskDelay(1);

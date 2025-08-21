@@ -71,8 +71,8 @@ end
 #   end
 # end
 
-Copro.gpio_output 4
-Copro.gpio(4, true)
+Copro.gpio_output 1
+Copro.gpio(1, true)
 i2c = I2C.new()
 acc = ADXL.new(i2c)
 gps = GPS.new(i2c)
@@ -85,6 +85,7 @@ def read_for_1sec(acc, buffer)
   i = 0
   res = true
   acc.on()
+  Copro.delayMs(20)
   while i < 12 do
     Copro.delayMs(80) # 1000/12
     v = acc.read()
@@ -98,10 +99,10 @@ def read_for_1sec(acc, buffer)
   res
 end
 
-Copro.gpio(4,false)
+Copro.gpio(1,false)
 #Copro.run_and_sleep do
   while true do
-    Copro.delayMs(7000) # 7 sec
+    Copro.delayMs(7000-100) # 7 sec
     break unless read_for_1sec(acc, buf)
     x = 0; y = 0; z = 0; i = 0
     while i < 12 do
@@ -115,6 +116,6 @@ Copro.gpio(4,false)
     break if (x - GRAVITY) > THRESHOLD
   end
 #end
-Copro.gpio(4,true)
+Copro.gpio(1,true)
 
 # do something with gps.

@@ -9,7 +9,7 @@
 
 int gen_compiled_object_not(mrbc_profile_profiler * prof, mrbc_method * method, int a, mrbc_value *recv, int narg) {
   struct VM * vm = prof->vm;
-  struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a, 0);
+  struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a);
   mrbcopro_vector_append32(vm, &(prof->buf), RISCV_LESS_THAN_UNSIGNED_IMM(regA.dst, regA.src, 1));
   dbg_mrbc_prof_print_inst_readable("sltiu x%d, x%d, 1", regA.dst, regA.src, 1);
   return 0;
@@ -159,7 +159,7 @@ static const inline_code_gen_t method_copro_Object[] = {
 
 int gen_compiled_array_size(mrbc_profile_profiler * prof, mrbc_method * method, int a, mrbc_value *recv, int narg) {
   struct VM * vm = prof->vm;
-  struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a, 0);
+  struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a);
   mrbcopro_vector_append32(vm, &(prof->buf), RISCV_LOAD_HALF(regA.dst, regA.src, 2));
   dbg_mrbc_prof_print_inst_readable("lh x%d, 2(x%d)", regA.dst, regA.src, 2);
   return 0;
@@ -214,9 +214,26 @@ int gen_compiled_array_set(mrbc_profile_profiler * prof, mrbc_method * method, i
   struct VM * vm = prof->vm;
   uint32_t * jmp = NULL;
   struct register_saving_analysis_result_t anresult = register_saving(prof, a, narg);
+  // conversion
+  int delta = 0;
+  if(recv[1].tt == MRBC_TT_INTEGER)
+    delta = 1;
+  else if(recv[1].tt == MRBC_TT_TRUE || recv[1].tt == MRBC_TT_FALSE)
+    delta = 2;
+  if(delta > 0) {
+    mrbcopro_vector_append16(prof->vm, &(prof->buf), RISCV_C_SHIFT_LEFT_IMM(12, delta));
+    dbg_mrbc_prof_print_inst_readable("c.slli x12, %d", delta);
+    mrbcopro_vector_append16(prof->vm, &(prof->buf), RISCV_C_ADDI(12, delta));// actually, pow(2, delta-1)
+    dbg_mrbc_prof_print_inst_readable("c.addi x12, %d", delta);
+  }
+
   size_t call_place = mrbcopro_vector_bytes2(prof->buf);
   mrbcopro_vector_append_without_fill(vm, &(prof->buf), sizeof(uint32_t));
   register_restoring(prof, anresult, a);
+  if(delta > 0) {
+    mrbcopro_vector_append16(prof->vm, &(prof->buf), RISCV_C_SHIFT_RIGHT_ARITHMETIC_IMM(10, delta));
+    dbg_mrbc_prof_print_inst_readable("c.srli x10, %d", delta);
+  }
   size_t jmp_place = mrbcopro_vector_bytes2(prof->buf);
   mrbcopro_vector_append_without_fill(vm, &(prof->buf), CODE_BYTES_WRITE_JMP_TO_FALLBACK); // jump to next
   mrbc_send_inst_bufs_return_t sib = send_inst_bufs(prof, profiler_current(prof));
@@ -265,7 +282,7 @@ static const inline_code_gen_t method_copro_Array[] = {
   0, //c_array_join,
 #endif
   0, //c_array_last,
-  0, //c_array_size,
+  gen_compiled_array_size, //c_array_size,
   0, //c_array_max,
   0, //c_array_min,
   0, //c_array_minmax,
@@ -292,7 +309,7 @@ int gen_compiled_integer_mod(mrbc_profile_profiler * prof, mrbc_method * method,
   //   return 0;
   // }
   struct VM * vm = prof->vm;
-  struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a, 0);
+  struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a);
   int regA1 = get_allocation(prof, a+1);
   mrbcopro_vector_append32(vm, &(prof->buf), RISCV_REM(regA.dst, regA.src, regA1));
   dbg_mrbc_prof_print_inst_readable("rem x%d, x%d, x%d", regA.dst, regA.src, regA1);
@@ -303,7 +320,7 @@ int gen_compiled_integer_mod(mrbc_profile_profiler * prof, mrbc_method * method,
 int gen_compiled_integer_and(mrbc_profile_profiler * prof, mrbc_method * method, int a, mrbc_value *recv, int narg) {
   if(narg != 1) return 1;
   struct VM * vm = prof->vm;
-  struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a, 0);
+  struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a);
   if(prof->regsinfo[a+1] == 1 && ((((int)(mrbc_integer(recv[1])) >> 11) == -1) || (mrbc_integer(recv[1]) < (1 << 11)))) {
     prof->regsinfo[a+1] = 0;
     mrbcopro_vector_append32(vm, &(prof->buf), RISCV_AND_IMM(regA.dst, regA.src, mrbc_integer(recv[1])));
@@ -317,9 +334,9 @@ int gen_compiled_integer_and(mrbc_profile_profiler * prof, mrbc_method * method,
   return 0;
 }
 int gen_compiled_integer_neg(mrbc_profile_profiler * prof, mrbc_method * method, int a, mrbc_value *recv, int narg) {
-  if(narg != 1) return 1;
+  if(narg != 0) return 1;
   struct VM * vm = prof->vm;
-  struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a, 0);
+  struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a);
   mrbcopro_vector_append32(vm, &(prof->buf), RISCV_SUB(regA.dst, 0, regA.src));
   dbg_mrbc_prof_print_inst_readable("sub x%d, zero, x%d", regA.dst, 0, regA.src);
   return 0;
@@ -329,7 +346,7 @@ int gen_compiled_integer_neg(mrbc_profile_profiler * prof, mrbc_method * method,
 int gen_compiled_integer_lshift(mrbc_profile_profiler * prof, mrbc_method * method, int a, mrbc_value *recv, int narg) {
   if(narg != 1) return 1;
   struct VM * vm = prof->vm;
-  struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a, 0);
+  struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a);
   if(prof->regsinfo[a+1] == 1) {
     prof->regsinfo[a+1] = 0;
     // do not think when R(a+1) >= BIT_WIDTH
@@ -353,7 +370,7 @@ int gen_compiled_integer_lshift(mrbc_profile_profiler * prof, mrbc_method * meth
 int gen_compiled_integer_rshift(mrbc_profile_profiler * prof, mrbc_method * method, int a, mrbc_value *recv, int narg) {
   if(narg != 1) return 1;
   struct VM * vm = prof->vm;
-  struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a, 0);
+  struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a);
   if(prof->regsinfo[a+1] == 1) {
     prof->regsinfo[a+1] = 0;
     // do not think when R(a+1) >= BIT_WIDTH
@@ -371,7 +388,7 @@ int gen_compiled_integer_rshift(mrbc_profile_profiler * prof, mrbc_method * meth
 int gen_compiled_integer_bitref(mrbc_profile_profiler * prof, mrbc_method * method, int a, mrbc_value *recv, int narg) {
   if(narg > 2) return 1;
   struct VM * vm = prof->vm;
-  struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a, 0);
+  struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a);
   if(prof->regsinfo[a+1] == 1) {
     prof->regsinfo[a+1] = 0;
     // do not think when R(a+1) >= BIT_WIDTH
@@ -426,7 +443,7 @@ int gen_compiled_integer_bitref(mrbc_profile_profiler * prof, mrbc_method * meth
 int gen_compiled_integer_xor(mrbc_profile_profiler * prof, mrbc_method * method, int a, mrbc_value *recv, int narg) {
   if(narg != 1) return 1;
   struct VM * vm = prof->vm;
-  struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a, 0);
+  struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a);
   if(prof->regsinfo[a+1] == 1 && ((((int)(mrbc_integer(recv[1])) >> 11) == -1) || (mrbc_integer(recv[1]) < (1 << 11)))) {
     prof->regsinfo[a+1] = 0;
     mrbcopro_vector_append32(vm, &(prof->buf), RISCV_XOR_IMM(regA.dst, regA.src, mrbc_integer(recv[1])));
@@ -442,11 +459,11 @@ int gen_compiled_integer_xor(mrbc_profile_profiler * prof, mrbc_method * method,
 int gen_compiled_integer_abs(mrbc_profile_profiler * prof, mrbc_method * method, int a, mrbc_value *recv, int narg) {
   if(narg != 0) return 1;
   struct VM * vm = prof->vm;
-  struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a, 0);
+  struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a);
   mrbcopro_vector_append32(vm, &(prof->buf), RISCV_SHIFT_RIGHT_ARITH_IMM(11, regA.src, 31));
-  dbg_mrbc_prof_print_inst_readable("srai x11, x%d, %d", rregA.src, 31);
-  mrbcopro_vector_append32(vm, &(prof->buf), RISCV_XOR(regA.dst, regA.dst, 11));
-  dbg_mrbc_prof_print_inst_readable("xor x%d, x%d, x11", regA.dst, regA.dst);
+  dbg_mrbc_prof_print_inst_readable("srai x11, x%d, %d", regA.src, 31);
+  mrbcopro_vector_append32(vm, &(prof->buf), RISCV_XOR(regA.dst, regA.src, 11));
+  dbg_mrbc_prof_print_inst_readable("xor x%d, x%d, x11", regA.dst, regA.src);
   mrbcopro_vector_append32(vm, &(prof->buf), RISCV_SUB(regA.dst, regA.dst, 11));
   dbg_mrbc_prof_print_inst_readable("sub x%d, x%d, x11", regA.dst, regA.dst);
   return 0;
@@ -455,7 +472,7 @@ int gen_compiled_integer_abs(mrbc_profile_profiler * prof, mrbc_method * method,
 int gen_compiled_integer_or(mrbc_profile_profiler * prof, mrbc_method * method, int a, mrbc_value *recv, int narg) {
   if(narg != 1) return 1;
   struct VM * vm = prof->vm;
-  struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a, 0);
+  struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a);
   if(prof->regsinfo[a+1] == 1 && ((((int)(mrbc_integer(recv[1])) >> 11) == -1) || (mrbc_integer(recv[1]) < (1 << 11)))) {
     prof->regsinfo[a+1] = 0;
     mrbcopro_vector_append32(vm, &(prof->buf), RISCV_OR_IMM(regA.dst, regA.src, mrbc_integer(recv[1])));
@@ -471,7 +488,7 @@ int gen_compiled_integer_or(mrbc_profile_profiler * prof, mrbc_method * method, 
 int gen_compiled_integer_not(mrbc_profile_profiler * prof, mrbc_method * method, int a, mrbc_value *recv, int narg) {
   if(narg != 1) return 1;
   struct VM * vm = prof->vm;
-  struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a, 0);
+  struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a);
   mrbcopro_vector_append32(vm, &(prof->buf), RISCV_XOR_IMM(regA.dst, regA.src, -1));
   dbg_mrbc_prof_print_inst_readable("xor x%d, x%d, -1", regA.dst, regA.src);
   return 0;
@@ -508,7 +525,7 @@ static const inline_code_gen_t method_copro_Integer[] = {
 
 int gen_compiled_string_empty(mrbc_profile_profiler * prof, mrbc_method * method, int a, mrbc_value *recv, int narg) {
   struct VM * vm = prof->vm;
-  struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a, 0);
+  struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a);
   mrbcopro_vector_append32(vm, &(prof->buf), RISCV_LOAD_HALF(regA.dst, regA.src, 2));
   dbg_mrbc_prof_print_inst_readable("lh x%d, 2(x%d)", regA.dst, regA.src, 2);
   mrbcopro_vector_append32(vm, &(prof->buf), RISCV_LESS_THAN(regA.dst, 0, regA.dst));

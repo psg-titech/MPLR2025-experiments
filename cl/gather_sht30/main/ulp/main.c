@@ -96,7 +96,7 @@ int main (void)
     //asm volatile("addi sp, sp, 128");
     mrbc_sp_bottom = NULL;
     lp_core_ll_set_wakeup_source(LP_CORE_LL_WAKEUP_SOURCE_LP_TIMER);
-    ulp_lp_core_lp_timer_set_wakeup_time(60*1000*1000);
+    ulp_lp_core_lp_timer_set_wakeup_time((60*1000-6)*1000);
     ulp_lp_core_halt();
     return 0;
 }

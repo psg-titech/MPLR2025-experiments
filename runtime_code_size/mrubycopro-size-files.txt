@@ -1,48 +1,36 @@
-Executing action: size-files
-Running ninja in directory C:\Workspace\Projects\mplr2025\ours\build
-Executing "ninja all"...
-[1/14] Performing build step for 'ulp_main'
-ninja: no work to do.
-[1/1] C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Workspace\P...ce/Projects/mplr2025/ours/build/bootloader/bootloader.bin"
-Bootloader binary size 0x2ed0 bytes. 0x5130 bytes (63%) free.
-[6/7] C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Workspace\P...C:/Workspace/Projects/mplr2025/ours/build/mplr2025-c6.bin"
-mplr2025-c6.bin binary size 0x2ee30 bytes. Smallest app partition is 0x100000 bytes. 0xd11d0 bytes (82%) free.
-[7/7] Completed 'bootloader'Running ninja in directory C:\Workspace\Projects\mplr2025\ours\build
-Executing "ninja size-files"...
-[0/1] C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Workspace\Projects\mplr2025\ours\build && C:\Workspace\Misc\esp\.espressif\tools\cmake\3.30.2\bin\cmake.exe -D IDF_SIZE_TOOL=C:/Workspace/Misc/esp/.espressif/python_env/idf5.5_py3.11_env/Scripts/python.exe;-m;esp_idf_size -D IDF_SIZE_MODE=--files -D MAP_FILE=C:/Workspace/Projects/mplr2025/ours/build/mplr2025-c6.map -D OUTPUT_JSON= -P C:/Workspace/Misc/esp/esp-idf/tools/cmake/run_size_tool.cmake"
-                                                                            Per-file contributions to ELF file          
+                                                                            Per-file contributions to ELF file
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Object File                              | Total Size | DIRAM |  .bss | .data | .text | Flash Code | .rodata | .appdesc | .text | LP SRAM | .rtc_reserved | .data | .force_fast | .text |
 |------------------------------------------+------------+-------+-------+-------+-------+------------+---------+----------+-------+---------+---------------+-------+-------------+-------|
-| main.c.obj                               |      42578 | 40960 | 40960 |     0 |     0 |       1618 |    1534 |        0 |    84 |       0 |             0 |     0 |           0 |     0 |
-| compile.merged.c.obj                     |      23184 |     6 |     6 |     0 |     0 |      23178 |       0 |        0 | 23178 |       0 |             0 |     0 |           0 |     0 |
+| main.c.obj                               |      41851 | 40960 | 40960 |     0 |     0 |        891 |     807 |        0 |    84 |       0 |             0 |     0 |           0 |     0 |
+| compile.c.obj                            |      23028 |     6 |     6 |     0 |     0 |      23022 |       0 |        0 | 23022 |       0 |             0 |     0 |           0 |     0 |
 | ulp_main.bin.S.obj                       |      14004 |     0 |     0 |     0 |     0 |      14004 |   14004 |        0 |     0 |       0 |             0 |     0 |           0 |     0 |
-| panic.c.obj                              |       7351 |    49 |     9 |    16 |    24 |       7302 |    6174 |        0 |  1128 |       0 |             0 |     0 |           0 |     0 |
+| panic.c.obj                              |       7403 |    49 |     9 |    16 |    24 |       7354 |    6226 |        0 |  1128 |       0 |             0 |     0 |           0 |     0 |
 | c_string.c.obj                           |       6619 |    24 |     0 |    24 |     0 |       6595 |     265 |        0 |  6330 |       0 |             0 |     0 |           0 |     0 |
-| c_array.c.obj                            |       5640 |    24 |     0 |    24 |     0 |       5616 |     180 |        0 |  5436 |       0 |             0 |     0 |           0 |     0 |
-| rrt0.c.obj                               |       4608 |    97 |    21 |    76 |     0 |       4511 |     309 |        0 |  4202 |       0 |             0 |     0 |           0 |     0 |
+| c_array.c.obj                            |       5678 |    24 |     0 |    24 |     0 |       5654 |     180 |        0 |  5474 |       0 |             0 |     0 |           0 |     0 |
+| rrt0.c.obj                               |       4588 |    97 |    21 |    76 |     0 |       4491 |     309 |        0 |  4182 |       0 |             0 |     0 |           0 |     0 |
 | libc_a-strtod.o                          |       4546 |     0 |     0 |     0 |     0 |       4546 |     112 |        0 |  4434 |       0 |             0 |     0 |           0 |     0 |
 | symbol.c.obj                             |       4276 |  2068 |  2044 |    24 |     0 |       2208 |     942 |        0 |  1266 |       0 |             0 |     0 |           0 |     0 |
 | tasks.c.obj                              |       4254 |  4250 |   660 |    14 |  3576 |          4 |       4 |        0 |     0 |       0 |             0 |     0 |           0 |     0 |
-| c_object.c.obj                           |       4232 |    96 |     0 |    96 |     0 |       4136 |     228 |        0 |  3908 |       0 |             0 |     0 |           0 |     0 |
+| c_object.c.obj                           |       4196 |    96 |     0 |    96 |     0 |       4100 |     228 |        0 |  3872 |       0 |             0 |     0 |           0 |     0 |
 | regdma_link.c.obj                        |       4184 |     0 |     0 |     0 |     0 |       4184 |     128 |        0 |  4056 |       0 |             0 |     0 |           0 |     0 |
 | sleep_modes.c.obj                        |       3863 |  3235 |    25 |   160 |  3050 |        530 |       0 |        0 |   530 |      98 |             0 |     0 |          36 |    62 |
-| mrblib.c.obj                             |       3833 |     0 |     0 |     0 |     0 |       3833 |    3833 |        0 |     0 |       0 |             0 |     0 |           0 |     0 |
+| mrblib.c.obj                             |       3860 |     0 |     0 |     0 |     0 |       3860 |    3860 |        0 |     0 |       0 |             0 |     0 |           0 |     0 |
 | console.c.obj                            |       3488 |     0 |     0 |     0 |     0 |       3488 |       0 |        0 |  3488 |       0 |             0 |     0 |           0 |     0 |
 | sleep_retention.c.obj                    |       3372 |   916 |     0 |   892 |    24 |       2456 |      88 |        0 |  2368 |       0 |             0 |     0 |           0 |     0 |
 | libc_a-mprec.o                           |       3364 |     0 |     0 |     0 |     0 |       3364 |     296 |        0 |  3068 |       0 |             0 |     0 |           0 |     0 |
-| compile.inlined.c.obj                    |       3352 |     0 |     0 |     0 |     0 |       3352 |     476 |        0 |  2876 |       0 |             0 |     0 |           0 |     0 |
+| compile.inlined.c.obj                    |       3356 |     0 |     0 |     0 |     0 |       3356 |     476 |        0 |  2880 |       0 |             0 |     0 |           0 |     0 |
 | spi_flash_chip_generic.c.obj             |       2852 |  2852 |     0 |   196 |  2656 |          0 |       0 |        0 |     0 |       0 |             0 |     0 |           0 |     0 |
-| objman.c.obj                             |       2754 |     0 |     0 |     0 |     0 |       2754 |       0 |        0 |  2754 |       0 |             0 |     0 |           0 |     0 |
+| objman.c.obj                             |       2750 |     0 |     0 |     0 |     0 |       2750 |       0 |        0 |  2750 |       0 |             0 |     0 |           0 |     0 |
 | c_hash.c.obj                             |       2576 |    24 |     0 |    24 |     0 |       2552 |     120 |        0 |  2432 |       0 |             0 |     0 |           0 |     0 |
+| copro.c.obj                              |       2440 |     0 |     0 |     0 |     0 |       2440 |      20 |        0 |  2420 |       0 |             0 |     0 |           0 |     0 |
 | pmu_sleep.c.obj                          |       2431 |  2431 |     1 |     0 |  2430 |          0 |       0 |        0 |     0 |       0 |             0 |     0 |           0 |     0 |
-| class.c.obj                              |       2388 |     0 |     0 |     0 |     0 |       2388 |     264 |        0 |  2124 |       0 |             0 |     0 |           0 |     0 |
+| class.c.obj                              |       2412 |     0 |     0 |     0 |     0 |       2412 |     264 |        0 |  2148 |       0 |             0 |     0 |           0 |     0 |
 | stack.c.obj                              |       2364 |     0 |     0 |     0 |     0 |       2364 |      44 |        0 |  2320 |       0 |             0 |     0 |           0 |     0 |
 | spi_flash_hal_iram.c.obj                 |       2348 |  2348 |     0 |     0 |  2348 |          0 |       0 |        0 |     0 |       0 |             0 |     0 |           0 |     0 |
 | port.c.obj                               |       2160 |  2160 |  1564 |     0 |   596 |          0 |       0 |        0 |     0 |       0 |             0 |     0 |           0 |     0 |
 | esp_efuse_utility.c.obj                  |       2136 |   356 |   356 |     0 |     0 |       1780 |     176 |        0 |  1604 |       0 |             0 |     0 |           0 |     0 |
 | intr_alloc.c.obj                         |       1995 |   487 |    13 |     0 |   474 |       1508 |       0 |        0 |  1508 |       0 |             0 |     0 |           0 |     0 |
-| copro.c.obj                              |       1962 |     0 |     0 |     0 |     0 |       1962 |      20 |        0 |  1942 |       0 |             0 |     0 |           0 |     0 |
 | rtc_clk.c.obj                            |       1918 |  1918 |     8 |     0 |  1910 |          0 |       0 |        0 |     0 |       0 |             0 |     0 |           0 |     0 |
 | queue.c.obj                              |       1852 |  1852 |     0 |     0 |  1852 |          0 |       0 |        0 |     0 |       0 |             0 |     0 |           0 |     0 |
 | c_numeric.c.obj                          |       1726 |    48 |     0 |    48 |     0 |       1678 |     156 |        0 |  1522 |       0 |             0 |     0 |           0 |     0 |
@@ -52,7 +40,7 @@ Executing "ninja size-files"...
 | libc_a-gdtoa-gethex.o                    |       1430 |     0 |     0 |     0 |     0 |       1430 |       0 |        0 |  1430 |       0 |             0 |     0 |           0 |     0 |
 | spi_flash_hal_gpspi.c.obj                |       1408 |  1408 |     0 |     0 |  1408 |          0 |       0 |        0 |     0 |       0 |             0 |     0 |           0 |     0 |
 | rtc_time.c.obj                           |       1402 |  1398 |     0 |     0 |  1398 |          4 |       4 |        0 |     0 |       0 |             0 |     0 |           0 |     0 |
-| error.c.obj                              |       1392 |   168 |     0 |   168 |     0 |       1224 |      12 |        0 |  1212 |       0 |             0 |     0 |           0 |     0 |
+| error.c.obj                              |       1336 |   168 |     0 |   168 |     0 |       1168 |      12 |        0 |  1156 |       0 |             0 |     0 |           0 |     0 |
 | gpio.c.obj                               |       1240 |     0 |     0 |     0 |     0 |       1240 |       0 |        0 |  1240 |       0 |             0 |     0 |           0 |     0 |
 | modem_clock.c.obj                        |       1232 |   558 |     0 |   140 |   418 |        674 |       0 |        0 |   674 |       0 |             0 |     0 |           0 |     0 |
 | sleep_cpu.c.obj                          |       1216 |  1216 |     0 |    24 |  1192 |          0 |       0 |        0 |     0 |       0 |             0 |     0 |           0 |     0 |
@@ -69,9 +57,9 @@ Executing "ninja size-files"...
 | esp_flash_api.c.obj                      |        854 |   844 |     0 |    20 |   824 |         10 |       0 |        0 |    10 |       0 |             0 |     0 |           0 |     0 |
 | libc_a-fvwrite.o                         |        798 |     0 |     0 |     0 |     0 |        798 |       0 |        0 |   798 |       0 |             0 |     0 |           0 |     0 |
 | heap_caps.c.obj                          |        777 |   470 |     4 |     4 |   462 |        307 |     127 |        0 |   180 |       0 |             0 |     0 |           0 |     0 |
-| value.c.obj                              |        764 |     0 |     0 |     0 |     0 |        764 |      64 |        0 |   700 |       0 |             0 |     0 |           0 |     0 |
 | bootloader_flash.c.obj                   |        758 |   758 |     0 |     0 |   758 |          0 |       0 |        0 |     0 |       0 |             0 |     0 |           0 |     0 |
 | partition.c.obj                          |        752 |     8 |     8 |     0 |     0 |        744 |       0 |        0 |   744 |       0 |             0 |     0 |           0 |     0 |
+| value.c.obj                              |        744 |     0 |     0 |     0 |     0 |        744 |      64 |        0 |   680 |       0 |             0 |     0 |           0 |     0 |
 | gc.copro.c.obj                           |        736 |    40 |     0 |    40 |     0 |        696 |       0 |        0 |   696 |       0 |             0 |     0 |           0 |     0 |
 | time.c.obj                               |        724 |    20 |    20 |     0 |     0 |        704 |       0 |        0 |   704 |       0 |             0 |     0 |           0 |     0 |
 | keyvalue.c.obj                           |        688 |     0 |     0 |     0 |     0 |        688 |       0 |        0 |   688 |       0 |             0 |     0 |           0 |     0 |

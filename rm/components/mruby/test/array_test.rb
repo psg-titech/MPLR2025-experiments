@@ -266,9 +266,9 @@ class ArrayTest < Picotest::Test
     hash = {1=>1, :k2=>:v2, "k3"=>"v3"}
     range = 1..3
     a = [nil, false, true, 123, 2.718, :symbol, array, "string", range, hash]
-    assert_equal %q![nil, false, true, 123, 2.718, :symbol, [1, "AA", :sym], "string", 1..3, {1=>1, :k2=>:v2, "k3"=>"v3"}]!, a.inspect
-    assert_equal %q![nil, false, true, 123, 2.718, :symbol, [1, "AA", :sym], "string", 1..3, {1=>1, :k2=>:v2, "k3"=>"v3"}]!, a.to_s
-    assert_equal %q!,false,true,123,2.718,symbol,1,AA,sym,string,1..3,{1=>1, :k2=>:v2, "k3"=>"v3"}!, a.join(",")
+    assert_equal %q![nil, false, true, 123, 2.718, :symbol, [1, "AA", :sym], "string", 1..3, {1 => 1, k2: :v2, "k3" => "v3"}]!, a.inspect
+    assert_equal %q![nil, false, true, 123, 2.718, :symbol, [1, "AA", :sym], "string", 1..3, {1 => 1, k2: :v2, "k3" => "v3"}]!, a.to_s
+    assert_equal %q!,false,true,123,2.718,symbol,1,AA,sym,string,1..3,{1 => 1, k2: :v2, "k3" => "v3"}!, a.join(",")
   end
 
   description "each"
@@ -336,9 +336,9 @@ class ArrayTest < Picotest::Test
 
   description "uniq test"
   def test_uniq
-    a = %(A B C B)
+    a = %W(A B C B)
     assert_equal %W(A B C), a.uniq
-    assert_equal %(A B C B), a
+    assert_equal %W(A B C B), a
 
     assert_equal %W(A B C), a.uniq!
     assert_equal %W(A B C), a

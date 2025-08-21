@@ -349,13 +349,13 @@ int mrbc_run(void)
   int ret = 0;
 
   (void)ret;	// avoid warning.
-#if MRBC_SCHEDULER_EXIT
-  if( !q_ready_ && !q_waiting_ && !q_suspended_ ) return ret;
-#endif
 
   while( 1 ) {
     mrbc_tcb *tcb = q_ready_;
     if( tcb == NULL ) {		// no task to run.
+#if MRBC_SCHEDULER_EXIT
+      if( !q_waiting_ && !q_suspended_ ) return ret;
+#endif
       hal_idle_cpu();
       continue;
     }
@@ -372,7 +372,7 @@ int mrbc_run(void)
     tcb->vm.flag_preemption = 0;
 #else
     // Emulate time slice preemption.
-    int ret_vm_run = 0;
+    int ret_vm_run;
     tcb->vm.flag_preemption = 1;
     while( tcb->timeslice != 0 ) {
       ret_vm_run = mrbc_vm_run( &tcb->vm );
@@ -412,10 +412,6 @@ int mrbc_run(void)
           tcb1->reason = 0;
         }
       }
-
-#if MRBC_SCHEDULER_EXIT
-      if( !q_ready_ && !q_waiting_ && !q_suspended_ ) return ret;
-#endif
       continue;
     }
 

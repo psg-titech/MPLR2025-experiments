@@ -19,13 +19,12 @@ int get_allocation(mrbc_profile_profiler * prof, int virtualRegNum); // defined 
 int override_register_information(mrbc_profile_profiler * prof, int dst, char val); // defined in compile.c
 
 struct read_and_override_register_information_ret_t {int src; int dst;};
-/// @brief prof->regsInfo[dst] = val. If it has already aliased, the register aliasing is applied.
+/// @brief prof->regsInfo[dst] = 0. src returns the aliased register number. dst returns the allocated register number.
 /// @param prof profiler
 /// @param reg  destination virtual register.
-/// @param val  the value assigned.
 /// @return     aliased register and allocated register, otherwise, failure returns 0 and 0
 struct read_and_override_register_information_ret_t
-read_and_override_register_information(mrbc_profile_profiler * prof, int reg, char val);
+read_and_override_register_information(mrbc_profile_profiler * prof, int reg);
 
 struct register_saving_analysis_result_t {
   int saved_registers;

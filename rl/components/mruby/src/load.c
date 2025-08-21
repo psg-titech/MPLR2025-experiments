@@ -137,11 +137,7 @@ static mrbc_irep * load_irep_1(struct VM *vm, const uint8_t *bin, int *len)
 #endif
 
   irep.ref_count = 0;
-  //#if defined(MRBC_DEBUG)
   irep.nlocals = bin_to_uint16(p);	p += 2;
-  //#else
-  //  p += 2;	// skip nlocals
-  //#endif
   irep.nregs = bin_to_uint16(p);	p += 2;
   irep.rlen = bin_to_uint16(p);		p += 2;
   irep.clen = bin_to_uint16(p);		p += 2;

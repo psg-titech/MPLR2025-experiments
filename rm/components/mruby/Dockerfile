@@ -27,6 +27,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libc6:armhf \
     g++-mips-linux-gnu \
     libc6-dev-mips-cross \
+    gcc-mips-linux-gnu \
+    binutils-mips-linux-gnu \
     git \
     cmake \
     make \
@@ -42,23 +44,23 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN gem install rake bundler
 
-ARG USER_ID
-RUN if [ $USER_ID -eq 0 ]; then export USER_ID=1000; fi \
-    && useradd -m -u $USER_ID mrubyc
+ARG USER_ID=1000
+RUN useradd -m -u "$USER_ID" mrubyc
 
 RUN mkdir /work && chown mrubyc /work
 
 USER mrubyc
-RUN git clone --recursive -b master \
+RUN git clone --depth 1 --recursive -b master \
     https://github.com/picoruby/picoruby /work/picoruby
 
 WORKDIR /work/picoruby
-RUN rake
+ENV MRUBY_CONFIG=picoruby-test
+RUN rake --trace
 ENV MRUBY_CONFIG=arm-linux-gnueabihf
-RUN rake
+RUN rake --trace
 ENV MRUBY_CONFIG=mips-linux-gnu
-RUN rake
-ENV MRUBY_CONFIG=default
+RUN rake --trace
+ENV MRUBY_CONFIG=picoruby-test
 
 VOLUME /work/mrubyc
 

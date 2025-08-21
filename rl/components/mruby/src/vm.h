@@ -45,9 +45,7 @@ typedef struct IREP {
 #endif
 
   uint16_t ref_count;		//!< reference counter
-//#if defined(MRBC_DEBUG)
   uint16_t nlocals;		//!< num of local variables
-//#endif
   uint16_t nregs;		//!< num of register variables
   uint16_t rlen;		//!< num of child IREP blocks
   uint16_t clen;		//!< num of catch handlers
@@ -204,7 +202,9 @@ static inline mrbc_value * mrbc_get_self( struct VM *vm, mrbc_value *regs )
 */
 static inline int mrbc_c_block_given( struct VM *vm, mrbc_value v[], int argc )
 {
-  return v[argc+1].tt == MRBC_TT_PROC;
+  int ofs = 1 + (v[argc+1].tt == MRBC_TT_HASH);
+
+  return v[argc + ofs].tt == MRBC_TT_PROC;
 }
 
 #ifdef __cplusplus

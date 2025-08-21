@@ -13,36 +13,36 @@ C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv
 
 Discarded input sections
 
- .text          0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
- .data          0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
- .bss           0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
- .text          0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/value.c.obj
- .data          0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/value.c.obj
- .bss           0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/value.c.obj
- .debug_info    0x00000000       0x65 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/value.c.obj
- .debug_abbrev  0x00000000       0x26 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/value.c.obj
+ .text          0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
+ .data          0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
+ .bss           0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
+ .text          0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/value.c.obj
+ .data          0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/value.c.obj
+ .bss           0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/value.c.obj
+ .debug_info    0x00000000       0x65 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/value.c.obj
+ .debug_abbrev  0x00000000       0x26 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/value.c.obj
  .debug_aranges
-                0x00000000       0x18 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/value.c.obj
- .debug_line    0x00000000       0x35 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/value.c.obj
- .debug_str     0x00000000      0x106 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/value.c.obj
+                0x00000000       0x18 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/value.c.obj
+ .debug_line    0x00000000       0x35 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/value.c.obj
+ .debug_str     0x00000000      0x106 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/value.c.obj
  .debug_line_str
-                0x00000000      0x108 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/value.c.obj
- .comment       0x00000000       0x30 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/value.c.obj
+                0x00000000      0x11c CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/value.c.obj
+ .comment       0x00000000       0x30 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/value.c.obj
  .note.GNU-stack
-                0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/value.c.obj
+                0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/value.c.obj
  .riscv.attributes
-                0x00000000       0x5c CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/value.c.obj
- .text          0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/gc.c.obj
- .data          0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/gc.c.obj
- .bss           0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/gc.c.obj
- .data          0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/fallback.S.obj
- .bss           0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/fallback.S.obj
- .data          0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/readbarrier.S.obj
- .bss           0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/readbarrier.S.obj
- .data          0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/sleep.S.obj
- .bss           0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/sleep.S.obj
- .data          0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/array.S.obj
- .bss           0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/array.S.obj
+                0x00000000       0x5c CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/value.c.obj
+ .text          0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/gc.c.obj
+ .data          0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/gc.c.obj
+ .bss           0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/gc.c.obj
+ .data          0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/fallback.S.obj
+ .bss           0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/fallback.S.obj
+ .data          0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/readbarrier.S.obj
+ .bss           0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/readbarrier.S.obj
+ .data          0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/sleep.S.obj
+ .bss           0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/sleep.S.obj
+ .data          0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/array.S.obj
+ .bss           0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/array.S.obj
  .text          0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/start.S.obj
  .data          0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/start.S.obj
  .bss           0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/start.S.obj
@@ -73,7 +73,7 @@ Discarded input sections
  .debug_line    0x00000000      0x249 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_uart_shared.c.obj
  .debug_str     0x00000000      0xf1a CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_uart_shared.c.obj
  .debug_line_str
-                0x00000000      0x435 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_uart_shared.c.obj
+                0x00000000      0x43f CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_uart_shared.c.obj
  .comment       0x00000000       0x30 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_uart_shared.c.obj
  .note.GNU-stack
                 0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_uart_shared.c.obj
@@ -98,7 +98,7 @@ Discarded input sections
  .debug_line    0x00000000      0x6eb CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/esp_driver_uart/src/uart_wakeup.c.obj
  .debug_str     0x00000000     0x136b CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/esp_driver_uart/src/uart_wakeup.c.obj
  .debug_line_str
-                0x00000000      0x589 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/esp_driver_uart/src/uart_wakeup.c.obj
+                0x00000000      0x593 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/esp_driver_uart/src/uart_wakeup.c.obj
  .comment       0x00000000       0x30 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/esp_driver_uart/src/uart_wakeup.c.obj
  .note.GNU-stack
                 0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/esp_driver_uart/src/uart_wakeup.c.obj
@@ -126,10 +126,6 @@ Discarded input sections
                 0x00000000       0x1a CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
  .text.ulp_lp_core_sw_intr_clear
                 0x00000000       0x18 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
- .text.ulp_lp_core_lp_timer_intr_enable
-                0x00000000       0x16 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
- .text.ulp_lp_core_lp_timer_intr_clear
-                0x00000000       0x14 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
  .text.ulp_lp_core_wait_for_intr
                 0x00000000        0x6 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
  .text          0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/hal/uart_hal_iram.c.obj
@@ -156,7 +152,7 @@ Discarded input sections
  .debug_line    0x00000000      0x63b CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/hal/uart_hal_iram.c.obj
  .debug_str     0x00000000      0xe3d CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/hal/uart_hal_iram.c.obj
  .debug_line_str
-                0x00000000      0x2f6 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/hal/uart_hal_iram.c.obj
+                0x00000000      0x300 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/hal/uart_hal_iram.c.obj
  .comment       0x00000000       0x30 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/hal/uart_hal_iram.c.obj
  .note.GNU-stack
                 0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/hal/uart_hal_iram.c.obj
@@ -229,7 +225,7 @@ Discarded input sections
  .debug_line    0x00000000     0x1aad CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/hal/uart_hal.c.obj
  .debug_str     0x00000000     0x369d CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/hal/uart_hal.c.obj
  .debug_line_str
-                0x00000000      0x365 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/hal/uart_hal.c.obj
+                0x00000000      0x36f CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/hal/uart_hal.c.obj
  .comment       0x00000000       0x30 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/hal/uart_hal.c.obj
  .note.GNU-stack
                 0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/hal/uart_hal.c.obj
@@ -261,7 +257,7 @@ Discarded input sections
  .debug_line    0x00000000      0xa16 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_uart.c.obj
  .debug_str     0x00000000     0x2f1c CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_uart.c.obj
  .debug_line_str
-                0x00000000      0x4b8 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_uart.c.obj
+                0x00000000      0x4c2 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_uart.c.obj
  .comment       0x00000000       0x30 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_uart.c.obj
  .note.GNU-stack
                 0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_uart.c.obj
@@ -298,7 +294,7 @@ Discarded input sections
  .debug_line    0x00000000      0xc35 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_print.c.obj
  .debug_str     0x00000000      0x2ca CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_print.c.obj
  .debug_line_str
-                0x00000000      0x267 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_print.c.obj
+                0x00000000      0x271 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_print.c.obj
  .comment       0x00000000       0x30 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_print.c.obj
  .note.GNU-stack
                 0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_print.c.obj
@@ -315,7 +311,7 @@ Discarded input sections
  .debug_line    0x00000000       0x35 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_panic.c.obj
  .debug_str     0x00000000      0x112 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_panic.c.obj
  .debug_line_str
-                0x00000000      0x11a CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_panic.c.obj
+                0x00000000      0x124 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_panic.c.obj
  .comment       0x00000000       0x30 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_panic.c.obj
  .note.GNU-stack
                 0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_panic.c.obj
@@ -341,7 +337,7 @@ Discarded input sections
  .debug_line    0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_spi.c.obj
  .debug_str     0x00000000       0x82 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_spi.c.obj
  .debug_line_str
-                0x00000000       0x8b CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_spi.c.obj
+                0x00000000       0x90 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_spi.c.obj
  .comment       0x00000000       0x30 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_spi.c.obj
  .note.GNU-stack
                 0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_spi.c.obj
@@ -395,7 +391,7 @@ Discarded input sections
  .debug_line    0x00000000      0x262 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_ubsan.c.obj
  .debug_str     0x00000000      0x573 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_ubsan.c.obj
  .debug_line_str
-                0x00000000      0x2b3 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_ubsan.c.obj
+                0x00000000      0x2bd CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_ubsan.c.obj
  .comment       0x00000000       0x30 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_ubsan.c.obj
  .note.GNU-stack
                 0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_ubsan.c.obj
@@ -408,7 +404,7 @@ Discarded input sections
  .debug_line    0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_adc_shared.c.obj
  .debug_str     0x00000000       0x82 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_adc_shared.c.obj
  .debug_line_str
-                0x00000000       0x98 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_adc_shared.c.obj
+                0x00000000       0x9d CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_adc_shared.c.obj
  .comment       0x00000000       0x30 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_adc_shared.c.obj
  .note.GNU-stack
                 0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_adc_shared.c.obj
@@ -420,7 +416,7 @@ Discarded input sections
  .debug_line    0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_vad_shared.c.obj
  .debug_str     0x00000000       0x82 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_vad_shared.c.obj
  .debug_line_str
-                0x00000000       0x98 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_vad_shared.c.obj
+                0x00000000       0x9d CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_vad_shared.c.obj
  .comment       0x00000000       0x30 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_vad_shared.c.obj
  .note.GNU-stack
                 0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_vad_shared.c.obj
@@ -446,7 +442,7 @@ Discarded input sections
  .debug_line    0x00000000      0x24a CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_critical_section_shared.c.obj
  .debug_str     0x00000000      0x299 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_critical_section_shared.c.obj
  .debug_line_str
-                0x00000000      0x232 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_critical_section_shared.c.obj
+                0x00000000      0x23c CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_critical_section_shared.c.obj
  .comment       0x00000000       0x30 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_critical_section_shared.c.obj
  .note.GNU-stack
                 0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_critical_section_shared.c.obj
@@ -596,13 +592,13 @@ LOAD C:/Workspace/Misc/esp/esp-idf/components/soc/esp32c6/ld/esp32c6.peripherals
                 [!provide]                        PROVIDE (LP_ANA_PERI = 0x600b2c00)
                 [!provide]                        PROVIDE (LP_APM = 0x600b3800)
                 [!provide]                        PROVIDE (OTP_DEBUG = 0x600b3c00)
-LOAD CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
-LOAD CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/value.c.obj
-LOAD CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/gc.c.obj
-LOAD CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/fallback.S.obj
-LOAD CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/readbarrier.S.obj
-LOAD CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/sleep.S.obj
-LOAD CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/array.S.obj
+LOAD CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
+LOAD CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/value.c.obj
+LOAD CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/gc.c.obj
+LOAD CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/fallback.S.obj
+LOAD CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/readbarrier.S.obj
+LOAD CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/sleep.S.obj
+LOAD CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/array.S.obj
 LOAD CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/start.S.obj
 LOAD CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/vector.S.obj
 LOAD CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/port/esp32c6/vector_table.S.obj
@@ -646,234 +642,254 @@ END GROUP
                 0x50000000                _vector_table
                 0x50000080                        . = ORIGIN (ram)
 
-.text           0x50000080     0x12ee
+.text           0x50000080     0x13d6
  *(.text.vectors)
  .text.vectors  0x50000080       0x1c CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/start.S.obj
                 0x50000080                reset_vector
  *(.text)
- .text          0x5000009c       0x40 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/fallback.S.obj
+ .text          0x5000009c       0x40 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/fallback.S.obj
                 0x5000009c                fallback
- .text          0x500000dc       0x9a CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/readbarrier.S.obj
+ .text          0x500000dc       0x9a CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/readbarrier.S.obj
                 0x500000dc                read_barrier
                 0x50000140                object_new
- .text          0x50000176       0x64 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/sleep.S.obj
+ .text          0x50000176       0x64 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/sleep.S.obj
                 0x50000176                sleep_store
                 0x500001a8                sleep_restore
- .text          0x500001da       0x50 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/array.S.obj
+ .text          0x500001da       0x50 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/array.S.obj
                 0x500001da                array_get
                 0x500001fc                string_getbyte
                 0x50000214                array_set
  .text          0x5000022a      0x35a C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_udivdi3.o)
                 0x5000022a                __udivdi3
  *(.text*)
+ .text.ulp_lp_core_lp_timer_intr_handler
+                0x50000584       0x10 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
+                0x50000584                ulp_lp_core_lp_timer_intr_handler
  .text.sleep_store2
-                0x50000584        0x8 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
-                0x50000584                sleep_store2
+                0x50000594        0x8 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
+                0x50000594                sleep_store2
+ .text.copro_delayUs
+                0x5000059c       0x66 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
+                0x5000059c                copro_delayUs
  .text.copro_delayMs
-                0x5000058c       0x38 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
-                0x5000058c                copro_delayMs
+                0x50000602        0xa CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
+                0x50000602                copro_delayMs
+ .text.copro_GPIOpulseIn
+                0x5000060c       0x6c CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
+                0x5000060c                copro_GPIOpulseIn
  .text.debugout
-                0x500005c4       0x44 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
-                0x500005c4                debugout
+                0x50000678       0x44 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
+                0x50000678                debugout
  .text.fallback_post
-                0x50000608       0x2e CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
-                0x50000608                fallback_post
+                0x500006bc       0x2e CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
+                0x500006bc                fallback_post
  .text.copro_GPIOget
-                0x50000636       0x1c CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
-                0x50000636                copro_GPIOget
+                0x500006ea       0x1c CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
+                0x500006ea                copro_GPIOget
  .text.copro_GPIOset
-                0x50000652       0x38 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
-                0x50000652                copro_GPIOset
+                0x50000706       0x38 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
+                0x50000706                copro_GPIOset
  .text.copro_I2Cread
-                0x5000068a       0x44 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
-                0x5000068a                copro_I2Cread
+                0x5000073e       0x44 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
+                0x5000073e                copro_I2Cread
  .text.copro_I2Cwrite
-                0x500006ce       0x7c CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
-                0x500006ce                copro_I2Cwrite
- .text.imalive  0x5000074a       0x20 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
-                0x5000074a                imalive
+                0x50000782       0x7c CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
+                0x50000782                copro_I2Cwrite
+ .text.imalive  0x500007fe       0x22 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
+                0x500007fe                imalive
  .text.readfail
-                0x5000076a       0x72 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
-                0x5000076a                readfail
+                0x50000820       0x74 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
+                0x50000820                readfail
  .text.startup.main
-                0x500007dc       0x20 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
-                0x500007dc                main
+                0x50000894       0x26 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
+                0x50000894                main
  .text.mrbc_gc_sweep
-                0x500007fc       0xa4 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/gc.c.obj
-                0x500007fc                mrbc_gc_sweep
+                0x500008ba       0xa4 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/gc.c.obj
+                0x500008ba                mrbc_gc_sweep
  .text.mrbc_gc_mark
-                0x500008a0       0xee CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/gc.c.obj
-                0x500008a0                mrbc_gc_mark
+                0x5000095e       0xee CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/gc.c.obj
+                0x5000095e                mrbc_gc_mark
  .text.mrbc_gc_mark_frozen_objects
-                0x5000098e       0xc6 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/gc.c.obj
-                0x5000098e                mrbc_gc_mark_frozen_objects
+                0x50000a4c       0xc6 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/gc.c.obj
+                0x50000a4c                mrbc_gc_mark_frozen_objects
  .text.mrbc_gc_gc
-                0x50000a54       0x2a CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/gc.c.obj
-                0x50000a54                mrbc_gc_gc
+                0x50000b12       0x2a CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/gc.c.obj
+                0x50000b12                mrbc_gc_gc
  .text.mrbc_gc_alloc
-                0x50000a7e      0x174 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/gc.c.obj
-                0x50000a7e                mrbc_gc_alloc
+                0x50000b3c      0x174 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/gc.c.obj
+                0x50000b3c                mrbc_gc_alloc
  .text.handlers
-                0x50000bf2       0xfa CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/vector.S.obj
-                0x50000bf2                _panic_handler
-                0x50000c62                _interrupt_handler
+                0x50000cb0       0xfa CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/vector.S.obj
+                0x50000cb0                _panic_handler
+                0x50000d20                _interrupt_handler
  .text.ulp_lp_core_memory_shared_cfg_get
-                0x50000cec        0xa CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_memory_shared.c.obj
-                0x50000cec                ulp_lp_core_memory_shared_cfg_get
+                0x50000daa        0xa CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_memory_shared.c.obj
+                0x50000daa                ulp_lp_core_memory_shared_cfg_get
  .text.lp_timer_hal_set_alarm_target
-                0x50000cf6       0x38 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_timer_shared.c.obj
+                0x50000db4       0x38 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_timer_shared.c.obj
  .text.ulp_lp_core_lp_timer_get_cycle_count
-                0x50000d2e       0x26 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_timer_shared.c.obj
-                0x50000d2e                ulp_lp_core_lp_timer_get_cycle_count
+                0x50000dec       0x26 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_timer_shared.c.obj
+                0x50000dec                ulp_lp_core_lp_timer_get_cycle_count
  .text.ulp_lp_core_lp_timer_set_wakeup_time
-                0x50000d54       0x48 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_timer_shared.c.obj
-                0x50000d54                ulp_lp_core_lp_timer_set_wakeup_time
+                0x50000e12       0x48 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_timer_shared.c.obj
+                0x50000e12                ulp_lp_core_lp_timer_set_wakeup_time
  .text.ulp_lp_core_lp_timer_set_wakeup_ticks
-                0x50000d9c       0x24 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_timer_shared.c.obj
-                0x50000d9c                ulp_lp_core_lp_timer_set_wakeup_ticks
+                0x50000e5a       0x24 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_timer_shared.c.obj
+                0x50000e5a                ulp_lp_core_lp_timer_set_wakeup_ticks
  .text.ulp_lp_core_lp_timer_disable
-                0x50000dc0       0x1e CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_timer_shared.c.obj
-                0x50000dc0                ulp_lp_core_lp_timer_disable
+                0x50000e7e       0x1e CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_timer_shared.c.obj
+                0x50000e7e                ulp_lp_core_lp_timer_disable
  .text.lp_core_startup
-                0x50000dde       0x1a CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_startup.c.obj
-                0x50000dde                lp_core_startup
+                0x50000e9c       0x1a CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_startup.c.obj
+                0x50000e9c                lp_core_startup
  .text.ulp_lp_core_update_wakeup_cause
-                0x50000df8      0x144 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
-                0x50000df8                ulp_lp_core_update_wakeup_cause
+                0x50000eb6      0x144 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
+                0x50000eb6                ulp_lp_core_update_wakeup_cause
  .text.ulp_lp_core_wakeup_main_processor
-                0x50000f3c       0x14 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
-                0x50000f3c                ulp_lp_core_wakeup_main_processor
+                0x50000ffa       0x14 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
+                0x50000ffa                ulp_lp_core_wakeup_main_processor
  .text.ulp_lp_core_delay_us
-                0x50000f50       0x12 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
-                0x50000f50                ulp_lp_core_delay_us
+                0x5000100e       0x12 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
+                0x5000100e                ulp_lp_core_delay_us
  .text.ulp_lp_core_delay_cycles
-                0x50000f62       0x10 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
-                0x50000f62                ulp_lp_core_delay_cycles
+                0x50001020       0x10 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
+                0x50001020                ulp_lp_core_delay_cycles
  .text.ulp_lp_core_halt
-                0x50000f72       0x18 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
-                0x50000f72                ulp_lp_core_halt
+                0x50001030       0x18 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
+                0x50001030                ulp_lp_core_halt
  .text.ulp_lp_core_stop_lp_core
-                0x50000f8a       0x1c CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
-                0x50000f8a                ulp_lp_core_stop_lp_core
+                0x50001048       0x1c CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
+                0x50001048                ulp_lp_core_stop_lp_core
  .text.ulp_lp_core_abort
-                0x50000fa6        0x8 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
-                0x50000fa6                ulp_lp_core_abort
+                0x50001064        0x8 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
+                0x50001064                ulp_lp_core_abort
+ .text.ulp_lp_core_lp_timer_intr_enable
+                0x5000106c       0x16 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
+                0x5000106c                ulp_lp_core_lp_timer_intr_enable
+ .text.ulp_lp_core_lp_timer_intr_clear
+                0x50001082       0x14 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
+                0x50001082                ulp_lp_core_lp_timer_intr_clear
  .text.ulp_lp_core_default_intr_handler
-                0x50000fae        0x6 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_interrupt.c.obj
-                0x50000fae                ulp_lp_core_efuse_intr_handler
-                0x50000fae                ulp_lp_core_lp_touch_intr_handler
-                0x50000fae                ulp_lp_core_sw_intr_handler
-                0x50000fae                ulp_lp_core_lp_adc_intr_handler
-                0x50000fae                ulp_lp_core_lp_ana_peri_intr_handler
-                0x50000fae                ulp_lp_core_trng_intr_handler
-                0x50000fae                ulp_lp_core_lp_uart_intr_handler
-                0x50000fae                ulp_lp_core_lp_spi_intr_handler
-                0x50000fae                ulp_lp_core_lp_io_intr_handler
-                0x50000fae                ulp_lp_core_lp_wdt_intr_handler
-                0x50000fae                ulp_lp_core_mailbox_intr_handler
-                0x50000fae                ulp_lp_core_lp_sysreg_intr_handler
-                0x50000fae                ulp_lp_core_tsens_intr_handler
-                0x50000fae                ulp_lp_core_lp_rtc_intr_handler
-                0x50000fae                ulp_lp_core_lp_timer_intr_handler
-                0x50000fae                ulp_lp_core_lp_pmu_intr_handler
-                0x50000fae                ulp_lp_core_lp_i2c_intr_handler
+                0x50001096        0x6 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_interrupt.c.obj
+                0x50001096                ulp_lp_core_efuse_intr_handler
+                0x50001096                ulp_lp_core_lp_touch_intr_handler
+                0x50001096                ulp_lp_core_sw_intr_handler
+                0x50001096                ulp_lp_core_lp_adc_intr_handler
+                0x50001096                ulp_lp_core_lp_ana_peri_intr_handler
+                0x50001096                ulp_lp_core_trng_intr_handler
+                0x50001096                ulp_lp_core_lp_uart_intr_handler
+                0x50001096                ulp_lp_core_lp_spi_intr_handler
+                0x50001096                ulp_lp_core_lp_io_intr_handler
+                0x50001096                ulp_lp_core_lp_wdt_intr_handler
+                0x50001096                ulp_lp_core_mailbox_intr_handler
+                0x50001096                ulp_lp_core_lp_sysreg_intr_handler
+                0x50001096                ulp_lp_core_tsens_intr_handler
+                0x50001096                ulp_lp_core_lp_rtc_intr_handler
+                0x50001096                ulp_lp_core_lp_pmu_intr_handler
+                0x50001096                ulp_lp_core_lp_i2c_intr_handler
  .text.ulp_lp_core_panic_handler
-                0x50000fb4        0x6 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_interrupt.c.obj
-                0x50000fb4                ulp_lp_core_panic_handler
+                0x5000109c        0x6 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_interrupt.c.obj
+                0x5000109c                ulp_lp_core_panic_handler
  .text.ulp_lp_core_intr_handler
-                0x50000fba       0x4c CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_interrupt.c.obj
-                0x50000fba                ulp_lp_core_intr_handler
+                0x500010a2       0x4c CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_interrupt.c.obj
+                0x500010a2                ulp_lp_core_intr_handler
  .text.lp_core_i2c_wait_for_interrupt
-                0x50001006       0x76 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj
+                0x500010ee       0x76 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj
  .text.lp_core_i2c_format_cmd.constprop.0
-                0x5000107c       0x28 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj
+                0x50001164       0x28 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj
  .text.lp_core_i2c_config_device_addr.constprop.0
-                0x500010a4       0x32 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj
+                0x5000118c       0x32 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj
  .text.lp_core_i2c_master_read_from_device
-                0x500010d6      0x142 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj
-                0x500010d6                lp_core_i2c_master_read_from_device
+                0x500011be      0x142 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj
+                0x500011be                lp_core_i2c_master_read_from_device
  .text.lp_core_i2c_master_write_to_device
-                0x50001218      0x156 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj
-                0x50001218                lp_core_i2c_master_write_to_device
+                0x50001300      0x156 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj
+                0x50001300                lp_core_i2c_master_write_to_device
 
-.rodata         0x50001370      0x118
+.rodata         0x50001458      0x118
  *(.rodata)
- .rodata        0x50001370      0x100 C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_clz.o)
-                0x50001370                __clz_tab
+ .rodata        0x50001458      0x100 C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_clz.o)
+                0x50001458                __clz_tab
  *(.rodata*)
  .rodata.s_intr_handlers
-                0x50001470       0x18 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_interrupt.c.obj
+                0x50001558       0x18 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_interrupt.c.obj
 
-.rela.dyn       0x50001488        0x0
- .rela.text.copro_delayMs
-                0x50001488        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
+.rela.dyn       0x50001570        0x0
+ .rela.text.copro_delayUs
+                0x50001570        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
+ .rela.text.copro_GPIOpulseIn
+                0x50001570        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
  .rela.text.copro_GPIOget
-                0x50001488        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
+                0x50001570        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
  .rela.text.copro_GPIOset
-                0x50001488        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
+                0x50001570        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
  .rela.text.mrbc_gc_gc
-                0x50001488        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
+                0x50001570        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
  .rela.text.vectors
-                0x50001488        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
+                0x50001570        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
  .rela.text.lp_timer_hal_set_alarm_target
-                0x50001488        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
+                0x50001570        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
  .rela.text.ulp_lp_core_lp_timer_get_cycle_count
-                0x50001488        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
+                0x50001570        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
  .rela.text.ulp_lp_core_lp_timer_disable
-                0x50001488        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
+                0x50001570        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
  .rela.text.ulp_lp_core_update_wakeup_cause
-                0x50001488        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
+                0x50001570        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
  .rela.text.ulp_lp_core_halt
-                0x50001488        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
+                0x50001570        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
  .rela.text.ulp_lp_core_stop_lp_core
-                0x50001488        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
+                0x50001570        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
+ .rela.text.ulp_lp_core_lp_timer_intr_enable
+                0x50001570        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
+ .rela.text.ulp_lp_core_lp_timer_intr_clear
+                0x50001570        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
  .rela.text.ulp_lp_core_intr_handler
-                0x50001488        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
+                0x50001570        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
  .rela.rodata.s_intr_handlers
-                0x50001488        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
+                0x50001570        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
  .rela.sdata.dev
-                0x50001488        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
+                0x50001570        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
 
-.data           0x50001488       0x34
+.data           0x50001570       0x34
  *(.data)
  *(.data*)
- .data.heaps    0x50001488       0x28 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/gc.c.obj
-                0x50001488                heaps
+ .data.heaps    0x50001570       0x28 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/gc.c.obj
+                0x50001570                heaps
  *(.sdata)
  *(.sdata*)
  .sdata.entrypoint
-                0x500014b0        0x4 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
-                0x500014b0                entrypoint
+                0x50001598        0x4 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
+                0x50001598                entrypoint
  .sdata.s_ack_check_en
-                0x500014b4        0x1 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj
- *fill*         0x500014b5        0x3 
- .sdata.dev     0x500014b8        0x4 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj
-                0x500014b8                dev
+                0x5000159c        0x1 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj
+ *fill*         0x5000159d        0x3 
+ .sdata.dev     0x500015a0        0x4 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj
+                0x500015a0                dev
 
-.bss            0x500014bc     0x1030
+.bss            0x500015a4     0x1030
  *(.bss)
  *(.bss*)
  .bss.translation_table
-                0x500014bc       0x20 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
-                0x500014bc                translation_table
+                0x500015a4       0x20 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
+                0x500015a4                translation_table
  .bss.mrbc_gc_space
-                0x500014dc     0x1000 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/gc.c.obj
-                0x500014dc                mrbc_gc_space
+                0x500015c4     0x1000 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/gc.c.obj
+                0x500015c4                mrbc_gc_space
  *(.sbss)
  *(.sbss*)
  .sbss.required_object
-                0x500024dc        0x4 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
-                0x500024dc                required_object
- .sbss.ack      0x500024e0        0x2 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
-                0x500024e0                ack
+                0x500025c4        0x4 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
+                0x500025c4                required_object
+ .sbss.ack      0x500025c8        0x2 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
+                0x500025c8                ack
  .sbss.stopreason
-                0x500024e2        0x2 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
-                0x500024e2                stopreason
+                0x500025ca        0x2 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
+                0x500025ca                stopreason
  .sbss.mrbc_sp_bottom
-                0x500024e4        0x4 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
-                0x500024e4                mrbc_sp_bottom
+                0x500025cc        0x4 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
+                0x500025cc                mrbc_sp_bottom
  .sbss.lp_wakeup_cause
-                0x500024e8        0x4 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
+                0x500025d0        0x4 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
                 [!provide]                        PROVIDE (end = .)
                 0x500036a0                        __stack_top = (ORIGIN (ram) + LENGTH (ram))
                 0x500036a0                        . = ORIGIN (shared_mem_ram)
@@ -883,201 +899,201 @@ END GROUP
  .shared_mem    0x500036a0       0x10 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_memory_shared.c.obj
 OUTPUT(ulp_main.elf elf32-littleriscv)
 
-.debug_info     0x00000000     0xdbb5
- .debug_info    0x00000000     0x31b9 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
- .debug_info    0x000031b9      0x7d9 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/gc.c.obj
- .debug_info    0x00003992       0x24 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/fallback.S.obj
- .debug_info    0x000039b6       0x25 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/readbarrier.S.obj
- .debug_info    0x000039db       0x24 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/sleep.S.obj
- .debug_info    0x000039ff       0x24 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/array.S.obj
- .debug_info    0x00003a23       0x24 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/start.S.obj
- .debug_info    0x00003a47       0x25 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/vector.S.obj
- .debug_info    0x00003a6c       0x33 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/port/esp32c6/vector_table.S.obj
- .debug_info    0x00003a9f       0xed CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_memory_shared.c.obj
- .debug_info    0x00003b8c      0xe3d CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_timer_shared.c.obj
- .debug_info    0x000049c9      0x15f CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_startup.c.obj
- .debug_info    0x00004b28     0x5744 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
- .debug_info    0x0000a26c      0x87a CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_interrupt.c.obj
- .debug_info    0x0000aae6     0x286c CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj
- .debug_info    0x0000d352      0x776 C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_udivdi3.o)
- .debug_info    0x0000dac8       0xed C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_clz.o)
+.debug_info     0x00000000     0xdf18
+ .debug_info    0x00000000     0x351c CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
+ .debug_info    0x0000351c      0x7d9 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/gc.c.obj
+ .debug_info    0x00003cf5       0x24 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/fallback.S.obj
+ .debug_info    0x00003d19       0x25 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/readbarrier.S.obj
+ .debug_info    0x00003d3e       0x24 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/sleep.S.obj
+ .debug_info    0x00003d62       0x24 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/array.S.obj
+ .debug_info    0x00003d86       0x24 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/start.S.obj
+ .debug_info    0x00003daa       0x25 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/vector.S.obj
+ .debug_info    0x00003dcf       0x33 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/port/esp32c6/vector_table.S.obj
+ .debug_info    0x00003e02       0xed CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_memory_shared.c.obj
+ .debug_info    0x00003eef      0xe3d CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_timer_shared.c.obj
+ .debug_info    0x00004d2c      0x15f CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_startup.c.obj
+ .debug_info    0x00004e8b     0x5744 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
+ .debug_info    0x0000a5cf      0x87a CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_interrupt.c.obj
+ .debug_info    0x0000ae49     0x286c CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj
+ .debug_info    0x0000d6b5      0x776 C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_udivdi3.o)
+ .debug_info    0x0000de2b       0xed C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_clz.o)
 
-.debug_abbrev   0x00000000     0x1aab
- .debug_abbrev  0x00000000      0x49f CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
- .debug_abbrev  0x0000049f      0x2a5 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/gc.c.obj
- .debug_abbrev  0x00000744       0x14 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/fallback.S.obj
- .debug_abbrev  0x00000758       0x14 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/readbarrier.S.obj
- .debug_abbrev  0x0000076c       0x14 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/sleep.S.obj
- .debug_abbrev  0x00000780       0x14 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/array.S.obj
- .debug_abbrev  0x00000794       0x14 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/start.S.obj
- .debug_abbrev  0x000007a8       0x14 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/vector.S.obj
- .debug_abbrev  0x000007bc       0x28 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/port/esp32c6/vector_table.S.obj
- .debug_abbrev  0x000007e4       0x90 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_memory_shared.c.obj
- .debug_abbrev  0x00000874      0x35d CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_timer_shared.c.obj
- .debug_abbrev  0x00000bd1      0x108 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_startup.c.obj
- .debug_abbrev  0x00000cd9      0x4e7 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
- .debug_abbrev  0x000011c0      0x223 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_interrupt.c.obj
- .debug_abbrev  0x000013e3      0x4b2 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj
- .debug_abbrev  0x00001895      0x1a6 C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_udivdi3.o)
- .debug_abbrev  0x00001a3b       0x70 C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_clz.o)
+.debug_abbrev   0x00000000     0x1b45
+ .debug_abbrev  0x00000000      0x539 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
+ .debug_abbrev  0x00000539      0x2a5 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/gc.c.obj
+ .debug_abbrev  0x000007de       0x14 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/fallback.S.obj
+ .debug_abbrev  0x000007f2       0x14 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/readbarrier.S.obj
+ .debug_abbrev  0x00000806       0x14 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/sleep.S.obj
+ .debug_abbrev  0x0000081a       0x14 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/array.S.obj
+ .debug_abbrev  0x0000082e       0x14 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/start.S.obj
+ .debug_abbrev  0x00000842       0x14 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/vector.S.obj
+ .debug_abbrev  0x00000856       0x28 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/port/esp32c6/vector_table.S.obj
+ .debug_abbrev  0x0000087e       0x90 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_memory_shared.c.obj
+ .debug_abbrev  0x0000090e      0x35d CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_timer_shared.c.obj
+ .debug_abbrev  0x00000c6b      0x108 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_startup.c.obj
+ .debug_abbrev  0x00000d73      0x4e7 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
+ .debug_abbrev  0x0000125a      0x223 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_interrupt.c.obj
+ .debug_abbrev  0x0000147d      0x4b2 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj
+ .debug_abbrev  0x0000192f      0x1a6 C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_udivdi3.o)
+ .debug_abbrev  0x00001ad5       0x70 C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_clz.o)
 
 .debug_loclists
-                0x00000000     0x1ed3
+                0x00000000     0x1fd3
  .debug_loclists
-                0x00000000      0x319 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
+                0x00000000      0x419 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
  .debug_loclists
-                0x00000319      0x5b1 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/gc.c.obj
+                0x00000419      0x5b1 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/gc.c.obj
  .debug_loclists
-                0x000008ca       0xf0 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_timer_shared.c.obj
+                0x000009ca       0xf0 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_timer_shared.c.obj
  .debug_loclists
-                0x000009ba       0x2a CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_startup.c.obj
+                0x00000aba       0x2a CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_startup.c.obj
  .debug_loclists
-                0x000009e4      0x104 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
+                0x00000ae4      0x104 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
  .debug_loclists
-                0x00000ae8       0x61 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_interrupt.c.obj
+                0x00000be8       0x61 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_interrupt.c.obj
  .debug_loclists
-                0x00000b49      0xcdd CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj
+                0x00000c49      0xcdd CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj
  .debug_loclists
-                0x00001826      0x6ad C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_udivdi3.o)
+                0x00001926      0x6ad C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_udivdi3.o)
 
-.debug_aranges  0x00000000      0x370
+.debug_aranges  0x00000000      0x388
  .debug_aranges
-                0x00000000       0x70 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
+                0x00000000       0x88 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
  .debug_aranges
-                0x00000070       0x40 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/gc.c.obj
+                0x00000088       0x40 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/gc.c.obj
  .debug_aranges
-                0x000000b0       0x20 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/fallback.S.obj
+                0x000000c8       0x20 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/fallback.S.obj
  .debug_aranges
-                0x000000d0       0x20 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/readbarrier.S.obj
+                0x000000e8       0x20 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/readbarrier.S.obj
  .debug_aranges
-                0x000000f0       0x20 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/sleep.S.obj
+                0x00000108       0x20 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/sleep.S.obj
  .debug_aranges
-                0x00000110       0x20 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/array.S.obj
+                0x00000128       0x20 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/array.S.obj
  .debug_aranges
-                0x00000130       0x20 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/start.S.obj
+                0x00000148       0x20 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/start.S.obj
  .debug_aranges
-                0x00000150       0x20 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/vector.S.obj
+                0x00000168       0x20 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/vector.S.obj
  .debug_aranges
-                0x00000170       0x20 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/port/esp32c6/vector_table.S.obj
+                0x00000188       0x20 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/port/esp32c6/vector_table.S.obj
  .debug_aranges
-                0x00000190       0x20 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_memory_shared.c.obj
+                0x000001a8       0x20 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_memory_shared.c.obj
  .debug_aranges
-                0x000001b0       0x48 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_timer_shared.c.obj
+                0x000001c8       0x48 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_timer_shared.c.obj
  .debug_aranges
-                0x000001f8       0x20 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_startup.c.obj
+                0x00000210       0x20 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_startup.c.obj
  .debug_aranges
-                0x00000218       0x90 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
+                0x00000230       0x90 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
  .debug_aranges
-                0x000002a8       0x40 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_interrupt.c.obj
+                0x000002c0       0x40 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_interrupt.c.obj
  .debug_aranges
-                0x000002e8       0x50 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj
+                0x00000300       0x50 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj
  .debug_aranges
-                0x00000338       0x20 C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_udivdi3.o)
+                0x00000350       0x20 C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_udivdi3.o)
  .debug_aranges
-                0x00000358       0x18 C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_clz.o)
+                0x00000370       0x18 C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_clz.o)
 
 .debug_rnglists
-                0x00000000      0x582
+                0x00000000      0x5f7
  .debug_rnglists
-                0x00000000       0xb3 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
+                0x00000000      0x128 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
  .debug_rnglists
-                0x000000b3      0x15c CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/gc.c.obj
+                0x00000128      0x15c CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/gc.c.obj
  .debug_rnglists
-                0x0000020f       0x13 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_memory_shared.c.obj
+                0x00000284       0x13 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_memory_shared.c.obj
  .debug_rnglists
-                0x00000222       0x67 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_timer_shared.c.obj
+                0x00000297       0x67 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_timer_shared.c.obj
  .debug_rnglists
-                0x00000289       0x13 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_startup.c.obj
+                0x000002fe       0x13 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_startup.c.obj
  .debug_rnglists
-                0x0000029c       0xc8 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
+                0x00000311       0xc8 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
  .debug_rnglists
-                0x00000364       0x3d CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_interrupt.c.obj
+                0x000003d9       0x3d CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_interrupt.c.obj
  .debug_rnglists
-                0x000003a1      0x152 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj
+                0x00000416      0x152 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj
  .debug_rnglists
-                0x000004f3       0x8f C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_udivdi3.o)
+                0x00000568       0x8f C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_udivdi3.o)
 
-.debug_line     0x00000000     0x476e
- .debug_line    0x00000000      0x8ba CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
- .debug_line    0x000008ba      0xd0b CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/gc.c.obj
- .debug_line    0x000015c5      0x102 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/fallback.S.obj
- .debug_line    0x000016c7      0x1e8 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/readbarrier.S.obj
- .debug_line    0x000018af      0x126 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/sleep.S.obj
- .debug_line    0x000019d5      0x108 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/array.S.obj
- .debug_line    0x00001add       0x68 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/start.S.obj
- .debug_line    0x00001b45       0xd5 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/vector.S.obj
- .debug_line    0x00001c1a       0x56 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/port/esp32c6/vector_table.S.obj
- .debug_line    0x00001c70       0x84 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_memory_shared.c.obj
- .debug_line    0x00001cf4      0x424 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_timer_shared.c.obj
- .debug_line    0x00002118       0xd9 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_startup.c.obj
- .debug_line    0x000021f1      0x881 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
- .debug_line    0x00002a72      0x264 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_interrupt.c.obj
- .debug_line    0x00002cd6     0x10de CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj
- .debug_line    0x00003db4      0x97b C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_udivdi3.o)
- .debug_line    0x0000472f       0x3f C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_clz.o)
+.debug_line     0x00000000     0x4a75
+ .debug_line    0x00000000      0xbc1 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
+ .debug_line    0x00000bc1      0xd0b CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/gc.c.obj
+ .debug_line    0x000018cc      0x102 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/fallback.S.obj
+ .debug_line    0x000019ce      0x1e8 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/readbarrier.S.obj
+ .debug_line    0x00001bb6      0x126 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/sleep.S.obj
+ .debug_line    0x00001cdc      0x108 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/array.S.obj
+ .debug_line    0x00001de4       0x68 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/start.S.obj
+ .debug_line    0x00001e4c       0xd5 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/vector.S.obj
+ .debug_line    0x00001f21       0x56 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/port/esp32c6/vector_table.S.obj
+ .debug_line    0x00001f77       0x84 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_memory_shared.c.obj
+ .debug_line    0x00001ffb      0x424 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_timer_shared.c.obj
+ .debug_line    0x0000241f       0xd9 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_startup.c.obj
+ .debug_line    0x000024f8      0x881 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
+ .debug_line    0x00002d79      0x264 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_interrupt.c.obj
+ .debug_line    0x00002fdd     0x10de CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj
+ .debug_line    0x000040bb      0x97b C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_udivdi3.o)
+ .debug_line    0x00004a36       0x3f C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_clz.o)
 
-.debug_str      0x00000000     0x5aee
- .debug_str     0x00000000     0x5aee CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
-                               0x2071 (size before relaxing)
- .debug_str     0x00005aee      0x346 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/gc.c.obj
- .debug_str     0x00005aee       0x95 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/fallback.S.obj
- .debug_str     0x00005aee       0x98 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/readbarrier.S.obj
- .debug_str     0x00005aee       0x92 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/sleep.S.obj
- .debug_str     0x00005aee       0x92 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/array.S.obj
- .debug_str     0x00005aee       0x93 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/start.S.obj
- .debug_str     0x00005aee       0x94 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/vector.S.obj
- .debug_str     0x00005aee       0xb5 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/port/esp32c6/vector_table.S.obj
- .debug_str     0x00005aee      0x1a1 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_memory_shared.c.obj
- .debug_str     0x00005aee     0x131d CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_timer_shared.c.obj
- .debug_str     0x00005aee      0x20b CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_startup.c.obj
- .debug_str     0x00005aee     0x336b CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
- .debug_str     0x00005aee      0x608 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_interrupt.c.obj
- .debug_str     0x00005aee     0x1c93 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj
- .debug_str     0x00005aee      0x264 C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_udivdi3.o)
- .debug_str     0x00005aee      0x1b1 C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_clz.o)
+.debug_str      0x00000000     0x5b60
+ .debug_str     0x00000000     0x5b60 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
+                               0x2125 (size before relaxing)
+ .debug_str     0x00005b60      0x346 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/gc.c.obj
+ .debug_str     0x00005b60       0x9f CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/fallback.S.obj
+ .debug_str     0x00005b60       0xa2 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/readbarrier.S.obj
+ .debug_str     0x00005b60       0x9c CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/sleep.S.obj
+ .debug_str     0x00005b60       0x9c CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/array.S.obj
+ .debug_str     0x00005b60       0x98 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/start.S.obj
+ .debug_str     0x00005b60       0x99 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/vector.S.obj
+ .debug_str     0x00005b60       0xba CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/port/esp32c6/vector_table.S.obj
+ .debug_str     0x00005b60      0x1a1 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_memory_shared.c.obj
+ .debug_str     0x00005b60     0x131d CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_timer_shared.c.obj
+ .debug_str     0x00005b60      0x20b CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_startup.c.obj
+ .debug_str     0x00005b60     0x336b CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
+ .debug_str     0x00005b60      0x608 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_interrupt.c.obj
+ .debug_str     0x00005b60     0x1c93 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj
+ .debug_str     0x00005b60      0x264 C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_udivdi3.o)
+ .debug_str     0x00005b60      0x1b1 C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_clz.o)
 
 .debug_line_str
-                0x00000000      0xbb4
+                0x00000000      0xbc8
  .debug_line_str
-                0x00000000      0xbb4 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
-                                0x526 (size before relaxing)
+                0x00000000      0xbc8 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
+                                0x53a (size before relaxing)
  .debug_line_str
-                0x00000bb4      0x2a7 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/gc.c.obj
+                0x00000bc8      0x2bb CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/gc.c.obj
  .debug_line_str
-                0x00000bb4       0x87 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/fallback.S.obj
+                0x00000bc8       0x91 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/fallback.S.obj
  .debug_line_str
-                0x00000bb4       0x8a CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/readbarrier.S.obj
+                0x00000bc8       0x94 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/readbarrier.S.obj
  .debug_line_str
-                0x00000bb4       0x84 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/sleep.S.obj
+                0x00000bc8       0x8e CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/sleep.S.obj
  .debug_line_str
-                0x00000bb4       0x84 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/array.S.obj
+                0x00000bc8       0x8e CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/array.S.obj
  .debug_line_str
-                0x00000bb4       0x85 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/start.S.obj
+                0x00000bc8       0x8a CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/start.S.obj
  .debug_line_str
-                0x00000bb4       0x86 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/vector.S.obj
+                0x00000bc8       0x8b CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/vector.S.obj
  .debug_line_str
-                0x00000bb4       0x99 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/port/esp32c6/vector_table.S.obj
+                0x00000bc8       0x9e CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/port/esp32c6/vector_table.S.obj
  .debug_line_str
-                0x00000bb4      0x2b9 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_memory_shared.c.obj
+                0x00000bc8      0x2c3 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_memory_shared.c.obj
  .debug_line_str
-                0x00000bb4      0x460 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_timer_shared.c.obj
+                0x00000bc8      0x46a CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_timer_shared.c.obj
  .debug_line_str
-                0x00000bb4      0x314 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_startup.c.obj
+                0x00000bc8      0x31e CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_startup.c.obj
  .debug_line_str
-                0x00000bb4      0x4f5 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
+                0x00000bc8      0x4ff CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
  .debug_line_str
-                0x00000bb4      0x38c CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_interrupt.c.obj
+                0x00000bc8      0x396 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_interrupt.c.obj
  .debug_line_str
-                0x00000bb4      0x497 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj
+                0x00000bc8      0x4a1 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj
  .debug_line_str
-                0x00000bb4      0x1a2 C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_udivdi3.o)
+                0x00000bc8      0x1a2 C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_udivdi3.o)
  .debug_line_str
-                0x00000bb4      0x1a2 C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_clz.o)
+                0x00000bc8      0x1a2 C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_clz.o)
 
 .comment        0x00000000       0x2f
- .comment       0x00000000       0x2f CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
+ .comment       0x00000000       0x2f CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
                                  0x30 (size before relaxing)
- .comment       0x0000002f       0x30 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/gc.c.obj
+ .comment       0x0000002f       0x30 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/gc.c.obj
  .comment       0x0000002f       0x30 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_memory_shared.c.obj
  .comment       0x0000002f       0x30 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_timer_shared.c.obj
  .comment       0x0000002f       0x30 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_startup.c.obj
@@ -1090,9 +1106,9 @@ OUTPUT(ulp_main.elf elf32-littleriscv)
 .note.GNU-stack
                 0x00000000        0x0
  .note.GNU-stack
-                0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
+                0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
  .note.GNU-stack
-                0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/gc.c.obj
+                0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/gc.c.obj
  .note.GNU-stack
                 0x00000000        0x0 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_memory_shared.c.obj
  .note.GNU-stack
@@ -1113,46 +1129,46 @@ OUTPUT(ulp_main.elf elf32-littleriscv)
 .riscv.attributes
                 0x00000000       0x60
  .riscv.attributes
-                0x00000000       0x5c CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
+                0x00000000       0x60 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
  .riscv.attributes
-                0x0000005c       0x5c CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/gc.c.obj
+                0x00000060       0x5c CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/gc.c.obj
  .riscv.attributes
-                0x000000b8       0x5a CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/fallback.S.obj
+                0x000000bc       0x5a CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/fallback.S.obj
  .riscv.attributes
-                0x00000112       0x5a CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/readbarrier.S.obj
+                0x00000116       0x5a CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/readbarrier.S.obj
  .riscv.attributes
-                0x0000016c       0x5a CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/sleep.S.obj
+                0x00000170       0x5a CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/sleep.S.obj
  .riscv.attributes
-                0x000001c6       0x5a CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/array.S.obj
+                0x000001ca       0x5a CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/array.S.obj
  .riscv.attributes
-                0x00000220       0x5e CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/start.S.obj
+                0x00000224       0x5e CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/start.S.obj
  .riscv.attributes
-                0x0000027e       0x5e CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/vector.S.obj
+                0x00000282       0x5e CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/vector.S.obj
  .riscv.attributes
-                0x000002dc       0x5a CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/port/esp32c6/vector_table.S.obj
+                0x000002e0       0x5a CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/port/esp32c6/vector_table.S.obj
  .riscv.attributes
-                0x00000336       0x5c CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_memory_shared.c.obj
+                0x0000033a       0x5c CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_memory_shared.c.obj
  .riscv.attributes
-                0x00000392       0x5c CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_timer_shared.c.obj
+                0x00000396       0x5c CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_timer_shared.c.obj
  .riscv.attributes
-                0x000003ee       0x5c CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_startup.c.obj
+                0x000003f2       0x5c CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_startup.c.obj
  .riscv.attributes
-                0x0000044a       0x60 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
+                0x0000044e       0x60 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
  .riscv.attributes
-                0x000004aa       0x60 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_interrupt.c.obj
+                0x000004ae       0x60 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_interrupt.c.obj
  .riscv.attributes
-                0x0000050a       0x5c CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj
+                0x0000050e       0x5c CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj
  .riscv.attributes
-                0x00000566       0x5c C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_udivdi3.o)
+                0x0000056a       0x5c C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_udivdi3.o)
  .riscv.attributes
-                0x000005c2       0x5c C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_clz.o)
+                0x000005c6       0x5c C:/Workspace/Misc/esp/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imac_zicsr_zifencei/ilp32\libgcc.a(_clz.o)
 
-.debug_frame    0x00000000      0x684
- .debug_frame   0x00000000      0x178 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/main.c.obj
- .debug_frame   0x00000178       0xf8 CMakeFiles/ulp_main.dir/C_/Workspace/Projects/mplr2025/ours/main/mrubycopro-runtime/gc.c.obj
- .debug_frame   0x00000270       0x20 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_memory_shared.c.obj
- .debug_frame   0x00000290       0xbc CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_timer_shared.c.obj
- .debug_frame   0x0000034c       0x28 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_startup.c.obj
- .debug_frame   0x00000374      0x110 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
- .debug_frame   0x00000484       0x90 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_interrupt.c.obj
- .debug_frame   0x00000514      0x170 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj
+.debug_frame    0x00000000      0x6d4
+ .debug_frame   0x00000000      0x1c8 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/main.c.obj
+ .debug_frame   0x000001c8       0xf8 CMakeFiles/ulp_main.dir/C_/Workspace/Git/MPLR2025-experiments/rl/main/mrubycopro-runtime/gc.c.obj
+ .debug_frame   0x000002c0       0x20 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_memory_shared.c.obj
+ .debug_frame   0x000002e0       0xbc CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/shared/ulp_lp_core_lp_timer_shared.c.obj
+ .debug_frame   0x0000039c       0x28 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_startup.c.obj
+ .debug_frame   0x000003c4      0x110 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_utils.c.obj
+ .debug_frame   0x000004d4       0x90 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_interrupt.c.obj
+ .debug_frame   0x00000564      0x170 CMakeFiles/ulp_main.dir/C_/Workspace/Misc/esp/esp-idf/components/ulp/lp_core/lp_core/lp_core_i2c.c.obj

@@ -11,10 +11,12 @@
 #include "c_string.h"
 #include "c_array.h"
 #include "esp_sleep.h"
+#include "esp_cpu.h"
+#include "soc/rtc.h"
 #if 1 //CONFIG_IDF_TARGET_ESP32C6
 #include "lp_core_i2c.h"
 #endif
-#include "dbg.h"
+
 // Sample code for making a mruby/c method.
 static void copro_sleepandrun(struct VM *vm, mrb_value v[], int argc)
 {
@@ -26,6 +28,7 @@ static void copro_sleepandrun(struct VM *vm, mrb_value v[], int argc)
     mrbc_raise(vm, 0, "No block is given.");
     return;
   }
+
   mrbc_callinfo * callTop = vm->callinfo_tail;
     
   mrbc_decref(&(v[0]));
@@ -89,6 +92,42 @@ static void copro_GPIOinput(struct VM *vm, mrb_value v[], int argc) {
   // rtc_gpio_hold_en(v[1].i);
 }
 
+static uint32_t getCpuFrequencyMhz() {
+  rtc_cpu_freq_config_t conf;
+  rtc_clk_cpu_freq_get_config(&conf);
+  return conf.freq_mhz;
+}
+static void copro_GPIOpulseIn(struct VM * vm, mrbc_value v[], int argc)  {
+  if(argc != 3) mrbc_raise(vm, NULL, "3 arguments are required.");
+  if(mrbc_type(GET_ARG(1)) != MRBC_TT_INTEGER || (mrbc_type(GET_ARG(2)) != MRBC_TT_FALSE && mrbc_type(GET_ARG(2)) != MRBC_TT_TRUE) || mrbc_type(GET_ARG(3)) != MRBC_TT_INTEGER) mrbc_raise(vm, NULL, "Invalid argument types.");
+  int gpio_no = mrbc_integer(GET_ARG(1));
+  int value = GET_ARG(2).tt == MRBC_TT_TRUE;
+  int timeout = mrbc_integer(GET_ARG(3));
+  uint32_t mhz = getCpuFrequencyMhz();
+  uint32_t end;
+  if(timeout == 0) while(value != rtc_gpio_get_level(gpio_no));
+  else {
+    end = (timeout * mhz) + esp_cpu_get_cycle_count();
+    while(esp_cpu_get_cycle_count()< end) {
+      if(value == rtc_gpio_get_level(gpio_no)) goto NEXT;
+    }
+    SET_INT_RETURN(0); return;
+  }
+  NEXT:
+  uint32_t start = esp_cpu_get_cycle_count();
+  if(timeout == 0) {
+    while(value == rtc_gpio_get_level(gpio_no));
+    goto FIN;
+  } else {
+    end = (timeout * mhz) + start;
+    while(esp_cpu_get_cycle_count()< end) {
+      if(value != rtc_gpio_get_level(gpio_no)) goto FIN;
+    }
+    SET_INT_RETURN(0); return;
+  }
+  FIN: SET_INT_RETURN((esp_cpu_get_cycle_count() - start) / mhz);
+}
+
 static void copro_GPIOget(struct VM *vm, mrb_value v[], int argc) {
   if(argc != 1) mrbc_raise(vm, NULL, "1 argument is required.");
   if(mrbc_type(GET_ARG(1)) != MRBC_TT_INTEGER) mrbc_raise(vm, NULL, "Invalid type. (arg[1])");
@@ -102,6 +141,30 @@ static void copro_GPIOset(struct VM *vm, mrb_value v[], int argc) {
 }
 
 #define DELAY_MS_LIGHTSLEEP CONFIG_IDF_TARGET_ESP32C6
+static void copro_delayUs(struct VM *vm, mrb_value v[], int argc) {
+  if(argc != 1) mrbc_raise(vm, NULL, "1 argument is required.");
+  if(mrbc_type(GET_ARG(1)) != MRBC_TT_INTEGER) mrbc_raise(vm, NULL, "Invalid type. (arg[0])");
+  int wait = GET_INT_ARG(1);
+#if DELAY_MS_LIGHTSLEEP
+  if(wait > 300) {
+    esp_sleep_disable_wakeup_source(ESP_SLEEP_WAKEUP_ALL);
+    esp_sleep_enable_timer_wakeup(wait);
+    esp_light_sleep_start();
+    esp_sleep_disable_wakeup_source(ESP_SLEEP_WAKEUP_ALL);
+    goto FIN;
+  }
+#endif
+  if(wait > 1000) {
+    vTaskDelay(wait / 1000 / portTICK_PERIOD_MS);
+    wait = wait % 1000;
+  }
+  if(wait == 0) goto FIN;
+  uint32_t end = (wait * getCpuFrequencyMhz()) + esp_cpu_get_cycle_count();
+  while(esp_cpu_get_cycle_count()< end);
+FIN:
+  SET_NIL_RETURN();
+}
+
 static void copro_delayMs(struct VM *vm, mrb_value v[], int argc) {
   if(argc != 1) mrbc_raise(vm, NULL, "1 argument is required.");
   if(mrbc_type(GET_ARG(1)) != MRBC_TT_INTEGER) mrbc_raise(vm, NULL, "Invalid type. (arg[0])");
@@ -120,7 +183,6 @@ static void copro_delayMs(struct VM *vm, mrb_value v[], int argc) {
 static void copro_pullnone(struct VM *vm, mrb_value v[], int argc) { SET_INT_RETURN(0); }
 static void copro_pulldown(struct VM *vm, mrb_value v[], int argc) { SET_INT_RETURN(1); }
 static void copro_pullup(struct VM *vm, mrb_value v[], int argc) { SET_INT_RETURN(2); }
-
 
 static void copro_I2Cinit(struct VM * vm, mrbc_value v[], int argc) {
   esp_err_t ret = ESP_OK;
@@ -207,8 +269,10 @@ static void copro_read32(struct VM * vm, mrb_value v[], int argc) {
   SET_INT_RETURN(*((char *)i));
 }
 
+extern int ulp_copro_GPIOpulseIn(int, int, int);
 extern int ulp_copro_GPIOget(int);
 extern void ulp_copro_GPIOset(int, int);
+extern void ulp_copro_delayUs(int);
 extern void ulp_copro_delayMs(int);
 extern void ulp_copro_I2Cread(void);
 extern void ulp_copro_I2Cwrite(void);
@@ -231,9 +295,11 @@ void mrbc_add_copro_class(struct VM * vm) {
   mrbc_define_method(vm, my_cls, "gpio_pullup", copro_pullup);
   mrbc_define_method(vm, my_cls, "gpio_input", copro_GPIOinput);
   mrbc_define_method(vm, my_cls, "gpio_output", copro_GPIOoutput);
+  mrbc_define_method_copro(vm, my_cls, "pulseIn", copro_GPIOpulseIn, NO_TYPECHECK(ulp_copro_GPIOpulseIn));
   mrbc_define_method_copro(vm, my_cls, "gpio", copro_GPIOset, NO_TYPECHECK(ulp_copro_GPIOset));
   mrbc_define_method_copro(vm, my_cls, "gpio?", copro_GPIOget, NO_TYPECHECK(ulp_copro_GPIOget));
   mrbc_define_method_copro(vm, my_cls, "delayMs", copro_delayMs, NO_TYPECHECK(ulp_copro_delayMs));
+  mrbc_define_method_copro(vm, my_cls, "delayUs", copro_delayUs, NO_TYPECHECK(ulp_copro_delayUs));
   mrbc_define_method(vm, my_cls, "i2cinit", copro_I2Cinit);
   mrbc_define_method_copro(vm, my_cls, "i2cread", copro_I2Cread, NO_TYPECHECK(ulp_copro_I2Cread));
   mrbc_define_method_copro(vm, my_cls, "i2cwrite", copro_I2Cwrite, NO_TYPECHECK(ulp_copro_I2Cwrite));

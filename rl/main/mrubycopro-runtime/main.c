@@ -38,8 +38,12 @@
 #include "ulp_lp_core_i2c.h"
 #define ULP_HALT() ulp_lp_core_halt()
 #define WAKEUP_MAIN_PROCESSOR() ulp_lp_core_wakeup_main_processor()
-#define ENABLE_WFI_DELAYMS 0
-#define DBG_TRANSITION_GPIO4_ON 0
+#define GET_CYCLE() RV_READ_CSR(mcycle)
+#define LP_CORE_CPU_FREQUENCY_HZ 16000000
+#define US_TO_CYCLE(v) ((v) * (LP_CORE_CPU_FREQUENCY_HZ / 1000000))
+#define CYCLE_TO_US(v) ((v) / (LP_CORE_CPU_FREQUENCY_HZ / 1000000))
+#define GET_GPIO(gpionum) ulp_lp_core_gpio_get_level(gpionum)
+#define SET_GPIO(gpionum, value) ulp_lp_core_gpio_set_level(gpionum, value)
 #else
 #include "ulp_riscv.h"
 #include "ulp_riscv_utils.h"
@@ -47,6 +51,12 @@
 #include "ulp_riscv_lock_ulp_core.h"
 #define ULP_HALT() ulp_riscv_halt()
 #define WAKEUP_MAIN_PROCESSOR() ulp_riscv_wakeup_main_processor()
+#define GET_CYCLE() ULP_RISCV_GET_CCOUNT()
+#define US_TO_CYCLE(v) (((v) * 25) / 2)
+#define CYCLE_TO_US(v) (((v) * 2) / 25)
+#define GET_GPIO(gpionum) ulp_riscv_gpio_get_level(gpionum)
+#define SET_GPIO(gpionum, value) ulp_riscv_gpio_output_level(gpionum, value)
+
 #endif
 #define WAIT_FOR_PROCESSOR_WAKEUP() do{WAKEUP_MAIN_PROCESSOR();}while(ack==0)
 
@@ -72,7 +82,7 @@ volatile struct {
   void * from;
   void * to;
 } translation_table[TRANSLATION_TABLE_SIZE];
-#if CONFIG_IDF_TARGET_ESP32C6 && ENABLE_WFI_DELAYMS
+#if CONFIG_IDF_TARGET_ESP32C6
 void LP_CORE_ISR_ATTR ulp_lp_core_lp_timer_intr_handler(void)
 {
   ulp_lp_core_lp_timer_intr_clear();
@@ -89,13 +99,15 @@ void sleep_store2(void) {
 }
 void sleep_restore(void);
 void sleep_store(void);
-void copro_delayMs(void * _, int i) {
+void copro_delayUs(void * _, int i) {
 #if CONFIG_IDF_TARGET_ESP32C6
-// busy loop version
-  // ulp_lp_core_delay_us(1000 * i);
-  ulp_lp_core_lp_timer_set_wakeup_time(1000 * i);
-#if ENABLE_WFI_DELAYMS
-  if(i < 10) {
+  if(i < 50) {
+    // busy loop version
+    ulp_lp_core_delay_us(i);
+    return;
+  }
+  ulp_lp_core_lp_timer_set_wakeup_time(i);
+  if(i < 1000) {
   // wfi version
     // enable interruption
     RV_SET_CSR(mstatus, MSTATUS_MIE);
@@ -104,21 +116,51 @@ void copro_delayMs(void * _, int i) {
     // disable interruption
     RV_CLEAR_CSR(mstatus, MSTATUS_MIE);
     RV_CLEAR_CSR(mie, MIE_ALL_INTS_MASK);
-  } else
-#endif
-  {
+  } else {
 // sleep version
     lp_core_ll_set_wakeup_source(LP_CORE_LL_WAKEUP_SOURCE_LP_TIMER);
     entrypoint = sleep_restore;
     sleep_store();
   }
 #else
+  // C_PER_US is 17.5
+  // const int C_PER_MS = 17500; //17.5*1000 <- ULP_RISCV_CYCLES_PER_MS
+  ulp_riscv_delay_cycles((i * 25) / 2);
+  // *((uint32_t*)0x8134) = C_PER_MS * (i << 8); // sleep timer.
+  // *((uint32_t*)0x80FC) = *((uint32_t*)0x80FC) | (1<<31); // enable timer.
+#endif
+}
+
+void copro_delayMs(void * _, int i) {
+#if CONFIG_IDF_TARGET_ESP32C6
+  copro_delayUs(_, 1000 * i);
+#else
   const int C_PER_MS = 17500; //17.5*1000 <- ULP_RISCV_CYCLES_PER_MS
   ulp_riscv_delay_cycles(C_PER_MS * i);
   // *((uint32_t*)0x8134) = C_PER_MS * (i << 8); // sleep timer.
   // *((uint32_t*)0x80FC) = *((uint32_t*)0x80FC) | (1<<31); // enable timer.
 #endif
-  // sleep_store(i);
+}
+
+int copro_GPIOpulseIn(void * _, int gpionum, int value, int timeout) {
+  uint32_t start;
+  for(int i = 0; i < 2; ++i) {
+    int v = value ^ i;
+    start = GET_CYCLE();
+    if(timeout == 0) {
+      while(v != GET_GPIO(gpionum));
+    } else {
+      uint32_t end = US_TO_CYCLE(timeout) + start - 20;
+      while(GET_CYCLE() < end) {
+        if(v == GET_GPIO(gpionum)) {
+          if(i) goto FOR_BREAK; else goto FOR_CONTINUE;
+        }
+      }
+      return 0;
+    }
+    FOR_CONTINUE: continue;
+  }
+FOR_BREAK: return CYCLE_TO_US(GET_CYCLE() - start);
 }
 
 void fallback(void);
@@ -130,6 +172,7 @@ void debugout(void * v) {
 #if CONFIG_IDF_TARGET_ESP32C6
   ulp_lp_core_delay_us(1000);
 #else
+  const int C_PER_MS = 17500; //17.5*1000 <- ULP_RISCV_CYCLES_PER_MS
   ulp_riscv_delay_cycles(C_PER_MS * 1000);
 #endif
   ack=0;
@@ -138,16 +181,9 @@ void debugout(void * v) {
 
 void fallback_post(void){ // CHECK GENERATED ASSEMBLY CODE AFTER MODIFICATION!
   void * stackptr; // sp will be -16.
-#if DBG_TRANSITION_GPIO4_ON
-  ulp_lp_core_gpio_set_level(4, 1);
-  asm volatile("addi %0, sp, 32"
-              : "=r"(stackptr)
-              ::);
-#else
   asm volatile("addi %0, sp, 16"
               : "=r"(stackptr)
               ::);
-#endif
   mrbc_sp_bottom = stackptr;
   stopreason = 0;
   WAIT_FOR_PROCESSOR_WAKEUP();
@@ -160,18 +196,10 @@ void fallback_post(void){ // CHECK GENERATED ASSEMBLY CODE AFTER MODIFICATION!
 }
 
 int copro_GPIOget(void * _, int gpionum) {
-#if CONFIG_IDF_TARGET_ESP32C6
-  return ulp_lp_core_gpio_get_level(gpionum);
-#else
-  return ulp_riscv_gpio_get_level(gpionum);
-#endif
+  return GET_GPIO(gpionum);
 }
 void copro_GPIOset(void * _, int gpionum, int v) {
-#if CONFIG_IDF_TARGET_ESP32C6
-  ulp_lp_core_gpio_set_level(gpionum, v);
-#else
-  ulp_riscv_gpio_output_level(gpionum, v);
-#endif
+  SET_GPIO(gpionum, v);
 }
 
 mrbc_rstring * copro_I2Cread(void * _, int addr, int size) {
@@ -234,15 +262,16 @@ void imalive(void) {
   ((f)array_get)();
   ((f)string_getbyte)();
   ((f)array_set)();
+  ((f)copro_GPIOpulseIn)();
+#if !CONFIG_IDF_TARGET_ESP32C6
+  ((f)copro_delayUs)();
+#endif
 }
 
 int main(void) {
   stopreason=10;
-#if CONFIG_IDF_TARGET_ESP32C6 && ENABLE_WFI_DELAYMS
+#if CONFIG_IDF_TARGET_ESP32C6
   ulp_lp_core_lp_timer_intr_enable(true);
-#endif
-#if DBG_TRANSITION_GPIO4_ON
-  ulp_lp_core_gpio_set_level(4, 0);
 #endif
   entrypoint();
   return 0;

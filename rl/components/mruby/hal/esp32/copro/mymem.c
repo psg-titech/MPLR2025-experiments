@@ -16,7 +16,7 @@ void * mrbcopro_alloc(struct VM * vm, size_t size) {
 }
 void * mrbcopro_realloc(struct VM * vm, void * ptr, size_t size) {
   uint32_t prev_size = *((uint32_t *)((size_t)ptr - sizeof(uint32_t))) & ~0x3;
-  void * ret = mrbc_realloc(vm, ptr, size);
+  void * ret = mrbc_alloc(vm, size);
   if(ret) {
     uint32_t new_size = *((uint32_t *)((size_t)ret - sizeof(uint32_t))) & ~0x3;
     allocated_on_main_memory += new_size - prev_size;

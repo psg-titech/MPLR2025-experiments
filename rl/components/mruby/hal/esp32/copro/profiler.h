@@ -34,7 +34,7 @@ typedef struct profile_function_header {
   struct profile_function_header * next;
   struct profile_basic_block * blocks;
   const mrbc_irep * irep;
-  const mrbc_class * own_class;
+  mrbc_class * own_class;
   uint32_t freeMachineRegisters;
   uint8_t regLen;
   uint8_t spMoved;    // [byte]
@@ -74,6 +74,8 @@ typedef struct profile_basic_block {
 #define mrbc_prof_entrance_type_head(prof) ((uint16_t *)((prof)->payload))
 #define mrbc_prof_get_type(prof, idx) ((uint16_t *)((prof)->payload))[(idx) + (prof)->regLen]
 #define mrbc_prof_type_head(prof) ((uint16_t *)(&((prof)->payload[sizeof(uint16_t) * (prof)->regLen])))
+
+#define mrbc_prof_is_constant(prof, idx) ((prof)->regsinfo[idx] == 1)
 
 typedef struct profiler_stack {
   struct profiler_stack * prev;

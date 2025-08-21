@@ -49,12 +49,12 @@ end
 
 COUNT=30
 
-Copro.gpio_output 4
-Copro.gpio(4, true)
+Copro.gpio_output 1
+Copro.gpio(1, true)
 i2c = I2C.new()
 sht30 = SHT30.new(i2c)
 result = Array.new(COUNT)
-Copro.gpio(4,false)
+Copro.gpio(1,false)
 Copro.sleep_and_run do
   i = 0
   while i < COUNT do
@@ -62,10 +62,10 @@ Copro.sleep_and_run do
     break if v.nil?
     result[i] = v
     i += 1
-    Copro.delayMs(1000)
+    Copro.delayMs(60*1000-6)
   end
 end
-Copro.gpio(4,true)
+Copro.gpio(1,true)
 result.each do |a|
   puts "tmp: #{a.temp} rh: #{a.rh}"
 end

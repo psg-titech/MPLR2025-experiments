@@ -30,24 +30,24 @@ static void lp_i2c_init(void)
 
 void app_main(void)
 {
-    rtc_gpio_init(4);
-    rtc_gpio_set_direction(4, RTC_GPIO_MODE_OUTPUT_ONLY);
-    rtc_gpio_pulldown_dis(4);
-    rtc_gpio_pullup_dis(4);
-    rtc_gpio_set_level(4, 1);
+    rtc_gpio_init(1);
+    rtc_gpio_set_direction(1, RTC_GPIO_MODE_OUTPUT_ONLY);
+    rtc_gpio_pulldown_dis(1);
+    rtc_gpio_pullup_dis(1);
+    rtc_gpio_set_level(1, 1);
     ulp_lp_core_cfg_t cfg = {
       //.wakeup_source = ULP_LP_CORE_WAKEUP_SOURCE_HP_CPU
       .wakeup_source = ULP_LP_CORE_WAKEUP_SOURCE_LP_TIMER, // LP core will be woken up periodically by LP timer
-      .lp_timer_sleep_duration_us = 7*1000*1000,
+      .lp_timer_sleep_duration_us = (7*1000-100)*1000,
     };
     lp_i2c_init();
     lp_core_init();
     while(1) {
         ESP_ERROR_CHECK(esp_sleep_enable_ulp_wakeup());
-        rtc_gpio_set_level(4, 0);
+        rtc_gpio_set_level(1, 0);
         ESP_ERROR_CHECK(ulp_lp_core_run(&cfg));
         esp_light_sleep_start();
         vTaskDelay(10);
-        rtc_gpio_set_level(4, 1);
+        rtc_gpio_set_level(1, 1);
     }
 }

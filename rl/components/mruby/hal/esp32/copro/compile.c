@@ -59,24 +59,29 @@
 #define alloca(size) _malloca(size)
 #endif
 
+#if defined(_MSVC_VER)
+#define likely(x) (x)
+#define unlikely(x) (x)
+#endif
+
 /***** Typedefs *************************************************************/
 /***** Function prototypes **************************************************/
 /***** Local variables ******************************************************/
+//! for getting the VM ID
+static uint16_t free_vm_bitmap[MAX_VM_COUNT / 16 + 1];
+
+
 /***** Global variables *****************************************************/
 /***** Signal catching functions ********************************************/
 /***** Local functions ******************************************************/
 
-#define DBG_ALLOCATION_PROFILE 1
-#define DBG_TRANSITION_GPIO4_ON 1
-#if DBG_TRANSITION_GPIO4_ON
-#include "driver/rtc_io.h"
-#endif
+#define DBG_ALLOCATION_PROFILE 0
 #if DBG_ALLOCATION_PROFILE
 static int allocated_code = 0;
 static void * mrbcopro_gc_alloc_code(size_t size, int special) {
   void * ret = mrbcopro_gc_alloc(size, special);
   allocated_code += size;
-  dbg_mrbc_prof_printf("GC allocated = %d(delta: %d)\n", allocated_code, size);
+  dbg_mrbc_prof_printf("CODE allocated = %d(delta: %d)\n", allocated_code, size);
   return ret;
 }
 static int allocated_prof = 0;
@@ -156,17 +161,17 @@ static int try_allocate_register(mrbc_profile_profiler * prof, int regNum) {
   return 0;
 }
 
-int gen_load_immediate(mrbc_profile_profiler * prof, int reg, int value);
+static int write_constant(mrbc_profile_profiler * prof, int virtualReg, int physicalReg);
 /// @brief Get allocation, if it is a constant, load immediates are written.
 /// @param prof profiler
 /// @param virtualRegNum virual register number
 /// @return physical register number, otherwise -1.
 int get_allocation(mrbc_profile_profiler * prof, int virtualRegNum) {
   char v = prof->regsinfo[virtualRegNum];
-  int physnum = mrbc_function_header_allocation(profiler_currentfunction(prof), virtualRegNum);
   if(v == 0 || (v&1) == 1) { // no translation, aliased, or constant
+    int physnum = mrbc_function_header_allocation(profiler_currentfunction(prof), virtualRegNum);
     if(v == 1) { // constant
-      if(gen_load_immediate(prof, physnum, prof->vm->cur_regs[virtualRegNum].i)) return -1;
+      if(write_constant(prof, virtualRegNum, physnum)) return -1;
       prof->regsinfo[virtualRegNum] = 0;
     }
     return physnum;
@@ -225,29 +230,30 @@ mrbc_send_inst_bufs_return_t send_inst_bufs(mrbc_profile_profiler * prof, mrbc_p
 int gen_load_immediate(mrbc_profile_profiler * prof, int reg, int value) {
   uint32_t buf[2];
   int len = 0;
+  int dstReg = 0;
+  uint32_t * b;
   if ((value >> 11) == 0 || (value >> 11) == -1) {
     if((value >> 5) == 0 || (value >> 5) == -1) {
       uint16_t * buf2 = (uint16_t *)buf;
       *buf2 = RISCV_C_LI(reg, value);
       dbg_mrbc_prof_print_inst_readable("c.li x%d, %d", reg, value);
       len = 2;
-    } else {
-      buf[0] = RISCV_ADD_IMM(reg, 0, value);
-      dbg_mrbc_prof_print_inst_readable("addi x%d, x0, %d", reg, value);
-      len = 4;
+      goto end;
     }
+    b = buf;
+    len = 4;
   } else {
+    int lui_value;
     if((value >> 11) & 1) {
-      int hv = ((value >> 12) + 1) << 12;
-      buf[0] = RISCV_LOAD_UPPER_IMM(reg, hv);
-      dbg_mrbc_prof_print_inst_readable("lui x%d, %d", reg, hv);
-      value = value - hv;
+      lui_value = ((value >> 12) + 1) << 12;
+      value -= lui_value;
     } else {
-      buf[0] = RISCV_LOAD_UPPER_IMM(reg, value);
-      dbg_mrbc_prof_print_inst_readable("lui x%d, %d", reg, value & ~(0xFFF));
+      lui_value = value & ~(0xFFF);
       value = value & 0xFFF;
-      if(value == 0) { len = 4; goto end;}
     }
+    buf[0] = RISCV_LOAD_UPPER_IMM(reg, lui_value);
+    dbg_mrbc_prof_print_inst_readable("lui x%d, %d", reg, lui_value);
+    if(value == 0) { len = 4; goto end;}
     // This branch is rarely used. (and the condition is a bit wrong)
     // if((value >> 5) == 0 || (value >> 5) == -1) {
     //   uint16_t * buf2 = (uint16_t *)&buf[1];
@@ -255,11 +261,15 @@ int gen_load_immediate(mrbc_profile_profiler * prof, int reg, int value) {
     //   dbg_mrbc_prof_print_inst_readable("c.addi x%d, %d", reg, value);
     //   return 6;
     // } else {
-      buf[1] = RISCV_ADD_IMM(reg, reg, value);
-      dbg_mrbc_prof_print_inst_readable("addi x%d, x%d, %d", reg, reg, value);
+    //   buf[1] = RISCV_ADD_IMM(reg, reg, value);
+    //   dbg_mrbc_prof_print_inst_readable("addi x%d, x%d, %d", reg, reg, value);
       len = 8;
     // }
+    b = &buf[1];
+    dstReg = reg;
   }
+  *b = RISCV_ADD_IMM(reg, dstReg, value);
+  dbg_mrbc_prof_print_inst_readable("addi x%d, x%d, %d", reg, dstReg, value);
   end:
   return mrbcopro_vector_append(prof->vm, &(prof->buf), len, (char *)buf);
 }
@@ -283,16 +293,14 @@ static int gen_move(mrbc_profile_profiler * prof, int dstVirtualReg, int srcVirt
 /// @brief prof->regsInfo[dst] = val. If it has already aliased, the register aliasing is applied.
 /// @param prof profiler
 /// @param dst  destination virtual register.
-/// @param val  the value assigned.
+/// @param val  the value assigned. ACCEPTS ONLY 0 or 1!!
 /// @return     1 if fail.
 int override_register_information(mrbc_profile_profiler * prof, int dst, char val) {
   char * regsInfo = prof->regsinfo;
   if(regsInfo[dst] > 1) {
     int reg2 = regsInfo[dst] >> 2;
-    if(regsInfo[dst] & 1) {// aliased!
+    if(regsInfo[dst] & 1) { // aliased!
       if(gen_move(prof, reg2, dst)) return 1;
-    } else if((regsInfo[dst] ^ val) == 1) {
-      if(gen_move(prof, dst, reg2)) return 1;
     } else
       regsInfo[reg2] = 0;
   }
@@ -300,23 +308,22 @@ int override_register_information(mrbc_profile_profiler * prof, int dst, char va
   return 0;
 }
 
-static int write_constant(mrbc_profile_profiler * prof, int virtualReg, int physicalReg) {
-  mrbc_value * v = &(prof->vm->cur_regs[virtualReg]);
-  int vval = v->i;
+static int to_constant_value(mrbc_value * v) {
   switch(v->tt) {
-    case MRBC_TT_TRUE: vval = 1; break;
-    case MRBC_TT_FALSE:
-    case MRBC_TT_NIL:
-    vval = 0; break;
-    case MRBC_TT_SYMBOL:
-    vval = v->sym_id;
+    case MRBC_TT_TRUE: return 1;
+    case MRBC_TT_FALSE: case MRBC_TT_NIL: return 0;
+    case MRBC_TT_SYMBOL: return v->sym_id;
     default: break;
   }
-  return gen_load_immediate(prof, physicalReg, vval);
+  return v->i;
+}
+
+static int write_constant(mrbc_profile_profiler * prof, int virtualReg, int physicalReg) {
+  return gen_load_immediate(prof, physicalReg, to_constant_value(&(prof->vm->cur_regs[virtualReg])));
 }
 
 struct read_and_override_register_information_ret_t
-read_and_override_register_information(mrbc_profile_profiler * prof, int reg, char val) {
+read_and_override_register_information_impl(mrbc_profile_profiler * prof, int reg, int constVal, int is_use_const_val) {
   char * regsInfo = prof->regsinfo;
   struct read_and_override_register_information_ret_t ret = {};
   char regInfo = prof->regsinfo[reg];
@@ -325,14 +332,24 @@ read_and_override_register_information(mrbc_profile_profiler * prof, int reg, ch
   if(regInfo == 0) return ret;
   else if(regInfo & 1) {
     if(regInfo >> 1 == 0) {
-      // do not perform constant propagation
-      if(write_constant(prof, reg, ret.dst)) return (struct read_and_override_register_information_ret_t){.src = 0, .dst = 0};
+      if(is_use_const_val ? gen_load_immediate(prof, ret.src, (int)constVal) : write_constant(prof, reg, ret.dst)) return (struct read_and_override_register_information_ret_t){.src = 0, .dst = 0};
     } else // aliased!
-      if(override_register_information(prof, reg, val)) return (struct read_and_override_register_information_ret_t){.src = 0, .dst = 0};
-  } else
+      if(override_register_information(prof, reg, 0)) return (struct read_and_override_register_information_ret_t){.src = 0, .dst = 0};
+  } else {
     ret.src = mrbc_function_header_allocation(profiler_currentfunction(prof), regInfo >> 2);
-  regsInfo[reg] = val;
+    regsInfo[regInfo >> 2] = 0;
+  }
+  regsInfo[reg] = 0;
   return ret;
+}
+struct read_and_override_register_information_ret_t
+read_and_override_register_information(mrbc_profile_profiler * prof, int reg) {
+  return read_and_override_register_information_impl(prof, reg, 0, 0);
+}
+
+static struct read_and_override_register_information_ret_t
+read_and_override_register_information2(mrbc_profile_profiler * prof, int reg, int constVal) {
+  return read_and_override_register_information_impl(prof, reg, constVal, 1);
 }
 
 static int apply_register_information(mrbc_profile_profiler * prof, int idx) {
@@ -346,18 +363,17 @@ static int apply_register_information(mrbc_profile_profiler * prof, int idx) {
   return 0;
 }
 
-void set_prof_exit_types(mrbc_profile_profiler * prof, int len) {
-  mrbc_profile_basic_block * bb = profiler_current(prof);
+static void ___set_types(mrbc_profile_profiler * prof, int len, uint16_t * tylist) {
   mrbc_vm * vm = prof->vm;
   for(int i = 0; i < len; ++i)
-    mrbc_prof_get_type(bb, i) = mrbcopro_objman_type2coprotype(vm, &(prof->objMan), &(vm->cur_regs[i]));
+    tylist[i] = mrbcopro_objman_type2coprotype(vm, &(prof->objMan), &(vm->cur_regs[i]));
 }
 
+void set_prof_exit_types(mrbc_profile_profiler * prof, int len) {
+  ___set_types(prof, len, mrbc_prof_type_head(profiler_current(prof)));
+}
 void set_prof_entrance_types(mrbc_profile_profiler * prof, int len) {
-  mrbc_profile_basic_block * bb = profiler_current(prof);
-  mrbc_vm * vm = prof->vm;
-  for(int i = 0; i < len; ++i)
-    mrbc_prof_get_entrance_type(bb, i) = mrbcopro_objman_type2coprotype(vm, &(prof->objMan), &(vm->cur_regs[i]));
+  ___set_types(prof, len, mrbc_prof_entrance_type_head(profiler_current(prof)));
 }
 
 int try_search_or_new_profiling(mrbc_profile_profiler * prof) {
@@ -446,9 +462,6 @@ volatile extern struct {
 static int execute_on_ulp(mrbc_profile_profiler * prof) {
   mrbc_vm * vm = prof->vm;
   reenter:
-#if DBG_TRANSITION_GPIO4_ON
-  rtc_gpio_set_level(4, 1);
-#endif
   void * entry = generate_osr_entry(prof);
   if(entry == NULL) {
     mrbc_raise(prof->vm, NULL, "OSR Entry fail."); return 1;
@@ -514,9 +527,6 @@ static int execute_on_ulp(mrbc_profile_profiler * prof) {
   }
   mrbcopro_objman_cleanup(vm, &(prof->objMan));
 
-#if DBG_TRANSITION_GPIO4_ON
-  rtc_gpio_set_level(4, 0);
-#endif
   prof->lastInst = vm->inst;
   uint8_t op = *(vm->inst++);
   FETCH_BS();
@@ -525,24 +535,21 @@ static int execute_on_ulp(mrbc_profile_profiler * prof) {
     case OP_JMPIF:
       if( vm->cur_regs[a].tt > MRBC_TT_FALSE )
         vm->inst += (int16_t)b;
-      prof->stack.previous_jmp = profiler_current(prof)->failInstPtr;
-      prof->stack.previous_jmp_rd = 0;
-      break;
+      goto JMP_COMMON;
     case OP_JMPNOT:
       if( vm->cur_regs[a].tt <= MRBC_TT_FALSE )
         vm->inst += (int16_t)b;
+    JMP_COMMON:
       prof->stack.previous_jmp = profiler_current(prof)->failInstPtr;
       prof->stack.previous_jmp_rd = 0;
       break;
-    case OP_GETUPVAR: case OP_GETGV: case OP_GETIV:
-      write_send_epilogue(prof, x11);
-      vm->inst += inst_skipper_inst_len[op] - 3;
-      break;
     case OP_SSEND...OP_SENDB: case OP_ADD...OP_GE:
     case OP_GETIDX: case OP_SETIDX:
+      setregLen = a+1;
+      goto through;
+    case OP_GETUPVAR: case OP_GETGV: case OP_GETIV: through: 
       write_send_epilogue(prof, x11);
       vm->inst += inst_skipper_inst_len[op] - 3;
-      setregLen = a+1;
       break;
     // OP_GETMCNST, OP_GETCONST, OP_STRING must not lead to deoptimization!!
     default: dbg_mrbc_prof_printf("inst=%d", op); mrbc_raise(vm, NULL, "Something wrong."); return 1;
@@ -584,12 +591,13 @@ static void write_type_assertion(uint8_t writer[ASSERTION_CODE_SIZE], mrbc_copro
 
 int write_send_epilogue(mrbc_profile_profiler * prof, mrbc_copro_vtype ty) {
   uint8_t * buf;
-  if(profiler_current(prof)->failInstPtr == NULL) return 0;
-  if((int)(profiler_current(prof)->asserts) == 2) {
+  mrbc_profile_basic_block * bb = profiler_current(prof);
+  if(bb->failInstPtr == NULL) return 0;
+  if((int)(bb->asserts) == 2) {
     return 0;
-  } else if((int)(profiler_current(prof)->asserts) == 1) {
-    buf = (uint8_t *)profiler_current(prof)->failInstPtr;
-    profiler_current(prof)->asserts = NULL;
+  } else if((int)(bb->asserts) == 1) {
+    buf = (uint8_t *)bb->failInstPtr;
+    bb->asserts = NULL;
   } else {
     struct profile_assertion_block * ab = (struct profile_assertion_block *)mrbcopro_alloc_prof(prof->vm, sizeof(struct profile_assertion_block));
     if(ab == NULL) return 1;
@@ -601,12 +609,12 @@ int write_send_epilogue(mrbc_profile_profiler * prof, mrbc_copro_vtype ty) {
     copro_allocated->tt = MRBC_COPRO_TT_CODE;
     ab->allocatedCode = copro_allocated;
     buf = (uint8_t *)copro_allocated->data;
-    ab->next = profiler_current(prof)->asserts;
-    profiler_current(prof)->asserts = ab;
-    write_jmp(profiler_current(prof)->failInstPtr, copro_allocated->data, 0);
+    ab->next = bb->asserts;
+    bb->asserts = ab;
+    write_jmp(bb->failInstPtr, copro_allocated->data, 0);
   }
   write_type_assertion(buf, ty);
-  profiler_current(prof)->failInstPtr = (uint32_t * )&buf[0xA];
+  bb->failInstPtr = (uint32_t * )&buf[0xA];
   prof->stack.previous_jmp_rd = 0;
   prof->stack.previous_jmp = (uint32_t *)&buf[0x4];
   return 0;
@@ -797,8 +805,7 @@ void c_object_getiv(struct VM *vm, mrbc_value v[], int argc);
 void c_object_setiv(struct VM *vm, mrbc_value v[], int argc);
 static int gen_getiv(struct VM *vm, mrbc_sym sym_id, mrbc_profile_profiler * prof, int a, mrbc_class * cls) {
   int offset = mrbcopro_objman_get_fieldoffset(vm, mrbcopro_objman_get_obj_info(vm, &(prof->objMan), cls), sym_id);
-  mrbc_profile_function_header * fh = profiler_currentfunction(prof);
-  struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a, 0);
+  struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a);
   return gen_lw_and_typecheck(prof, regA.src, offset, a);
 }
 static int gen_setiv(struct VM *vm, mrbc_sym _sym_id, mrbc_profile_profiler * prof, int a, mrbc_class * cls) {
@@ -876,46 +883,46 @@ static void send_by_name( struct VM *vm, mrbc_sym sym_id, int a, int c, mrbc_pro
 {
   int narg = c & 0x0f;
   int karg = (c >> 4) & 0x0f;
+  int have_block = (c >> 8);
   mrbc_value *recv = vm->cur_regs + a;
 
   // If it's packed in an array, expand it.
   // TODO: array-packed arguments
   if( narg == CALL_MAXARGS ) {
-    mrbc_value argv = recv[1];
-    narg = mrbc_array_size(&argv);
+    mrbc_value argary = recv[1];
+    int n_move = (karg == CALL_MAXARGS) ? 2 : karg * 2 + 1;
+
+    narg = mrbc_array_size(&argary);
     for( int i = 0; i < narg; i++ ) {
-      mrbc_incref( &argv.array->data[i] );
+      mrbc_incref( &argary.array->data[i] );
     }
 
-    memmove( recv + narg + 1, recv + 2, sizeof(mrbc_value) * (karg * 2 + 1) );
-    memcpy( recv + 1, argv.array->data, sizeof(mrbc_value) * narg );
-
-    mrbc_decref(&argv);
+    memmove( recv + narg + 1, recv + 2, sizeof(mrbc_value) * n_move );
+    memcpy( recv + 1, argary.array->data, sizeof(mrbc_value) * narg );
+    mrbc_decref(&argary);
   }
+
+  mrbc_value *r1 = recv + narg;
 
   // Convert keyword argument to hash.
   // TODO: keyword arguents
-  if( karg ) {
-    narg++;
-    if( karg != CALL_MAXARGS ) {
-      mrbc_value h = mrbc_hash_new( vm, karg );
-      if( !h.hash ) return;	// ENOMEM
+  if( karg && karg != CALL_MAXARGS ) {
+    mrbc_value hval = mrbc_hash_new( vm, karg );
+    if( !hval.hash ) return;	// ENOMEM
 
-      mrbc_value *r1 = recv + narg;
-      memcpy( h.hash->data, r1, sizeof(mrbc_value) * karg * 2 );
-      h.hash->n_stored = karg * 2;
+    memcpy( hval.hash->data, r1+1, sizeof(mrbc_value) * karg * 2 );
+    hval.hash->n_stored = karg * 2;
 
-      mrbc_value block = r1[karg * 2];
-      memset( r1 + 2, 0, sizeof(mrbc_value) * (karg * 2 - 1) );
-      *r1++ = h;
-      *r1 = block;
-    }
+    r1[1] = hval;
+    r1[2] = r1[karg * 2 + 1];	// Proc
+    memset( r1 + 3, 0, sizeof(mrbc_value) * (karg * 2 - 1) );
   }
 
   // is not have block
-  if( (c >> 8) == 0 ) {
-    mrbc_decref( recv + narg + 1 );
-    mrbc_set_nil( recv + narg + 1 );
+  if( !have_block ) {
+    r1 += (!!karg + 1);
+    mrbc_decref( r1 );
+    mrbc_set_nil( r1 );
   }
 
   // find a method
@@ -946,7 +953,7 @@ CALL_METHOD:
   if( !method.c_func ) goto CALL_RUBY_METHOD;
 
   int ret = 1;
-  if(prof) {
+  if(unlikely(prof)) {
     profiler_current(prof)->asserts = (struct profile_assertion_block *)2; // do not insert type assertions.
     // must be executed before.
     if(MRBC_COPRO_IS_IN_COPRO(method.copro_func)) {
@@ -988,29 +995,30 @@ CALL_METHOD:
   }
 
   if(sym_id == MRBC_SYM(call) || sym_id == MRBC_SYM(new)) return;
-  for( int i = 1; i <= narg+1; i++ ) {
+  for( int i = 1; i <= narg + !!karg + have_block; i++ ) {
     mrbc_decref_empty( recv + i );
   }
   
-  if(prof) {
+  if(unlikely(prof)) {
     if(ret == 0) write_jmp_and_execute_on_ulp(prof);
     else set_prof_entrance_types(prof, a+1);
   }
   return;
 
 CALL_RUBY_METHOD:
-  {
-    uint32_t * callsite = NULL;
+  uint32_t * callsite = NULL;
+  if(unlikely(prof))
     gen_native_call(prof, a, narg, NULL, 0, &callsite);
 
-    // call Ruby method.
-    mrbc_callinfo *callinfo = mrbc_push_callinfo(vm, sym_id, a, narg);
-    callinfo->own_class = method.cls;
+  // call Ruby method.
+  mrbc_callinfo *callinfo = mrbc_push_callinfo(vm, sym_id, a, narg);
+  callinfo->own_class = method.cls;
 
-    vm->cur_irep = method.irep;
-    vm->inst = vm->cur_irep->inst;
-    vm->cur_regs = recv;
+  vm->cur_irep = method.irep;
+  vm->inst = vm->cur_irep->inst;
+  vm->cur_regs = recv;
 
+  if(unlikely(prof)) {
     if(profiler_push_stack(prof)) return; // TODO: Error Handling
     if(callsite != NULL) {
       prof->stack.previous_jmp = callsite;
@@ -1046,6 +1054,259 @@ static const mrbc_irep_catch_handler *find_catch_handler_ensure( const struct VM
   return NULL;
 }
 
+/***** Global functions *****************************************************/
+
+//================================================================
+/*! cleanup
+*/
+void mrbc_cleanup_vm(void)
+{
+  memset(free_vm_bitmap, 0, sizeof(free_vm_bitmap));
+}
+
+
+//================================================================
+/*! get callee symbol id
+
+  @param  vm	Pointer to VM
+  @return	string
+*/
+mrbc_sym mrbc_get_callee_symid( struct VM *vm )
+{
+  uint8_t rb = vm->inst[-2];
+  /* NOTE
+     -2 is not always better value.
+     This value is OP_SEND operator's B register.
+  */
+  return mrbc_irep_symbol_id(vm->cur_irep, rb);
+}
+
+
+//================================================================
+/*! get callee name
+
+  @param  vm	Pointer to VM
+  @return	string
+*/
+const char *mrbc_get_callee_name( struct VM *vm )
+{
+  uint8_t rb = vm->inst[-2];
+  return mrbc_irep_symbol_cstr(vm->cur_irep, rb);
+}
+
+
+//================================================================
+/*! Push current status to callinfo stack
+*/
+mrbc_callinfo * mrbc_push_callinfo( struct VM *vm, mrbc_sym method_id, int reg_offset, int n_args )
+{
+  mrbc_callinfo *callinfo = mrbc_alloc(vm, sizeof(mrbc_callinfo));
+  if( !callinfo ) return callinfo;
+
+  callinfo->cur_irep = vm->cur_irep;
+  callinfo->inst = vm->inst;
+  callinfo->cur_regs = vm->cur_regs;
+  callinfo->target_class = vm->target_class;
+
+  callinfo->own_class = 0;
+  callinfo->karg_keep = 0;
+  callinfo->method_id = method_id;
+  callinfo->reg_offset = reg_offset;
+  callinfo->n_args = n_args;
+  callinfo->is_called_super = 0;
+
+  callinfo->prev = vm->callinfo_tail;
+  vm->callinfo_tail = callinfo;
+
+  return callinfo;
+}
+
+
+//================================================================
+/*! Pop current status from callinfo stack
+*/
+void mrbc_pop_callinfo( struct VM *vm )
+{
+  assert( vm->callinfo_tail );
+
+  // clear used register.
+  mrbc_callinfo *callinfo = vm->callinfo_tail;
+  mrbc_value *r0 = vm->cur_regs;
+
+  for( int i = 1; i < vm->cur_irep->nregs; i++ ) {
+    mrbc_decref_empty( r0+i );
+  }
+
+  if( callinfo->karg_keep ) {
+    mrbc_hash_delete( &(mrbc_value){.tt = MRBC_TT_HASH, .hash = callinfo->karg_keep} );
+  }
+
+  // copy callinfo to vm
+  vm->cur_irep = callinfo->cur_irep;
+  vm->inst = callinfo->inst;
+  vm->cur_regs = callinfo->cur_regs;
+  vm->target_class = callinfo->target_class;
+  vm->callinfo_tail = callinfo->prev;
+
+  mrbc_free(vm, callinfo);
+}
+
+
+//================================================================
+/*! Create (allocate) VM structure.
+
+  @param  regs_size	num of registor.
+  @return		Pointer to mrbc_vm.
+  @retval NULL		error.
+
+<b>Code example</b>
+@code
+  mrbc_vm *vm;
+  vm = mrbc_vm_new( MAX_REGS_SIZE );
+  mrbc_vm_open( vm );
+  mrbc_load_mrb( vm, byte_code );
+  mrbc_vm_begin( vm );
+  mrbc_vm_run( vm );
+  mrbc_vm_end( vm );
+  mrbc_vm_close( vm );
+@endcode
+*/
+mrbc_vm * mrbc_vm_new( int regs_size )
+{
+  unsigned int vm_total_size = sizeof(mrbc_vm) + sizeof(mrbc_value) * regs_size;
+
+  mrbc_vm *vm = mrbc_raw_alloc(vm_total_size);
+  if( !vm ) return NULL;
+
+  memset(vm, 0, vm_total_size);	// caution: assume NULL is zero.
+#if defined(MRBC_DEBUG)
+  memcpy(vm->obj_mark_, "VM", 2);
+#endif
+  vm->flag_need_memfree = 1;
+  vm->regs_size = regs_size;
+
+  return vm;
+}
+
+
+//================================================================
+/*! Open the VM.
+
+  @param vm	Pointer to VM or NULL.
+  @return	Pointer to VM, or NULL is error.
+*/
+mrbc_vm * mrbc_vm_open( struct VM *vm )
+{
+  if( !vm ) vm = mrbc_vm_new( MAX_REGS_SIZE );
+  if( !vm ) return NULL;
+
+  // allocate vm id.
+  int vm_id;
+  for( vm_id = 0; vm_id < MAX_VM_COUNT; vm_id++ ) {
+    int idx = vm_id >> 4;
+    int bit = 1 << (vm_id & 0x0f);
+    if( (free_vm_bitmap[idx] & bit) == 0 ) {
+      free_vm_bitmap[idx] |= bit;		// found
+      break;
+    }
+  }
+
+  if( vm_id == MAX_VM_COUNT ) {
+    if( vm->flag_need_memfree ) mrbc_raw_free(vm);
+    return NULL;
+  }
+
+  vm->vm_id = ++vm_id;
+
+  return vm;
+}
+
+
+//================================================================
+/*! VM initializer.
+
+  @param  vm  Pointer to VM
+*/
+void mrbc_vm_begin( struct VM *vm )
+{
+  vm->cur_irep = vm->top_irep;
+  vm->inst = vm->cur_irep->inst;
+  vm->cur_regs = vm->regs;
+  vm->target_class = MRBC_CLASS(Object);
+  vm->callinfo_tail = NULL;
+  vm->ret_blk = NULL;
+  vm->exception = mrbc_nil_value();
+  vm->flag_preemption = 0;
+  vm->flag_stop = 0;
+
+  // set self to reg[0], others nil
+  mrbc_decref( &vm->regs[0] );
+  vm->regs[0] = mrbc_instance_new(vm, MRBC_CLASS(Object), 0);
+  if( vm->regs[0].instance == NULL ) return;	// ENOMEM
+  for( int i = 1; i < vm->regs_size; i++ ) {
+    vm->regs[i] = mrbc_nil_value();
+  }
+}
+
+
+//================================================================
+/*! VM finalizer.
+
+  @param  vm  Pointer to VM
+*/
+void mrbc_vm_end( struct VM *vm )
+{
+  if( mrbc_israised(vm) ) {
+#if defined(MRBC_ABORT_BY_EXCEPTION)
+    MRBC_ABORT_BY_EXCEPTION(vm);
+#else
+    mrbc_print_vm_exception( vm );
+    mrbc_decref(&vm->exception);
+#endif
+  }
+  assert( vm->ret_blk == 0 );
+
+  int n_used = 0;
+  for( int i = 1; i < vm->regs_size; i++ ) {
+    //mrbc_printf("vm->regs[%d].tt = %d\n", i, mrbc_type(vm->regs[i]));
+    if( mrbc_type(vm->regs[i]) != MRBC_TT_NIL ) n_used = i;
+    mrbc_decref_empty(&vm->regs[i]);
+  }
+  (void)n_used;	// avoid warning.
+#if defined(MRBC_DEBUG_REGS)
+  mrbc_printf("Finally number of registers used was %d in VM %d.\n",
+	      n_used, vm->vm_id );
+#endif
+
+#if defined(MRBC_ALLOC_VMID)
+  mrbc_global_clear_vm_id();
+  mrbc_free_all(vm);
+#endif
+}
+
+
+//================================================================
+/*! Close the VM.
+
+  @param  vm  Pointer to VM
+*/
+void mrbc_vm_close( struct VM *vm )
+{
+  mrbc_decref( &vm->regs[0] );
+
+  // free vm id.
+  if( vm->vm_id != 0 ) {
+    int idx = (vm->vm_id-1) >> 4;
+    int bit = 1 << ((vm->vm_id-1) & 0x0f);
+    free_vm_bitmap[idx] &= ~bit;
+  }
+
+  // free irep and vm
+  if( vm->top_irep ) mrbc_irep_free( vm->top_irep );
+  if( vm->flag_need_memfree ) mrbc_raw_free(vm);
+}
+
+
 /***** opecode functions ****************************************************/
 #if defined(MRBC_SUPPORT_OP_EXT)
 #define EXT , int ext
@@ -1057,14 +1318,32 @@ static const mrbc_irep_catch_handler *find_catch_handler_ensure( const struct VM
 
   No operation
 */
-static inline void op_nop( mrbc_vm *vm, mrbc_value *regs EXT ) { }
+static inline void op_nop( mrbc_vm *vm, mrbc_value *regs EXT )
+{
+  FETCH_Z();
+}
 
 //================================================================
 static int registers_move( mrbc_profile_profiler * prof, int dst, int src) {
   if (prof->regsinfo[src] == 1) // if constant, dst will be a constant.
     return override_register_information(prof, dst, 1);
-  return override_register_information(prof, src, (dst << 2) + 3)
-  || override_register_information(prof, dst, (src << 2) + 2);
+  char srcInfo = prof->regsinfo[src];
+  char dstInfo = prof->regsinfo[dst];
+  if((dstInfo >> 2) == src) return 0; // do nothing.
+  if(srcInfo > 1) {
+    int src_reg = srcInfo >> 2;
+    if(src_reg == dst) return 0; // do nothing.
+    if(srcInfo & 1) { // aliased
+      if(gen_move(prof, src_reg, src)) return 1;
+    } else {
+      if(gen_move(prof, src, src_reg)) return 1;
+    }
+  }
+  // val is not 0 or 1, however, this is a special case.
+  if(override_register_information(prof, dst, (src << 2) + 2))
+    return 1;
+  prof->regsinfo[src] = (dst << 2) + 3;
+  return 0;
 } 
 
 /*! OP_MOVE
@@ -1079,6 +1358,7 @@ static inline void op_move( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler
   mrbc_incref(&regs[b]);
   mrbc_decref(&regs[a]);
   regs[a] = regs[b];
+  if(likely(prof == NULL)) return;
 #if OP_MOVE_DEBUG_OUT
   int relate1 = prof->regsinfo[a] >> 2, relate2 = prof->regsinfo[b] >> 2;
   mrbc_profile_function_header * fh = profiler_currentfunction(prof);
@@ -1135,7 +1415,7 @@ static int gen_read_const_object(mrbc_vm * vm, mrbc_value * regs, mrbc_profile_p
   else {
     uint32_t * callsite = (uint32_t *)((int)ret.buffer + size);
     *callsite = RISCV_JUMP_AND_LINK(1, (int)ulp_read_barrier - (int)callsite);
-    dbg_mrbc_prof_print_inst_readable("jal ra, ulp_read_barrier", fromReg);
+    dbg_mrbc_prof_print_inst_readable("jal ra, ulp_read_barrier", 0);
     callsite++;
     uint16_t * callsite2 = (uint16_t *)callsite;
     *callsite2 = RISCV_C_MOVE(toReg, 3);
@@ -1170,7 +1450,8 @@ static inline void op_loadl( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profile
   mrbc_decref(&regs[a]);
   regs[a] = mrbc_irep_pool_value(vm, b);
 
-  gen_read_const_object(vm, regs, prof, NULL, a);
+  if(unlikely(prof))
+    gen_read_const_object(vm, regs, prof, NULL, a);
 }
 
 //================================================================
@@ -1184,7 +1465,8 @@ static inline void op_loadi( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profile
 
   mrbc_decref(&regs[a]);
   mrbc_set_integer(&regs[a], b);
-  write_immediate(prof, a, b);
+  if(unlikely(prof))
+    write_immediate(prof, a, b);
 }
 
 
@@ -1199,7 +1481,8 @@ static inline void op_loadineg( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_prof
 
   mrbc_decref(&regs[a]);
   mrbc_set_integer(&regs[a], -(mrbc_int_t)b);
-  write_immediate(prof, a, -(int32_t)b);
+  if(unlikely(prof))
+    write_immediate(prof, a, -(int32_t)b);
 }
 
 
@@ -1218,7 +1501,8 @@ static inline void op_loadi_n( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profi
 
   mrbc_decref(&regs[a]);
   mrbc_set_integer(&regs[a], n);
-  write_immediate(prof, a, (uint32_t)n);
+  if(unlikely(prof))
+    write_immediate(prof, a, (uint32_t)n);
 }
 
 //================================================================
@@ -1233,7 +1517,8 @@ static inline void op_loadi16( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profi
   mrbc_decref(&regs[a]);
   int16_t signed_b = (int16_t)b;
   mrbc_set_integer(&regs[a], signed_b);
-  write_immediate(prof, a, (int32_t)signed_b);
+  if(unlikely(prof))
+    write_immediate(prof, a, (int32_t)signed_b);
 }
 
 
@@ -1248,7 +1533,8 @@ static inline void op_loadi32( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profi
 
   mrbc_decref(&regs[a]);
   mrbc_set_integer(&regs[a], (((int32_t)b<<16)+(int32_t)c));
-  write_immediate(prof, a, (((int32_t)b<<16)+(int32_t)c));
+  if(unlikely(prof))
+    write_immediate(prof, a, (((int32_t)b<<16)+(int32_t)c));
 }
 
 
@@ -1263,7 +1549,8 @@ static inline void op_loadsym( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profi
 
   mrbc_decref(&regs[a]);
   mrbc_set_symbol(&regs[a], mrbc_irep_symbol_id(vm->cur_irep, b));
-  write_immediate(prof, a, regs[a].sym_id);
+  if(unlikely(prof))
+    write_immediate(prof, a, regs[a].sym_id);
 }
 
 
@@ -1279,7 +1566,8 @@ static inline void op_loadnil( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profi
   mrbc_decref(&regs[a]);
   mrbc_set_nil(&regs[a]);
 
-  write_immediate(prof, a, 0);
+  if(unlikely(prof))
+    write_immediate(prof, a, 0);
 }
 
 
@@ -1295,6 +1583,7 @@ static inline void op_loadself( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_prof
   mrbc_decref(&regs[a]);
   regs[a] = *mrbc_get_self( vm, regs );
   mrbc_incref( &regs[a] );
+  if(likely(prof == NULL)) return;
   if(regs[0].tt == MRBC_TT_PROC) {
     // TODO: Support PROC
   } else
@@ -1314,7 +1603,8 @@ static inline void op_loadt( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profile
   mrbc_decref(&regs[a]);
   mrbc_set_true(&regs[a]);
 
-  write_immediate(prof, a, 1);
+  if(unlikely(prof))
+    write_immediate(prof, a, 1);
 }
 
 
@@ -1330,7 +1620,8 @@ static inline void op_loadf( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profile
   mrbc_decref(&regs[a]);
   mrbc_set_false(&regs[a]);
 
-  write_immediate(prof, a, 0);
+  if(unlikely(prof))
+    write_immediate(prof, a, 0);
 }
 
 static int gen_read_global_object(mrbc_vm * vm, mrbc_value *regs,  mrbc_profile_profiler * prof, mrbc_value * v, int a) {
@@ -1366,7 +1657,8 @@ static inline void op_getgv( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profile
     regs[a] = *v;
   }
   // TODO: Error Handling.
-  gen_read_global_object(vm, regs, prof, v, a);
+  if(unlikely(prof))
+    gen_read_global_object(vm, regs, prof, v, a);
 }
 
 
@@ -1383,7 +1675,8 @@ static inline void op_setgv( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profile
   mrbc_set_global( mrbc_irep_symbol_id(vm->cur_irep, b), &regs[a] );
   
   // TODO: Error Handling.
-  gen_write_global_object(vm, regs, prof, mrbc_get_global(mrbc_irep_symbol_id(vm->cur_irep, b)), a);
+  if(unlikely(prof))
+    gen_write_global_object(vm, regs, prof, mrbc_get_global(mrbc_irep_symbol_id(vm->cur_irep, b)), a);
 }
 
 //================================================================
@@ -1409,6 +1702,7 @@ static inline void op_getiv( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profile
   mrbc_decref(&regs[a]);
   regs[a] = mrbc_instance_getiv(self, sym_id);
 
+  if(likely(prof == NULL)) return;
   mrbcopro_objinfo * oi = mrbcopro_objman_get_obj_info(vm, &(prof->objMan), self->instance->cls);
   if(oi == NULL) {
     dbg_mrbc_prof_print("[FATAL]oi is null!");
@@ -1445,6 +1739,8 @@ static inline void op_setiv( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profile
   }
 
   mrbc_instance_setiv(self, sym_id, &regs[a]);
+
+  if(likely(prof == NULL)) return;
   mrbcopro_objinfo * oi = mrbcopro_objman_get_obj_info(vm, &(prof->objMan), self->instance->cls);
   if(oi == NULL) return; // TODO: Error Handling
   int offset = mrbcopro_objman_get_fieldoffset(vm, oi, sym_id);
@@ -1465,7 +1761,7 @@ static inline void op_getconst( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_prof
   mrbc_sym sym_id = mrbc_irep_symbol_id(vm->cur_irep, b);
   mrbc_class *crit_cls;
   mrbc_value *ret;
-  
+
   if( vm->callinfo_tail && vm->callinfo_tail->own_class ) {
     crit_cls = vm->callinfo_tail->own_class;
   } else {
@@ -1477,7 +1773,6 @@ static inline void op_getconst( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_prof
   while( 1 ) {
     ret = mrbc_get_class_const(cls, sym_id);
     if( ret ) goto DONE;
-
     if( !mrbc_is_nested_symid(cls->sym_id) ) break;
 
     mrbc_sym outer_id;
@@ -1506,7 +1801,8 @@ static inline void op_getconst( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_prof
   mrbc_decref(&regs[a]);
   regs[a] = *ret;
 
-  gen_read_const_object(vm, regs, prof, ret, a);
+  if(unlikely(prof))
+    gen_read_const_object(vm, regs, prof, ret, a);
 }
 
 
@@ -1568,7 +1864,8 @@ DONE:
   mrbc_decref(&regs[a]);
   regs[a] = *ret;
 
-  gen_read_const_object(vm, regs, prof, ret, a);
+  if(unlikely(prof))
+    gen_read_const_object(vm, regs, prof, ret, a);
 }
 
 
@@ -1587,7 +1884,7 @@ static inline void op_getupvar( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_prof
   assert( mrbc_type(regs[0]) == MRBC_TT_PROC );
   mrbc_callinfo *callinfo = regs[0].proc->callinfo;
 
-  mrbc_profile_profiler_stack * st = prof->stacktop->prev;
+  mrbc_profile_profiler_stack * st = prof == NULL ? NULL : prof->stacktop->prev;
   for( int i = 0; i < c; i++ ) {
     assert( callinfo );
     mrbc_value *reg0 = callinfo->cur_regs + callinfo->reg_offset;
@@ -1608,6 +1905,7 @@ static inline void op_getupvar( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_prof
   mrbc_decref( &regs[a] );
   regs[a] = *p_val;
 
+  if(likely(prof == NULL)) return;
   if(st == NULL) // it's outside of Copro#run.
     // TODO: Error Handling.
     gen_read_global_object(vm, regs, prof, p_val, a);
@@ -1630,7 +1928,7 @@ static inline void op_setupvar( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_prof
   assert( regs[0].tt == MRBC_TT_PROC );
   mrbc_callinfo *callinfo = regs[0].proc->callinfo;
 
-  mrbc_profile_profiler_stack * st = prof->stacktop->prev;
+  mrbc_profile_profiler_stack * st = prof == NULL ? NULL : prof->stacktop->prev;
   for( int i = 0; i < c; i++ ) {
     assert( callinfo );
     mrbc_value *reg0 = callinfo->cur_regs + callinfo->reg_offset;
@@ -1650,6 +1948,7 @@ static inline void op_setupvar( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_prof
   mrbc_incref( &regs[a] );
   *p_val = regs[a];
 
+  if(likely(prof == NULL)) return;
   if(st == NULL) // it's outside of Copro#run.
   {
     // TODO: Error Handling.
@@ -1746,6 +2045,7 @@ static inline void op_jmp( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler 
 {
   FETCH_S();
   vm->inst += (int16_t)a;
+  if(likely(prof == NULL)) return;
   if((int16_t)a < 0) { // If backward, do not create the new basic block.
     dbg_mrbc_prof_print("OP_JMP");
     write_jmp_instructions(vm, prof, JMP_WRITER_SIZE, vm->cur_irep->nlocals+1, NULL, (func_jmp_writer_t)jmp_writer);
@@ -1795,6 +2095,7 @@ static inline void op_jmpif( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profile
     vm->inst += (int16_t)b;
   }
 
+  if(likely(prof == NULL)) return;
   // If type is always NIL, Empty, Go through.
   if(regs[a].tt < MRBC_TT_FALSE)
     return;
@@ -1822,6 +2123,7 @@ static inline void op_jmpnot( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profil
   if( regs[a].tt <= MRBC_TT_FALSE ) {
     vm->inst += (int16_t)b;
   }
+  if(likely(prof == NULL)) return;
   // If type is always NIL, Empty, Jump.
   if(regs[a].tt < MRBC_TT_FALSE && b > 0)
     return;
@@ -1851,6 +2153,7 @@ static inline void op_jmpnil( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profil
   if( regs[a].tt == MRBC_TT_NIL ) {
     vm->inst += (int16_t)b;
   }
+  if(likely(prof == NULL)) return;
   // If forwarding, Do Not Anything, because NIL is specialized.
   if((int16_t)b < 0 && regs[a].tt == MRBC_TT_NIL) {
     dbg_mrbc_prof_print("OP_JMPNIL");
@@ -1874,13 +2177,14 @@ static inline void op_jmpuw( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profile
   const mrbc_irep_catch_handler *handler = find_catch_handler_ensure(vm);
   if( !handler ) {
     vm->inst = jump_inst;
+    if(likely(prof == NULL)) return;
     if((int16_t)a < 0) { // If backward, do not create the new basic block.
       dbg_mrbc_prof_print("OP_JMPUW(nohandler)");
       write_jmp_instructions(vm, prof, JMP_WRITER_SIZE, vm->cur_irep->nlocals+1, NULL, (func_jmp_writer_t)jmp_writer);
     }
     return;
   }
-  prof->giveup = 1;
+  if(unlikely(prof)) prof->giveup = 1;
   // check whether the jump point is inside or outside the catch handler.
   uint32_t jump_point = jump_inst - vm->cur_irep->inst;
   if( (bin_to_uint32(handler->begin) < jump_point) &&
@@ -1903,7 +2207,7 @@ static inline void op_jmpuw( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profile
   R[a] = exc
 */
 static inline void op_except( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler * prof EXT )
-{ prof->giveup = 1;
+{ if(unlikely(prof)) prof->giveup = 1;
   FETCH_B();
 
   mrbc_decref( &regs[a] );
@@ -1918,7 +2222,7 @@ static inline void op_except( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profil
   R[b] = R[a].isa?(R[b])
 */
 static inline void op_rescue( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler * prof EXT )
-{ prof->giveup = 1;
+{ if(unlikely(prof)) prof->giveup = 1;
   FETCH_BB();
 
   assert( regs[a].tt == MRBC_TT_EXCEPTION );
@@ -1935,7 +2239,7 @@ static inline void op_rescue( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profil
   raise(R[a]) if R[a]
 */
 static inline void op_raiseif( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler * prof EXT )
-{ prof->giveup = 1;
+{ if(unlikely(prof)) prof->giveup = 1;
   FETCH_B();
 
   // save the parameter.
@@ -2096,7 +2400,7 @@ static inline void op_ssend( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profile
   mrbc_incref( &regs[a] );
 
   // MOVE
-  gen_move(prof, a, 0);
+  if(unlikely(prof)) gen_move(prof, a, 0);
   send_by_name( vm, mrbc_irep_symbol_id(vm->cur_irep, b), a, c, prof);
 }
 
@@ -2116,7 +2420,7 @@ static inline void op_ssendb( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profil
   mrbc_incref( &regs[a] );
 
   // MOVE
-  gen_move(prof, a, 0);
+  if(unlikely(prof)) gen_move(prof, a, 0);
   send_by_name( vm, mrbc_irep_symbol_id(vm->cur_irep, b), a, c | 0x100, prof);
 }
 
@@ -2177,39 +2481,31 @@ static inline void op_super( mrbc_vm *vm, mrbc_value *regs EXT )
 	 b = 255 in other method.
     */
 
-    assert( recv[1].tt == MRBC_TT_ARRAY );
-
     mrbc_value argary = recv[1];
-    mrbc_value proc = recv[2];
-    recv[1].tt = MRBC_TT_EMPTY;
-    recv[2].tt = MRBC_TT_EMPTY;
-
-    int argc = mrbc_array_size(&argary);
-    for( int i = 0; i < argc; i++ ) {
-      mrbc_decref( &recv[i+1] );
-      recv[i+1] = argary.array->data[i];
+    int n_move = (karg == CALL_MAXARGS) ? 2 : karg * 2 + 1;
+    narg = mrbc_array_size(&argary);
+    for( int i = 0; i < narg; i++ ) {
+      mrbc_incref( &argary.array->data[i] );
     }
-    mrbc_array_delete_handle(&argary);
 
-    mrbc_decref( &recv[argc+1] );
-    recv[argc+1] = proc;
-    narg = argc;
+    memmove( recv + narg + 1, recv + 2, sizeof(mrbc_value) * n_move );
+    memcpy( recv + 1, argary.array->data, sizeof(mrbc_value) * narg );
+    mrbc_decref(&argary);
   }
+
+  mrbc_value *r1 = recv + narg;
 
   // Convert keyword argument to hash.
   if( karg && karg != CALL_MAXARGS ) {
-    narg++;
-    mrbc_value h = mrbc_hash_new( vm, karg );
-    if( !h.hash ) return;	// ENOMEM
+    mrbc_value hval = mrbc_hash_new( vm, karg );
+    if( !hval.hash ) return;	// ENOMEM
 
-    mrbc_value *r1 = recv + narg;
-    memcpy( h.hash->data, r1, sizeof(mrbc_value) * karg * 2 );
-    h.hash->n_stored = karg * 2;
+    memcpy( hval.hash->data, r1+1, sizeof(mrbc_value) * karg * 2 );
+    hval.hash->n_stored = karg * 2;
 
-    mrbc_value block = r1[karg * 2];
-    memset( r1 + 2, 0, sizeof(mrbc_value) * (karg * 2 - 1) );
-    *r1++ = h;
-    *r1 = block;
+    r1[1] = hval;
+    r1[2] = r1[karg * 2 + 1];	// Proc
+    memset( r1 + 3, 0, sizeof(mrbc_value) * (karg * 2 - 1) );
   }
 
   // find super class
@@ -2230,7 +2526,7 @@ static inline void op_super( mrbc_vm *vm, mrbc_value *regs EXT )
 
   // call C function and return.
   if( method.c_func ) {
-    method.func(vm, recv, narg);
+    method.func(vm, recv, narg - !!karg);
     for( int i = 1; i <= narg+1; i++ ) {
       mrbc_decref_empty( recv + i );
     }
@@ -2269,16 +2565,17 @@ static inline void op_argary( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profil
     return;
   }
   if( b & 0x3e0 ) {	// check m2 parameter.
-    mrbc_raise( vm, MRBC_CLASS(NotImplementedError), "not support m2 or keyword argument.");
+    mrbc_raise( vm, MRBC_CLASS(NotImplementedError), "not support m2 argument.");
     return;
   }
 
   mrbc_value *reg0 = regs;
+  mrbc_callinfo *callinfo = 0;
 
   // rewind proc nest
   if( lv ) {
     assert( mrbc_type(*reg0) == MRBC_TT_PROC );
-    mrbc_callinfo *callinfo = reg0->proc->callinfo;
+    callinfo = reg0->proc->callinfo;
     assert( callinfo );
 
     for( int i = 1; i < lv; i ++ ) {
@@ -2293,22 +2590,24 @@ static inline void op_argary( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profil
 
   // create arguent array.
   int array_size = m1 + d;
-  mrbc_value val = mrbc_array_new( vm, array_size );
-  if( !val.array ) return;	// ENOMEM
+  mrbc_value argary = mrbc_array_new( vm, array_size );
+  if( !argary.array ) return;	// ENOMEM
 
-  if( vm->callinfo_tail->karg_keep ) {
-    mrbc_value karg = {.tt = MRBC_TT_HASH, .hash = vm->callinfo_tail->karg_keep};
+  for( int i = 1; i <= m1; i++ ) {
+    mrbc_incref( &reg0[i] );
+    mrbc_array_push( &argary, &reg0[i] );
+  }
+
+  if( d ) {
+    if( !callinfo ) callinfo = vm->callinfo_tail;
+    assert( callinfo->karg_keep );
+    mrbc_value karg = (mrbc_value){.tt = MRBC_TT_HASH, .hash = callinfo->karg_keep};
     karg = mrbc_hash_dup(vm, &karg);
-    mrbc_array_push( &val, &karg );
-  } else {
-    for( int i = 1; i <= array_size; i++ ) {
-      mrbc_incref( &reg0[i] );
-      mrbc_array_push( &val, &reg0[i] );
-    }
+    mrbc_array_push( &argary, &karg );
   }
 
   mrbc_decref( &regs[a] );
-  regs[a] = val;
+  regs[a] = argary;
 
   // copy a block object
   mrbc_decref( &regs[a+1] );
@@ -2320,7 +2619,7 @@ int search_function(mrbc_vm *vm, mrbc_profile_profiler * prof, int regLen)
 {
   mrbc_profile_function_header * fh = prof->functions;
   const mrbc_irep * vm_cur_irep = vm->cur_irep;
-  const mrbc_class * vm_own_class = vm->callinfo_tail->own_class;
+  mrbc_class * vm_own_class = vm->callinfo_tail->own_class;
   while(fh) {
     if(fh->irep == vm_cur_irep && fh->own_class == vm_own_class) {
       prof->stack.functions_current = fh;
@@ -2450,7 +2749,7 @@ static void move_argments(struct VM * vm, mrbc_profile_function_header * fh, mrb
 */
 static inline void op_enter( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler * prof EXT )
 {
-  {
+  if(unlikely(prof)){
     if(prof->regsinfo_length < vm->cur_irep->nregs) {
       char * ch = mrbcopro_realloc(vm, prof->regsinfo, sizeof(char) * vm->cur_irep->nregs);
       if(ch == NULL) return; // TODO: OoM Error
@@ -2533,15 +2832,18 @@ static inline void op_enter( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profile
 
   // Check m2 parameter.
   if( a & FLAG_M2 ) {
-    mrbc_raise( vm, MRBC_CLASS(NotImplementedError), "not support m2 or keyword argument");
+    mrbc_raise( vm, MRBC_CLASS(NotImplementedError), "not support m2 argument");
     return;
   }
 
   int m1 = (a >> 18) & 0x1f;	// num of required parameters 1
   int o  = (a >> 13) & 0x1f;	// num of optional parameters
   int argc = vm->callinfo_tail->n_args;
+  int flag_kwarg = regs[argc+1].tt == MRBC_TT_HASH;
 
-  if( argc < m1 && mrbc_type(regs[0]) != MRBC_TT_PROC ) {
+  argc += flag_kwarg;
+
+  if( argc < m1 && regs[0].tt != MRBC_TT_PROC ) {
     mrbc_raise( vm, MRBC_CLASS(ArgumentError), "wrong number of arguments");
     return;
   }
@@ -2551,8 +2853,7 @@ static inline void op_enter( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profile
   regs[argc+1].tt = MRBC_TT_EMPTY;
 
   // support yield [...] pattern, to expand array.
-  if( mrbc_type(regs[0]) == MRBC_TT_PROC &&
-      mrbc_type(regs[1]) == MRBC_TT_ARRAY &&
+  if( regs[0].tt == MRBC_TT_PROC && regs[1].tt == MRBC_TT_ARRAY &&
       argc == 1 && m1 > 1 ) {
     mrbc_value argary = regs[1];
     int argary_size = mrbc_array_size(&argary);
@@ -2575,7 +2876,7 @@ static inline void op_enter( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profile
   if( a & (FLAG_DICT|FLAG_KW|FLAG_REST) ) {
     mrbc_value dict;
     if( a & (FLAG_DICT|FLAG_KW) ) {
-      if( (argc - m1) > 0 && mrbc_type(regs[argc]) == MRBC_TT_HASH ) {
+      if( (argc - m1) > 0 && regs[argc].tt == MRBC_TT_HASH ) {
 	dict = regs[argc];
 	regs[argc--].tt = MRBC_TT_EMPTY;
       } else {
@@ -2598,12 +2899,11 @@ static inline void op_enter( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profile
     }
 
     // reorder arguments.
-    int i;
-    for( i = argc; i < m1; ) {
+    for(int i = argc; i < m1; ) {
       mrbc_decref( &regs[++i] );
       mrbc_set_nil( &regs[i] );
     }
-    i = m1 + o;
+    int i = m1 + o;
     if( a & FLAG_REST ) {
       mrbc_decref(&regs[++i]);
       regs[i] = rest;
@@ -2611,9 +2911,7 @@ static inline void op_enter( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profile
     if( a & (FLAG_DICT|FLAG_KW) ) {
       mrbc_decref(&regs[++i]);
       regs[i] = dict;
-      if( a & FLAG_KW ) {
-	vm->callinfo_tail->karg_keep = mrbc_hash_dup(vm, &dict).hash;
-      }
+	    vm->callinfo_tail->karg_keep = mrbc_hash_dup(vm, &dict).hash;
     }
     mrbc_decref(&regs[i+1]);
     regs[i+1] = proc;
@@ -2621,12 +2919,11 @@ static inline void op_enter( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profile
 
   } else {
     // reorder arguments.
-    int i;
-    for( i = argc; i < m1; ) {
+    for(int i = argc; i < m1; ) {
       mrbc_decref( &regs[++i] );
       mrbc_set_nil( &regs[i] );
     }
-    i = m1 + o;
+    int i = m1 + o;
     mrbc_decref(&regs[i+1]);
     regs[i+1] = proc;
     vm->callinfo_tail->n_args = i;
@@ -2638,7 +2935,7 @@ static inline void op_enter( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profile
     if( jmp_ofs > o ) {
       jmp_ofs = o;
 
-      if( !(a & FLAG_REST) && mrbc_type(regs[0]) != MRBC_TT_PROC ) {
+      if( !(a & FLAG_REST) && regs[0].tt != MRBC_TT_PROC ) {
 	mrbc_raise( vm, MRBC_CLASS(ArgumentError), "wrong number of arguments");
 	return;
       }
@@ -2660,7 +2957,7 @@ static inline void op_enter( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profile
   R[a] = kdict.key?(Syms[b])
 */
 static inline void op_key_p( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler * prof EXT )
-{ prof->giveup = 1;
+{ if(unlikely(prof)) prof->giveup = 1;
   FETCH_BB();
 
   mrbc_value *kdict = &regs[vm->callinfo_tail->n_args];
@@ -2678,7 +2975,7 @@ static inline void op_key_p( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profile
   raise unless kdict.empty?
 */
 static inline void op_keyend( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler * prof EXT )
-{ prof->giveup = 1;
+{ if(unlikely(prof))  prof->giveup = 1;
   FETCH_Z();
 
   mrbc_value *kdict = &regs[vm->callinfo_tail->n_args];
@@ -2699,7 +2996,7 @@ static inline void op_keyend( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profil
   R[a] = kdict[Syms[b]]; kdict.delete(Syms[b])
 */
 static inline void op_karg( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler * prof EXT )
-{ prof->giveup = 1;
+{ if(likely(prof == NULL)) prof->giveup = 1;
   FETCH_BB();
 
   mrbc_value *kdict = &regs[vm->callinfo_tail->n_args];
@@ -2722,7 +3019,7 @@ static inline void op_karg( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler
 */
 static inline void op_return__sub( mrbc_vm *vm, mrbc_value *regs, int a, mrbc_profile_profiler * prof )
 {
-  if(prof) {
+  if(unlikely(prof)) {
     if( vm->callinfo_tail->method_id != MRBC_SYM(initialize) ){ // return value except for initialize methods.
       if(prof->regsinfo[a] == 1) // constant
         gen_load_immediate(prof, 10, regs[a].i);
@@ -2795,7 +3092,7 @@ static inline void op_return__sub( mrbc_vm *vm, mrbc_value *regs, int a, mrbc_pr
 
  RETURN:
   mrbc_pop_callinfo(vm);
-  {
+  if(unlikely(prof)) {
     mrbc_send_inst_bufs_return_t sib = send_inst_bufs(prof, profiler_current(prof));
     if(sib.buffer > (void *)1)
       dbg_dump_riscv_code2(sib.length, sib.buffer);
@@ -2881,7 +3178,7 @@ static inline void op_return_blk( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_pr
   break R[a]
 */
 static inline void op_break( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler * prof EXT )
-{ prof->giveup = 1;
+{ if(unlikely(prof)) prof->giveup = 1;
   FETCH_B();
 
   assert( regs[0].tt == MRBC_TT_PROC );
@@ -2927,7 +3224,7 @@ static inline void op_break( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profile
   R[a] = block (16=m5:r1:m5:d1:lv4)
 */
 static inline void op_blkpush( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler * prof EXT )
-{ prof->giveup = 1;
+{ if(unlikely(prof)) prof->giveup = 1;
   FETCH_BS();
 
   int m1 = (b >> 11) & 0x3f;
@@ -2937,7 +3234,7 @@ static inline void op_blkpush( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profi
   int lv = (b      ) & 0x0f;
 
   if( m2 ) {
-    mrbc_raise( vm, MRBC_CLASS(ArgumentError), "not support m2 or keyword argument.");
+    mrbc_raise( vm, MRBC_CLASS(NotImplementedError), "not support m2 argument");
     return;
   }
 
@@ -2947,6 +3244,7 @@ static inline void op_blkpush( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profi
   if( lv == 0 ) {
     // current env
     blk = regs + offset;
+
   } else {
     // upper env
     assert( regs[0].tt == MRBC_TT_PROC );
@@ -2958,11 +3256,12 @@ static inline void op_blkpush( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profi
       assert( reg0->tt == MRBC_TT_PROC );
       callinfo = reg0->proc->callinfo;
     }
+
     blk = callinfo->cur_regs + callinfo->reg_offset + offset;
   }
 
   if( blk->tt != MRBC_TT_PROC ) {
-    mrbc_raise( vm, MRBC_CLASS(NotImplementedError), "no block given (yield)");
+    mrbc_raise( vm, MRBC_CLASS(Exception), "no block given (yield)");
     return;
   }
 
@@ -2983,19 +3282,22 @@ static inline void op_add( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler 
 
   // in case of Integer + Integer
   if( regs[a].tt == MRBC_TT_INTEGER && regs[a+1].tt == MRBC_TT_INTEGER ) {
-    struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a, 0);
-    
+    mrbc_int_t prev = regs[a].i; 
     regs[a].i += regs[a+1].i;
-    
-    int regA1 = get_allocation(prof, a+1);
-    if(regA.src == regA.dst) {
-      dbg_mrbc_prof_print_inst_readable("c.add x%d, x%d", regA.dst, regA1);
-      mrbcopro_vector_append16(vm, &(prof->buf), RISCV_C_ADD(regA.dst, regA1));
-    } else {
-      dbg_mrbc_prof_print_inst_readable("add x%d, x%d, x%d", regA.dst, regA.src, regA1);
-      mrbcopro_vector_append32(vm, &(prof->buf), RISCV_ADD(regA.dst, regA.src, regA1));
+    if(unlikely(prof)) {
+      if(!(mrbc_prof_is_constant(prof, a) && mrbc_prof_is_constant(prof, a + 1))) {
+        struct read_and_override_register_information_ret_t regA = read_and_override_register_information2(prof, a, prev);
+        int regA1 = get_allocation(prof, a+1);
+        if(regA.src == regA.dst) {
+          dbg_mrbc_prof_print_inst_readable("c.add x%d, x%d", regA.dst, regA1);
+          mrbcopro_vector_append16(vm, &(prof->buf), RISCV_C_ADD(regA.dst, regA1));
+        } else {
+          dbg_mrbc_prof_print_inst_readable("add x%d, x%d, x%d", regA.dst, regA.src, regA1);
+          mrbcopro_vector_append32(vm, &(prof->buf), RISCV_ADD(regA.dst, regA.src, regA1));
+        }
+      }
+      override_register_information(prof, a+1, 0);
     }
-    override_register_information(prof, a+1, 0);
     return;
   }
 
@@ -3034,16 +3336,17 @@ static inline void op_addi( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler
   FETCH_BB();
   
   if( regs[a].tt == MRBC_TT_INTEGER ) {
-    struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a, 0);
-
+    mrbc_int_t prev = regs[a].i; 
     regs[a].i += b;
-    
-    if(b <= 0x1F && regA.src == regA.dst) {
-      dbg_mrbc_prof_print_inst_readable("c.addi x%d, %d", regA.dst, b);
-      mrbcopro_vector_append16(vm, &(prof->buf), RISCV_C_ADDI(regA.dst, b));
-    } else {
-      dbg_mrbc_prof_print_inst_readable("addi x%d, x%d, %d", regA.dst, regA.src, b);
-      mrbcopro_vector_append32(vm, &(prof->buf), RISCV_ADD_IMM(regA.dst, regA.src, b));
+    if(unlikely(prof) && !mrbc_prof_is_constant(prof, a)) {
+      struct read_and_override_register_information_ret_t regA  = read_and_override_register_information2(prof, a, prev);
+      if(b <= 0x1F && regA.src == regA.dst) {
+        dbg_mrbc_prof_print_inst_readable("c.addi x%d, %d", regA.dst, b);
+        mrbcopro_vector_append16(vm, &(prof->buf), RISCV_C_ADDI(regA.dst, b));
+      } else {
+        dbg_mrbc_prof_print_inst_readable("addi x%d, x%d, %d", regA.dst, regA.src, b);
+        mrbcopro_vector_append32(vm, &(prof->buf), RISCV_ADD_IMM(regA.dst, regA.src, b));
+      }
     }
     return;
   }
@@ -3055,9 +3358,10 @@ static inline void op_addi( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler
   }
 #endif
 
+  mrbc_decref(&regs[a+1]);
   regs[a+1] = mrbc_integer_value(b);
 
-  override_register_information(prof, a+1, 1);
+  if(unlikely(prof)) override_register_information(prof, a+1, 1);
   
   send_by_name(vm, MRBC_SYM(PLUS), a, 1, prof);
 }
@@ -3074,20 +3378,23 @@ static inline void op_sub( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler 
 
   // in case of Integer - Integer
   if( regs[a].tt == MRBC_TT_INTEGER && regs[a+1].tt == MRBC_TT_INTEGER ) {
-    struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a, 0);
-
+    mrbc_int_t prev = regs[a].i; 
     regs[a].i -= regs[a+1].i;
-    
-    int regA1 = get_allocation(prof, a+1);
-    if(regA.src == regA.dst &&
-      RISCV_THESE_REGISTERS_ARE_COMPRESSED_AVAILABLE(regA.dst, regA1)) {
-      dbg_mrbc_prof_print_inst_readable("c.sub x%d, x%d", regA.dst, regA1);
-      mrbcopro_vector_append16(vm, &(prof->buf), RISCV_C_SUB(regA.dst, regA1));
-    } else {
-      dbg_mrbc_prof_print_inst_readable("sub x%d, x%d, x%d", regA.dst, regA.src, regA1);
-      mrbcopro_vector_append32(vm, &(prof->buf), RISCV_SUB(regA.dst, regA.src, regA1));
+    if(unlikely(prof)){
+      if(!(mrbc_prof_is_constant(prof, a) && mrbc_prof_is_constant(prof, a + 1))) {
+        struct read_and_override_register_information_ret_t regA = read_and_override_register_information2(prof, a, prev);
+        int regA1 = get_allocation(prof, a+1);
+        if(regA.src == regA.dst &&
+          RISCV_THESE_REGISTERS_ARE_COMPRESSED_AVAILABLE(regA.dst, regA1)) {
+          dbg_mrbc_prof_print_inst_readable("c.sub x%d, x%d", regA.dst, regA1);
+          mrbcopro_vector_append16(vm, &(prof->buf), RISCV_C_SUB(regA.dst, regA1));
+        } else {
+          dbg_mrbc_prof_print_inst_readable("sub x%d, x%d, x%d", regA.dst, regA.src, regA1);
+          mrbcopro_vector_append32(vm, &(prof->buf), RISCV_SUB(regA.dst, regA.src, regA1));
+        }
+      }
+      override_register_information(prof, a+1, 0);
     }
-    override_register_information(prof, a+1, 0);
     return;
   }
 
@@ -3126,16 +3433,17 @@ static inline void op_subi( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler
   FETCH_BB();
 
   if( regs[a].tt == MRBC_TT_INTEGER ) {
-    struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a, 0);
-
+    mrbc_int_t prev = regs[a].i; 
     regs[a].i -= b;
-
-    if(b <= 0x20 && regA.src == regA.dst) {
-      dbg_mrbc_prof_print_inst_readable("c.addi x%d, %d", regA.dst, -b);
-      mrbcopro_vector_append16(vm, &(prof->buf), RISCV_C_ADDI(regA.dst, -b));
-    } else {
-      dbg_mrbc_prof_print_inst_readable("addi x%d, x%d, %d", regA.dst, regA.src, -b);
-      mrbcopro_vector_append32(vm, &(prof->buf), RISCV_ADD_IMM(regA.dst, regA.src, -b));
+    if(unlikely(prof) && !mrbc_prof_is_constant(prof, a)) {
+      struct read_and_override_register_information_ret_t regA = read_and_override_register_information2(prof, a, prev);
+      if(b <= 0x20 && regA.src == regA.dst) {
+        dbg_mrbc_prof_print_inst_readable("c.addi x%d, %d", regA.dst, -b);
+        mrbcopro_vector_append16(vm, &(prof->buf), RISCV_C_ADDI(regA.dst, -b));
+      } else {
+        dbg_mrbc_prof_print_inst_readable("addi x%d, x%d, %d", regA.dst, regA.src, -b);
+        mrbcopro_vector_append32(vm, &(prof->buf), RISCV_ADD_IMM(regA.dst, regA.src, -b));
+      }
     }
     return;
   }
@@ -3146,9 +3454,10 @@ static inline void op_subi( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler
   }
 #endif
 
+  mrbc_decref(&regs[a+1]);
   regs[a+1] = mrbc_integer_value(b);
 
-  override_register_information(prof, b, 1);
+  if(unlikely(prof)) override_register_information(prof, b, 1);
 
   send_by_name(vm, MRBC_SYM(MINUS), a, 1, prof);
 }
@@ -3165,15 +3474,17 @@ static inline void op_mul( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler 
 
   // in case of Integer * Integer
   if( regs[a].tt == MRBC_TT_INTEGER && regs[a+1].tt == MRBC_TT_INTEGER ) {
-    struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a, 0);
-    
+    mrbc_int_t prev = regs[a].i; 
     regs[a].i *= regs[a+1].i;
-
-    int regA1 = get_allocation(prof, a+1);
-    dbg_mrbc_prof_print_inst_readable("mul x%d, x%d, x%d", regA.dst, regA.src, regA1);
-    mrbcopro_vector_append32(vm, &(prof->buf), RISCV_MUL(regA.dst, regA.src, regA1));
-
-    override_register_information(prof, a+1, 0);
+    if(unlikely(prof)) {
+      if(!(mrbc_prof_is_constant(prof, a) && mrbc_prof_is_constant(prof, a + 1))) {
+        struct read_and_override_register_information_ret_t regA = read_and_override_register_information2(prof, a, prev);
+        int regA1 = get_allocation(prof, a+1);
+        dbg_mrbc_prof_print_inst_readable("mul x%d, x%d, x%d", regA.dst, regA.src, regA1);
+        mrbcopro_vector_append32(vm, &(prof->buf), RISCV_MUL(regA.dst, regA.src, regA1));
+      }
+      override_register_information(prof, a+1, 0);
+    }
     return;
   }
 
@@ -3213,11 +3524,9 @@ static inline void op_div( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler 
 
   // in case of Integer / Integer
   if( regs[a].tt == MRBC_TT_INTEGER && regs[a+1].tt == MRBC_TT_INTEGER ) {
-    struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a, 0);
-    
     mrbc_int_t v0 = regs[a].i;
     mrbc_int_t v1 = regs[a+1].i;
-
+    
     if( v1 == 0 ) {
       mrbc_raise(vm, MRBC_CLASS(ZeroDivisionError), 0 );
       return;
@@ -3229,10 +3538,15 @@ static inline void op_div( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler 
     if( (mod != 0) && ((v0 ^ v1) < 0) ) ret -= 1;
 
     regs[a].i = ret;
-
-    int regA1 = get_allocation(prof, a + 1);
-    dbg_mrbc_prof_print_inst_readable("div x%d, x%d, x%d", regA.dst, regA.src, regA1);
-    mrbcopro_vector_append32(vm, &(prof->buf), RISCV_DIV(regA.dst, regA.src, regA1));
+    
+    if(likely(prof == NULL)) return;
+    if(!(mrbc_prof_is_constant(prof, a) && mrbc_prof_is_constant(prof, a+1))) {
+      struct read_and_override_register_information_ret_t regA = read_and_override_register_information2(prof, a, v0);
+      
+      int regA1 = get_allocation(prof, a + 1);
+      dbg_mrbc_prof_print_inst_readable("div x%d, x%d, x%d", regA.dst, regA.src, regA1);
+      mrbcopro_vector_append32(vm, &(prof->buf), RISCV_DIV(regA.dst, regA.src, regA1));
+    }
     override_register_information(prof, a+1, 0);
     return;
   }
@@ -3277,23 +3591,26 @@ static inline void op_eq( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler *
 
   int result = mrbc_compare(&regs[a], &regs[a+1]);
 
+  if(unlikely(prof)) {
+    if(!(mrbc_prof_is_constant(prof, a) && mrbc_prof_is_constant(prof, a + 1))) {
+      struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a);
+      // TODO: Super-instruction/Op fusion?
+      int rs2 = get_allocation(prof, a + 1);
+      if(regA.src == regA.dst && RISCV_THESE_REGISTERS_ARE_COMPRESSED_AVAILABLE(regA.dst, rs2)) {
+        dbg_mrbc_prof_print_inst_readable("c.xor x%d, x%d", regA.dst, rs2);
+        mrbcopro_vector_append16(vm, &(prof->buf), RISCV_C_XOR(regA.dst, rs2));
+      } else {
+        dbg_mrbc_prof_print_inst_readable("xor x%d, x%d, x%d", regA.dst, regA.src, rs2);
+        mrbcopro_vector_append32(vm, &(prof->buf),  RISCV_XOR(regA.dst, regA.src, rs2));
+      }
+      dbg_mrbc_prof_print_inst_readable("sltiu x%d, x%d, 1", regA.dst, regA.dst);
+      mrbcopro_vector_append32(vm, &(prof->buf), RISCV_LESS_THAN_UNSIGNED_IMM(regA.dst, regA.dst, 1));
+    }
+    override_register_information(prof, a+1, 0);
+  }
+
   mrbc_decref(&regs[a]);
   regs[a].tt = result ? MRBC_TT_FALSE : MRBC_TT_TRUE;
-
-  // TODO: Super-instruction/Op fusion?
-  struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a, 0);
-  int rs2 = get_allocation(prof, a + 1);
-  if(regA.src == regA.dst && RISCV_THESE_REGISTERS_ARE_COMPRESSED_AVAILABLE(regA.dst, rs2)) {
-    dbg_mrbc_prof_print_inst_readable("c.xor x%d, x%d", regA.dst, rs2);
-    mrbcopro_vector_append16(vm, &(prof->buf), RISCV_C_XOR(regA.dst, rs2));
-  } else {
-    dbg_mrbc_prof_print_inst_readable("xor x%d, x%d, x%d", regA.dst, regA.src, rs2);
-    mrbcopro_vector_append32(vm, &(prof->buf),  RISCV_XOR(regA.dst, regA.src, rs2));
-  }
-  dbg_mrbc_prof_print_inst_readable("sltiu x%d, x%d, 1", regA.dst, regA.dst);
-  mrbcopro_vector_append32(vm, &(prof->buf), RISCV_LESS_THAN_UNSIGNED_IMM(regA.dst, regA.dst, 1));
-
-  override_register_information(prof, a+1, 0);
 }
 
 
@@ -3310,18 +3627,22 @@ static inline void op_lt( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler *
     send_by_name(vm, MRBC_SYM(LT), a, 1, prof);
     return;
   }
-
+  
   int result = mrbc_compare(&regs[a], &regs[a+1]);
+
+  if(unlikely(prof)) {
+    if(!(mrbc_prof_is_constant(prof, a) && mrbc_prof_is_constant(prof, a+1))) {
+      struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a);
+      // TODO: Super-instruction/Op fusion?
+      int rs2 = get_allocation(prof, a + 1);
+      dbg_mrbc_prof_print_inst_readable("slt x%d, x%d, x%d", regA.dst, regA.src, rs2);
+      mrbcopro_vector_append32(vm, &(prof->buf), RISCV_LESS_THAN(regA.dst, regA.src, rs2));
+    }
+    override_register_information(prof, a+1, 0);
+  }
 
   mrbc_decref(&regs[a]);
   regs[a].tt = result < 0 ? MRBC_TT_TRUE : MRBC_TT_FALSE;
-
-  // TODO: Super-instruction/Op fusion?
-  struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a, 0);
-  int rs2 = get_allocation(prof, a + 1);
-  dbg_mrbc_prof_print_inst_readable("slt x%d, x%d, x%d", regA.dst, regA.src, rs2);
-  mrbcopro_vector_append32(vm, &(prof->buf), RISCV_LESS_THAN(regA.dst, regA.src, rs2));
-  override_register_information(prof, a+1, 0);
 }
 
 
@@ -3341,17 +3662,20 @@ static inline void op_le( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler *
 
   int result = mrbc_compare(&regs[a], &regs[a+1]);
 
+  if(unlikely(prof)) {
+    if(!(mrbc_prof_is_constant(prof, a) && mrbc_prof_is_constant(prof, a+1))) {
+      struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a);
+      // TODO: Super-instruction/Op fusion?
+      int rs2 = get_allocation(prof, a + 1);
+      dbg_mrbc_prof_print_inst_readable("slt x%d, x%d, x%d", regA.dst, rs2, regA.src);
+      dbg_mrbc_prof_print_inst_readable("xori x%d, x%d, 1", regA.dst, regA.dst);
+      mrbcopro_vector_append32(vm, &(prof->buf), RISCV_LESS_THAN(regA.dst, rs2, regA.src));
+      mrbcopro_vector_append32(vm, &(prof->buf), RISCV_XOR_IMM(regA.dst, regA.dst, 1));
+    }
+    override_register_information(prof, a+1, 0);
+  }
   mrbc_decref(&regs[a]);
   regs[a].tt = result <= 0 ? MRBC_TT_TRUE : MRBC_TT_FALSE;
-
-  // TODO: Super-instruction/Op fusion?
-  struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a, 0);
-  int rs2 = get_allocation(prof, a + 1);
-  dbg_mrbc_prof_print_inst_readable("slt x%d, x%d, x%d", regA.dst, rs2, regA.src);
-  dbg_mrbc_prof_print_inst_readable("xori x%d, x%d, 1", regA.dst, regA.dst);
-  mrbcopro_vector_append32(vm, &(prof->buf), RISCV_LESS_THAN(regA.dst, rs2, regA.src));
-  mrbcopro_vector_append32(vm, &(prof->buf), RISCV_XOR_IMM(regA.dst, regA.dst, 1));
-  override_register_information(prof, a+1, 0);
 }
 
 
@@ -3371,15 +3695,20 @@ static inline void op_gt( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler *
 
   int result = mrbc_compare(&regs[a], &regs[a+1]);
 
+  if(unlikely(prof)) {
+    if(!(mrbc_prof_is_constant(prof, a) && mrbc_prof_is_constant(prof, a+1))) {
+      struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a);
+      // TODO: Super-instruction/Op fusion?
+      int rs2 = get_allocation(prof, a + 1);
+      dbg_mrbc_prof_print_inst_readable("slt x%d, x%d, x%d", regA.dst, rs2, regA.src);
+      mrbcopro_vector_append32(vm, &(prof->buf), RISCV_LESS_THAN(regA.dst, rs2, regA.src));
+    }
+    override_register_information(prof, a+1, 0);
+  }
+
   mrbc_decref(&regs[a]);
   regs[a].tt = result > 0 ? MRBC_TT_TRUE : MRBC_TT_FALSE;
 
-  // TODO: Super-instruction/Op fusion?
-  struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a, 0);
-  int rs2 = get_allocation(prof, a + 1);
-  dbg_mrbc_prof_print_inst_readable("slt x%d, x%d, x%d", regA.dst, rs2, regA.src);
-  mrbcopro_vector_append32(vm, &(prof->buf), RISCV_LESS_THAN(regA.dst, rs2, regA.src));
-  override_register_information(prof, a+1, 0);
 }
 
 
@@ -3399,17 +3728,21 @@ static inline void op_ge( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler *
 
   int result = mrbc_compare(&regs[a], &regs[a+1]);
 
+  if(unlikely(prof)) {
+    if(!(mrbc_prof_is_constant(prof, a) && mrbc_prof_is_constant(prof, a+1))) {
+      struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a);
+      // TODO: Super-instruction/Op fusion?
+      int rs2 = get_allocation(prof, a + 1);
+      dbg_mrbc_prof_print_inst_readable("slt x%d, x%d, x%d", regA.dst, regA.src, rs2);
+      dbg_mrbc_prof_print_inst_readable("xori x%d, x%d, 1", regA.dst, regA.dst);
+      mrbcopro_vector_append32(vm, &(prof->buf), RISCV_LESS_THAN(regA.dst, regA.src, rs2));
+      mrbcopro_vector_append32(vm, &(prof->buf), RISCV_XOR_IMM(regA.dst, regA.dst, 1));
+    }
+    override_register_information(prof, a+1, 0);
+  }
+
   mrbc_decref(&regs[a]);
   regs[a].tt = result >= 0 ? MRBC_TT_TRUE : MRBC_TT_FALSE;
-
-  // TODO: Super-instruction/Op fusion?
-  struct read_and_override_register_information_ret_t regA = read_and_override_register_information(prof, a, 0);
-  int rs2 = get_allocation(prof, a + 1);
-  dbg_mrbc_prof_print_inst_readable("slt x%d, x%d, x%d", regA.dst, regA.src, rs2);
-  dbg_mrbc_prof_print_inst_readable("xori x%d, x%d, 1", regA.dst, regA.dst);
-  mrbcopro_vector_append32(vm, &(prof->buf), RISCV_LESS_THAN(regA.dst, regA.src, rs2));
-  mrbcopro_vector_append32(vm, &(prof->buf), RISCV_XOR_IMM(regA.dst, regA.dst, 1));
-  override_register_information(prof, a+1, 0);
 }
 
 
@@ -3419,7 +3752,7 @@ static inline void op_ge( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler *
   R[a] = ary_new(R[a],R[a+1]..R[a+b])
 */
 static inline void op_array( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler * prof EXT )
-{ prof->giveup = 1;
+{ if(unlikely(prof)) prof->giveup = 1;
   FETCH_BB();
 
   mrbc_value ret = mrbc_array_new(vm, b);
@@ -3440,7 +3773,7 @@ static inline void op_array( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profile
   R[a] = ary_new(R[b],R[b+1]..R[b+c])
 */
 static inline void op_array2( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler * prof EXT )
-{ prof->giveup = 1;
+{ if(unlikely(prof)) prof->giveup = 1;
   FETCH_BBB();
 
   mrbc_value ret = mrbc_array_new(vm, c);
@@ -3461,7 +3794,7 @@ static inline void op_array2( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profil
   ary_cat(R[a],R[a+1])
 */
 static inline void op_arycat( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler * prof EXT )
-{ prof->giveup = 1;
+{ if(unlikely(prof)) prof->giveup = 1;
   FETCH_B();
 
   if( regs[a].tt == MRBC_TT_NIL ) {
@@ -3499,7 +3832,7 @@ static inline void op_arycat( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profil
   ary_push(R[a],R[a+1]..R[a+b])
 */
 static inline void op_arypush( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler * prof EXT )
-{ prof->giveup = 1;
+{ if(unlikely(prof)) prof->giveup = 1;
   FETCH_BB();
 
   int sz1 = mrbc_array_size(&regs[a]);
@@ -3520,7 +3853,7 @@ static inline void op_arypush( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profi
   R[a] = ary_dup(R[a])
 */
 static inline void op_arydup( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler * prof EXT )
-{ prof->giveup = 1;
+{ if(unlikely(prof)) prof->giveup = 1;
   FETCH_B();
 
   mrbc_value ret = mrbc_array_dup( vm, &regs[a] );
@@ -3535,7 +3868,7 @@ static inline void op_arydup( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profil
   R[a] = R[b][c]
 */
 static inline void op_aref( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler * prof EXT )
-{ prof->giveup = 1;
+{ if(unlikely(prof)) prof->giveup = 1;
   FETCH_BBB();
 
   mrbc_value *src = &regs[b];
@@ -3565,7 +3898,7 @@ static inline void op_aref( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler
   R[b][c] = R[a]
 */
 static inline void op_aset( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler * prof EXT )
-{ prof->giveup = 1;
+{ if(unlikely(prof)) prof->giveup = 1;
   FETCH_BBB();
 
   assert( mrbc_type(regs[b]) == MRBC_TT_ARRAY );
@@ -3581,7 +3914,7 @@ static inline void op_aset( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler
   *R[a],R[a+1]..R[a+c] = R[a][b..]
 */
 static inline void op_apost( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler * prof EXT )
-{ prof->giveup = 1;
+{ if(unlikely(prof)) prof->giveup = 1;
   FETCH_BBB();
 
   mrbc_value src = regs[a];
@@ -3622,7 +3955,7 @@ static inline void op_apost( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profile
   R[a] = intern(R[a])
 */
 static inline void op_intern( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler * prof EXT )
-{ prof->giveup = 1;
+{ if(unlikely(prof)) prof->giveup = 1;
   FETCH_B();
 
   assert( regs[a].tt == MRBC_TT_STRING );
@@ -3653,7 +3986,7 @@ static inline void op_symbol( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profil
   mrbc_decref(&regs[a]);
   regs[a] = mrbc_symbol_value( sym_id );
 
-  write_immediate(prof, a, sym_id);
+  if(unlikely(prof)) write_immediate(prof, a, sym_id);
 }
 
 
@@ -3669,7 +4002,7 @@ static inline void op_string( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profil
   mrbc_decref(&regs[a]);
   regs[a] = mrbc_irep_pool_value(vm, b);
 
-  gen_read_const_object(vm, regs, prof, NULL, a);
+  if(unlikely(prof)) gen_read_const_object(vm, regs, prof, NULL, a);
 }
 
 
@@ -3679,7 +4012,7 @@ static inline void op_string( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profil
   str_cat(R[a],R[a+1])
 */
 static inline void op_strcat( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler * prof EXT )
-{ prof->giveup = 1;
+{ if(unlikely(prof)) prof->giveup = 1;
   FETCH_B();
 
 #if MRBC_USE_STRING
@@ -3705,7 +4038,7 @@ static inline void op_strcat( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profil
   R[a] = hash_new(R[a],R[a+1]..R[a+b*2-1])
 */
 static inline void op_hash( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler * prof EXT )
-{ prof->giveup = 1;
+{ if(unlikely(prof)) prof->giveup = 1;
   FETCH_BB();
 
   mrbc_value value = mrbc_hash_new(vm, b);
@@ -3728,7 +4061,7 @@ static inline void op_hash( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler
   hash_push(R[a],R[a+1]..R[a+b*2])
 */
 static inline void op_hashadd( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler * prof EXT )
-{ prof->giveup = 1;
+{ if(unlikely(prof)) prof->giveup = 1;
   FETCH_BB();
 
   int sz1 = mrbc_array_size(&regs[a]);
@@ -3751,7 +4084,7 @@ static inline void op_hashadd( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profi
   R[a] = hash_cat(R[a],R[a+1])
 */
 static inline void op_hashcat( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler * prof EXT )
-{ prof->giveup = 1;
+{ if(unlikely(prof)) prof->giveup = 1;
   FETCH_B();
 
   mrbc_hash_iterator ite = mrbc_hash_iterator_new(&regs[a+1]);
@@ -3771,7 +4104,7 @@ static inline void op_hashcat( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profi
   R[a] = lambda(Irep[b],L_BLOCK)
 */
 static inline void op_block( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler * prof EXT )
-{ prof->giveup = 1;
+{ if(unlikely(prof)) prof->giveup = 1;
   FETCH_BB();
 
   mrbc_value ret = mrbc_proc_new(vm, mrbc_irep_child_irep(vm->cur_irep, b), 'B');
@@ -3783,12 +4116,28 @@ static inline void op_block( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profile
 
 
 //================================================================
+/*! OP_METHOD
+
+  R[a] = lambda(Irep[b],L_METHOD)
+*/
+static inline void op_method( mrbc_vm *vm, mrbc_value *regs EXT )
+{
+  FETCH_BB();
+
+  mrbc_value ret = mrbc_proc_new(vm, mrbc_irep_child_irep(vm->cur_irep, b), 'M');
+  if( !ret.proc ) return;	// ENOMEM
+
+  mrbc_decref(&regs[a]);
+  regs[a] = ret;
+}
+
+//================================================================
 /*! OP_RANGE_INC
 
   R[a] = range_new(R[a],R[a+1],FALSE)
 */
 static inline void op_range_inc( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler * prof EXT )
-{ prof->giveup = 1;
+{ if(unlikely(prof)) prof->giveup = 1;
   FETCH_B();
 
   mrbc_value value = mrbc_range_new(vm, &regs[a], &regs[a+1], 0);
@@ -3803,7 +4152,7 @@ static inline void op_range_inc( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_pro
   R[a] = range_new(R[a],R[a+1],TRUE)
 */
 static inline void op_range_exc( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler * prof EXT )
-{ prof->giveup = 1;
+{ if(unlikely(prof)) prof->giveup = 1;
   FETCH_B();
 
   mrbc_value value = mrbc_range_new(vm, &regs[a], &regs[a+1], 1);
@@ -3825,7 +4174,99 @@ static inline void op_oclass( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profil
   regs[a].tt = MRBC_TT_CLASS;
   regs[a].cls = MRBC_CLASS(Object);
 
-  write_immediate(prof, a, (uint32_t)(regs[a].cls));
+  if(unlikely(prof)) write_immediate(prof, a, (uint32_t)(regs[a].cls));
+}
+
+
+//================================================================
+/*! OP_CLASS
+
+  R[a] = newclass(R[a],Syms[b],R[a+1])
+*/
+static inline void op_class( mrbc_vm *vm, mrbc_value *regs EXT )
+{
+  FETCH_BB();
+
+  mrbc_class *super;
+
+  switch( regs[a+1].tt ) {
+  case MRBC_TT_CLASS:
+    super = regs[a+1].cls;
+    break;
+  case MRBC_TT_NIL:
+    super = 0;
+    break;
+  default:
+    mrbc_raise(vm, MRBC_CLASS(TypeError), "superclass must be a Class");
+    return;
+  }
+
+  // check unsupported pattern.
+  if( super ) {
+    for( int i = 1; i < MRBC_TT_MAXVAL; i++ ) {
+      if( super == mrbc_class_tbl[i] ) {
+	mrbc_raise(vm, MRBC_CLASS(NotImplementedError), "Inherit the built-in class is not supported");
+	return;
+      }
+    }
+  }
+
+  mrbc_class *outer = 0;
+
+  if( regs[a].tt == MRBC_TT_CLASS || regs[a].tt == MRBC_TT_MODULE ) {
+    outer = regs[a].cls;
+  } else if( vm->cur_regs[0].tt == MRBC_TT_CLASS || vm->cur_regs[0].tt == MRBC_TT_MODULE ) {
+    outer = vm->cur_regs[0].cls;
+  }
+
+  const char *class_name = mrbc_irep_symbol_cstr(vm->cur_irep, b);
+  mrbc_class *cls;
+
+  // define a new class (or get an already defined class)
+  if( outer ) {
+    cls = mrbc_define_class_under(vm, outer, class_name, super);
+  } else {
+    cls = mrbc_define_class(vm, class_name, super);
+  }
+
+  // (note)
+  //  regs[a] was set to NIL or Class by compiler. So, no need to release.
+  regs[a].tt = MRBC_TT_CLASS;
+  regs[a].cls = cls;
+}
+
+
+//================================================================
+/*! OP_MODULE
+
+  R[a] = newmodule(R[a],Syms[b])
+*/
+static inline void op_module( mrbc_vm *vm, mrbc_value *regs EXT )
+{
+  FETCH_BB();
+
+  mrbc_class *outer = 0;
+
+  if( regs[a].tt == MRBC_TT_CLASS || regs[a].tt == MRBC_TT_MODULE ) {
+    outer = regs[a].cls;
+  } else if( vm->cur_regs[0].tt == MRBC_TT_CLASS || vm->cur_regs[0].tt == MRBC_TT_MODULE ) {
+    outer = vm->cur_regs[0].cls;
+  }
+
+  const char *module_name = mrbc_irep_symbol_cstr(vm->cur_irep, b);
+  mrbc_class *cls;
+
+  // define a new module (or get an already defined class)
+  if( outer ) {
+    cls = mrbc_define_module_under(vm, outer, module_name);
+  } else {
+    cls = mrbc_define_module(vm, module_name);
+  }
+
+  // (note)
+  //  regs[a] was set to Class, Module or NIL by compiler. So, no need to release.
+  regs[a].tt = MRBC_TT_MODULE;
+  regs[a].cls = cls;
 }
 
 //================================================================
@@ -3834,12 +4275,12 @@ static inline void op_oclass( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profil
   R[a] = blockexec(R[a],Irep[b])
 */
 static inline void op_exec( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler * prof EXT )
-{ prof->giveup = 1;
+{ if(unlikely(prof)) prof->giveup = 1;
   FETCH_BB();
   assert( regs[a].tt == MRBC_TT_CLASS || regs[a].tt == MRBC_TT_MODULE );
 
   // prepare callinfo
-  mrbc_push_callinfo(vm, 0, a, 0);
+  mrbc_push_callinfo(vm, regs[a].cls->sym_id, a, 0);
 
   // target irep
   vm->cur_irep = mrbc_irep_child_irep(vm->cur_irep, b);
@@ -3849,13 +4290,121 @@ static inline void op_exec( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler
   vm->target_class = regs[a].cls;
 }
 
+
+//----------------------------------------------------------------
+static void sub_irep_incref( mrbc_irep *irep, int inc_dec )
+{
+  for( int i = 0; i < irep->rlen; i++ ) {
+    sub_irep_incref( mrbc_irep_child_irep(irep, i), inc_dec );
+  }
+
+  irep->ref_count += inc_dec;
+}
+
+static void sub_def_alias( mrbc_class *cls, mrbc_method *method, mrbc_sym sym_id )
+{
+  method->next = cls->method_link;
+  cls->method_link = method;
+
+  if( !method->c_func ) sub_irep_incref( method->irep, +1 );
+
+  // checking same method
+  for( ;method->next != NULL; method = method->next ) {
+    if( method->next->sym_id == sym_id ) {
+      // Found it. Unchain it in linked list and remove.
+      mrbc_method *del_method = method->next;
+
+      method->next = del_method->next;
+      if( del_method->type == 'M' ) {
+	if( !del_method->c_func ) sub_irep_incref( del_method->irep, -1 );
+	mrbc_raw_free( del_method );
+      }
+
+      break;
+    }
+  }
+}
+
+//================================================================
+/*! OP_DEF
+
+  R[a].newmethod(Syms[b],R[a+1]); R[a] = Syms[b]
+*/
+static inline void op_def( mrbc_vm *vm, mrbc_value *regs EXT )
+{
+  FETCH_BB();
+
+  assert( regs[a].tt == MRBC_TT_CLASS || regs[a].tt == MRBC_TT_MODULE );
+  assert( regs[a+1].tt == MRBC_TT_PROC );
+
+  mrbc_class *cls = regs[a].cls;
+  mrbc_sym sym_id = mrbc_irep_symbol_id(vm->cur_irep, b);
+  mrbc_proc *proc = regs[a+1].proc;
+  mrbc_method *method = (vm->vm_id == 0) ?
+    mrbc_raw_alloc_no_free( sizeof(mrbc_method) ) :
+    mrbc_raw_alloc( sizeof(mrbc_method) );
+  if( !method ) return; // ENOMEM
+
+  method->type = (vm->vm_id == 0) ? 'm' : 'M';
+  method->c_func = 0;
+  method->sym_id = sym_id;
+  method->irep = proc->irep;
+
+  sub_def_alias( cls, method, sym_id );
+  mrbc_set_symbol(&regs[a], sym_id);
+}
+
+
+//================================================================
+/*! OP_ALIAS
+
+  alias_method(target_class,Syms[a],Syms[b])
+*/
+static inline void op_alias( mrbc_vm *vm, mrbc_value *regs EXT )
+{
+  FETCH_BB();
+
+  mrbc_sym sym_id_new = mrbc_irep_symbol_id(vm->cur_irep, a);
+  mrbc_sym sym_id_org = mrbc_irep_symbol_id(vm->cur_irep, b);
+  mrbc_class *cls = vm->target_class;
+  mrbc_method *method = (vm->vm_id == 0) ?
+    mrbc_raw_alloc_no_free( sizeof(mrbc_method) ) :
+    mrbc_raw_alloc( sizeof(mrbc_method) );
+  if( !method ) return; // ENOMEM
+
+  if( mrbc_find_method( method, cls, sym_id_org ) == 0 ) {
+    mrbc_raisef(vm, MRBC_CLASS(NameError), "undefined method '%s'",
+		mrbc_symid_to_str(sym_id_org));
+    if(vm->vm_id != 0) mrbc_raw_free( method );
+    return;
+  }
+
+  method->type = (vm->vm_id == 0) ? 'm' : 'M';
+  method->sym_id = sym_id_new;
+
+  sub_def_alias( cls, method, sym_id_new );
+}
+
+
+//================================================================
+/*! OP_SCLASS
+
+  R[a] = R[a].singleton_class
+*/
+static inline void op_sclass( mrbc_vm *vm, mrbc_value *regs EXT )
+{
+  // currently, not supported
+  FETCH_B();
+}
+
+
 //================================================================
 /*! OP_TCLASS
 
   R[a] = target_class
 */
 static inline void op_tclass( mrbc_vm *vm, mrbc_value *regs, mrbc_profile_profiler * prof EXT )
-{ prof->giveup = 1;
+{ if(unlikely(prof)) prof->giveup = 1;
   FETCH_B();
 
   mrbc_decref(&regs[a]);
@@ -3915,7 +4464,7 @@ static inline void op_unsupported( mrbc_vm *vm, mrbc_value *regs EXT )
   @retval 4	program done.
   @retval 2	exception occurred.
 */
-int profile( struct VM *vm, mrbc_callinfo * callTop)
+int vmrun( struct VM *vm, int is_enable_profiler, void * callTop)
 {
 #if defined(MRBC_SUPPORT_OP_EXT)
   int ext = 0;
@@ -3924,8 +4473,9 @@ int profile( struct VM *vm, mrbc_callinfo * callTop)
 #define EXT
 #endif
   int retVal = 0;
-  mrbc_profile_profiler * prof = (mrbc_profile_profiler *)mrbcopro_alloc(vm, sizeof(mrbc_profile_profiler));
-  { // TODO: OoM Error
+  mrbc_profile_profiler * prof = NULL;
+  if(is_enable_profiler) { // TODO: OoM Error
+    prof = (mrbc_profile_profiler *)mrbcopro_alloc(vm, sizeof(mrbc_profile_profiler));
     memset(prof, 0, sizeof(mrbc_profile_profiler));
     prof->vm = vm;
 #if MRBC_PROF_DBG_ENABLE
@@ -3938,7 +4488,7 @@ int profile( struct VM *vm, mrbc_callinfo * callTop)
   }
   while( 1 ) {
     mrbc_value *regs = vm->cur_regs;
-    prof->lastInst = vm->inst;
+    if(unlikely(prof)) prof->lastInst = vm->inst;
     uint8_t op = *vm->inst++;		// Dispatch
     switch( op ) {
     case OP_NOP:        op_nop        (vm, regs EXT); break;
@@ -4029,17 +4579,17 @@ int profile( struct VM *vm, mrbc_callinfo * callTop)
     case OP_HASHCAT:    op_hashcat    (vm, regs, prof EXT); break; // give up method
     case OP_LAMBDA:     op_unsupported(vm, regs EXT); break; // not implemented.
     case OP_BLOCK:      op_block      (vm, regs, prof EXT); break; // give up method
-    case OP_METHOD:     op_unsupported(vm, regs EXT); break; // TODO: DISABLED.
+    case OP_METHOD:     op_method     (vm, regs EXT); break;
     case OP_RANGE_INC:  op_range_inc  (vm, regs, prof EXT); break; // give up method
     case OP_RANGE_EXC:  op_range_exc  (vm, regs, prof EXT); break; // give up method
     case OP_OCLASS:     op_oclass     (vm, regs, prof EXT); break;
-    case OP_CLASS:      op_unsupported(vm, regs EXT); break; // TODO: DISABLED.
-    case OP_MODULE:     op_unsupported(vm, regs EXT); break; // TODO: DISABLED.
+    case OP_CLASS:      op_class      (vm, regs EXT); break;
+    case OP_MODULE:     op_module     (vm, regs EXT); break;
     case OP_EXEC:       op_exec       (vm, regs, prof EXT); break; // give up method
-    case OP_DEF:        op_unsupported(vm, regs EXT); break; // TODO: DISABLED.
-    case OP_ALIAS:      op_unsupported(vm, regs EXT); break; // TODO: DISABLED.
+    case OP_DEF:        op_def        (vm, regs EXT); break;
+    case OP_ALIAS:      op_alias      (vm, regs EXT); break;
     case OP_UNDEF:      op_unsupported(vm, regs EXT); break; // TODO: DISABLED.
-    case OP_SCLASS:     op_unsupported(vm, regs EXT); break;
+    case OP_SCLASS:     op_sclass     (vm, regs EXT); break;
     case OP_TCLASS:     op_tclass     (vm, regs, prof EXT); break; // give up method
     case OP_DEBUG:      op_unsupported(vm, regs EXT); break; // not implemented.
     case OP_ERR:        op_unsupported(vm, regs EXT); break; // not implemented.
@@ -4061,7 +4611,7 @@ int profile( struct VM *vm, mrbc_callinfo * callTop)
 #endif
 
     if( !vm->flag_preemption ) {
-      if(callTop == vm->callinfo_tail)
+      if(prof != NULL && callTop == vm->callinfo_tail)
         PROFILE_RETURN(4);
       continue;	// execute next ope code.
     }
@@ -4101,6 +4651,28 @@ int profile( struct VM *vm, mrbc_callinfo * callTop)
       PROFILE_RETURN(4);
   }
   RETURN:
-    profile_dtor(vm, prof);
+    if(prof != NULL) profile_dtor(vm, prof);
     return retVal;
+}
+
+/*! Fetch a bytecode and execute
+
+  @param  vm	A pointer to VM.
+  @retval 0	(maybe) preemption by timer.
+  @retval 1	program done.
+  @retval 2	exception occurred.
+*/
+int mrbc_vm_run( struct VM *vm ) {
+  return vmrun(vm, 0, NULL);
+}
+
+//================================================================
+/*! Fetch a bytecode and execute
+
+  @param  vm	A pointer to VM.
+  @retval 4	program done.
+  @retval 2	exception occurred.
+*/
+int profile( struct VM *vm, mrbc_callinfo * callTop) {
+  return vmrun(vm, 1, callTop);
 }

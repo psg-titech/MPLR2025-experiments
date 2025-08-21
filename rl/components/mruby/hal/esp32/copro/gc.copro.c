@@ -147,16 +147,7 @@ void mrbcopro_gc_gc(void) {
   mrbcopro_gc_sweep();
 }
 
-#define MRBC_DBG_ALLOCATION_PROFILE 0
-#if MRBC_DBG_ALLOCATION_PROFILE
-int allocated = 0;
-int totallength = 0;
-#endif
 void mrbcopro_gc_clear(void) {
-#if MRBC_DBG_ALLOCATION_PROFILE
-  allocated = 0;
-  totallength = 0;
-#endif
   for(int i = 0; i <= 3; i++) {
     memset(heaps[i].ctrl, 0, (size_t)heaps[i].region - (size_t)heaps[i].ctrl);
   }
@@ -185,11 +176,6 @@ void * mrbcopro_gc_alloc(size_t length, int special) {
             if(special == 0)
               *pfj |= (1 << k); // Frozen bit!
           }
-#if MRBC_DBG_ALLOCATION_PROFILE
-          allocated += len;
-          totallength += length;
-          printf("COPRO ALLOCATED: %d/4096 TOTAL LENGTH:%d\n", allocated, totallength);
-#endif
           retVal = (void *)(rgon + len*(j+k));
           goto ret;
         }
@@ -216,11 +202,6 @@ void * mrbcopro_gc_alloc(size_t length, int special) {
           if(special == 0)
             mrbc_gc_space[MRBC_GC_BIGGER_START + (MRBC_GC_BIGGER_COUNT / 32) + ek] |= 1 << ej; // Frozen bit!
         }
-#if MRBC_DBG_ALLOCATION_PROFILE
-        allocated += len*MRBC_GC_BIGGER_ALIGN*4;
-        totallength += length;
-        printf("COPRO ALLOCATED: %d/4096 TOTAL LENGTH:%d\n", allocated, totallength);
-#endif
         retVal =  (void *)((size_t)&mrbc_gc_space[MRBC_GC_BIGGER_REGION_START] + (MRBC_GC_BIGGER_ALIGN*sizeof(uint32_t)*e));
         goto ret;
       }

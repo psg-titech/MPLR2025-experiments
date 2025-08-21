@@ -1,44 +1,35 @@
-Executing action: size-components
-Running ninja in directory C:\Workspace\Projects\mplr2025\build
-Executing "ninja all"...
-[1/14] Performing build step for 'ulp_main'
-ninja: no work to do.
-[1/1] C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Workspace\P...rkspace/Projects/mplr2025/build/bootloader/bootloader.bin"
-Bootloader binary size 0x2ed0 bytes. 0x5130 bytes (63%) free.
-[6/7] C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Workspace\P....bin C:/Workspace/Projects/mplr2025/build/mplr2025-c6.bin"
-mplr2025-c6.bin binary size 0x26230 bytes. Smallest app partition is 0x100000 bytes. 0xd9dd0 bytes (85%) free.
-[7/7] Completed 'bootloader'Running ninja in directory C:\Workspace\Projects\mplr2025\build
-Executing "ninja size-components"...
-[0/1] C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Workspace\Projects\mplr2025\build && C:\Workspace\Misc\esp\.espressif\tools\cmake\3.30.2\bin\cmake.exe -D IDF_SIZE_TOOL=C:/Workspace/Misc/esp/.espressif/python_env/idf5.5_py3.11_env/Scripts/python.exe;-m;esp_idf_size -D IDF_SIZE_MODE=--archives -D MAP_FILE=C:/Workspace/Projects/mplr2025/build/mplr2025-c6.map -D OUTPUT_JSON= -P C:/Workspace/Misc/esp/esp-idf/tools/cmake/run_size_tool.cmake"
-                                                       Per-archive contributions to ELF file                            
-+--------------------------------------------------------------------------------------------------------------------------------------------------+
-| Archive File                    | Total Size | DIRAM |  .bss | .data | .text | Flash Code | .rodata | .appdesc | .text | LP SRAM | .rtc_reserved |
-|---------------------------------+------------+-------+-------+-------+-------+------------+---------+----------+-------+---------+---------------|
-| libmruby.a                      |      59427 |  2555 |  2087 |   468 |     0 |      56872 |    6466 |        0 | 50406 |       0 |             0 |
-| libmain.a                       |      56574 | 40960 | 40960 |     0 |     0 |      15614 |   15536 |        0 |    78 |       0 |             0 |
-| libesp_hw_support.a             |      20615 |  7368 |    83 |  1265 |  6020 |      13223 |     825 |        0 | 12398 |      24 |            24 |
-| libc.a                          |      14241 |   584 |   320 |   264 |     0 |      13657 |    1029 |        0 | 12628 |       0 |             0 |
-| libesp_system.a                 |      11934 |  1819 |   109 |    16 |  1694 |      10115 |    5857 |        0 |  4258 |       0 |             0 |
-| libfreertos.a                   |       9254 |  9156 |  2240 |    14 |  6902 |         98 |       4 |        0 |    94 |       0 |             0 |
-| libhal.a                        |       7718 |  5886 |    12 |     4 |  5870 |       1832 |       0 |        0 |  1832 |       0 |             0 |
-| libspi_flash.a                  |       6266 |  5510 |     6 |   588 |  4916 |        756 |       6 |        0 |   750 |       0 |             0 |
-| libnewlib.a                     |       3364 |  1806 |   200 |   250 |  1356 |       1558 |      16 |        0 |  1542 |       0 |             0 |
-| libefuse.a                      |       2570 |   372 |   364 |     8 |     0 |       2198 |     204 |        0 |  1994 |       0 |             0 |
-| libheap.a                       |       2567 |  1046 |     8 |    12 |  1026 |       1521 |     323 |        0 |  1198 |       0 |             0 |
-| libesp_mm.a                     |       1782 |   516 |    48 |     0 |   468 |       1266 |      24 |        0 |  1242 |       0 |             0 |
-| libesp_rom.a                    |       1434 |  1372 |    84 |     0 |  1288 |         62 |       4 |        0 |    58 |       0 |             0 |
-| libriscv.a                      |       1128 |  1022 |   256 |     0 |   766 |        106 |       0 |        0 |   106 |       0 |             0 |
-| libesp_partition.a              |        900 |     8 |     8 |     0 |     0 |        892 |       0 |        0 |   892 |       0 |             0 |
-| libbootloader_support.a         |        812 |   762 |     0 |     0 |   762 |         50 |       0 |        0 |    50 |       0 |             0 |
-| libesp_driver_gpio.a            |        720 |     0 |     0 |     0 |     0 |        720 |       0 |        0 |   720 |       0 |             0 |
-| libesp_timer.a                  |        392 |    92 |    20 |     0 |    72 |        300 |       8 |        0 |   292 |       0 |             0 |
-| libesp_app_format.a             |        391 |    17 |    17 |     0 |     0 |        374 |       8 |      256 |   110 |       0 |             0 |
-| libsoc.a                        |        249 |     0 |     0 |     0 |     0 |        249 |     249 |        0 |     0 |       0 |             0 |
-| libulp.a                        |        178 |     0 |     0 |     0 |     0 |        178 |       0 |        0 |   178 |       0 |             0 |
-| libesp_driver_usb_serial_jtag.a |        155 |    99 |     5 |     0 |    94 |         56 |       8 |        0 |    48 |       0 |             0 |
-| libapp_update.a                 |        118 |     4 |     4 |     0 |     0 |        114 |       0 |        0 |   114 |       0 |             0 |
-| libesp_security.a               |         48 |     0 |     0 |     0 |     0 |         48 |       8 |        0 |    40 |       0 |             0 |
-| liblog.a                        |         14 |    14 |     4 |     0 |    10 |          0 |       0 |        0 |     0 |       0 |             0 |
-| libpthread.a                    |         10 |     0 |     0 |     0 |     0 |         10 |       0 |        0 |    10 |       0 |             0 |
-| libcxx.a                        |          4 |     0 |     0 |     0 |     0 |          4 |       0 |        0 |     4 |       0 |             0 |
-+--------------------------------------------------------------------------------------------------------------------------------------------------+
+                                                                      Per-archive contributions to ELF file
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Archive File                    | Total Size | DIRAM |  .bss | .data | .text | Flash Code | .rodata | .appdesc | .text | LP SRAM | .rtc_reserved | .data | .force_fast | .text |
+|---------------------------------+------------+-------+-------+-------+-------+------------+---------+----------+-------+---------+---------------+-------+-------------+-------|
+| libmruby.a                      |      61914 |  2555 |  2087 |   468 |     0 |      59359 |    6513 |        0 | 52846 |       0 |             0 |     0 |           0 |     0 |
+| libmain.a                       |      56548 | 40960 | 40960 |     0 |     0 |      15588 |   14718 |        0 |   870 |       0 |             0 |     0 |           0 |     0 |
+| libesp_hw_support.a             |      29160 | 14719 |   131 |  1290 | 13298 |      14307 |     825 |        0 | 13482 |     134 |            24 |    12 |          36 |    62 |
+| libc.a                          |      14241 |   584 |   320 |   264 |     0 |      13657 |    1029 |        0 | 12628 |       0 |             0 |     0 |           0 |     0 |
+| libesp_system.a                 |      12402 |  1819 |   109 |    16 |  1694 |      10583 |    6325 |        0 |  4258 |       0 |             0 |     0 |           0 |     0 |
+| libhal.a                        |       9710 |  6558 |    12 |     4 |  6542 |       3152 |       0 |        0 |  3152 |       0 |             0 |     0 |           0 |     0 |
+| libfreertos.a                   |       9540 |  9258 |  2240 |    14 |  7004 |        282 |       4 |        0 |   278 |       0 |             0 |     0 |           0 |     0 |
+| libspi_flash.a                  |       6266 |  5510 |     6 |   588 |  4916 |        756 |       6 |        0 |   750 |       0 |             0 |     0 |           0 |     0 |
+| libesp_driver_ledc.a            |       4628 |   598 |    40 |     0 |   558 |       4030 |      12 |        0 |  4018 |       0 |             0 |     0 |           0 |     0 |
+| libnewlib.a                     |       3364 |  1806 |   200 |   250 |  1356 |       1558 |      16 |        0 |  1542 |       0 |             0 |     0 |           0 |     0 |
+| libefuse.a                      |       2570 |   372 |   364 |     8 |     0 |       2198 |     204 |        0 |  1994 |       0 |             0 |     0 |           0 |     0 |
+| libheap.a                       |       2567 |  1046 |     8 |    12 |  1026 |       1521 |     323 |        0 |  1198 |       0 |             0 |     0 |           0 |     0 |
+| libesp_driver_gpio.a            |       2396 |     0 |     0 |     0 |     0 |       2396 |       0 |        0 |  2396 |       0 |             0 |     0 |           0 |     0 |
+| libesp_mm.a                     |       1782 |   516 |    48 |     0 |   468 |       1266 |      24 |        0 |  1242 |       0 |             0 |     0 |           0 |     0 |
+| libesp_rom.a                    |       1434 |  1372 |    84 |     0 |  1288 |         62 |       4 |        0 |    58 |       0 |             0 |     0 |           0 |     0 |
+| libdriver.a                     |       1158 |     8 |     8 |     0 |     0 |       1150 |       4 |        0 |  1146 |       0 |             0 |     0 |           0 |     0 |
+| libriscv.a                      |       1128 |  1022 |   256 |     0 |   766 |        106 |       0 |        0 |   106 |       0 |             0 |     0 |           0 |     0 |
+| libesp_partition.a              |        900 |     8 |     8 |     0 |     0 |        892 |       0 |        0 |   892 |       0 |             0 |     0 |           0 |     0 |
+| libbootloader_support.a         |        812 |   762 |     0 |     0 |   762 |         50 |       0 |        0 |    50 |       0 |             0 |     0 |           0 |     0 |
+| libulp.a                        |        682 |     4 |     4 |     0 |     0 |        678 |       0 |        0 |   678 |       0 |             0 |     0 |           0 |     0 |
+| libesp_timer.a                  |        460 |   160 |    20 |     0 |   140 |        300 |       8 |        0 |   292 |       0 |             0 |     0 |           0 |     0 |
+| libesp_app_format.a             |        391 |    17 |    17 |     0 |     0 |        374 |       8 |      256 |   110 |       0 |             0 |     0 |           0 |     0 |
+| libsoc.a                        |        278 |     0 |     0 |     0 |     0 |        278 |     278 |        0 |     0 |       0 |             0 |     0 |           0 |     0 |
+| libesp_driver_usb_serial_jtag.a |        155 |    99 |     5 |     0 |    94 |         56 |       8 |        0 |    48 |       0 |             0 |     0 |           0 |     0 |
+| libapp_update.a                 |        118 |     4 |     4 |     0 |     0 |        114 |       0 |        0 |   114 |       0 |             0 |     0 |           0 |     0 |
+| libesp_pm.a                     |        112 |   112 |    64 |     0 |    48 |          0 |       0 |        0 |     0 |       0 |             0 |     0 |           0 |     0 |
+| libesp_security.a               |         48 |     0 |     0 |     0 |     0 |         48 |       8 |        0 |    40 |       0 |             0 |     0 |           0 |     0 |
+| liblog.a                        |         14 |    14 |     4 |     0 |    10 |          0 |       0 |        0 |     0 |       0 |             0 |     0 |           0 |     0 |
+| libpthread.a                    |         10 |     0 |     0 |     0 |     0 |         10 |       0 |        0 |    10 |       0 |             0 |     0 |           0 |     0 |
+| libcxx.a                        |          4 |     0 |     0 |     0 |     0 |          4 |       0 |        0 |     4 |       0 |             0 |     0 |           0 |     0 |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+

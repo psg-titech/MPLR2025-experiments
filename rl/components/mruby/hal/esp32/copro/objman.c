@@ -336,18 +336,13 @@ int mrbcopro_objman_from_copro_update_value_without_checking(struct VM * vm, mrb
       mrbc_copro_instance * ins = (mrbc_copro_instance *)obj;
       mrbcopro_objinfo * oi = mrbcopro_objman_get_obj_info2(objman, ins->tt);
       for(int i = 0; i < oi->len; ++i) {
+        mrbc_value vv = {.tt = MRBC_TT_EMPTY};
         mrbc_value * v = mrbc_instance_getiv_p(dst, oi->sym[i]);
-        if(v != NULL) {
-          mrbcopro_objman_translate_from_copro(vm, objman, v, ins->data[i]); // prev.rc-- if prev.rc > 1, then, new.rc++
-          // RESULT: prev.rc -= 1, new.rc += 1
-        } else {
-          mrbc_value vv = {.tt = MRBC_TT_EMPTY};
-          mrbcopro_objman_translate_from_copro(vm, objman, &vv, ins->data[i]);
-          if(vv.tt > MRBC_TT_NIL) {
-            mrbc_instance_setiv(dst, oi->sym[i], &vv);
-            mrbc_decref(&vv);
-            v = &vv;
-          }
+        if(v == NULL) v = &vv;
+        mrbcopro_objman_translate_from_copro(vm, objman, v, ins->data[i]);
+        if(vv.tt > MRBC_TT_NIL) {
+          mrbc_instance_setiv(dst, oi->sym[i], v);
+          mrbc_decref(v);
         }
       }
       return 0;
@@ -431,7 +426,7 @@ int mrbcopro_objman_receive(struct VM * vm, mrbcopro_objman_t * objman) {
     for(int j = 0; j < tbl_size[i]; used++, start++, frozen++) {
       uint32_t s = *start & *used, f = *frozen;
       for(int k = 0; k < 32 && j < tbl_size[i]; ++k, ++j, region += shift) {
-        if((s&(1 << k)) == 0){
+        if((s&(1 << k)) == 0) {
           t[j].tt = MRBC_TT_NIL;
           continue;
         }
@@ -474,7 +469,6 @@ FINALIZER:
 
 mrbc_copro_vtype mrbcopro_objman_type2coprotype(struct VM * vm, mrbcopro_objman_t * objman, mrbc_value * v) {
   if(v->tt == MRBC_TT_OBJECT) {
-    dbg_mrbc_prof_printf("v->instance is %p", v->instance);
     mrbcopro_objinfo * res = mrbcopro_objman_get_obj_info(vm, objman, v->instance->cls);
     if(res == NULL)
       return MRBC_TT_NIL;

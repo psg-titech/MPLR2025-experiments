@@ -90,6 +90,7 @@ int sensor_off(void) {
 int read_for_1sec(void) {
   int res = 0;
   sensor_on();
+  sleep(20);
   for(int i = 0; i < 12; ++i) {
     sleep(80);
     if(sensor_read(i)) res = 1;
@@ -133,7 +134,7 @@ int main (void)
     //asm volatile("addi sp, sp, 128");
     mrbc_sp_bottom = NULL;
     lp_core_ll_set_wakeup_source(LP_CORE_LL_WAKEUP_SOURCE_LP_TIMER);
-    ulp_lp_core_lp_timer_set_wakeup_time(7*1000*1000);
+    ulp_lp_core_lp_timer_set_wakeup_time((7*1000-100)*1000);
     ulp_lp_core_halt();
 
     return 0;
