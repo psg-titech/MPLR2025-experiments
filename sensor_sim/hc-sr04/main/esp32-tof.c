@@ -10,8 +10,8 @@
 #define ECHO_PIN GPIO_NUM_25
 #define TRIG_PIN GPIO_NUM_26
 
-// 10cmの距離をシミュレートする時間（マイクロ秒）
-#define SIMULATED_DISTANCE_TIME_US 583
+// 100cmの距離をシミュレートする時間（マイクロ秒）
+#define SIMULATED_DISTANCE_TIME_US 5830
 
 static QueueHandle_t event_queue;
 static void IRAM_ATTR gpio_isr_handler(void* arg) {

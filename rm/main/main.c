@@ -18,6 +18,7 @@
 
 ///// CHANGE HERE!
 
+//#include "gather_sht30_fast.c"
 //#include "gather_sht30.c"
 //#include "gps_acc.c"
 //#include "breathingled.c"
@@ -127,10 +128,16 @@ static void mrbc_ledc_fade(mrbc_vm *vm, mrbc_value *v, int argc)
     ledc_fade_start(mrbc_integer(val_mode), mrbc_integer(val_ch), (argc == 3 && v[3].tt >= MRBC_TT_TRUE) ? LEDC_FADE_NO_WAIT : LEDC_FADE_WAIT_DONE);
 }
 
+void mrbc_normal_sleep(struct VM * vm, mrbc_value * v, int argc) {
+  vTaskDelay(v[1].i / portTICK_PERIOD_MS);
+  SET_NIL_RETURN();
+}
+
 void mrbc_add_ledc_class(struct VM * vm) {
   mrb_class *cls_ledc = mrbc_define_class(vm, "Ledc", mrbc_class_object);
   mrbc_define_method(vm, cls_ledc, "initialize", mrbc_ledc_initialize);
   mrbc_define_method(vm, cls_ledc, "fade", mrbc_ledc_fade);
+  mrbc_define_method(vm, mrbc_class_object, "sleep", mrbc_normal_sleep);
 }
 
 void app_main(void)

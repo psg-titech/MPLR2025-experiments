@@ -1,0 +1,21 @@
+Procedure:
+1. Flush the programs
+2. Measure without the LED (i.e. open) for 32 min.
+3. Check the ESP32 simulator shows that the received packets are more than 3150.
+
+Connection:
+ESP32C6 ESP32 PPK
+GPIO1 - @ - D0
+GPIO6 - GPIO21(SDA) - @
+GPIO7 - GPIO22(SCL) - @
+@ - GPIO23 - D1
+3V3 - @ - VOUT
+GND - GND - GND
+@ - 3V3 - @
+
+8/25
+INVALID: [CL] 5:53 31C Reason: wrong startup.
+[CM] 6:53 31C
+INVALID: [RM] 8:13 31C
+[RL] 9:14 31C
+[RM] 9:54 32C

@@ -28,6 +28,10 @@ static void lp_i2c_init(void)
     ESP_ERROR_CHECK(lp_core_i2c_master_init(LP_I2C_NUM_0, &i2c_cfg));
 }
 
+
+extern int32_t ulp_value_x[20];
+extern int32_t ulp_value_y[20];
+extern int32_t ulp_value_z[20];
 void app_main(void)
 {
     rtc_gpio_init(1);
@@ -36,9 +40,9 @@ void app_main(void)
     rtc_gpio_pullup_dis(1);
     rtc_gpio_set_level(1, 1);
     ulp_lp_core_cfg_t cfg = {
-      //.wakeup_source = ULP_LP_CORE_WAKEUP_SOURCE_HP_CPU
-      .wakeup_source = ULP_LP_CORE_WAKEUP_SOURCE_LP_TIMER, // LP core will be woken up periodically by LP timer
-      .lp_timer_sleep_duration_us = (7*1000-100)*1000,
+      .wakeup_source = ULP_LP_CORE_WAKEUP_SOURCE_HP_CPU
+      //.wakeup_source = ULP_LP_CORE_WAKEUP_SOURCE_LP_TIMER, // LP core will be woken up periodically by LP timer
+      //.lp_timer_sleep_duration_us = (7*1000-100)*1000,
     };
     lp_i2c_init();
     lp_core_init();
@@ -47,7 +51,9 @@ void app_main(void)
         rtc_gpio_set_level(1, 0);
         ESP_ERROR_CHECK(ulp_lp_core_run(&cfg));
         esp_light_sleep_start();
-        vTaskDelay(10);
         rtc_gpio_set_level(1, 1);
+        for(int i = 0; i < 12; ++i) printf("%ld %ld %ld\n", ulp_value_x[i], ulp_value_y[i], ulp_value_z[i]);
+        vTaskDelay(10);
+        return;
     }
 }

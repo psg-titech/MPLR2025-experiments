@@ -30,7 +30,7 @@
 #define I2C_SLAVE_NUM             I2C_NUM_0                     // I2C port number
 #define I2C_SLAVE_TX_BUF_LEN      256                           // TX buffer size
 #define I2C_SLAVE_RX_BUF_LEN      256                           // RX buffer size
-#define ESP_SLAVE_ADDR            0x53                          // ADXL367 I2C address
+#define ESP_SLAVE_ADDR            0x1D                          // ADXL367 I2C address
 
 // --- ADXL367 Register Definitions ---
 #define ADXL367_REG_FIFO_DATA     0x18

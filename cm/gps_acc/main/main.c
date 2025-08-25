@@ -10,7 +10,7 @@
 
 extern const uint8_t lp_core_main_bin_start[] asm("_binary_ulp_core_main_bin_start");
 extern const uint8_t lp_core_main_bin_end[]   asm("_binary_ulp_core_main_bin_end");
-#define ADXL367_I2C_ADDR 0x53
+#define ADXL367_I2C_ADDR 0x1D
 
 static void lp_core_init(void)
 {
@@ -111,6 +111,7 @@ int read_for_1sec(void) {
 
 int app_app_main (void)
 {
+  while(1) {
     if(read_for_1sec()) goto FAIL;
     int vx = 0, vy = 0, vz = 0;
     for(int i = 0; i < 12; ++i) {
@@ -120,8 +121,8 @@ int app_app_main (void)
     }
     vx = (abs(vx) + abs(vy) + abs(vz))/12;
     if(abs(vx - GRAVITY) > THRESHOLD) goto FAIL;
-    delayMs(7*1000*1000-100);
-    return 0;
+    delayMs(7*1000);
+  }
  FAIL:
     return 0;
 }
@@ -133,11 +134,14 @@ void app_main(void)
     rtc_gpio_pulldown_dis(1);
     rtc_gpio_pullup_dis(1);
     rtc_gpio_set_level(1, 1);
+    // AUTO makes the RTC IO unstable.
+    esp_sleep_pd_config(ESP_PD_DOMAIN_RTC_PERIPH, ESP_PD_OPTION_ON);
     lp_i2c_init();
     lp_core_init();
     while(1) {
         rtc_gpio_set_level(1, 0);
         app_app_main();
         rtc_gpio_set_level(1, 1);
+        return;
     }
 }

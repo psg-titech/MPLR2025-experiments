@@ -1,0 +1,2708 @@
+[copro] PROF allocated = 35(delta: 35)
+
+[copro] [Profile] [NEW FUNCTION] vm->callinfo_tail=$4080b258, cur_irep=$4080b5b4, own_class=$00000000
+[copro] New profiling(INST: OP_ENTER).
+[copro] PROF allocated = 111(delta: 76)
+
+[copro] registered: function=$4080b678 basicblock=$4080b6a0
+[copro] REGISTER ALLOCATION: R0 -> x8(callee-saved) ..f6e0
+[copro] REGISTER ALLOCATION: R1 -> x9(callee-saved) ..f4e0
+[copro] REGISTER ALLOCATION: R2 -> x18(callee-saved) ..fbf4e0
+[copro] REGISTER ALLOCATION: R3 -> x19(callee-saved) ..f3f4e0
+[copro] REGISTER ALLOCATION: R4 -> x20(callee-saved) ..fe3f4e0
+[copro] REGISTER ALLOCATION: R5 -> x21(callee-saved) ..fc3f4e0
+[copro] REGISTER ALLOCATION: R6 -> x22(callee-saved) ..f83f4e0
+[copro] REGISTER ALLOCATION: R7 -> x23(callee-saved) ..f03f4e0
+[copro] REGISTER ALLOCATION: R8 -> x5(caller-saved) ..f03f4c0
+[copro] REGISTER ALLOCATION: R9 -> x6(caller-saved) ..f03f480
+[copro] REGISTER ALLOCATION: R10 -> x7(caller-saved) ..f03f400
+[copro] [GLOBALMAN] a new entry(key = 4080c14c, value = 50001c04) is added.
+[copro] [OBJMAN] created for ADXL (tt:19)
+[copro] CODE allocated = 52(delta: 52)
+
+[copro] INST: $50002046: $000015b5
+[copro] INST: $50002048: $0000e199
+[copro] INST: $5000204a: $852fe1ef
+[copro] INST: $5000204e: $000005cd
+[copro] INST: $50002050: $84cfe1ef
+[copro] INST: $50002054: $00000000
+[copro] INST: $50002022: $00007179
+[copro] INST: $50002024: $0000d606
+[copro] INST: $50002026: $0000d422
+[copro] INST: $50002028: $0000d226
+[copro] INST: $5000202a: $0000d04a
+[copro] INST: $5000202c: $0000ce4e
+[copro] INST: $5000202e: $0000cc52
+[copro] INST: $50002030: $0000ca56
+[copro] INST: $50002032: $0000c85a
+[copro] INST: $50002034: $0000c65e
+[copro] INST: $50002036: $0000842a
+[copro] INST: $50002038: $500025b7
+[copro] INST: $5000203c: $c0458593
+[copro] INST: $50002040: $89cfe0ef
+[copro] INST: $50002044: $0000828e
+[copro] INST: $50002046: $000015b5
+[copro] INST: $50002048: $0000e199
+[copro] INST: $5000204a: $852fe1ef
+[copro] INST: $5000204e: $000005cd
+[copro] INST: $50002050: $84cfe1ef
+[copro] PROF allocated = 187(delta: 76)
+
+[copro] registered: function=$4080b678 basicblock=$4080b704
+[copro] [GLOBALMAN] a new entry(key = 4080c16c, value = 50001c08) is added.
+[copro] CODE allocated = 82(delta: 30)
+
+[copro] INST: $5000204a: $bd9ff06f
+[copro] INST: $50001c30: $000015d5
+[copro] INST: $50001c32: $0000e199
+[copro] INST: $50001c34: $c68fe1ef
+[copro] INST: $50001c38: $000005ad
+[copro] INST: $50001c3a: $c62fe1ef
+[copro] INST: $50001c3e: $00000000
+[copro] INST: $50001c22: $500025b7
+[copro] INST: $50001c26: $c0858593
+[copro] INST: $50001c2a: $cb2fe0ef
+[copro] INST: $50001c2e: $0000830e
+[copro] INST: $50001c30: $000015d5
+[copro] INST: $50001c32: $0000e199
+[copro] INST: $50001c34: $c68fe1ef
+[copro] INST: $50001c38: $000005ad
+[copro] INST: $50001c3a: $c62fe1ef
+[copro] PROF allocated = 263(delta: 76)
+
+[copro] registered: function=$4080b678 basicblock=$4080b754
+[copro] CODE allocated = 114(delta: 32)
+
+[copro] INST: $50001c34: $00e0006f
+[copro] INST: $50001c42: $00008ba2
+[copro] INST: $50001c44: $0000855e
+[copro] INST: $50001c46: $00008596
+[copro] INST: $50001c48: $0000861a
+[copro] INST: $50001c4a: $bb6fe0ef
+[copro] INST: $50001c4e: $00008baa
+[copro] INST: $50001c50: $c4cfe1ef
+[copro] INST: $50001c54: $0000c65e
+[copro] INST: $50001c56: $0000842a
+[copro] INST: $50001c58: $500025b7
+[copro] INST: $50001c5c: $c0458593
+[copro] PROF allocated = 299(delta: 36)
+
+[copro] [Profile] [NEW FUNCTION] vm->callinfo_tail=$4080b7a4, cur_irep=$4080b58c, own_class=$40809a60
+[copro] New profiling(INST: OP_ENTER).
+[copro] PROF allocated = 379(delta: 80)
+
+[copro] registered: function=$4080b7e8 basicblock=$4080b810
+[copro] REGISTER ALLOCATION: R0 -> x8(callee-saved) ..f6e0
+[copro] REGISTER ALLOCATION: R1 -> x9(callee-saved) ..f4e0
+[copro] REGISTER ALLOCATION: R2 -> x18(callee-saved) ..fbf4e0
+[copro] REGISTER ALLOCATION: R3 -> x19(callee-saved) ..f3f4e0
+[copro] REGISTER ALLOCATION: R4 -> x20(callee-saved) ..fe3f4e0
+[copro] REGISTER ALLOCATION: R5 -> x21(callee-saved) ..fc3f4e0
+[copro] REGISTER ALLOCATION: R6 -> x22(callee-saved) ..f83f4e0
+[copro] REGISTER ALLOCATION: R7 -> x5(caller-saved) ..f83f4c0
+[copro] REGISTER ALLOCATION: R8 -> x6(caller-saved) ..f83f480
+[copro] REGISTER ALLOCATION: R9 -> x7(caller-saved) ..f83f400
+[copro] REGISTER ALLOCATION: R10 -> x10(caller-saved) ..f83f000
+[copro] REGISTER ALLOCATION: R11 -> x12(caller-saved) ..f83e000
+[copro] CODE allocated = 168(delta: 54)
+
+[copro] INST: $50001c4a: $418000ef
+[copro] INST: $50002062: $0000713d
+[copro] INST: $50002064: $0000ce06
+[copro] INST: $50002066: $0000cc22
+[copro] INST: $50002068: $0000ca26
+[copro] INST: $5000206a: $0000c84a
+[copro] INST: $5000206c: $0000c64e
+[copro] INST: $5000206e: $0000c452
+[copro] INST: $50002070: $0000c256
+[copro] INST: $50002072: $0000c05a
+[copro] INST: $50002074: $0000842a
+[copro] INST: $50002076: $000084ae
+[copro] INST: $50002078: $00008932
+[copro] INST: $5000207a: $00004a01
+[copro] INST: $5000207c: $00004a85
+[copro] INST: $5000207e: $00008526
+[copro] INST: $50002080: $f81fd0ef
+[copro] INST: $50002084: $000082aa
+[copro] INST: $50002086: $816fe1ef
+[copro] INST: $5000208a: $00009a90
+[copro] INST: $5000208c: $00004080
+[copro] INST: $5000208e: $00004ada
+[copro] INST: $50002090: $00004201
+[copro] INST: $50002092: $00000031
+[copro] INST: $50002094: $00000000
+[copro] PROF allocated = 409(delta: 30)
+
+[copro] [Profile] [NEW FUNCTION] vm->callinfo_tail=$4080b864, cur_irep=$4080b4ac, own_class=$40814bc8
+[copro] New profiling(INST: OP_ENTER).
+[copro] PROF allocated = 465(delta: 56)
+
+[copro] registered: function=$4080b8a8 basicblock=$4080b8cc
+[copro] REGISTER ALLOCATION: R0 -> x8(callee-saved) ..f6e0
+[copro] REGISTER ALLOCATION: R1 -> x9(callee-saved) ..f4e0
+[copro] REGISTER ALLOCATION: R2 -> x5(caller-saved) ..f4c0
+[copro] REGISTER ALLOCATION: R3 -> x6(caller-saved) ..f480
+[copro] REGISTER ALLOCATION: R4 -> x7(caller-saved) ..f400
+[copro] REGISTER ALLOCATION: R5 -> x10(caller-saved) ..f000
+[copro] [OBJMAN] created for I2C (tt:20)
+[copro] CODE allocated = 204(delta: 36)
+
+[copro] INST: $50002080: $022000ef
+[copro] INST: $500020b6: $000015b1
+[copro] INST: $500020b8: $0000e199
+[copro] INST: $500020ba: $fe3fd1ef
+[copro] INST: $500020be: $000005d1
+[copro] INST: $500020c0: $fddfd1ef
+[copro] INST: $500020c4: $00000000
+[copro] INST: $500020a2: $0000717d
+[copro] INST: $500020a4: $0000c606
+[copro] INST: $500020a6: $0000c422
+[copro] INST: $500020a8: $0000c226
+[copro] INST: $500020aa: $0000842a
+[copro] INST: $500020ac: $00440593
+[copro] INST: $500020b0: $82cfe0ef
+[copro] INST: $500020b4: $0000828e
+[copro] INST: $500020b6: $000015b1
+[copro] INST: $500020b8: $0000e199
+[copro] INST: $500020ba: $fe3fd1ef
+[copro] INST: $500020be: $000005d1
+[copro] INST: $500020c0: $fddfd1ef
+[copro] PROF allocated = 521(delta: 56)
+
+[copro] registered: function=$4080b8a8 basicblock=$4080b918
+[copro] [GLOBALMAN] a new entry(key = 4080cc08, value = 50001c0c) is added.
+[copro] CODE allocated = 226(delta: 22)
+
+[copro] INST: $500020ba: $ba9ff06f
+[copro] INST: $50001c62: $500025b7
+[copro] INST: $50001c66: $c0c58593
+[copro] INST: $50001c6a: $00004375
+[copro] INST: $50001c6c: $c70fe0ef
+[copro] INST: $50001c70: $0000838e
+[copro] INST: $50001c72: $c2afe1ef
+[copro] PROF allocated = 577(delta: 56)
+
+[copro] registered: function=$4080b8a8 basicblock=$4080b954
+[copro] CODE allocated = 256(delta: 30)
+
+[copro] INST: $50001c72: $0100006f
+[copro] INST: $50001c82: $00008516
+[copro] INST: $50001c84: $0000859a
+[copro] INST: $50001c86: $0000861e
+[copro] INST: $50001c88: $b78fe0ef
+[copro] INST: $50001c8c: $000082aa
+[copro] INST: $50001c8e: $c0efe1ef
+[copro] INST: $50001c92: $0000c05a
+[copro] INST: $50001c94: $0000842a
+[copro] INST: $50001c96: $000084ae
+[copro] INST: $50001c98: $00008932
+[copro] INST: $50001c9a: $00004a01
+[copro] INST: $50001c9c: $00004a85
+[copro] PROF allocated = 609(delta: 32)
+
+[copro] [Profile] [NEW FUNCTION] vm->callinfo_tail=$4080b990, cur_irep=$4080bdac, own_class=$40814c54
+[copro] New profiling(INST: OP_ENTER).
+[copro] PROF allocated = 673(delta: 64)
+
+[copro] registered: function=$4080b9d4 basicblock=$4080ccc4
+[copro] REGISTER ALLOCATION: R0 -> x8(callee-saved) ..f6e0
+[copro] REGISTER ALLOCATION: R1 -> x9(callee-saved) ..f4e0
+[copro] REGISTER ALLOCATION: R2 -> x18(callee-saved) ..fbf4e0
+[copro] REGISTER ALLOCATION: R3 -> x19(callee-saved) ..f3f4e0
+[copro] REGISTER ALLOCATION: R4 -> x5(caller-saved) ..f3f4c0
+[copro] REGISTER ALLOCATION: R5 -> x6(caller-saved) ..f3f480
+[copro] REGISTER ALLOCATION: R6 -> x7(caller-saved) ..f3f400
+[copro] REGISTER ALLOCATION: R7 -> x10(caller-saved) ..f3f000
+[copro] CODE allocated = 298(delta: 42)
+
+[copro] INST: $50001c88: $45a000ef
+[copro] INST: $500020e2: $0000713d
+[copro] INST: $500020e4: $0000ce06
+[copro] INST: $500020e6: $0000cc22
+[copro] INST: $500020e8: $0000ca26
+[copro] INST: $500020ea: $0000c84a
+[copro] INST: $500020ec: $0000c64e
+[copro] INST: $500020ee: $0000842a
+[copro] INST: $500020f0: $000084ae
+[copro] INST: $500020f2: $00008932
+[copro] INST: $500020f4: $40815537
+[copro] INST: $500020f8: $d6450513
+[copro] INST: $500020fc: $000085a6
+[copro] INST: $500020fe: $0000864a
+[copro] INST: $50002100: $e82fe0ef
+[copro] INST: $50002104: $000082aa
+[copro] INST: $50002106: $f97fd1ef
+[copro] PROF allocated = 737(delta: 64)
+
+[copro] registered: function=$4080b9d4 basicblock=$4080cd08
+[copro] CODE allocated = 318(delta: 20)
+
+[copro] INST: $50002106: $b9dff06f
+[copro] INST: $50001ca2: $00008516
+[copro] INST: $50001ca4: $00004591
+[copro] INST: $50001ca6: $000040f2
+[copro] INST: $50001ca8: $00004462
+[copro] INST: $50001caa: $000044d2
+[copro] INST: $50001cac: $00004942
+[copro] INST: $50001cae: $000049b2
+[copro] INST: $50001cb0: $00006105
+[copro] INST: $50001cb2: $00008082
+[copro] INST: $50001c8e: $000015f1
+[copro] INST: $50001c90: $0000e199
+[copro] INST: $50001c92: $c0afe1ef
+[copro] INST: $50001c96: $00000591
+[copro] INST: $50001c98: $c04fe1ef
+[copro] INST: $50001c9c: $00004a85
+[copro] PROF allocated = 793(delta: 56)
+
+[copro] registered: function=$4080b8a8 basicblock=$4080b990
+[copro] CODE allocated = 334(delta: 16)
+
+[copro] INST: $50001c92: $b65ff06f
+[copro] INST: $500017f6: $00008516
+[copro] INST: $500017f8: $00004591
+[copro] INST: $500017fa: $000040b2
+[copro] INST: $500017fc: $00004422
+[copro] INST: $500017fe: $00004492
+[copro] INST: $50001800: $00006141
+[copro] INST: $50001802: $00008082
+[copro] INST: $50002086: $000015f1
+[copro] INST: $50002088: $0000e199
+[copro] INST: $5000208a: $812fe1ef
+[copro] INST: $5000208e: $00000591
+[copro] INST: $50002090: $80cfe1ef
+[copro] INST: $50002094: $00000000
+[copro] PROF allocated = 873(delta: 80)
+
+[copro] registered: function=$4080b7e8 basicblock=$4080cd4c
+[copro] CODE allocated = 356(delta: 22)
+
+[copro] INST: $5000208a: $c39ff06f
+[copro] INST: $50001cc2: $40815537
+[copro] INST: $50001cc6: $d6450513
+[copro] INST: $50001cca: $000045d1
+[copro] INST: $50001ccc: $937fe0ef
+[copro] INST: $50001cd0: $000082aa
+[copro] INST: $50001cd2: $bcafe1ef
+[copro] PROF allocated = 953(delta: 80)
+
+[copro] registered: function=$4080b7e8 basicblock=$4080cda0
+[copro] OP_JMPNOT
+[copro] PROF allocated = 1033(delta: 80)
+
+[copro] registered: function=$4080b7e8 basicblock=$4080cdf4
+[copro] CODE allocated = 376(delta: 20)
+
+[copro] INST: $50001cd2: $0100006f
+[copro] INST: $50001ce2: $00004331
+[copro] INST: $50001ce4: $006a22b3
+[copro] INST: $50001ce8: $00028463
+[copro] INST: $50001cec: $0000006f
+[copro] INST: $50001cf0: $bacfe1ef
+[copro] CODE allocated = 400(delta: 24)
+
+[copro] INST: $50001cec: $0160006f
+[copro] INST: $50001d02: $40815537
+[copro] INST: $50001d06: $d6450513
+[copro] INST: $50001d0a: $05000593
+[copro] INST: $50001d0e: $8f5fe0ef
+[copro] INST: $50001d12: $000082aa
+[copro] INST: $50001d14: $b88fe1ef
+[copro] PROF allocated = 1113(delta: 80)
+
+[copro] registered: function=$4080b7e8 basicblock=$4080ce48
+[copro] CODE allocated = 426(delta: 26)
+
+[copro] INST: $50001d14: $00e0006f
+[copro] INST: $50001d22: $00008526
+[copro] INST: $50001d24: $adcfe0ef
+[copro] INST: $50001d28: $000082aa
+[copro] INST: $50001d2a: $b72fe1ef
+[copro] INST: $50001d2e: $00008082
+[copro] INST: $50001d30: $000082aa
+[copro] INST: $50001d32: $000082aa
+[copro] INST: $50001d34: $40815537
+[copro] INST: $50001d38: $00000513
+[copro] PROF allocated = 1147(delta: 34)
+
+[copro] [Profile] [NEW FUNCTION] vm->callinfo_tail=$4080b864, cur_irep=$4080b518, own_class=$40814bc8
+[copro] New profiling(INST: OP_ENTER).
+[copro] PROF allocated = 1219(delta: 72)
+
+[copro] registered: function=$4080ce9c basicblock=$4080cec4
+[copro] REGISTER ALLOCATION: R0 -> x8(callee-saved) ..f6e0
+[copro] REGISTER ALLOCATION: R1 -> x9(callee-saved) ..f4e0
+[copro] REGISTER ALLOCATION: R2 -> x18(callee-saved) ..fbf4e0
+[copro] REGISTER ALLOCATION: R3 -> x19(callee-saved) ..f3f4e0
+[copro] REGISTER ALLOCATION: R4 -> x20(callee-saved) ..fe3f4e0
+[copro] REGISTER ALLOCATION: R5 -> x21(callee-saved) ..fc3f4e0
+[copro] REGISTER ALLOCATION: R6 -> x5(caller-saved) ..fc3f4c0
+[copro] REGISTER ALLOCATION: R7 -> x6(caller-saved) ..fc3f480
+[copro] REGISTER ALLOCATION: R8 -> x7(caller-saved) ..fc3f400
+[copro] REGISTER ALLOCATION: R9 -> x10(caller-saved) ..fc3f000
+[copro] CODE allocated = 470(delta: 44)
+
+[copro] INST: $50001d24: $3fe000ef
+[copro] INST: $5000213e: $000015b1
+[copro] INST: $50002140: $0000e199
+[copro] INST: $50002142: $f5bfd1ef
+[copro] INST: $50002146: $000005d1
+[copro] INST: $50002148: $f55fd1ef
+[copro] INST: $5000214c: $00000000
+[copro] INST: $50002122: $0000713d
+[copro] INST: $50002124: $0000ce06
+[copro] INST: $50002126: $0000cc22
+[copro] INST: $50002128: $0000ca26
+[copro] INST: $5000212a: $0000c84a
+[copro] INST: $5000212c: $0000c64e
+[copro] INST: $5000212e: $0000c452
+[copro] INST: $50002130: $0000c256
+[copro] INST: $50002132: $0000842a
+[copro] INST: $50002134: $00440593
+[copro] INST: $50002138: $fa5fd0ef
+[copro] INST: $5000213c: $0000898e
+[copro] INST: $5000213e: $000015b1
+[copro] INST: $50002140: $0000e199
+[copro] INST: $50002142: $f5bfd1ef
+[copro] INST: $50002146: $000005d1
+[copro] INST: $50002148: $f55fd1ef
+[copro] PROF allocated = 1291(delta: 72)
+
+[copro] registered: function=$4080ce9c basicblock=$4080cf10
+[copro] [GLOBALMAN] a new entry(key = 4080cc50, value = 50001c10) is added.
+[copro] CODE allocated = 492(delta: 22)
+
+[copro] INST: $50002142: $c01ff06f
+[copro] INST: $50001d42: $500025b7
+[copro] INST: $50001d46: $c1058593
+[copro] INST: $50001d4a: $00004a75
+[copro] INST: $50001d4c: $b90fe0ef
+[copro] INST: $50001d50: $00008a8e
+[copro] INST: $50001d52: $b4afe1ef
+[copro] PROF allocated = 1363(delta: 72)
+
+[copro] registered: function=$4080ce9c basicblock=$4080cf5c
+[copro] CODE allocated = 522(delta: 30)
+
+[copro] INST: $50001d52: $0100006f
+[copro] INST: $50001d62: $0000854e
+[copro] INST: $50001d64: $000085d2
+[copro] INST: $50001d66: $00008656
+[copro] INST: $50001d68: $a98fe0ef
+[copro] INST: $50001d6c: $000089aa
+[copro] INST: $50001d6e: $b2efe1ef
+[copro] INST: $50001d72: $0000842a
+[copro] INST: $50001d74: $00440593
+[copro] INST: $50001d78: $d6450513
+[copro] INST: $50001d7c: $000085a6
+[copro] Gotcha! (INST: OP_ENTER).
+[copro] INST: $50001d68: $37a000ef
+[copro] miain_to_copro 3 $500035e0
+[copro] A AND NARG: 7, 2, method_id: read_for_1sec
+[copro] Register 0 x8: MRBC_TT_PROC $4080b210->$4080b210
+[copro] Register 1 x9: MRBC_TT_EMPTY $4080b210->$4080b210
+[copro] Register 2 x18: MRBC_TT_EMPTY $40814d64->$40814d64
+[copro] Register 3 x19: MRBC_TT_NIL $00000002->$00000000
+[copro] Register 4 x20: MRBC_TT_EMPTY $0000001d->$0000001d
+[copro] Register 5 x21: MRBC_TT_EMPTY $4080b14c->$4080b14c
+[copro] Register 6 x22: MRBC_TT_EMPTY $00000000->$00000000
+[copro] [callee saved] stack addr: $500035dc <- ra $50001c4e
+[copro] [callee saved] stack addr: $500035d8 <- x8 $4080b210
+[copro] [callee saved] stack addr: $500035d4 <- x9 $4080b210
+[copro] [callee saved] stack addr: $500035d0 <- x18 $40814d64
+[copro] [callee saved] stack addr: $500035cc <- x19 $00000000
+[copro] [callee saved] stack addr: $500035c8 <- x20 $0000001d
+[copro] [callee saved] stack addr: $500035c4 <- x21 $4080b14c
+[copro] [callee saved] stack addr: $500035c0 <- x22 $00000000
+[copro] [callee saved] stack addr: $500035bc <- x23 $00000000
+[copro] A AND NARG: 7, 0, method_id: read
+[copro] [OBJMAN] Translation Registered type=9, main=4080bc18, copro=500015dc
+[copro] Register 0 x8: MRBC_TT_OBJECT $4080bc18->$500015dc
+[copro] [OBJMAN] Translation Registered type=9, main=4080b5e4, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080b5f8, copro=500015e4
+[copro] Register 1 x9: MRBC_TT_OBJECT $4080b5f8->$500015e4
+[copro] [OBJMAN] Translation Registered type=11, main=4080b0e4, copro=50002160
+[copro] Register 2 x18: MRBC_TT_ARRAY $4080b0e4->$50002160
+[copro] Register 3 x19: MRBC_TT_NIL $00000000->$00000000
+[copro] Register 4 x20: MRBC_TT_INTEGER $00000000->$00000000
+[copro] Register 5 x21: MRBC_TT_TRUE $00000000->$00000001
+[copro] Register 6 x22: MRBC_TT_NIL $00000000->$00000000
+[copro] [callee saved] stack addr: $500035bc <- ra $50001d28
+[copro] [callee saved] stack addr: $500035b8 <- x8 $500015dc
+[copro] [callee saved] stack addr: $500035b4 <- x9 $500015e4
+[copro] [callee saved] stack addr: $500035b0 <- x18 $50002160
+[copro] [callee saved] stack addr: $500035ac <- x19 $00000000
+[copro] [callee saved] stack addr: $500035a8 <- x20 $00000000
+[copro] [callee saved] stack addr: $500035a4 <- x21 $00000001
+[copro] [callee saved] stack addr: $500035a0 <- x22 $00000000
+[copro] A AND NARG: 3, 2, method_id: write
+[copro] Register 0 x8: MRBC_TT_OBJECT $4080b5f8->$500015e4
+[copro] Register 1 x9: MRBC_TT_NIL $00000050->$00000000
+[copro] Register 2 x18: MRBC_TT_NIL $00000002->$00000000
+[copro] Register 0 x8: MRBC_TT_OBJECT $4080b5f8 -> $500015e4
+[copro] Register 1 x9: MRBC_TT_NIL $00000050 -> $00000000
+[copro] Register 2 x18: MRBC_TT_NIL $00000002 -> $00000000
+[copro] [OBJMAN] Translation Updated type=9, main=4080b5e4, copro=500015ec
+[copro] Register 0 x10: MRBC_TT_OBJECT $4080b5e4 -> $500015ec
+[copro] Register 1 x11: MRBC_TT_INTEGER $0000001d -> $0000001d
+[copro] [OBJMAN] Translation Registered type=11, main=4080baa8, copro=500015f4
+[copro] Register 2 x12: MRBC_TT_ARRAY $4080baa8 -> $500015f4
+[copro] register_set:
+[copro] INST: $500021a0: $500020b7
+[copro] INST: $500021a4: $d6c08093
+[copro] INST: $500021a8: $50003137
+[copro] INST: $500021ac: $5a010113
+[copro] INST: $500021b0: $50001437
+[copro] INST: $500021b4: $5e440413
+[copro] INST: $500021b8: $00004481
+[copro] INST: $500021ba: $50001537
+[copro] INST: $500021be: $5ec50513
+[copro] INST: $500021c2: $000045f5
+[copro] INST: $500021c4: $50001637
+[copro] INST: $500021c8: $5f460613
+[copro] INST: $500021cc: $00004901
+[copro] INST: $500021ce: $00004981
+[copro] INST: $500021d0: $00004a01
+[copro] INST: $500021d2: $00004a85
+[copro] INST: $500021d4: $00004b01
+[copro] INST: $500021d6: $f0dff06f
+[copro] [GLOBALMAN] sent copro:4080c14c <--> main:50001c04(type:9)
+[copro] [GLOBALMAN] sent copro:4080c16c <--> main:50001c08(type:11)
+[copro] [GLOBALMAN] sent copro:4080cc08 <--> main:50001c0c(type:11)
+[copro] [OBJMAN] Translation Registered type=11, main=4080b9f8, copro=0
+[copro] [GLOBALMAN] sent copro:4080cc50 <--> main:50001c10(type:11)
+[copro] [GLOBALMAN] Object Sent: count=4
+[copro] Wake up. stopreason=0
+[copro] [OBJMAN] Translation Updated type=9, main=4080bc18, copro=500015dc
+[copro] [OBJMAN] Translation Updated type=9, main=4080b5f8, copro=500015e4
+[copro] [OBJMAN] Translation Updated type=9, main=4080b5e4, copro=500015ec
+[copro] [OBJMAN] Translation Updated type=11, main=4080baa8, copro=500015f4
+[copro] [OBJMAN] Translation Updated type=11, main=4080b0e4, copro=50002160
+[copro] [OBJMAN] Updated 4080bc18(9)
+[copro] [OBJMAN] Updated 4080b5f8(9)
+[copro] [OBJMAN] Updated 4080b5e4(9)
+[copro] [OBJMAN] Updated 4080baa8(11)
+[copro] [OBJMAN] Updated 4080b0e4(11)
+[copro] safe_decref 4080cc08
+[copro] [GLOBALMAN] Object Received: count=4
+[copro] [copro_to_main] x11: 4
+[copro] [copro_to_main] cur: $500035a0, ra?: $50001d6e
+[copro] [copro_to_main] function: $4080ce9c basicblock: $4080cf5c STACK RA: $50001d62
+[copro] [cpy_to_interpreter_stack] regLen = 10
+[copro] [cpy_to_interp_stack] restore to interp.: x8 -> R0(4080c76c) (value: $500015e4, type: 19)
+[copro] [cpy_to_interp_stack] restore to interp.: x9 -> R1(4080c77c) (value: $00000000, type: 1)
+[copro] [cpy_to_interp_stack] restore to interp.: x18 -> R2(4080c78c) (value: $00000000, type: 1)
+[copro] [cpy_to_interp_stack] restore to interp.: x19 -> R3(4080c79c) (value: $00000001, type: 4[UNKNOWN])
+[copro] [cpy_to_interp_stack] restore to interp.: x20 -> R4(4080c7ac) (value: $00000000, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x21 -> R5(4080c7bc) (value: $00000001, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x5 -> R6(4080c7cc) (value: $00000001, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x6 -> R7(4080c7dc) (value: $00000000, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x7 -> R8(4080c7ec) (value: $00000000, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x10 -> R9(4080c7fc) (value: $00000001, type: 0)
+[copro] [copro_to_main] interpreter_stack current: $4080c76c sentinel: $4080c30c
+[copro] [restore_callee_saved] restore callee saved: $500035bc -> x1 value: $50001d28
+[copro] [restore_callee_saved] restore callee saved: $500035b8 -> x8 value: $500015dc
+[copro] [restore_callee_saved] restore callee saved: $500035b4 -> x9 value: $500015e4
+[copro] [restore_callee_saved] restore callee saved: $500035b0 -> x18 value: $50002160
+[copro] [restore_callee_saved] restore callee saved: $500035ac -> x19 value: $00000000
+[copro] [restore_callee_saved] restore callee saved: $500035a8 -> x20 value: $00000000
+[copro] [restore_callee_saved] restore callee saved: $500035a4 -> x21 value: $00000001
+[copro] [copro_to_main] cur: $500035c0, ra?: $50001d24
+[copro] [copro_to_main] function: $4080b7e8 basicblock: $4080ce48 STACK RA: $50001d22
+[copro] A AND NARG: 7, 0, method_id: read
+[copro] [cpy_to_interpreter_stack] regLen = 7
+[copro] [cpy_to_interp_stack] restore to interp.: x8 -> R0(4080c6fc) (value: $500015dc, type: 18)
+[copro] [cpy_to_interp_stack] restore to interp.: x9 -> R1(4080c70c) (value: $500015e4, type: 19)
+[copro] [cpy_to_interp_stack] restore to interp.: x18 -> R2(4080c71c) (value: $50002160, type: 11)
+[copro] [cpy_to_interp_stack] restore to interp.: x19 -> R3(4080c72c) (value: $00000000, type: 1)
+[copro] [cpy_to_interp_stack] restore to interp.: x20 -> R4(4080c73c) (value: $00000000, type: 4)
+[copro] [cpy_to_interp_stack] restore to interp.: x21 -> R5(4080c74c) (value: $00000001, type: 3)
+[copro] [cpy_to_interp_stack] restore to interp.: x22 -> R6(4080c75c) (value: $00000000, type: 1)
+[copro] [copro_to_main] interpreter_stack current: $4080c6fc sentinel: $4080c30c
+[copro] [restore_callee_saved] restore callee saved: $500035dc -> x1 value: $50001c4e
+[copro] [restore_callee_saved] restore callee saved: $500035d8 -> x8 value: $4080b210
+[copro] [restore_callee_saved] restore callee saved: $500035d4 -> x9 value: $4080b210
+[copro] [restore_callee_saved] restore callee saved: $500035d0 -> x18 value: $40814d64
+[copro] [restore_callee_saved] restore callee saved: $500035cc -> x19 value: $00000000
+[copro] [restore_callee_saved] restore callee saved: $500035c8 -> x20 value: $0000001d
+[copro] [restore_callee_saved] restore callee saved: $500035c4 -> x21 value: $4080b14c
+[copro] [restore_callee_saved] restore callee saved: $500035c0 -> x22 value: $00000000
+[copro] [copro_to_main] cur: $500035e0, ra?: $50001c4a
+[copro] [copro_to_main] function: $4080b678 basicblock: $4080b754 STACK RA: $50001c42
+[copro] A AND NARG: 7, 2, method_id: read_for_1sec
+[copro] [cpy_to_interpreter_stack] regLen = 7
+[copro] [cpy_to_interp_stack] restore to interp.: x8 -> R0(4080c68c) (value: $4080b210, type: 10)
+[copro] [cpy_to_interp_stack] restore to interp.: x9 -> R1(4080c69c) (value: $4080b210, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x18 -> R2(4080c6ac) (value: $40814d64, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x19 -> R3(4080c6bc) (value: $00000000, type: 1)
+[copro] [cpy_to_interp_stack] restore to interp.: x20 -> R4(4080c6cc) (value: $0000001d, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x21 -> R5(4080c6dc) (value: $4080b14c, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x22 -> R6(4080c6ec) (value: $00000000, type: 0)
+[copro] [copro_to_main] interpreter_stack current: $4080c68c sentinel: $4080c30c
+[copro] st=$4080b7cc, tt=$4080b64c, st->functions_current=$4080b678, tt->function=$4080b678
+[copro] st=$4080b88c, tt=$4080b634, st->functions_current=$4080b7e8, tt->function=$4080b7e8
+[copro] st=$4080cfd0, tt=$4080b404, st->functions_current=$4080ce9c, tt->function=$4080ce9c
+[copro] [copro_to_main] reserve = 3, popcnt = 1
+[copro] [copro_to_main] pop call info
+[copro] --- CALLINFO(addr = $4080cfa8) ---
+[copro] cur_irep = $4080b518
+[copro] inst = $42023293
+[copro] cur_regs = $4080c25c
+[copro] target_class = $40809a60 (name:Object)
+[copro] own_class = $40814c54 (name:I2C)
+[copro] karg_keep = $00000000
+[copro] method_id = $0000011b (name:write)
+[copro] reg_offset = 3
+[copro] n_args = 2
+[copro] is_called_super = 0
+[copro] -----------------------------------
+[copro] cpy from $4080c68c to $4080c17c (length: $00000180)
+[copro] <<REWRITTEN>>
+[copro] _cur_regs = $4080c17c
+[copro] <<RESERVED>>
+[copro] _cur_regs = $4080c1ec
+[copro] <<RESERVED>>
+[copro] INST: $50001d6e: $000015f1
+[copro] INST: $50001d70: $0000e199
+[copro] INST: $50001d72: $b2afe1ef
+[copro] INST: $50001d76: $00000591
+[copro] INST: $50001d78: $b24fe1ef
+[copro] INST: $50001d7c: $000085a6
+[copro] PROF allocated = 1435(delta: 72)
+
+[copro] registered: function=$4080ce9c basicblock=$4080d04c
+[copro] CODE allocated = 544(delta: 22)
+
+[copro] INST: $50001d72: $0100006f
+[copro] INST: $50001d82: $40815537
+[copro] INST: $50001d86: $d6450513
+[copro] INST: $50001d8a: $00004595
+[copro] INST: $50001d8c: $877fe0ef
+[copro] INST: $50001d90: $000089aa
+[copro] INST: $50001d92: $b0afe1ef
+[copro] PROF allocated = 1507(delta: 72)
+
+[copro] registered: function=$4080ce9c basicblock=$4080d098
+[copro] CODE allocated = 570(delta: 26)
+
+[copro] INST: $50001d92: $0100006f
+[copro] INST: $50001dac: $000015b1
+[copro] INST: $50001dae: $0000e199
+[copro] INST: $50001db0: $aecfe1ef
+[copro] INST: $50001db4: $000005d1
+[copro] INST: $50001db6: $ae6fe1ef
+[copro] INST: $50001dba: $00000000
+[copro] INST: $50001da2: $00440593
+[copro] INST: $50001da6: $b36fe0ef
+[copro] INST: $50001daa: $0000898e
+[copro] INST: $50001dac: $000015b1
+[copro] INST: $50001dae: $0000e199
+[copro] INST: $50001db0: $aecfe1ef
+[copro] INST: $50001db4: $000005d1
+[copro] INST: $50001db6: $ae6fe1ef
+[copro] PROF allocated = 1579(delta: 72)
+
+[copro] registered: function=$4080ce9c basicblock=$4080d0e4
+[copro] CODE allocated = 600(delta: 30)
+
+[copro] INST: $50001db0: $0120006f
+[copro] INST: $50001dc2: $0000854e
+[copro] INST: $50001dc4: $000045f5
+[copro] INST: $50001dc6: $00004619
+[copro] INST: $50001dc8: $a38fe0ef
+[copro] INST: $50001dcc: $000089aa
+[copro] INST: $50001dce: $acefe1ef
+[copro] INST: $50001dd2: $50001437
+[copro] INST: $50001dd6: $5e440413
+[copro] INST: $50001dda: $00004481
+[copro] INST: $50001ddc: $00001537
+[copro] PROF allocated = 1611(delta: 32)
+
+[copro] [Profile] [NEW FUNCTION] vm->callinfo_tail=$4080b634, cur_irep=$4080be88, own_class=$40814c54
+[copro] New profiling(INST: OP_ENTER).
+[copro] PROF allocated = 1675(delta: 64)
+
+[copro] registered: function=$4080cfa8 basicblock=$4080d130
+[copro] REGISTER ALLOCATION: R0 -> x8(callee-saved) ..f6e0
+[copro] REGISTER ALLOCATION: R1 -> x9(callee-saved) ..f4e0
+[copro] REGISTER ALLOCATION: R2 -> x18(callee-saved) ..fbf4e0
+[copro] REGISTER ALLOCATION: R3 -> x19(callee-saved) ..f3f4e0
+[copro] REGISTER ALLOCATION: R4 -> x5(caller-saved) ..f3f4c0
+[copro] REGISTER ALLOCATION: R5 -> x6(caller-saved) ..f3f480
+[copro] REGISTER ALLOCATION: R6 -> x7(caller-saved) ..f3f400
+[copro] REGISTER ALLOCATION: R7 -> x10(caller-saved) ..f3f000
+[copro] CODE allocated = 642(delta: 42)
+
+[copro] INST: $50001dc8: $39a000ef
+[copro] INST: $50002162: $0000713d
+[copro] INST: $50002164: $0000ce06
+[copro] INST: $50002166: $0000cc22
+[copro] INST: $50002168: $0000ca26
+[copro] INST: $5000216a: $0000c84a
+[copro] INST: $5000216c: $0000c64e
+[copro] INST: $5000216e: $0000842a
+[copro] INST: $50002170: $000084ae
+[copro] INST: $50002172: $00008932
+[copro] INST: $50002174: $40815537
+[copro] INST: $50002178: $d6450513
+[copro] INST: $5000217c: $000085a6
+[copro] INST: $5000217e: $0000864a
+[copro] INST: $50002180: $dbefe0ef
+[copro] INST: $50002184: $000082aa
+[copro] INST: $50002186: $f17fd1ef
+[copro] PROF allocated = 1739(delta: 64)
+
+[copro] registered: function=$4080cfa8 basicblock=$4080d174
+[copro] CODE allocated = 662(delta: 20)
+
+[copro] INST: $50002186: $c5dff06f
+[copro] INST: $50001de2: $00008516
+[copro] INST: $50001de4: $000045b1
+[copro] INST: $50001de6: $000040f2
+[copro] INST: $50001de8: $00004462
+[copro] INST: $50001dea: $000044d2
+[copro] INST: $50001dec: $00004942
+[copro] INST: $50001dee: $000049b2
+[copro] INST: $50001df0: $00006105
+[copro] INST: $50001df2: $00008082
+[copro] INST: $50001dce: $000015d1
+[copro] INST: $50001dd0: $0000e199
+[copro] INST: $50001dd2: $acafe1ef
+[copro] INST: $50001dd6: $000005b1
+[copro] INST: $50001dd8: $ac4fe1ef
+[copro] INST: $50001ddc: $00001537
+[copro] PROF allocated = 1811(delta: 72)
+
+[copro] registered: function=$4080ce9c basicblock=$4080d1b8
+[copro] OP_JMPNOT
+[copro] PROF allocated = 1883(delta: 72)
+
+[copro] registered: function=$4080ce9c basicblock=$4080d204
+[copro] CODE allocated = 692(delta: 30)
+
+[copro] INST: $50001dd2: $0300006f
+[copro] INST: $50001e02: $0000894e
+[copro] INST: $50001e04: $00299983
+[copro] INST: $50001e08: $00004a01
+[copro] INST: $50001e0a: $0149c9b3
+[copro] INST: $50001e0e: $0019b993
+[copro] INST: $50001e12: $00099463
+[copro] INST: $50001e16: $0000006f
+[copro] INST: $50001e1a: $a82fe1ef
+[copro] CODE allocated = 732(delta: 40)
+
+[copro] INST: $50001e16: $38c0006f
+[copro] INST: $500021a2: $00008a22
+[copro] INST: $500021a4: $408159b7
+[copro] INST: $500021a8: $c4498993
+[copro] INST: $500021ac: $00008552
+[copro] INST: $500021ae: $000085ca
+[copro] INST: $500021b0: $00004601
+[copro] INST: $500021b2: $e4ffd0ef
+[copro] INST: $500021b6: $00008a2a
+[copro] INST: $500021b8: $ee5fd1ef
+[copro] INST: $500021bc: $000085a6
+[copro] INST: $500021be: $0000864a
+[copro] INST: $500021c0: $5ec50513
+[copro] INST: $500021c4: $000082aa
+[copro] INST: $500021c6: $06131637
+[copro] PROF allocated = 1916(delta: 33)
+
+[copro] [Profile] [NEW FUNCTION] vm->callinfo_tail=$4080b634, cur_irep=$4080b4f4, own_class=$40814bc8
+[copro] New profiling(INST: OP_ENTER).
+[copro] PROF allocated = 1984(delta: 68)
+
+[copro] registered: function=$4080d250 basicblock=$4080d278
+[copro] REGISTER ALLOCATION: R0 -> x8(callee-saved) ..f6e0
+[copro] REGISTER ALLOCATION: R1 -> x9(callee-saved) ..f4e0
+[copro] REGISTER ALLOCATION: R2 -> x18(callee-saved) ..fbf4e0
+[copro] REGISTER ALLOCATION: R3 -> x19(callee-saved) ..f3f4e0
+[copro] REGISTER ALLOCATION: R4 -> x20(callee-saved) ..fe3f4e0
+[copro] REGISTER ALLOCATION: R5 -> x5(caller-saved) ..fe3f4c0
+[copro] REGISTER ALLOCATION: R6 -> x6(caller-saved) ..fe3f480
+[copro] REGISTER ALLOCATION: R7 -> x7(caller-saved) ..fe3f400
+[copro] REGISTER ALLOCATION: R8 -> x10(caller-saved) ..fe3f000
+[copro] CODE allocated = 780(delta: 48)
+
+[copro] INST: $500021b2: $030000ef
+[copro] INST: $500021e2: $0000713d
+[copro] INST: $500021e4: $0000ce06
+[copro] INST: $500021e6: $0000cc22
+[copro] INST: $500021e8: $0000ca26
+[copro] INST: $500021ea: $0000c84a
+[copro] INST: $500021ec: $0000c64e
+[copro] INST: $500021ee: $0000c452
+[copro] INST: $500021f0: $0000842a
+[copro] INST: $500021f2: $000084ae
+[copro] INST: $500021f4: $00008932
+[copro] INST: $500021f6: $00008526
+[copro] INST: $500021f8: $000085ca
+[copro] INST: $500021fa: $802fe0ef
+[copro] INST: $500021fe: $00008a2a
+[copro] INST: $50002200: $e9dfd1ef
+[copro] INST: $50002204: $000082aa
+[copro] INST: $50002206: $50001637
+[copro] INST: $5000220a: $5f460613
+[copro] INST: $5000220e: $00004901
+[copro] PROF allocated = 2052(delta: 68)
+
+[copro] registered: function=$4080d250 basicblock=$4080d2c0
+[copro] CODE allocated = 820(delta: 40)
+
+[copro] INST: $50002200: $0220006f
+[copro] INST: $50002222: $01aa1a13
+[copro] INST: $50002226: $412a5a13
+[copro] INST: $5000222a: $00190313
+[copro] INST: $5000222e: $00008526
+[copro] INST: $50002230: $0000859a
+[copro] INST: $50002232: $fcbfd0ef
+[copro] INST: $50002236: $000082aa
+[copro] INST: $50002238: $e65fd1ef
+[copro] INST: $5000223c: $000085a6
+[copro] INST: $5000223e: $00008a2a
+[copro] INST: $50002240: $5ec50513
+[copro] INST: $50002244: $000082aa
+[copro] INST: $50002246: $00001637
+[copro] PROF allocated = 2120(delta: 68)
+
+[copro] registered: function=$4080d250 basicblock=$4080d308
+[copro] CODE allocated = 844(delta: 24)
+
+[copro] INST: $50002238: $bebff06f
+[copro] INST: $50001e22: $00009a16
+[copro] INST: $50001e24: $00008552
+[copro] INST: $50001e26: $00004591
+[copro] INST: $50001e28: $000040f2
+[copro] INST: $50001e2a: $00004462
+[copro] INST: $50001e2c: $000044d2
+[copro] INST: $50001e2e: $00004942
+[copro] INST: $50001e30: $000049b2
+[copro] INST: $50001e32: $00004a22
+[copro] INST: $50001e34: $00006105
+[copro] INST: $50001e36: $00008082
+[copro] INST: $500021b8: $000015f1
+[copro] INST: $500021ba: $0000e199
+[copro] INST: $500021bc: $ee1fd1ef
+[copro] INST: $500021c0: $00000591
+[copro] INST: $500021c2: $edbfd1ef
+[copro] INST: $500021c6: $06131637
+[copro] PROF allocated = 2192(delta: 72)
+
+[copro] registered: function=$4080ce9c basicblock=$4080d350
+[copro] CODE allocated = 876(delta: 32)
+
+[copro] INST: $500021bc: $c87ff06f
+[copro] INST: $50001e42: $00008aa2
+[copro] INST: $50001e44: $00008556
+[copro] INST: $50001e46: $000085ca
+[copro] INST: $50001e48: $00004609
+[copro] INST: $50001e4a: $9b6fe0ef
+[copro] INST: $50001e4e: $00008aaa
+[copro] INST: $50001e50: $a4cfe1ef
+[copro] INST: $50001e54: $00006105
+[copro] INST: $50001e56: $00008082
+[copro] INST: $50001e58: $000085ca
+[copro] INST: $50001e5a: $0000d645
+[copro] INST: $50001e5c: $000085a6
+[copro] INST: $50001e5e: $00008a2a
+[copro] Gotcha! (INST: OP_ENTER).
+[copro] INST: $50001e4a: $398000ef
+[copro] miain_to_copro 3 $500035e0
+[copro] A AND NARG: 7, 2, method_id: read_for_1sec
+[copro] Register 0 x8: MRBC_TT_PROC $4080b210->$4080b210
+[copro] Register 1 x9: MRBC_TT_EMPTY $4080b210->$4080b210
+[copro] Register 2 x18: MRBC_TT_EMPTY $40814d64->$40814d64
+[copro] Register 3 x19: MRBC_TT_NIL $00000000->$00000000
+[copro] Register 4 x20: MRBC_TT_EMPTY $0000001d->$0000001d
+[copro] Register 5 x21: MRBC_TT_EMPTY $4080b14c->$4080b14c
+[copro] Register 6 x22: MRBC_TT_EMPTY $00000000->$00000000
+[copro] [callee saved] stack addr: $500035dc <- ra $50001c4e
+[copro] [callee saved] stack addr: $500035d8 <- x8 $4080b210
+[copro] [callee saved] stack addr: $500035d4 <- x9 $4080b210
+[copro] [callee saved] stack addr: $500035d0 <- x18 $40814d64
+[copro] [callee saved] stack addr: $500035cc <- x19 $00000000
+[copro] [callee saved] stack addr: $500035c8 <- x20 $0000001d
+[copro] [callee saved] stack addr: $500035c4 <- x21 $4080b14c
+[copro] [callee saved] stack addr: $500035c0 <- x22 $00000000
+[copro] [callee saved] stack addr: $500035bc <- x23 $00000000
+[copro] A AND NARG: 7, 0, method_id: read
+[copro] [OBJMAN] Translation Registered type=9, main=4080bc18, copro=500015dc
+[copro] Register 0 x8: MRBC_TT_OBJECT $4080bc18->$500015dc
+[copro] [OBJMAN] Translation Registered type=9, main=4080b5e4, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080b5f8, copro=500015e4
+[copro] Register 1 x9: MRBC_TT_OBJECT $4080b5f8->$500015e4
+[copro] [OBJMAN] Translation Registered type=11, main=4080b0e4, copro=50002260
+[copro] Register 2 x18: MRBC_TT_ARRAY $4080b0e4->$50002260
+[copro] Register 3 x19: MRBC_TT_NIL $00000000->$00000000
+[copro] Register 4 x20: MRBC_TT_INTEGER $00000000->$00000000
+[copro] Register 5 x21: MRBC_TT_TRUE $00000000->$00000001
+[copro] Register 6 x22: MRBC_TT_NIL $00000000->$00000000
+[copro] [callee saved] stack addr: $500035bc <- ra $50001d28
+[copro] [callee saved] stack addr: $500035b8 <- x8 $500015dc
+[copro] [callee saved] stack addr: $500035b4 <- x9 $500015e4
+[copro] [callee saved] stack addr: $500035b0 <- x18 $50002260
+[copro] [callee saved] stack addr: $500035ac <- x19 $00000000
+[copro] [callee saved] stack addr: $500035a8 <- x20 $00000000
+[copro] [callee saved] stack addr: $500035a4 <- x21 $00000001
+[copro] [callee saved] stack addr: $500035a0 <- x22 $00000000
+[copro] A AND NARG: 5, 2, method_id: conv
+[copro] Register 0 x8: MRBC_TT_OBJECT $4080b5f8->$500015e4
+[copro] Register 1 x9: MRBC_TT_NIL $00000000->$00000000
+[copro] [OBJMAN] Translation Registered type=12, main=4080b404, copro=50001804
+[copro] Register 2 x18: MRBC_TT_STRING $4080b404->$50001804
+[copro] Register 3 x19: MRBC_TT_CLASS $40814c44->$40814c44
+[copro] Register 4 x20: MRBC_TT_INTEGER $00000000->$00000000
+[copro] Register 0 x8: MRBC_TT_OBJECT $4080b5f8 -> $500015e4
+[copro] Register 1 x9: MRBC_TT_NIL $00000000 -> $00000000
+[copro] Register 2 x18: MRBC_TT_STRING $4080b404 -> $50001804
+[copro] Register 3 x19: MRBC_TT_CLASS $40814c44 -> $40814c44
+[copro] Register 4 x20: MRBC_TT_INTEGER $00000000 -> $00000000
+[copro] Register 0 x10: MRBC_TT_OBJECT $4080b5f8 -> $500015e4
+[copro] Register 1 x11: MRBC_TT_STRING $4080b404 -> $50001804
+[copro] Register 2 x12: MRBC_TT_INTEGER $00000002 -> $00000002
+[copro] register_set:
+[copro] INST: $500022a0: $500020b7
+[copro] INST: $500022a4: $e4e08093
+[copro] INST: $500022a8: $50003137
+[copro] INST: $500022ac: $5a010113
+[copro] INST: $500022b0: $50001437
+[copro] INST: $500022b4: $5e440413
+[copro] INST: $500022b8: $00004481
+[copro] INST: $500022ba: $50001537
+[copro] INST: $500022be: $5e450513
+[copro] INST: $500022c2: $500025b7
+[copro] INST: $500022c6: $80458593
+[copro] INST: $500022ca: $00004609
+[copro] INST: $500022cc: $50002937
+[copro] INST: $500022d0: $80490913
+[copro] INST: $500022d4: $408159b7
+[copro] INST: $500022d8: $c4498993
+[copro] INST: $500022dc: $00004a01
+[copro] INST: $500022de: $00004a85
+[copro] INST: $500022e0: $00004b01
+[copro] INST: $500022e2: $f01ff06f
+[copro] [GLOBALMAN] sent copro:4080c14c <--> main:50001c04(type:9)
+[copro] [GLOBALMAN] sent copro:4080c16c <--> main:50001c08(type:11)
+[copro] [GLOBALMAN] sent copro:4080cc08 <--> main:50001c0c(type:11)
+[copro] [OBJMAN] Translation Registered type=11, main=4080b9f8, copro=0
+[copro] [GLOBALMAN] sent copro:4080cc50 <--> main:50001c10(type:11)
+[copro] [OBJMAN] Translation Registered type=11, main=4080baa8, copro=0
+[copro] [GLOBALMAN] Object Sent: count=4
+[copro] Wake up. stopreason=0
+[copro] [OBJMAN] Translation Updated type=9, main=4080bc18, copro=500015dc
+[copro] [OBJMAN] Translation Updated type=9, main=4080b5f8, copro=500015e4
+[copro] [OBJMAN] Translation Updated type=12, main=4080b404, copro=50001804
+[copro] [OBJMAN] Translation Updated type=11, main=4080b0e4, copro=50002260
+[copro] [OBJMAN] Updated 4080bc18(9)
+[copro] [OBJMAN] Updated 4080b5f8(9)
+[copro] [OBJMAN] Updated 4080b404(12)
+[copro] [OBJMAN] Updated 4080b0e4(11)
+[copro] safe_decref 4080cc08
+[copro] safe_decref 4080cc50
+[copro] [GLOBALMAN] Object Received: count=4
+[copro] [copro_to_main] x11: 4
+[copro] [copro_to_main] cur: $500035a0, ra?: $50001e50
+[copro] [copro_to_main] function: $4080ce9c basicblock: $4080d350 STACK RA: $50001e42
+[copro] [cpy_to_interpreter_stack] regLen = 10
+[copro] [cpy_to_interp_stack] restore to interp.: x8 -> R0(4080c76c) (value: $500015e4, type: 19)
+[copro] [cpy_to_interp_stack] restore to interp.: x9 -> R1(4080c77c) (value: $00000000, type: 1)
+[copro] [cpy_to_interp_stack] restore to interp.: x18 -> R2(4080c78c) (value: $50001804, type: 12)
+[copro] [cpy_to_interp_stack] restore to interp.: x19 -> R3(4080c79c) (value: $40814c44, type: 7)
+[copro] [cpy_to_interp_stack] restore to interp.: x20 -> R4(4080c7ac) (value: $00000000, type: 4)
+[copro] [cpy_to_interp_stack] restore to interp.: x21 -> R5(4080c7bc) (value: $00000000, type: 4[UNKNOWN])
+[copro] [cpy_to_interp_stack] restore to interp.: x5 -> R6(4080c7cc) (value: $00000000, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x6 -> R7(4080c7dc) (value: $00000003, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x7 -> R8(4080c7ec) (value: $00000000, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x10 -> R9(4080c7fc) (value: $00000000, type: 0)
+[copro] [copro_to_main] interpreter_stack current: $4080c76c sentinel: $4080c33c
+[copro] [restore_callee_saved] restore callee saved: $500035bc -> x1 value: $50001d28
+[copro] [restore_callee_saved] restore callee saved: $500035b8 -> x8 value: $500015dc
+[copro] [restore_callee_saved] restore callee saved: $500035b4 -> x9 value: $500015e4
+[copro] [restore_callee_saved] restore callee saved: $500035b0 -> x18 value: $50002260
+[copro] [restore_callee_saved] restore callee saved: $500035ac -> x19 value: $00000000
+[copro] [restore_callee_saved] restore callee saved: $500035a8 -> x20 value: $00000000
+[copro] [restore_callee_saved] restore callee saved: $500035a4 -> x21 value: $00000001
+[copro] [copro_to_main] cur: $500035c0, ra?: $50001d24
+[copro] [copro_to_main] function: $4080b7e8 basicblock: $4080ce48 STACK RA: $50001d22
+[copro] A AND NARG: 7, 0, method_id: read
+[copro] [cpy_to_interpreter_stack] regLen = 7
+[copro] [cpy_to_interp_stack] restore to interp.: x8 -> R0(4080c6fc) (value: $500015dc, type: 18)
+[copro] [cpy_to_interp_stack] restore to interp.: x9 -> R1(4080c70c) (value: $500015e4, type: 19)
+[copro] [cpy_to_interp_stack] restore to interp.: x18 -> R2(4080c71c) (value: $50002260, type: 11)
+[copro] [cpy_to_interp_stack] restore to interp.: x19 -> R3(4080c72c) (value: $00000000, type: 1)
+[copro] [cpy_to_interp_stack] restore to interp.: x20 -> R4(4080c73c) (value: $00000000, type: 4)
+[copro] [cpy_to_interp_stack] restore to interp.: x21 -> R5(4080c74c) (value: $00000001, type: 3)
+[copro] [cpy_to_interp_stack] restore to interp.: x22 -> R6(4080c75c) (value: $00000000, type: 1)
+[copro] [copro_to_main] interpreter_stack current: $4080c6fc sentinel: $4080c33c
+[copro] [restore_callee_saved] restore callee saved: $500035dc -> x1 value: $50001c4e
+[copro] [restore_callee_saved] restore callee saved: $500035d8 -> x8 value: $4080b210
+[copro] [restore_callee_saved] restore callee saved: $500035d4 -> x9 value: $4080b210
+[copro] [restore_callee_saved] restore callee saved: $500035d0 -> x18 value: $40814d64
+[copro] [restore_callee_saved] restore callee saved: $500035cc -> x19 value: $00000000
+[copro] [restore_callee_saved] restore callee saved: $500035c8 -> x20 value: $0000001d
+[copro] [restore_callee_saved] restore callee saved: $500035c4 -> x21 value: $4080b14c
+[copro] [restore_callee_saved] restore callee saved: $500035c0 -> x22 value: $00000000
+[copro] [copro_to_main] cur: $500035e0, ra?: $50001c4a
+[copro] [copro_to_main] function: $4080b678 basicblock: $4080b754 STACK RA: $50001c42
+[copro] A AND NARG: 7, 2, method_id: read_for_1sec
+[copro] [cpy_to_interpreter_stack] regLen = 7
+[copro] [cpy_to_interp_stack] restore to interp.: x8 -> R0(4080c68c) (value: $4080b210, type: 10)
+[copro] [cpy_to_interp_stack] restore to interp.: x9 -> R1(4080c69c) (value: $4080b210, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x18 -> R2(4080c6ac) (value: $40814d64, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x19 -> R3(4080c6bc) (value: $00000000, type: 1)
+[copro] [cpy_to_interp_stack] restore to interp.: x20 -> R4(4080c6cc) (value: $0000001d, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x21 -> R5(4080c6dc) (value: $4080b14c, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x22 -> R6(4080c6ec) (value: $00000000, type: 0)
+[copro] [copro_to_main] interpreter_stack current: $4080c68c sentinel: $4080c33c
+[copro] st=$4080b7cc, tt=$4080d3cc, st->functions_current=$4080b678, tt->function=$4080b678
+[copro] st=$4080b88c, tt=$4080d3b4, st->functions_current=$4080b7e8, tt->function=$4080b7e8
+[copro] st=$4080b65c, tt=$4080d39c, st->functions_current=$4080ce9c, tt->function=$4080ce9c
+[copro] [copro_to_main] reserve = 3, popcnt = 1
+[copro] [copro_to_main] pop call info
+[copro] --- CALLINFO(addr = $4080b634) ---
+[copro] cur_irep = $4080b518
+[copro] inst = $420232d3
+[copro] cur_regs = $4080c25c
+[copro] target_class = $40809a60 (name:Object)
+[copro] own_class = $40814bc8 (name:ADXL)
+[copro] karg_keep = $00000000
+[copro] method_id = $0000012a (name:conv)
+[copro] reg_offset = 5
+[copro] n_args = 2
+[copro] is_called_super = 0
+[copro] -----------------------------------
+[copro] cpy from $4080c68c to $4080c17c (length: $00000180)
+[copro] <<REWRITTEN>>
+[copro] _cur_regs = $4080c17c
+[copro] <<RESERVED>>
+[copro] _cur_regs = $4080c1ec
+[copro] <<RESERVED>>
+[copro] INST: $50001e50: $000015f1
+[copro] INST: $50001e52: $0000e199
+[copro] INST: $50001e54: $a48fe1ef
+[copro] INST: $50001e58: $00000591
+[copro] INST: $50001e5a: $a42fe1ef
+[copro] INST: $50001e5e: $00008a2a
+[copro] PROF allocated = 2264(delta: 72)
+
+[copro] registered: function=$4080ce9c basicblock=$4080d39c
+[copro] CODE allocated = 908(delta: 32)
+
+[copro] INST: $50001e54: $00e0006f
+[copro] INST: $50001e62: $000082a2
+[copro] INST: $50001e64: $00008516
+[copro] INST: $50001e66: $000085ca
+[copro] INST: $50001e68: $00004611
+[copro] INST: $50001e6a: $996fe0ef
+[copro] INST: $50001e6e: $000082aa
+[copro] INST: $50001e70: $a2cfe1ef
+[copro] INST: $50001e74: $00005000
+[copro] INST: $50001e76: $5e440413
+[copro] INST: $50001e7a: $00004481
+[copro] INST: $50001e7c: $50001537
+[copro] Gotcha! (INST: OP_ENTER).
+[copro] INST: $50001e6a: $378000ef
+[copro] miain_to_copro 3 $500035e0
+[copro] A AND NARG: 7, 2, method_id: read_for_1sec
+[copro] Register 0 x8: MRBC_TT_PROC $4080b210->$4080b210
+[copro] Register 1 x9: MRBC_TT_EMPTY $4080b210->$4080b210
+[copro] Register 2 x18: MRBC_TT_EMPTY $40814d64->$40814d64
+[copro] Register 3 x19: MRBC_TT_NIL $00000000->$00000000
+[copro] Register 4 x20: MRBC_TT_EMPTY $0000001d->$0000001d
+[copro] Register 5 x21: MRBC_TT_EMPTY $4080b14c->$4080b14c
+[copro] Register 6 x22: MRBC_TT_EMPTY $00000000->$00000000
+[copro] [callee saved] stack addr: $500035dc <- ra $50001c4e
+[copro] [callee saved] stack addr: $500035d8 <- x8 $4080b210
+[copro] [callee saved] stack addr: $500035d4 <- x9 $4080b210
+[copro] [callee saved] stack addr: $500035d0 <- x18 $40814d64
+[copro] [callee saved] stack addr: $500035cc <- x19 $00000000
+[copro] [callee saved] stack addr: $500035c8 <- x20 $0000001d
+[copro] [callee saved] stack addr: $500035c4 <- x21 $4080b14c
+[copro] [callee saved] stack addr: $500035c0 <- x22 $00000000
+[copro] [callee saved] stack addr: $500035bc <- x23 $00000000
+[copro] A AND NARG: 7, 0, method_id: read
+[copro] [OBJMAN] Translation Registered type=9, main=4080bc18, copro=500015dc
+[copro] Register 0 x8: MRBC_TT_OBJECT $4080bc18->$500015dc
+[copro] [OBJMAN] Translation Registered type=9, main=4080b5e4, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080b5f8, copro=500015e4
+[copro] Register 1 x9: MRBC_TT_OBJECT $4080b5f8->$500015e4
+[copro] [OBJMAN] Translation Registered type=11, main=4080b0e4, copro=50002260
+[copro] Register 2 x18: MRBC_TT_ARRAY $4080b0e4->$50002260
+[copro] Register 3 x19: MRBC_TT_NIL $00000000->$00000000
+[copro] Register 4 x20: MRBC_TT_INTEGER $00000000->$00000000
+[copro] Register 5 x21: MRBC_TT_TRUE $00000000->$00000001
+[copro] Register 6 x22: MRBC_TT_NIL $00000000->$00000000
+[copro] [callee saved] stack addr: $500035bc <- ra $50001d28
+[copro] [callee saved] stack addr: $500035b8 <- x8 $500015dc
+[copro] [callee saved] stack addr: $500035b4 <- x9 $500015e4
+[copro] [callee saved] stack addr: $500035b0 <- x18 $50002260
+[copro] [callee saved] stack addr: $500035ac <- x19 $00000000
+[copro] [callee saved] stack addr: $500035a8 <- x20 $00000000
+[copro] [callee saved] stack addr: $500035a4 <- x21 $00000001
+[copro] [callee saved] stack addr: $500035a0 <- x22 $00000000
+[copro] A AND NARG: 6, 2, method_id: conv
+[copro] Register 0 x8: MRBC_TT_OBJECT $4080b5f8->$500015e4
+[copro] Register 1 x9: MRBC_TT_NIL $00000000->$00000000
+[copro] [OBJMAN] Translation Registered type=12, main=4080b404, copro=50001804
+[copro] Register 2 x18: MRBC_TT_STRING $4080b404->$50001804
+[copro] Register 3 x19: MRBC_TT_CLASS $40814c44->$40814c44
+[copro] Register 4 x20: MRBC_TT_INTEGER $00000000->$00000000
+[copro] Register 5 x21: MRBC_TT_INTEGER $00000000->$00000000
+[copro] Register 0 x8: MRBC_TT_OBJECT $4080b5f8 -> $500015e4
+[copro] Register 1 x9: MRBC_TT_NIL $00000000 -> $00000000
+[copro] Register 2 x18: MRBC_TT_STRING $4080b404 -> $50001804
+[copro] Register 3 x19: MRBC_TT_CLASS $40814c44 -> $40814c44
+[copro] Register 4 x20: MRBC_TT_INTEGER $00000000 -> $00000000
+[copro] Register 5 x5: MRBC_TT_INTEGER $00000000 -> $00000000
+[copro] Register 0 x10: MRBC_TT_OBJECT $4080b5f8 -> $500015e4
+[copro] Register 1 x11: MRBC_TT_STRING $4080b404 -> $50001804
+[copro] Register 2 x12: MRBC_TT_INTEGER $00000004 -> $00000004
+[copro] register_set:
+[copro] INST: $500022a0: $500020b7
+[copro] INST: $500022a4: $e6e08093
+[copro] INST: $500022a8: $50003137
+[copro] INST: $500022ac: $5a010113
+[copro] INST: $500022b0: $00004281
+[copro] INST: $500022b2: $50001437
+[copro] INST: $500022b6: $5e440413
+[copro] INST: $500022ba: $00004481
+[copro] INST: $500022bc: $50001537
+[copro] INST: $500022c0: $5e450513
+[copro] INST: $500022c4: $500025b7
+[copro] INST: $500022c8: $80458593
+[copro] INST: $500022cc: $00004611
+[copro] INST: $500022ce: $50002937
+[copro] INST: $500022d2: $80490913
+[copro] INST: $500022d6: $408159b7
+[copro] INST: $500022da: $c4498993
+[copro] INST: $500022de: $00004a01
+[copro] INST: $500022e0: $00004a81
+[copro] INST: $500022e2: $00004b01
+[copro] INST: $500022e4: $effff06f
+[copro] [GLOBALMAN] sent copro:4080c14c <--> main:50001c04(type:9)
+[copro] [GLOBALMAN] sent copro:4080c16c <--> main:50001c08(type:11)
+[copro] [GLOBALMAN] sent copro:4080cc08 <--> main:50001c0c(type:11)
+[copro] [OBJMAN] Translation Registered type=11, main=4080b9f8, copro=0
+[copro] [GLOBALMAN] sent copro:4080cc50 <--> main:50001c10(type:11)
+[copro] [OBJMAN] Translation Registered type=11, main=4080baa8, copro=0
+[copro] [GLOBALMAN] Object Sent: count=4
+[copro] Wake up. stopreason=0
+[copro] [OBJMAN] Translation Updated type=9, main=4080bc18, copro=500015dc
+[copro] [OBJMAN] Translation Updated type=9, main=4080b5f8, copro=500015e4
+[copro] [OBJMAN] Translation Updated type=12, main=4080b404, copro=50001804
+[copro] [OBJMAN] Translation Updated type=11, main=4080b0e4, copro=50002260
+[copro] [OBJMAN] Updated 4080bc18(9)
+[copro] [OBJMAN] Updated 4080b5f8(9)
+[copro] [OBJMAN] Updated 4080b404(12)
+[copro] [OBJMAN] Updated 4080b0e4(11)
+[copro] safe_decref 4080cc08
+[copro] safe_decref 4080cc50
+[copro] [GLOBALMAN] Object Received: count=4
+[copro] [copro_to_main] x11: 4
+[copro] [copro_to_main] cur: $500035a0, ra?: $50001e70
+[copro] [copro_to_main] function: $4080ce9c basicblock: $4080d39c STACK RA: $50001e62
+[copro] [cpy_to_interpreter_stack] regLen = 10
+[copro] [cpy_to_interp_stack] restore to interp.: x8 -> R0(4080c76c) (value: $500015e4, type: 19)
+[copro] [cpy_to_interp_stack] restore to interp.: x9 -> R1(4080c77c) (value: $00000000, type: 1)
+[copro] [cpy_to_interp_stack] restore to interp.: x18 -> R2(4080c78c) (value: $50001804, type: 12)
+[copro] [cpy_to_interp_stack] restore to interp.: x19 -> R3(4080c79c) (value: $40814c44, type: 7)
+[copro] [cpy_to_interp_stack] restore to interp.: x20 -> R4(4080c7ac) (value: $00000000, type: 4)
+[copro] [cpy_to_interp_stack] restore to interp.: x21 -> R5(4080c7bc) (value: $00000000, type: 4)
+[copro] [cpy_to_interp_stack] restore to interp.: x5 -> R6(4080c7cc) (value: $00000fa0, type: 4[UNKNOWN])
+[copro] [cpy_to_interp_stack] restore to interp.: x6 -> R7(4080c7dc) (value: $00000005, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x7 -> R8(4080c7ec) (value: $00000000, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x10 -> R9(4080c7fc) (value: $00000fa0, type: 0)
+[copro] [copro_to_main] interpreter_stack current: $4080c76c sentinel: $4080c34c
+[copro] [restore_callee_saved] restore callee saved: $500035bc -> x1 value: $50001d28
+[copro] [restore_callee_saved] restore callee saved: $500035b8 -> x8 value: $500015dc
+[copro] [restore_callee_saved] restore callee saved: $500035b4 -> x9 value: $500015e4
+[copro] [restore_callee_saved] restore callee saved: $500035b0 -> x18 value: $50002260
+[copro] [restore_callee_saved] restore callee saved: $500035ac -> x19 value: $00000000
+[copro] [restore_callee_saved] restore callee saved: $500035a8 -> x20 value: $00000000
+[copro] [restore_callee_saved] restore callee saved: $500035a4 -> x21 value: $00000001
+[copro] [copro_to_main] cur: $500035c0, ra?: $50001d24
+[copro] [copro_to_main] function: $4080b7e8 basicblock: $4080ce48 STACK RA: $50001d22
+[copro] A AND NARG: 7, 0, method_id: read
+[copro] [cpy_to_interpreter_stack] regLen = 7
+[copro] [cpy_to_interp_stack] restore to interp.: x8 -> R0(4080c6fc) (value: $500015dc, type: 18)
+[copro] [cpy_to_interp_stack] restore to interp.: x9 -> R1(4080c70c) (value: $500015e4, type: 19)
+[copro] [cpy_to_interp_stack] restore to interp.: x18 -> R2(4080c71c) (value: $50002260, type: 11)
+[copro] [cpy_to_interp_stack] restore to interp.: x19 -> R3(4080c72c) (value: $00000000, type: 1)
+[copro] [cpy_to_interp_stack] restore to interp.: x20 -> R4(4080c73c) (value: $00000000, type: 4)
+[copro] [cpy_to_interp_stack] restore to interp.: x21 -> R5(4080c74c) (value: $00000001, type: 3)
+[copro] [cpy_to_interp_stack] restore to interp.: x22 -> R6(4080c75c) (value: $00000000, type: 1)
+[copro] [copro_to_main] interpreter_stack current: $4080c6fc sentinel: $4080c34c
+[copro] [restore_callee_saved] restore callee saved: $500035dc -> x1 value: $50001c4e
+[copro] [restore_callee_saved] restore callee saved: $500035d8 -> x8 value: $4080b210
+[copro] [restore_callee_saved] restore callee saved: $500035d4 -> x9 value: $4080b210
+[copro] [restore_callee_saved] restore callee saved: $500035d0 -> x18 value: $40814d64
+[copro] [restore_callee_saved] restore callee saved: $500035cc -> x19 value: $00000000
+[copro] [restore_callee_saved] restore callee saved: $500035c8 -> x20 value: $0000001d
+[copro] [restore_callee_saved] restore callee saved: $500035c4 -> x21 value: $4080b14c
+[copro] [restore_callee_saved] restore callee saved: $500035c0 -> x22 value: $00000000
+[copro] [copro_to_main] cur: $500035e0, ra?: $50001c4a
+[copro] [copro_to_main] function: $4080b678 basicblock: $4080b754 STACK RA: $50001c42
+[copro] A AND NARG: 7, 2, method_id: read_for_1sec
+[copro] [cpy_to_interpreter_stack] regLen = 7
+[copro] [cpy_to_interp_stack] restore to interp.: x8 -> R0(4080c68c) (value: $4080b210, type: 10)
+[copro] [cpy_to_interp_stack] restore to interp.: x9 -> R1(4080c69c) (value: $4080b210, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x18 -> R2(4080c6ac) (value: $40814d64, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x19 -> R3(4080c6bc) (value: $00000000, type: 1)
+[copro] [cpy_to_interp_stack] restore to interp.: x20 -> R4(4080c6cc) (value: $0000001d, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x21 -> R5(4080c6dc) (value: $4080b14c, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x22 -> R6(4080c6ec) (value: $00000000, type: 0)
+[copro] [copro_to_main] interpreter_stack current: $4080c68c sentinel: $4080c34c
+[copro] st=$4080b7cc, tt=$4080d418, st->functions_current=$4080b678, tt->function=$4080b678
+[copro] st=$4080b88c, tt=$4080d400, st->functions_current=$4080b7e8, tt->function=$4080b7e8
+[copro] st=$4080b65c, tt=$4080d3e8, st->functions_current=$4080ce9c, tt->function=$4080ce9c
+[copro] [copro_to_main] reserve = 3, popcnt = 1
+[copro] [copro_to_main] pop call info
+[copro] --- CALLINFO(addr = $4080b634) ---
+[copro] cur_irep = $4080b518
+[copro] inst = $420232dc
+[copro] cur_regs = $4080c25c
+[copro] target_class = $40809a60 (name:Object)
+[copro] own_class = $40814bc8 (name:ADXL)
+[copro] karg_keep = $00000000
+[copro] method_id = $0000012a (name:conv)
+[copro] reg_offset = 6
+[copro] n_args = 2
+[copro] is_called_super = 0
+[copro] -----------------------------------
+[copro] cpy from $4080c68c to $4080c17c (length: $00000180)
+[copro] <<REWRITTEN>>
+[copro] _cur_regs = $4080c17c
+[copro] <<RESERVED>>
+[copro] _cur_regs = $4080c1ec
+[copro] <<RESERVED>>
+[copro] INST: $50001e70: $000015f1
+[copro] INST: $50001e72: $0000e199
+[copro] INST: $50001e74: $a28fe1ef
+[copro] INST: $50001e78: $00000591
+[copro] INST: $50001e7a: $a22fe1ef
+[copro] INST: $50001e7e: $00005000
+[copro] PROF allocated = 2336(delta: 72)
+
+[copro] registered: function=$4080ce9c basicblock=$4080d3e8
+[copro] [OBJMAN] created for ADXLResult (tt:21)
+[copro] CODE allocated = 940(delta: 32)
+
+[copro] INST: $50001e74: $00e0006f
+[copro] INST: $50001e82: $0000854e
+[copro] INST: $50001e84: $000085d2
+[copro] INST: $50001e86: $00008656
+[copro] INST: $50001e88: $00008696
+[copro] INST: $50001e8a: $00030537
+[copro] INST: $50001e8e: $01550513
+[copro] INST: $50001e92: $aaefe0ef
+[copro] INST: $50001e96: $a06fe1ef
+[copro] INST: $50001e9a: $000089aa
+[copro] INST: $50001e9c: $a00fe1ef
+[copro] PROF allocated = 2366(delta: 30)
+
+[copro] [Profile] [NEW FUNCTION] vm->callinfo_tail=$4080d450, cur_irep=$4080b41c, own_class=$40814c44
+[copro] New profiling(INST: OP_ENTER).
+[copro] PROF allocated = 2422(delta: 56)
+
+[copro] registered: function=$4080d478 basicblock=$4080d49c
+[copro] REGISTER ALLOCATION: R0 -> x10(caller_saved) ..f3e0
+[copro] REGISTER ALLOCATION: R1 -> x14(caller_saved) ..fb3e0
+[copro] REGISTER ALLOCATION: R2 -> x12(caller_saved) ..fa3e0
+[copro] REGISTER ALLOCATION: R3 -> x13(caller_saved) ..f83e0
+[copro] REGISTER ALLOCATION: R4 -> x5(caller-saved) ..f83c0
+[copro] REGISTER ALLOCATION: R5 -> x6(caller-saved) ..f8380
+[copro] CODE allocated = 976(delta: 36)
+
+[copro] INST: $50001e96: $3cc000ef
+[copro] INST: $50002262: $0000872e
+[copro] INST: $50002264: $00171593
+[copro] INST: $50002268: $00000585
+[copro] INST: $5000226a: $00b52223
+[copro] INST: $5000226e: $00161593
+[copro] INST: $50002272: $00000585
+[copro] INST: $50002274: $00b52423
+[copro] INST: $50002278: $00169593
+[copro] INST: $5000227c: $00000585
+[copro] INST: $5000227e: $00b52623
+[copro] INST: $50002282: $00008082
+[copro] PROF allocated = 2494(delta: 72)
+
+[copro] registered: function=$4080ce9c basicblock=$4080d584
+[copro] CODE allocated = 1000(delta: 24)
+
+[copro] INST: $50001e9c: $0060006f
+[copro] INST: $50001ea2: $0000854e
+[copro] INST: $50001ea4: $000045d5
+[copro] INST: $50001ea6: $000040f2
+[copro] INST: $50001ea8: $00004462
+[copro] INST: $50001eaa: $000044d2
+[copro] INST: $50001eac: $00004942
+[copro] INST: $50001eae: $000049b2
+[copro] INST: $50001eb0: $00004a22
+[copro] INST: $50001eb2: $00004a92
+[copro] INST: $50001eb4: $00006105
+[copro] INST: $50001eb6: $00008082
+[copro] INST: $50001d2a: $000015ad
+[copro] INST: $50001d2c: $0000e199
+[copro] INST: $50001d2e: $b6efe1ef
+[copro] INST: $50001d32: $000005d5
+[copro] INST: $50001d34: $b68fe1ef
+[copro] INST: $50001d38: $00000513
+[copro] PROF allocated = 2574(delta: 80)
+
+[copro] registered: function=$4080b7e8 basicblock=$4080d5d0
+[copro] CODE allocated = 1028(delta: 28)
+
+[copro] INST: $50001d2e: $1940006f
+[copro] INST: $50001ec2: $00008b16
+[copro] INST: $50001ec4: $0000717d
+[copro] INST: $50001ec6: $0000c016
+[copro] INST: $50001ec8: $0000854a
+[copro] INST: $50001eca: $000085d2
+[copro] INST: $50001ecc: $00008616
+[copro] INST: $50001ece: $b46fe0ef
+[copro] INST: $50001ed2: $0000832a
+[copro] INST: $50001ed4: $00004282
+[copro] INST: $50001ed6: $00006141
+[copro] INST: $50001ed8: $9c4fe1ef
+[copro] PROF allocated = 2654(delta: 80)
+
+[copro] registered: function=$4080b7e8 basicblock=$4080d624
+[copro] OP_JMP
+[copro] PROF allocated = 2734(delta: 80)
+
+[copro] registered: function=$4080b7e8 basicblock=$4080d678
+[copro] CODE allocated = 1036(delta: 8)
+
+[copro] INST: $50001ed8: $f06ff06f
+[copro] INST: $500015de: $00000a05
+[copro] INST: $500015e0: $abdfe1ef
+[copro] OP_JMPNOT
+[copro] PROF allocated = 2814(delta: 80)
+
+[copro] registered: function=$4080b7e8 basicblock=$4080d6cc
+[copro] CODE allocated = 1056(delta: 20)
+
+[copro] INST: $500015e0: $1030006f
+[copro] INST: $50001ee2: $00004331
+[copro] INST: $50001ee4: $006a22b3
+[copro] INST: $50001ee8: $00028463
+[copro] INST: $50001eec: $0000006f
+[copro] INST: $50001ef0: $9acfe1ef
+[copro] CODE allocated = 1080(delta: 24)
+
+[copro] INST: $50001eec: $0160006f
+[copro] INST: $50001f02: $40815537
+[copro] INST: $50001f06: $d6450513
+[copro] INST: $50001f0a: $05000593
+[copro] INST: $50001f0e: $ef4fe0ef
+[copro] INST: $50001f12: $000082aa
+[copro] INST: $50001f14: $988fe1ef
+[copro] PROF allocated = 2894(delta: 80)
+
+[copro] registered: function=$4080b7e8 basicblock=$4080d720
+[copro] CODE allocated = 1106(delta: 26)
+
+[copro] INST: $50001f14: $00e0006f
+[copro] INST: $50001f22: $00008526
+[copro] INST: $50001f24: $8dcfe0ef
+[copro] INST: $50001f28: $000082aa
+[copro] INST: $50001f2a: $972fe1ef
+[copro] INST: $50001f2e: $000049b2
+[copro] INST: $50001f30: $00004a22
+[copro] INST: $50001f32: $000082aa
+[copro] INST: $50001f34: $00004282
+[copro] INST: $50001f36: $00006141
+[copro] INST: $50001f38: $00009593
+[copro] Gotcha! (INST: OP_ENTER).
+[copro] INST: $50001f24: $1fe000ef
+[copro] miain_to_copro 2 $500035e0
+[copro] A AND NARG: 7, 2, method_id: read_for_1sec
+[copro] Register 0 x8: MRBC_TT_PROC $4080b210->$4080b210
+[copro] Register 1 x9: MRBC_TT_EMPTY $4080b210->$4080b210
+[copro] Register 2 x18: MRBC_TT_EMPTY $40814d64->$40814d64
+[copro] Register 3 x19: MRBC_TT_NIL $00000000->$00000000
+[copro] Register 4 x20: MRBC_TT_EMPTY $0000001d->$0000001d
+[copro] Register 5 x21: MRBC_TT_EMPTY $4080b14c->$4080b14c
+[copro] Register 6 x22: MRBC_TT_EMPTY $00000000->$00000000
+[copro] [callee saved] stack addr: $500035dc <- ra $50001c4e
+[copro] [callee saved] stack addr: $500035d8 <- x8 $4080b210
+[copro] [callee saved] stack addr: $500035d4 <- x9 $4080b210
+[copro] [callee saved] stack addr: $500035d0 <- x18 $40814d64
+[copro] [callee saved] stack addr: $500035cc <- x19 $00000000
+[copro] [callee saved] stack addr: $500035c8 <- x20 $0000001d
+[copro] [callee saved] stack addr: $500035c4 <- x21 $4080b14c
+[copro] [callee saved] stack addr: $500035c0 <- x22 $00000000
+[copro] [callee saved] stack addr: $500035bc <- x23 $00000000
+[copro] A AND NARG: 7, 0, method_id: read
+[copro] [OBJMAN] Translation Registered type=9, main=4080bc18, copro=500015e4
+[copro] Register 0 x8: MRBC_TT_OBJECT $4080bc18->$500015e4
+[copro] [OBJMAN] Translation Registered type=9, main=4080b5e4, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080b5f8, copro=500015ec
+[copro] Register 1 x9: MRBC_TT_OBJECT $4080b5f8->$500015ec
+[copro] [OBJMAN] Translation Registered type=9, main=4080b634, copro=0
+[copro] [OBJMAN] Translation Registered type=11, main=4080b0e4, copro=500022a0
+[copro] Register 2 x18: MRBC_TT_ARRAY $4080b0e4->$500022a0
+[copro] Register 3 x19: MRBC_TT_NIL $00000000->$00000000
+[copro] Register 4 x20: MRBC_TT_INTEGER $00000001->$00000001
+[copro] Register 5 x21: MRBC_TT_TRUE $00000000->$00000001
+[copro] [OBJMAN] Translation Updated type=9, main=4080b634, copro=50001804
+[copro] Register 6 x22: MRBC_TT_OBJECT $4080b634->$50001804
+[copro] Register 0 x8: MRBC_TT_OBJECT $4080bc18 -> $500015e4
+[copro] Register 1 x9: MRBC_TT_OBJECT $4080b5f8 -> $500015ec
+[copro] Register 2 x18: MRBC_TT_ARRAY $4080b0e4 -> $500022a0
+[copro] Register 3 x19: MRBC_TT_NIL $00000000 -> $00000000
+[copro] Register 4 x20: MRBC_TT_INTEGER $00000001 -> $00000001
+[copro] Register 5 x21: MRBC_TT_TRUE $00000000 -> $00000001
+[copro] Register 6 x5: MRBC_TT_OBJECT $4080b634 -> $50001804
+[copro] Register 0 x10: MRBC_TT_OBJECT $4080b5f8 -> $500015ec
+[copro] register_set:
+[copro] INST: $500022e0: $500020b7
+[copro] INST: $500022e4: $f2808093
+[copro] INST: $500022e8: $50003137
+[copro] INST: $500022ec: $5c010113
+[copro] INST: $500022f0: $500022b7
+[copro] INST: $500022f4: $80428293
+[copro] INST: $500022f8: $50001437
+[copro] INST: $500022fc: $5e440413
+[copro] INST: $50002300: $500014b7
+[copro] INST: $50002304: $5ec48493
+[copro] INST: $50002308: $50001537
+[copro] INST: $5000230c: $5ec50513
+[copro] INST: $50002310: $50002937
+[copro] INST: $50002314: $2a090913
+[copro] INST: $50002318: $00004981
+[copro] INST: $5000231a: $00004a05
+[copro] INST: $5000231c: $00004a85
+[copro] INST: $5000231e: $50002b37
+[copro] INST: $50002322: $804b0b13
+[copro] INST: $50002326: $dfdff06f
+[copro] [GLOBALMAN] sent copro:4080c14c <--> main:50001c04(type:9)
+[copro] [GLOBALMAN] sent copro:4080c16c <--> main:50001c08(type:11)
+[copro] [GLOBALMAN] sent copro:4080cc08 <--> main:50001c0c(type:11)
+[copro] [OBJMAN] Translation Registered type=11, main=4080b9f8, copro=0
+[copro] [GLOBALMAN] sent copro:4080cc50 <--> main:50001c10(type:11)
+[copro] [OBJMAN] Translation Registered type=11, main=4080baa8, copro=0
+[copro] [GLOBALMAN] Object Sent: count=4
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[0] REGISTERD: 4080b5e4 -> 500015f4
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[1] REGISTERD: 4080baa8 -> 500015fc
+[copro] Wake up. stopreason=0
+[copro] [OBJMAN] Translation Updated type=9, main=4080bc18, copro=500015e4
+[copro] [OBJMAN] Translation Updated type=9, main=4080b5f8, copro=500015ec
+[copro] [OBJMAN] Translation Updated type=9, main=4080b5e4, copro=500015f4
+[copro] [OBJMAN] Translation Updated type=11, main=4080baa8, copro=500015fc
+[copro] [OBJMAN] Translation Updated type=9, main=4080b634, copro=50001804
+[copro] [OBJMAN] Translation Registered type=12, main=4080b404, copro=50001814
+[copro] [OBJMAN] Catch addr:50001824 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080b660, copro=50001824
+[copro] [OBJMAN] Translation Updated type=11, main=4080b0e4, copro=500022a0
+[copro] [OBJMAN] Updated 4080bc18(9)
+[copro] [OBJMAN] Updated 4080b5f8(9)
+[copro] [OBJMAN] Updated 4080b5e4(9)
+[copro] [OBJMAN] Updated 4080baa8(11)
+[copro] [OBJMAN] Updated 4080b634(9)
+[copro] [OBJMAN] Updated 4080b404(12)
+[copro] [OBJMAN] Updated 4080b660(9)
+[copro] [OBJMAN] Updated 4080b0e4(11)
+[copro] safe_decref 4080cc08
+[copro] safe_decref 4080cc50
+[copro] [GLOBALMAN] Object Received: count=4
+[copro] [copro_to_main] x11: 21
+[copro] [copro_to_main] cur: $500035c0, ra?: $50001f2a
+[copro] [copro_to_main] function: $4080b7e8 basicblock: $4080d720 STACK RA: $50001f22
+[copro] [cpy_to_interpreter_stack] regLen = 12
+[copro] [cpy_to_interp_stack] restore to interp.: x8 -> R0(4080c74c) (value: $500015e4, type: 18)
+[copro] [cpy_to_interp_stack] restore to interp.: x9 -> R1(4080c75c) (value: $500015ec, type: 19)
+[copro] [cpy_to_interp_stack] restore to interp.: x18 -> R2(4080c76c) (value: $500022a0, type: 11)
+[copro] [cpy_to_interp_stack] restore to interp.: x19 -> R3(4080c77c) (value: $00000000, type: 1)
+[copro] [cpy_to_interp_stack] restore to interp.: x20 -> R4(4080c78c) (value: $00000001, type: 4)
+[copro] [cpy_to_interp_stack] restore to interp.: x21 -> R5(4080c79c) (value: $00000001, type: 3)
+[copro] [cpy_to_interp_stack] restore to interp.: x22 -> R6(4080c7ac) (value: $00000000, type: 21)
+[copro] [cpy_to_interp_stack] restore to interp.: x5 -> R7(4080c7bc) (value: $50001824, type: 21[UNKNOWN])
+[copro] [cpy_to_interp_stack] restore to interp.: x6 -> R8(4080c7cc) (value: $00000008, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x7 -> R9(4080c7dc) (value: $00000000, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x10 -> R10(4080c7ec) (value: $50001824, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x12 -> R11(4080c7fc) (value: $00000000, type: 0)
+[copro] [copro_to_main] interpreter_stack current: $4080c74c sentinel: $4080c2fc
+[copro] [restore_callee_saved] restore callee saved: $500035dc -> x1 value: $50001c4e
+[copro] [restore_callee_saved] restore callee saved: $500035d8 -> x8 value: $4080b210
+[copro] [restore_callee_saved] restore callee saved: $500035d4 -> x9 value: $4080b210
+[copro] [restore_callee_saved] restore callee saved: $500035d0 -> x18 value: $40814d64
+[copro] [restore_callee_saved] restore callee saved: $500035cc -> x19 value: $00000000
+[copro] [restore_callee_saved] restore callee saved: $500035c8 -> x20 value: $0000001d
+[copro] [restore_callee_saved] restore callee saved: $500035c4 -> x21 value: $4080b14c
+[copro] [restore_callee_saved] restore callee saved: $500035c0 -> x22 value: $00000000
+[copro] [copro_to_main] cur: $500035e0, ra?: $50001c4a
+[copro] [copro_to_main] function: $4080b678 basicblock: $4080b754 STACK RA: $50001c42
+[copro] A AND NARG: 7, 2, method_id: read_for_1sec
+[copro] [cpy_to_interpreter_stack] regLen = 7
+[copro] [cpy_to_interp_stack] restore to interp.: x8 -> R0(4080c6dc) (value: $4080b210, type: 10)
+[copro] [cpy_to_interp_stack] restore to interp.: x9 -> R1(4080c6ec) (value: $4080b210, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x18 -> R2(4080c6fc) (value: $40814d64, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x19 -> R3(4080c70c) (value: $00000000, type: 1)
+[copro] [cpy_to_interp_stack] restore to interp.: x20 -> R4(4080c71c) (value: $0000001d, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x21 -> R5(4080c72c) (value: $4080b14c, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x22 -> R6(4080c73c) (value: $00000000, type: 0)
+[copro] [copro_to_main] interpreter_stack current: $4080c6dc sentinel: $4080c2fc
+[copro] st=$4080b7cc, tt=$4080d44c, st->functions_current=$4080b678, tt->function=$4080b678
+[copro] st=$4080b88c, tt=$4080d434, st->functions_current=$4080b7e8, tt->function=$4080b7e8
+[copro] [copro_to_main] reserve = 2, popcnt = 1
+[copro] [copro_to_main] pop call info
+[copro] --- CALLINFO(addr = $4080b864) ---
+[copro] cur_irep = $4080b58c
+[copro] inst = $420233d2
+[copro] cur_regs = $4080c1ec
+[copro] target_class = $40809a60 (name:Object)
+[copro] own_class = $40814bc8 (name:ADXL)
+[copro] karg_keep = $00000000
+[copro] method_id = $0000011a (name:read)
+[copro] reg_offset = 7
+[copro] n_args = 0
+[copro] is_called_super = 0
+[copro] -----------------------------------
+[copro] cpy from $4080c6dc to $4080c17c (length: $00000130)
+[copro] <<REWRITTEN>>
+[copro] _cur_regs = $4080c17c
+[copro] <<RESERVED>>
+[copro] INST: $50001f2a: $000015ad
+[copro] INST: $50001f2c: $0000e199
+[copro] INST: $50001f2e: $96efe1ef
+[copro] INST: $50001f32: $000005d5
+[copro] INST: $50001f34: $968fe1ef
+[copro] INST: $50001f38: $00009593
+[copro] INST: $50001f2e: $f95ff06f
+[copro] miain_to_copro 1 $500035e0
+[copro] A AND NARG: 7, 2, method_id: read_for_1sec
+[copro] Register 0 x8: MRBC_TT_PROC $4080b210->$4080b210
+[copro] Register 1 x9: MRBC_TT_EMPTY $4080b210->$4080b210
+[copro] Register 2 x18: MRBC_TT_EMPTY $40814d64->$40814d64
+[copro] Register 3 x19: MRBC_TT_NIL $00000000->$00000000
+[copro] Register 4 x20: MRBC_TT_EMPTY $0000001d->$0000001d
+[copro] Register 5 x21: MRBC_TT_EMPTY $4080b14c->$4080b14c
+[copro] Register 6 x22: MRBC_TT_EMPTY $00000000->$00000000
+[copro] [callee saved] stack addr: $500035dc <- ra $50001c4e
+[copro] [callee saved] stack addr: $500035d8 <- x8 $4080b210
+[copro] [callee saved] stack addr: $500035d4 <- x9 $4080b210
+[copro] [callee saved] stack addr: $500035d0 <- x18 $40814d64
+[copro] [callee saved] stack addr: $500035cc <- x19 $00000000
+[copro] [callee saved] stack addr: $500035c8 <- x20 $0000001d
+[copro] [callee saved] stack addr: $500035c4 <- x21 $4080b14c
+[copro] [callee saved] stack addr: $500035c0 <- x22 $00000000
+[copro] [callee saved] stack addr: $500035bc <- x23 $00000000
+[copro] [OBJMAN] Translation Registered type=9, main=4080bc18, copro=500015e4
+[copro] Register 0 x8: MRBC_TT_OBJECT $4080bc18 -> $500015e4
+[copro] [OBJMAN] Translation Registered type=9, main=4080b5e4, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080b5f8, copro=500015ec
+[copro] Register 1 x9: MRBC_TT_OBJECT $4080b5f8 -> $500015ec
+[copro] [OBJMAN] Translation Registered type=9, main=4080b634, copro=0
+[copro] [OBJMAN] Translation Registered type=11, main=4080b0e4, copro=500022a0
+[copro] Register 2 x18: MRBC_TT_ARRAY $4080b0e4 -> $500022a0
+[copro] Register 3 x19: MRBC_TT_NIL $00000000 -> $00000000
+[copro] Register 4 x20: MRBC_TT_INTEGER $00000001 -> $00000001
+[copro] Register 5 x21: MRBC_TT_TRUE $00000000 -> $00000001
+[copro] Register 6 x22: MRBC_TT_NIL $00000000 -> $00000000
+[copro] [OBJMAN] Translation Registered type=9, main=4080b660, copro=50001804
+[copro] Register 7 x5: MRBC_TT_OBJECT $4080b660 -> $50001804
+[copro] register_set:
+[copro] INST: $500022e0: $500020b7
+[copro] INST: $500022e4: $c4e08093
+[copro] INST: $500022e8: $50003137
+[copro] INST: $500022ec: $5c010113
+[copro] INST: $500022f0: $500022b7
+[copro] INST: $500022f4: $80428293
+[copro] INST: $500022f8: $50001437
+[copro] INST: $500022fc: $5e440413
+[copro] INST: $50002300: $500014b7
+[copro] INST: $50002304: $5ec48493
+[copro] INST: $50002308: $50002937
+[copro] INST: $5000230c: $2a090913
+[copro] INST: $50002310: $00004981
+[copro] INST: $50002312: $00004a05
+[copro] INST: $50002314: $00004a85
+[copro] INST: $50002316: $00004b01
+[copro] INST: $50002318: $babff06f
+[copro] [GLOBALMAN] sent copro:4080c14c <--> main:50001c04(type:9)
+[copro] [GLOBALMAN] sent copro:4080c16c <--> main:50001c08(type:11)
+[copro] [GLOBALMAN] sent copro:4080cc08 <--> main:50001c0c(type:11)
+[copro] [OBJMAN] Translation Registered type=11, main=4080b9f8, copro=0
+[copro] [GLOBALMAN] sent copro:4080cc50 <--> main:50001c10(type:11)
+[copro] [OBJMAN] Translation Registered type=11, main=4080baa8, copro=0
+[copro] [GLOBALMAN] Object Sent: count=4
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[2] REGISTERD: 4080b5e4 -> 500015f4
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[3] REGISTERD: 4080baa8 -> 500015fc
+[copro] Wake up. stopreason=0
+[copro] [OBJMAN] Translation Updated type=9, main=4080bc18, copro=500015e4
+[copro] [OBJMAN] Translation Updated type=9, main=4080b5f8, copro=500015ec
+[copro] [OBJMAN] Translation Updated type=9, main=4080b5e4, copro=500015f4
+[copro] [OBJMAN] Translation Updated type=11, main=4080baa8, copro=500015fc
+[copro] [OBJMAN] Translation Updated type=9, main=4080b660, copro=50001804
+[copro] [OBJMAN] Translation Registered type=12, main=4080d434, copro=50001814
+[copro] [OBJMAN] Catch addr:50001824 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080d444, copro=50001824
+[copro] [OBJMAN] Translation Registered type=12, main=4080d458, copro=50001834
+[copro] [OBJMAN] Catch addr:50001844 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080b864, copro=50001844
+[copro] [OBJMAN] Translation Registered type=12, main=4080b878, copro=50001854
+[copro] [OBJMAN] Catch addr:50001864 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080b888, copro=50001864
+[copro] [OBJMAN] Translation Registered type=12, main=4080e454, copro=50001874
+[copro] [OBJMAN] Catch addr:50001884 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080e464, copro=50001884
+[copro] [OBJMAN] Translation Registered type=12, main=4080e478, copro=50001894
+[copro] [OBJMAN] Catch addr:500018a4 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080e488, copro=500018a4
+[copro] [OBJMAN] Translation Registered type=12, main=4080e49c, copro=500018b4
+[copro] [OBJMAN] Catch addr:500018c4 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080e4ac, copro=500018c4
+[copro] [OBJMAN] Translation Registered type=12, main=4080cfcc, copro=500018d4
+[copro] [OBJMAN] Catch addr:500018e4 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080cfdc, copro=500018e4
+[copro] [OBJMAN] Translation Registered type=12, main=4080cff0, copro=500018f4
+[copro] [OBJMAN] Catch addr:50001904 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080d000, copro=50001904
+[copro] [OBJMAN] Translation Registered type=12, main=4080d014, copro=50001914
+[copro] [OBJMAN] Catch addr:50001924 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080d024, copro=50001924
+[copro] [OBJMAN] Translation Registered type=12, main=4080d038, copro=50001934
+[copro] [OBJMAN] Catch addr:50001944 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080e6c8, copro=50001944
+[copro] [OBJMAN] Translation Registered type=12, main=4080e578, copro=50001954
+[copro] [OBJMAN] Catch addr:50001964 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080e588, copro=50001964
+[copro] [OBJMAN] Translation Updated type=11, main=4080b0e4, copro=500022a0
+[copro] [OBJMAN] Updated 4080bc18(9)
+[copro] [OBJMAN] Updated 4080b5f8(9)
+[copro] [OBJMAN] Updated 4080b5e4(9)
+[copro] [OBJMAN] Updated 4080baa8(11)
+[copro] [OBJMAN] Updated 4080b660(9)
+[copro] [OBJMAN] Updated 4080d434(12)
+[copro] [OBJMAN] Updated 4080d444(9)
+[copro] [OBJMAN] Updated 4080d458(12)
+[copro] [OBJMAN] Updated 4080b864(9)
+[copro] [OBJMAN] Updated 4080b878(12)
+[copro] [OBJMAN] Updated 4080b888(9)
+[copro] [OBJMAN] Updated 4080e454(12)
+[copro] [OBJMAN] Updated 4080e464(9)
+[copro] [OBJMAN] Updated 4080e478(12)
+[copro] [OBJMAN] Updated 4080e488(9)
+[copro] [OBJMAN] Updated 4080e49c(12)
+[copro] [OBJMAN] Updated 4080e4ac(9)
+[copro] [OBJMAN] Updated 4080cfcc(12)
+[copro] [OBJMAN] Updated 4080cfdc(9)
+[copro] [OBJMAN] Updated 4080cff0(12)
+[copro] [OBJMAN] Updated 4080d000(9)
+[copro] [OBJMAN] Updated 4080d014(12)
+[copro] [OBJMAN] Updated 4080d024(9)
+[copro] [OBJMAN] Updated 4080d038(12)
+[copro] [OBJMAN] Updated 4080e6c8(9)
+[copro] [OBJMAN] Updated 4080e578(12)
+[copro] [OBJMAN] Updated 4080e588(9)
+[copro] [OBJMAN] Updated 4080b0e4(11)
+[copro] safe_decref 4080b14c
+[copro] safe_decref 4080cc08
+[copro] safe_decref 4080cc50
+[copro] [GLOBALMAN] Object Received: count=4
+[copro] [copro_to_main] x11: 1342186192
+[copro] [copro_to_main] cur: $500035c0, ra?: $50001ef0
+[copro] [copro_to_main] function: $4080b7e8 basicblock: $4080d678 STACK RA: $50001ee2
+[copro] [cpy_to_interpreter_stack] regLen = 12
+[copro] [cpy_to_interp_stack] restore to interp.: x8 -> R0(4080c74c) (value: $500015e4, type: 18)
+[copro] [cpy_to_interp_stack] restore to interp.: x9 -> R1(4080c75c) (value: $500015ec, type: 19)
+[copro] [cpy_to_interp_stack] restore to interp.: x18 -> R2(4080c76c) (value: $500022a0, type: 11)
+[copro] [cpy_to_interp_stack] restore to interp.: x19 -> R3(4080c77c) (value: $00000000, type: 1)
+[copro] [cpy_to_interp_stack] restore to interp.: x20 -> R4(4080c78c) (value: $0000000c, type: 4)
+[copro] [cpy_to_interp_stack] restore to interp.: x21 -> R5(4080c79c) (value: $00000001, type: 3)
+[copro] [cpy_to_interp_stack] restore to interp.: x22 -> R6(4080c7ac) (value: $50001964, type: 21)
+[copro] [cpy_to_interp_stack] restore to interp.: x5 -> R7(4080c7bc) (value: $00000000, type: 3)
+[copro] [cpy_to_interp_stack] restore to interp.: x6 -> R8(4080c7cc) (value: $0000000c, type: 4)
+[copro] [cpy_to_interp_stack] restore to interp.: x7 -> R9(4080c7dc) (value: $00000000, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x10 -> R10(4080c7ec) (value: $50001964, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x12 -> R11(4080c7fc) (value: $50001964, type: 1)
+[copro] [copro_to_main] interpreter_stack current: $4080c74c sentinel: $4080c2ac
+[copro] [restore_callee_saved] restore callee saved: $500035dc -> x1 value: $50001c4e
+[copro] [restore_callee_saved] restore callee saved: $500035d8 -> x8 value: $4080b210
+[copro] [restore_callee_saved] restore callee saved: $500035d4 -> x9 value: $4080b210
+[copro] [restore_callee_saved] restore callee saved: $500035d0 -> x18 value: $40814d64
+[copro] [restore_callee_saved] restore callee saved: $500035cc -> x19 value: $00000000
+[copro] [restore_callee_saved] restore callee saved: $500035c8 -> x20 value: $0000001d
+[copro] [restore_callee_saved] restore callee saved: $500035c4 -> x21 value: $4080b14c
+[copro] [restore_callee_saved] restore callee saved: $500035c0 -> x22 value: $00000000
+[copro] [copro_to_main] cur: $500035e0, ra?: $50001c4a
+[copro] [copro_to_main] function: $4080b678 basicblock: $4080b754 STACK RA: $50001c42
+[copro] A AND NARG: 7, 2, method_id: read_for_1sec
+[copro] [cpy_to_interpreter_stack] regLen = 7
+[copro] [cpy_to_interp_stack] restore to interp.: x8 -> R0(4080c6dc) (value: $4080b210, type: 10)
+[copro] [cpy_to_interp_stack] restore to interp.: x9 -> R1(4080c6ec) (value: $4080b210, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x18 -> R2(4080c6fc) (value: $40814d64, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x19 -> R3(4080c70c) (value: $00000000, type: 1)
+[copro] [cpy_to_interp_stack] restore to interp.: x20 -> R4(4080c71c) (value: $0000001d, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x21 -> R5(4080c72c) (value: $4080b14c, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x22 -> R6(4080c73c) (value: $00000000, type: 0)
+[copro] [copro_to_main] interpreter_stack current: $4080c6dc sentinel: $4080c2ac
+[copro] st=$4080b7cc, tt=$4080e660, st->functions_current=$4080b678, tt->function=$4080b678
+[copro] st=$4080b288, tt=$4080e648, st->functions_current=$4080b7e8, tt->function=$4080b7e8
+[copro] [copro_to_main] reserve = 2, popcnt = 0
+[copro] cpy from $4080c6dc to $4080c17c (length: $00000130)
+[copro] <<REWRITTEN>>
+[copro] _cur_regs = $4080c17c
+[copro] <<RESERVED>>
+[copro] PROF allocated = 2974(delta: 80)
+
+[copro] registered: function=$4080b7e8 basicblock=$4080e648
+[copro] CODE allocated = 1132(delta: 26)
+
+[copro] INST: $50001ef0: $0520006f
+[copro] INST: $50001f42: $00008526
+[copro] INST: $50001f44: $8bcfe0ef
+[copro] INST: $50001f48: $000082aa
+[copro] INST: $50001f4a: $952fe1ef
+[copro] INST: $50001f4e: $5c010113
+[copro] INST: $50001f52: $500022b7
+[copro] INST: $50001f56: $80428293
+[copro] PROF allocated = 3004(delta: 30)
+
+[copro] [Profile] [NEW FUNCTION] vm->callinfo_tail=$4080e69c, cur_irep=$4080b4d0, own_class=$40814bc8
+[copro] New profiling(INST: OP_ENTER).
+[copro] PROF allocated = 3060(delta: 56)
+
+[copro] registered: function=$4080d790 basicblock=$4080d7b4
+[copro] REGISTER ALLOCATION: R0 -> x8(callee-saved) ..f6e0
+[copro] REGISTER ALLOCATION: R1 -> x9(callee-saved) ..f4e0
+[copro] REGISTER ALLOCATION: R2 -> x5(caller-saved) ..f4c0
+[copro] REGISTER ALLOCATION: R3 -> x6(caller-saved) ..f480
+[copro] REGISTER ALLOCATION: R4 -> x7(caller-saved) ..f400
+[copro] REGISTER ALLOCATION: R5 -> x10(caller-saved) ..f000
+[copro] CODE allocated = 1168(delta: 36)
+
+[copro] INST: $50001f44: $35e000ef
+[copro] INST: $500022b6: $000015b1
+[copro] INST: $500022b8: $0000e199
+[copro] INST: $500022ba: $de3fd1ef
+[copro] INST: $500022be: $000005d1
+[copro] INST: $500022c0: $dddfd1ef
+[copro] INST: $500022c4: $00001904
+[copro] INST: $500022a2: $0000717d
+[copro] INST: $500022a4: $0000c606
+[copro] INST: $500022a6: $0000c422
+[copro] INST: $500022a8: $0000c226
+[copro] INST: $500022aa: $0000842a
+[copro] INST: $500022ac: $00440593
+[copro] INST: $500022b0: $e2dfd0ef
+[copro] INST: $500022b4: $0000828e
+[copro] INST: $500022b6: $000015b1
+[copro] INST: $500022b8: $0000e199
+[copro] INST: $500022ba: $de3fd1ef
+[copro] INST: $500022be: $000005d1
+[copro] INST: $500022c0: $dddfd1ef
+[copro] PROF allocated = 3116(delta: 56)
+
+[copro] registered: function=$4080d790 basicblock=$4080d7f0
+[copro] [GLOBALMAN] a new entry(key = 4080cc20, value = 50001c14) is added.
+[copro] CODE allocated = 1190(delta: 22)
+
+[copro] INST: $500022ba: $ca9ff06f
+[copro] INST: $50001f62: $500025b7
+[copro] INST: $50001f66: $c1458593
+[copro] INST: $50001f6a: $00004375
+[copro] INST: $50001f6c: $970fe0ef
+[copro] INST: $50001f70: $0000838e
+[copro] INST: $50001f72: $92afe1ef
+[copro] PROF allocated = 3172(delta: 56)
+
+[copro] registered: function=$4080d790 basicblock=$4080d870
+[copro] CODE allocated = 1220(delta: 30)
+
+[copro] INST: $50001f72: $0100006f
+[copro] INST: $50001f82: $00008516
+[copro] INST: $50001f84: $0000859a
+[copro] INST: $50001f86: $0000861e
+[copro] INST: $50001f88: $878fe0ef
+[copro] INST: $50001f8c: $000082aa
+[copro] INST: $50001f8e: $90efe1ef
+[copro] INST: $50001f92: $500022b7
+[copro] INST: $50001f96: $80428293
+[copro] INST: $50001f9a: $50001437
+[copro] Gotcha! (INST: OP_ENTER).
+[copro] INST: $50001f88: $15a000ef
+[copro] miain_to_copro 3 $500035e0
+[copro] A AND NARG: 7, 2, method_id: read_for_1sec
+[copro] Register 0 x8: MRBC_TT_PROC $4080b210->$4080b210
+[copro] Register 1 x9: MRBC_TT_EMPTY $4080b210->$4080b210
+[copro] Register 2 x18: MRBC_TT_EMPTY $40814d64->$40814d64
+[copro] Register 3 x19: MRBC_TT_NIL $00000000->$00000000
+[copro] Register 4 x20: MRBC_TT_EMPTY $0000001d->$0000001d
+[copro] Register 5 x21: MRBC_TT_EMPTY $4080b14c->$4080b14c
+[copro] Register 6 x22: MRBC_TT_EMPTY $00000000->$00000000
+[copro] [callee saved] stack addr: $500035dc <- ra $50001c4e
+[copro] [callee saved] stack addr: $500035d8 <- x8 $4080b210
+[copro] [callee saved] stack addr: $500035d4 <- x9 $4080b210
+[copro] [callee saved] stack addr: $500035d0 <- x18 $40814d64
+[copro] [callee saved] stack addr: $500035cc <- x19 $00000000
+[copro] [callee saved] stack addr: $500035c8 <- x20 $0000001d
+[copro] [callee saved] stack addr: $500035c4 <- x21 $4080b14c
+[copro] [callee saved] stack addr: $500035c0 <- x22 $00000000
+[copro] [callee saved] stack addr: $500035bc <- x23 $00000000
+[copro] A AND NARG: 7, 0, method_id: off
+[copro] [OBJMAN] Translation Registered type=9, main=4080bc18, copro=500015e4
+[copro] Register 0 x8: MRBC_TT_OBJECT $4080bc18->$500015e4
+[copro] [OBJMAN] Translation Registered type=9, main=4080b5e4, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080b5f8, copro=500015ec
+[copro] Register 1 x9: MRBC_TT_OBJECT $4080b5f8->$500015ec
+[copro] [OBJMAN] Translation Registered type=9, main=4080b634, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080b660, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080b864, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080b888, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080e464, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080e488, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080e4ac, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080cfdc, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080d000, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080d024, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080e6c8, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080e588, copro=0
+[copro] [OBJMAN] Translation Registered type=11, main=4080b0e4, copro=500022e0
+[copro] Register 2 x18: MRBC_TT_ARRAY $4080b0e4->$500022e0
+[copro] Register 3 x19: MRBC_TT_NIL $00000000->$00000000
+[copro] Register 4 x20: MRBC_TT_INTEGER $0000000c->$0000000c
+[copro] Register 5 x21: MRBC_TT_TRUE $00000000->$00000001
+[copro] [OBJMAN] Translation Updated type=9, main=4080e588, copro=50001804
+[copro] Register 6 x22: MRBC_TT_OBJECT $4080e588->$50001804
+[copro] [callee saved] stack addr: $500035bc <- ra $50001f48
+[copro] [callee saved] stack addr: $500035b8 <- x8 $500015e4
+[copro] [callee saved] stack addr: $500035b4 <- x9 $500015ec
+[copro] [callee saved] stack addr: $500035b0 <- x18 $500022e0
+[copro] [callee saved] stack addr: $500035ac <- x19 $00000000
+[copro] [callee saved] stack addr: $500035a8 <- x20 $0000000c
+[copro] [callee saved] stack addr: $500035a4 <- x21 $00000001
+[copro] [callee saved] stack addr: $500035a0 <- x22 $50001804
+[copro] A AND NARG: 2, 2, method_id: write
+[copro] Register 0 x8: MRBC_TT_OBJECT $4080b5f8->$500015ec
+[copro] Register 1 x9: MRBC_TT_NIL $0000000c->$00000000
+[copro] Register 0 x8: MRBC_TT_OBJECT $4080b5f8 -> $500015ec
+[copro] Register 1 x9: MRBC_TT_NIL $0000000c -> $00000000
+[copro] [OBJMAN] Translation Updated type=9, main=4080b5e4, copro=500015f4
+[copro] Register 0 x10: MRBC_TT_OBJECT $4080b5e4 -> $500015f4
+[copro] Register 1 x11: MRBC_TT_INTEGER $0000001d -> $0000001d
+[copro] [OBJMAN] Translation Registered type=11, main=4080ba40, copro=50001814
+[copro] Register 2 x12: MRBC_TT_ARRAY $4080ba40 -> $50001814
+[copro] register_set:
+[copro] INST: $50002320: $500020b7
+[copro] INST: $50002324: $f8c08093
+[copro] INST: $50002328: $50003137
+[copro] INST: $5000232c: $5b010113
+[copro] INST: $50002330: $50001437
+[copro] INST: $50002334: $5ec40413
+[copro] INST: $50002338: $00004481
+[copro] INST: $5000233a: $50001537
+[copro] INST: $5000233e: $5f450513
+[copro] INST: $50002342: $000045f5
+[copro] INST: $50002344: $50002637
+[copro] INST: $50002348: $81460613
+[copro] INST: $5000234c: $50002937
+[copro] INST: $50002350: $2e090913
+[copro] INST: $50002354: $00004981
+[copro] INST: $50002356: $00004a31
+[copro] INST: $50002358: $00004a85
+[copro] INST: $5000235a: $50002b37
+[copro] INST: $5000235e: $804b0b13
+[copro] INST: $50002362: $d81ff06f
+[copro] [GLOBALMAN] sent copro:4080c14c <--> main:50001c04(type:9)
+[copro] [GLOBALMAN] sent copro:4080c16c <--> main:50001c08(type:11)
+[copro] [GLOBALMAN] sent copro:4080cc08 <--> main:50001c0c(type:11)
+[copro] [OBJMAN] Translation Registered type=11, main=4080b9f8, copro=0
+[copro] [GLOBALMAN] sent copro:4080cc50 <--> main:50001c10(type:11)
+[copro] [OBJMAN] Translation Registered type=11, main=4080baa8, copro=0
+[copro] [GLOBALMAN] sent copro:4080cc20 <--> main:50001c14(type:11)
+[copro] [GLOBALMAN] Object Sent: count=5
+[copro] Wake up. stopreason=0
+[copro] [OBJMAN] Translation Updated type=9, main=4080bc18, copro=500015e4
+[copro] [OBJMAN] Translation Updated type=9, main=4080b5f8, copro=500015ec
+[copro] [OBJMAN] Translation Updated type=9, main=4080b5e4, copro=500015f4
+[copro] [OBJMAN] Translation Updated type=9, main=4080e588, copro=50001804
+[copro] [OBJMAN] Translation Updated type=11, main=4080ba40, copro=50001814
+[copro] [OBJMAN] Translation Registered type=12, main=4080e2e0, copro=50001834
+[copro] [OBJMAN] Catch addr:50001844 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080e2f0, copro=50001844
+[copro] [OBJMAN] Translation Registered type=12, main=4080e304, copro=50001854
+[copro] [OBJMAN] Catch addr:50001864 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080e314, copro=50001864
+[copro] [OBJMAN] Translation Registered type=12, main=4080e328, copro=50001874
+[copro] [OBJMAN] Catch addr:50001884 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080e338, copro=50001884
+[copro] [OBJMAN] Translation Registered type=12, main=4080e34c, copro=50001894
+[copro] [OBJMAN] Catch addr:500018a4 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080e35c, copro=500018a4
+[copro] [OBJMAN] Translation Registered type=12, main=4080e370, copro=500018b4
+[copro] [OBJMAN] Catch addr:500018c4 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080e380, copro=500018c4
+[copro] [OBJMAN] Translation Registered type=12, main=4080e394, copro=500018d4
+[copro] [OBJMAN] Catch addr:500018e4 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080e3a4, copro=500018e4
+[copro] [OBJMAN] Translation Registered type=12, main=4080e3b8, copro=500018f4
+[copro] [OBJMAN] Catch addr:50001904 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080e3c8, copro=50001904
+[copro] [OBJMAN] Translation Registered type=12, main=4080e3dc, copro=50001914
+[copro] [OBJMAN] Catch addr:50001924 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080e3ec, copro=50001924
+[copro] [OBJMAN] Translation Registered type=12, main=4080e400, copro=50001934
+[copro] [OBJMAN] Catch addr:50001944 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080e410, copro=50001944
+[copro] [OBJMAN] Translation Registered type=12, main=4080e424, copro=50001954
+[copro] [OBJMAN] Catch addr:50001964 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080e434, copro=50001964
+[copro] [OBJMAN] Translation Updated type=11, main=4080b0e4, copro=500022e0
+[copro] [OBJMAN] Updated 4080bc18(9)
+[copro] [OBJMAN] Updated 4080b5f8(9)
+[copro] [OBJMAN] Updated 4080b5e4(9)
+[copro] [OBJMAN] Updated 4080e588(9)
+[copro] [OBJMAN] Updated 4080ba40(11)
+[copro] [OBJMAN] Updated 4080e2e0(12)
+[copro] [OBJMAN] Updated 4080e2f0(9)
+[copro] [OBJMAN] Updated 4080e304(12)
+[copro] [OBJMAN] Updated 4080e314(9)
+[copro] [OBJMAN] Updated 4080e328(12)
+[copro] [OBJMAN] Updated 4080e338(9)
+[copro] [OBJMAN] Updated 4080e34c(12)
+[copro] [OBJMAN] Updated 4080e35c(9)
+[copro] [OBJMAN] Updated 4080e370(12)
+[copro] [OBJMAN] Updated 4080e380(9)
+[copro] [OBJMAN] Updated 4080e394(12)
+[copro] [OBJMAN] Updated 4080e3a4(9)
+[copro] [OBJMAN] Updated 4080e3b8(12)
+[copro] [OBJMAN] Updated 4080e3c8(9)
+[copro] [OBJMAN] Updated 4080e3dc(12)
+[copro] [OBJMAN] Updated 4080e3ec(9)
+[copro] [OBJMAN] Updated 4080e400(12)
+[copro] [OBJMAN] Updated 4080e410(9)
+[copro] [OBJMAN] Updated 4080e424(12)
+[copro] [OBJMAN] Updated 4080e434(9)
+[copro] [OBJMAN] Updated 4080b0e4(11)
+[copro] safe_decref 4080b14c
+[copro] safe_decref 4080cc08
+[copro] safe_decref 4080cc50
+[copro] [GLOBALMAN] Object Received: count=5
+[copro] [copro_to_main] x11: 4
+[copro] [copro_to_main] cur: $500035b0, ra?: $50001f8e
+[copro] [copro_to_main] function: $4080d790 basicblock: $4080d870 STACK RA: $50001f82
+[copro] [cpy_to_interpreter_stack] regLen = 6
+[copro] [cpy_to_interp_stack] restore to interp.: x8 -> R0(4080c7ac) (value: $500015ec, type: 19)
+[copro] [cpy_to_interp_stack] restore to interp.: x9 -> R1(4080c7bc) (value: $00000000, type: 1)
+[copro] [cpy_to_interp_stack] restore to interp.: x5 -> R2(4080c7cc) (value: $00000002, type: 4[UNKNOWN])
+[copro] [cpy_to_interp_stack] restore to interp.: x6 -> R3(4080c7dc) (value: $00000000, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x7 -> R4(4080c7ec) (value: $00000000, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x10 -> R5(4080c7fc) (value: $00000002, type: 0)
+[copro] [copro_to_main] interpreter_stack current: $4080c7ac sentinel: $4080c2fc
+[copro] [restore_callee_saved] restore callee saved: $500035bc -> x1 value: $50001f48
+[copro] [restore_callee_saved] restore callee saved: $500035b8 -> x8 value: $500015e4
+[copro] [restore_callee_saved] restore callee saved: $500035b4 -> x9 value: $500015ec
+[copro] [copro_to_main] cur: $500035c0, ra?: $50001f44
+[copro] [copro_to_main] function: $4080b7e8 basicblock: $4080e648 STACK RA: $50001f42
+[copro] A AND NARG: 7, 0, method_id: off
+[copro] [cpy_to_interpreter_stack] regLen = 7
+[copro] [cpy_to_interp_stack] restore to interp.: x8 -> R0(4080c73c) (value: $500015e4, type: 18)
+[copro] [cpy_to_interp_stack] restore to interp.: x9 -> R1(4080c74c) (value: $500015ec, type: 19)
+[copro] [cpy_to_interp_stack] restore to interp.: x18 -> R2(4080c75c) (value: $500022e0, type: 11)
+[copro] [cpy_to_interp_stack] restore to interp.: x19 -> R3(4080c76c) (value: $00000000, type: 1)
+[copro] [cpy_to_interp_stack] restore to interp.: x20 -> R4(4080c77c) (value: $0000000c, type: 4)
+[copro] [cpy_to_interp_stack] restore to interp.: x21 -> R5(4080c78c) (value: $00000001, type: 3)
+[copro] [cpy_to_interp_stack] restore to interp.: x22 -> R6(4080c79c) (value: $50001804, type: 21)
+[copro] [copro_to_main] interpreter_stack current: $4080c73c sentinel: $4080c2fc
+[copro] [restore_callee_saved] restore callee saved: $500035dc -> x1 value: $50001c4e
+[copro] [restore_callee_saved] restore callee saved: $500035d8 -> x8 value: $4080b210
+[copro] [restore_callee_saved] restore callee saved: $500035d4 -> x9 value: $4080b210
+[copro] [restore_callee_saved] restore callee saved: $500035d0 -> x18 value: $40814d64
+[copro] [restore_callee_saved] restore callee saved: $500035cc -> x19 value: $00000000
+[copro] [restore_callee_saved] restore callee saved: $500035c8 -> x20 value: $0000001d
+[copro] [restore_callee_saved] restore callee saved: $500035c4 -> x21 value: $4080b14c
+[copro] [restore_callee_saved] restore callee saved: $500035c0 -> x22 value: $00000000
+[copro] [copro_to_main] cur: $500035e0, ra?: $50001c4a
+[copro] [copro_to_main] function: $4080b678 basicblock: $4080b754 STACK RA: $50001c42
+[copro] A AND NARG: 7, 2, method_id: read_for_1sec
+[copro] [cpy_to_interpreter_stack] regLen = 7
+[copro] [cpy_to_interp_stack] restore to interp.: x8 -> R0(4080c6cc) (value: $4080b210, type: 10)
+[copro] [cpy_to_interp_stack] restore to interp.: x9 -> R1(4080c6dc) (value: $4080b210, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x18 -> R2(4080c6ec) (value: $40814d64, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x19 -> R3(4080c6fc) (value: $00000000, type: 1)
+[copro] [cpy_to_interp_stack] restore to interp.: x20 -> R4(4080c70c) (value: $0000001d, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x21 -> R5(4080c71c) (value: $4080b14c, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x22 -> R6(4080c72c) (value: $00000000, type: 0)
+[copro] [copro_to_main] interpreter_stack current: $4080c6cc sentinel: $4080c2fc
+[copro] st=$4080b7cc, tt=$4080ef2c, st->functions_current=$4080b678, tt->function=$4080b678
+[copro] st=$4080d774, tt=$4080ef14, st->functions_current=$4080b7e8, tt->function=$4080b7e8
+[copro] st=$4080b37c, tt=$4080e834, st->functions_current=$4080d790, tt->function=$4080d790
+[copro] [copro_to_main] reserve = 3, popcnt = 1
+[copro] [copro_to_main] pop call info
+[copro] --- CALLINFO(addr = $4080d8ac) ---
+[copro] cur_irep = $4080b4d0
+[copro] inst = $420231ef
+[copro] cur_regs = $4080c25c
+[copro] target_class = $40809a60 (name:Object)
+[copro] own_class = $40814c54 (name:I2C)
+[copro] karg_keep = $00000000
+[copro] method_id = $0000011b (name:write)
+[copro] reg_offset = 2
+[copro] n_args = 2
+[copro] is_called_super = 0
+[copro] -----------------------------------
+[copro] cpy from $4080c6cc to $4080c17c (length: $00000140)
+[copro] <<REWRITTEN>>
+[copro] _cur_regs = $4080c17c
+[copro] <<RESERVED>>
+[copro] _cur_regs = $4080c1ec
+[copro] <<RESERVED>>
+[copro] INST: $50001f8e: $000015f1
+[copro] INST: $50001f90: $0000e199
+[copro] INST: $50001f92: $90afe1ef
+[copro] INST: $50001f96: $00000591
+[copro] INST: $50001f98: $904fe1ef
+[copro] INST: $50001f9c: $00005000
+[copro] PROF allocated = 3228(delta: 56)
+
+[copro] registered: function=$4080d790 basicblock=$4080ef14
+[copro] CODE allocated = 1236(delta: 16)
+
+[copro] INST: $50001f92: $875ff06f
+[copro] INST: $50001806: $00008516
+[copro] INST: $50001808: $00004591
+[copro] INST: $5000180a: $000040b2
+[copro] INST: $5000180c: $00004422
+[copro] INST: $5000180e: $00004492
+[copro] INST: $50001810: $00006141
+[copro] INST: $50001812: $00008082
+[copro] INST: $50001f4a: $000015f1
+[copro] INST: $50001f4c: $0000e199
+[copro] INST: $50001f4e: $94efe1ef
+[copro] INST: $50001f52: $00000591
+[copro] INST: $50001f54: $948fe1ef
+[copro] INST: $50001f58: $00008042
+[copro] PROF allocated = 3308(delta: 80)
+
+[copro] registered: function=$4080b7e8 basicblock=$4080ef50
+[copro] CODE allocated = 1262(delta: 26)
+
+[copro] INST: $50001f4e: $0540006f
+[copro] INST: $50001fa2: $00008556
+[copro] INST: $50001fa4: $0000458d
+[copro] INST: $50001fa6: $000040f2
+[copro] INST: $50001fa8: $00004462
+[copro] INST: $50001faa: $000044d2
+[copro] INST: $50001fac: $00004942
+[copro] INST: $50001fae: $000049b2
+[copro] INST: $50001fb0: $00004a22
+[copro] INST: $50001fb2: $00004a92
+[copro] INST: $50001fb4: $00004b02
+[copro] INST: $50001fb6: $00006105
+[copro] INST: $50001fb8: $00008082
+[copro] INST: $50001c50: $000015f5
+[copro] INST: $50001c52: $0000e199
+[copro] INST: $50001c54: $c48fe1ef
+[copro] INST: $50001c58: $0000058d
+[copro] INST: $50001c5a: $c42fe1ef
+[copro] INST: $50001c5e: $0000c045
+[copro] PROF allocated = 3384(delta: 76)
+
+[copro] registered: function=$4080b678 basicblock=$4080efa4
+[copro] OP_JMPIF
+[copro] PROF allocated = 3460(delta: 76)
+
+[copro] registered: function=$4080b678 basicblock=$4080eff4
+[copro] CODE allocated = 1276(delta: 14)
+
+[copro] INST: $50001c54: $bc3ff06f
+[copro] INST: $50001816: $000b8463
+[copro] INST: $5000181a: $0000006f
+[copro] INST: $5000181e: $87ffe1ef
+[copro] OP_JMPNOT
+[copro] PROF allocated = 3536(delta: 76)
+
+[copro] registered: function=$4080b678 basicblock=$4080f044
+[copro] CODE allocated = 1300(delta: 24)
+
+[copro] INST: $5000181a: $7a80006f
+[copro] INST: $50001fc2: $00004b85
+[copro] INST: $50001fc4: $00004901
+[copro] INST: $50001fc6: $00004981
+[copro] INST: $50001fc8: $00004a01
+[copro] INST: $50001fca: $00004a81
+[copro] INST: $50001fcc: $000b8463
+[copro] INST: $50001fd0: $0000006f
+[copro] INST: $50001fd4: $8c8fe1ef
+[copro] CODE allocated = 1330(delta: 30)
+
+[copro] INST: $50001fd0: $0120006f
+[copro] INST: $50001ff0: $000015d5
+[copro] INST: $50001ff2: $0000e199
+[copro] INST: $50001ff4: $8a8fe1ef
+[copro] INST: $50001ff8: $000005ad
+[copro] INST: $50001ffa: $8a2fe1ef
+[copro] INST: $50001ffe: $00000000
+[copro] INST: $50001fe2: $500025b7
+[copro] INST: $50001fe6: $c0858593
+[copro] INST: $50001fea: $8f2fe0ef
+[copro] INST: $50001fee: $00008b8e
+[copro] INST: $50001ff0: $000015d5
+[copro] INST: $50001ff2: $0000e199
+[copro] INST: $50001ff4: $8a8fe1ef
+[copro] INST: $50001ff8: $000005ad
+[copro] INST: $50001ffa: $8a2fe1ef
+[copro] PROF allocated = 3612(delta: 76)
+
+[copro] registered: function=$4080b678 basicblock=$4080f094
+[copro] CODE allocated = 1358(delta: 28)
+
+[copro] INST: $50001ff4: $2ee0006f
+[copro] INST: $500022e2: $0000855e
+[copro] INST: $500022e4: $000085d6
+[copro] INST: $500022e6: $ef5fd0ef
+[copro] INST: $500022ea: $00008baa
+[copro] INST: $500022ec: $db1fd1ef
+[copro] INST: $500022f0: $00004a22
+[copro] INST: $500022f2: $00004a92
+[copro] INST: $500022f4: $00004b02
+[copro] INST: $500022f6: $00006105
+[copro] INST: $500022f8: $00008082
+[copro] INST: $500022fa: $00004481
+[copro] PROF allocated = 3688(delta: 76)
+
+[copro] registered: function=$4080b678 basicblock=$4080f0e4
+[copro] CODE allocated = 1388(delta: 30)
+
+[copro] INST: $500022ec: $0160006f
+[copro] INST: $50002310: $000015f1
+[copro] INST: $50002312: $0000e199
+[copro] INST: $50002314: $d89fd1ef
+[copro] INST: $50002318: $00000591
+[copro] INST: $5000231a: $d83fd1ef
+[copro] INST: $5000231e: $20b72b37
+[copro] INST: $50002302: $00008b5e
+[copro] INST: $50002304: $004b0593
+[copro] INST: $50002308: $00008bca
+[copro] INST: $5000230a: $dd3fd0ef
+[copro] INST: $5000230e: $0000828e
+[copro] INST: $50002310: $000015f1
+[copro] INST: $50002312: $0000e199
+[copro] INST: $50002314: $d89fd1ef
+[copro] INST: $50002318: $00000591
+[copro] INST: $5000231a: $d83fd1ef
+[copro] PROF allocated = 3764(delta: 76)
+
+[copro] registered: function=$4080b678 basicblock=$4080f134
+[copro] CODE allocated = 1420(delta: 32)
+
+[copro] INST: $50002314: $00e0006f
+[copro] INST: $50002332: $000015f1
+[copro] INST: $50002334: $0000e199
+[copro] INST: $50002336: $d67fd1ef
+[copro] INST: $5000233a: $00000591
+[copro] INST: $5000233c: $d61fd1ef
+[copro] INST: $50002340: $00005f45
+[copro] INST: $50002322: $00009b96
+[copro] INST: $50002324: $0000895e
+[copro] INST: $50002326: $008b0593
+[copro] INST: $5000232a: $00008bce
+[copro] INST: $5000232c: $db1fd0ef
+[copro] INST: $50002330: $0000828e
+[copro] INST: $50002332: $000015f1
+[copro] INST: $50002334: $0000e199
+[copro] INST: $50002336: $d67fd1ef
+[copro] INST: $5000233a: $00000591
+[copro] INST: $5000233c: $d61fd1ef
+[copro] PROF allocated = 3840(delta: 76)
+
+[copro] registered: function=$4080b678 basicblock=$4080f184
+[copro] CODE allocated = 1452(delta: 32)
+
+[copro] INST: $50002336: $00c0006f
+[copro] INST: $50002352: $000015f1
+[copro] INST: $50002354: $0000e199
+[copro] INST: $50002356: $d47fd1ef
+[copro] INST: $5000235a: $00000591
+[copro] INST: $5000235c: $d41fd1ef
+[copro] INST: $50002360: $f06f804b
+[copro] INST: $50002342: $00009b96
+[copro] INST: $50002344: $000089de
+[copro] INST: $50002346: $00cb0593
+[copro] INST: $5000234a: $00008bd2
+[copro] INST: $5000234c: $d91fd0ef
+[copro] INST: $50002350: $0000828e
+[copro] INST: $50002352: $000015f1
+[copro] INST: $50002354: $0000e199
+[copro] INST: $50002356: $d47fd1ef
+[copro] INST: $5000235a: $00000591
+[copro] INST: $5000235c: $d41fd1ef
+[copro] PROF allocated = 3916(delta: 76)
+
+[copro] registered: function=$4080b678 basicblock=$4080d8ac
+[copro] OP_JMP
+[copro] PROF allocated = 3992(delta: 76)
+
+[copro] registered: function=$4080b678 basicblock=$4080d8fc
+[copro] CODE allocated = 1464(delta: 12)
+
+[copro] INST: $50002356: $cd0ff06f
+[copro] INST: $50001826: $00009b96
+[copro] INST: $50001828: $00000a85
+[copro] INST: $5000182a: $00008a5e
+[copro] INST: $5000182c: $871fe1ef
+[copro] OP_JMPNOT
+[copro] CODE allocated = 1484(delta: 20)
+
+[copro] INST: $5000182c: $3370006f
+[copro] INST: $50002362: $000042b1
+[copro] INST: $50002364: $005aabb3
+[copro] INST: $50002368: $000b8463
+[copro] INST: $5000236c: $0000006f
+[copro] INST: $50002370: $d2dfd1ef
+[copro] INST: $5000236c: $c77ff06f
+[copro] miain_to_copro 0 $500035e0
+[copro] Register 0 x8: MRBC_TT_PROC $4080b210 -> $4080b210
+[copro] Register 2 x18: MRBC_TT_INTEGER $00000000 -> $00000000
+[copro] Register 3 x19: MRBC_TT_INTEGER $00000000 -> $00000000
+[copro] Register 4 x20: MRBC_TT_INTEGER $00000fa0 -> $00000fa0
+[copro] Register 5 x21: MRBC_TT_INTEGER $00000001 -> $00000001
+[copro] [OBJMAN] Translation Registered type=9, main=4080b634, copro=50001834
+[copro] Register 6 x22: MRBC_TT_OBJECT $4080b634 -> $50001834
+[copro] Register 7 x23: MRBC_TT_TRUE $00000001 -> $00000001
+[copro] Register 8 x5: MRBC_TT_INTEGER $0000000c -> $0000000c
+[copro] Register 9 x6: MRBC_TT_NIL $4080b0e4 -> $00000000
+[copro] register_set:
+[copro] INST: $50002380: $00004081
+[copro] INST: $50002382: $50003137
+[copro] INST: $50002386: $5e010113
+[copro] INST: $5000238a: $000042b1
+[copro] INST: $5000238c: $00004301
+[copro] INST: $5000238e: $4080b437
+[copro] INST: $50002392: $21040413
+[copro] INST: $50002396: $00004901
+[copro] INST: $50002398: $00004981
+[copro] INST: $5000239a: $00001a37
+[copro] INST: $5000239e: $fa0a0a13
+[copro] INST: $500023a2: $00004a85
+[copro] INST: $500023a4: $50002b37
+[copro] INST: $500023a8: $834b0b13
+[copro] INST: $500023ac: $00004b85
+[copro] INST: $500023ae: $c35ff06f
+[copro] [GLOBALMAN] sent copro:4080c14c <--> main:50001c04(type:9)
+[copro] [OBJMAN] Translation Registered type=9, main=4080b5f8, copro=0
+[copro] [GLOBALMAN] sent copro:4080c16c <--> main:50001c08(type:11)
+[copro] [OBJMAN] Translation Registered type=11, main=4080b0e4, copro=0
+[copro] [GLOBALMAN] sent copro:4080cc08 <--> main:50001c0c(type:11)
+[copro] [OBJMAN] Translation Registered type=11, main=4080b9f8, copro=0
+[copro] [GLOBALMAN] sent copro:4080cc50 <--> main:50001c10(type:11)
+[copro] [OBJMAN] Translation Registered type=11, main=4080baa8, copro=0
+[copro] [GLOBALMAN] sent copro:4080cc20 <--> main:50001c14(type:11)
+[copro] [OBJMAN] Translation Registered type=11, main=4080ba40, copro=0
+[copro] [GLOBALMAN] Object Sent: count=5
+[copro] Wake up. stopreason=1
+[copro] [OBJMAN] Translation Registered type=9, main=4080b660, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080b864, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080b888, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080e464, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080e488, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080e4ac, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080cfdc, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080d000, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080d024, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080e6c8, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080e588, copro=0
+[copro] TRANSLATION[0] REGISTERD: 4080b0e4 -> 50002380
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[1] REGISTERD: 4080b660 -> 50001844
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[2] REGISTERD: 4080b864 -> 50001854
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[3] REGISTERD: 4080b888 -> 50001864
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[0] REGISTERD: 4080e464 -> 50001874
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[1] REGISTERD: 4080e488 -> 50001884
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[2] REGISTERD: 4080e4ac -> 50001894
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[3] REGISTERD: 4080cfdc -> 500018a4
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[0] REGISTERD: 4080d000 -> 500018b4
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[1] REGISTERD: 4080d024 -> 500018c4
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[2] REGISTERD: 4080e6c8 -> 500018d4
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[3] REGISTERD: 4080e588 -> 500018e4
+[copro] Wake up. stopreason=0
+[copro] [OBJMAN] Translation Updated type=9, main=4080b634, copro=50001834
+[copro] [OBJMAN] Translation Updated type=9, main=4080b660, copro=50001844
+[copro] [OBJMAN] Translation Updated type=9, main=4080b864, copro=50001854
+[copro] [OBJMAN] Translation Updated type=9, main=4080b888, copro=50001864
+[copro] [OBJMAN] Translation Updated type=9, main=4080e464, copro=50001874
+[copro] [OBJMAN] Translation Updated type=9, main=4080e488, copro=50001884
+[copro] [OBJMAN] Translation Updated type=9, main=4080e4ac, copro=50001894
+[copro] [OBJMAN] Translation Updated type=9, main=4080cfdc, copro=500018a4
+[copro] [OBJMAN] Translation Updated type=9, main=4080d000, copro=500018b4
+[copro] [OBJMAN] Translation Updated type=9, main=4080d024, copro=500018c4
+[copro] [OBJMAN] Translation Updated type=9, main=4080e6c8, copro=500018d4
+[copro] [OBJMAN] Translation Updated type=9, main=4080e588, copro=500018e4
+[copro] [OBJMAN] Translation Updated type=11, main=4080b0e4, copro=50002380
+[copro] [OBJMAN] Updated 4080b634(9)
+[copro] [OBJMAN] Updated 4080b660(9)
+[copro] [OBJMAN] Updated 4080b864(9)
+[copro] [OBJMAN] Updated 4080b888(9)
+[copro] [OBJMAN] Updated 4080e464(9)
+[copro] [OBJMAN] Updated 4080e488(9)
+[copro] [OBJMAN] Updated 4080e4ac(9)
+[copro] [OBJMAN] Updated 4080cfdc(9)
+[copro] [OBJMAN] Updated 4080d000(9)
+[copro] [OBJMAN] Updated 4080d024(9)
+[copro] [OBJMAN] Updated 4080e6c8(9)
+[copro] [OBJMAN] Updated 4080e588(9)
+[copro] [OBJMAN] Updated 4080b0e4(11)
+[copro] safe_decref 4080c14c
+[copro] safe_decref 4080c16c
+[copro] safe_decref 4080cc08
+[copro] safe_decref 4080cc50
+[copro] safe_decref 4080cc20
+[copro] [GLOBALMAN] Object Received: count=5
+[copro] [copro_to_main] x11: 0
+[copro] [copro_to_main] cur: $500035e0, ra?: $50002370
+[copro] [copro_to_main] function: $4080b678 basicblock: $4080d8fc STACK RA: $50002362
+[copro] [cpy_to_interpreter_stack] regLen = 11
+[copro] [cpy_to_interp_stack] restore to interp.: x8 -> R0(4080c75c) (value: $4080b210, type: 10)
+[copro] [cpy_to_interp_stack] restore to interp.: x9 -> R1(4080c76c) (value: $00000000, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x18 -> R2(4080c77c) (value: $00000000, type: 4)
+[copro] [cpy_to_interp_stack] restore to interp.: x19 -> R3(4080c78c) (value: $00000000, type: 4)
+[copro] [cpy_to_interp_stack] restore to interp.: x20 -> R4(4080c79c) (value: $0000bb80, type: 4)
+[copro] [cpy_to_interp_stack] restore to interp.: x21 -> R5(4080c7ac) (value: $0000000c, type: 4)
+[copro] [cpy_to_interp_stack] restore to interp.: x22 -> R6(4080c7bc) (value: $500018e4, type: 21)
+[copro] [cpy_to_interp_stack] restore to interp.: x23 -> R7(4080c7cc) (value: $00000000, type: 3)
+[copro] [cpy_to_interp_stack] restore to interp.: x5 -> R8(4080c7dc) (value: $0000000c, type: 4)
+[copro] [cpy_to_interp_stack] restore to interp.: x6 -> R9(4080c7ec) (value: $00000000, type: 1)
+[copro] [cpy_to_interp_stack] restore to interp.: x7 -> R10(4080c7fc) (value: $00000000, type: 0)
+[copro] [copro_to_main] interpreter_stack current: $4080c75c sentinel: $4080c22c
+[copro] st=$4080b288, tt=$4080e69c, st->functions_current=$4080b678, tt->function=$4080b678
+[copro] [copro_to_main] reserve = 1, popcnt = 0
+[copro] cpy from $4080c75c to $4080c17c (length: $000000b0)
+[copro] <<REWRITTEN>>
+[copro] PROF allocated = 4068(delta: 76)
+
+[copro] registered: function=$4080b678 basicblock=$4080b37c
+[copro] OP_JMPNOT
+[copro] PROF allocated = 4144(delta: 76)
+
+[copro] registered: function=$4080b678 basicblock=$4080d9b0
+[copro] CODE allocated = 1578(delta: 94)
+
+[copro] INST: $50002370: $0120006f
+[copro] INST: $50002382: $41f95593
+[copro] INST: $50002386: $00b94bb3
+[copro] INST: $5000238a: $40bb8bb3
+[copro] INST: $5000238e: $41f9d593
+[copro] INST: $50002392: $00b9c2b3
+[copro] INST: $50002396: $40b282b3
+[copro] INST: $5000239a: $00009b96
+[copro] INST: $5000239c: $41fa5593
+[copro] INST: $500023a0: $00ba42b3
+[copro] INST: $500023a4: $40b282b3
+[copro] INST: $500023a8: $00009b96
+[copro] INST: $500023aa: $000042b1
+[copro] INST: $500023ac: $025bcbb3
+[copro] INST: $500023b0: $0000895e
+[copro] INST: $500023b2: $000012b7
+[copro] INST: $500023b6: $fa028293
+[copro] INST: $500023ba: $405b8bb3
+[copro] INST: $500023be: $41fbd593
+[copro] INST: $500023c2: $00bbcbb3
+[copro] INST: $500023c6: $40bb8bb3
+[copro] INST: $500023ca: $7d000293
+[copro] INST: $500023ce: $0172abb3
+[copro] INST: $500023d2: $000b9463
+[copro] INST: $500023d6: $0000006f
+[copro] INST: $500023da: $cc3fd1ef
+[copro] CODE allocated = 1606(delta: 28)
+
+[copro] INST: $500023d6: $00c0006f
+[copro] INST: $500023e2: $40815537
+[copro] INST: $500023e6: $d6450513
+[copro] INST: $500023ea: $000025b7
+[copro] INST: $500023ee: $b5858593
+[copro] INST: $500023f2: $a10fe0ef
+[copro] INST: $500023f6: $00008baa
+[copro] INST: $500023f8: $ca5fd1ef
+[copro] PROF allocated = 4220(delta: 76)
+
+[copro] registered: function=$4080b678 basicblock=$4080da00
+[copro] OP_JMP
+[copro] PROF allocated = 4296(delta: 76)
+
+[copro] registered: function=$4080b678 basicblock=$4080da50
+[copro] CODE allocated = 1612(delta: 6)
+
+[copro] INST: $500023f8: $9eeff06f
+[copro] INST: $500015e6: $ab7fe1ef
+[copro] CODE allocated = 1642(delta: 30)
+
+[copro] INST: $500015e6: $61d0006f
+[copro] INST: $50002410: $000015b5
+[copro] INST: $50002412: $0000e199
+[copro] INST: $50002414: $c89fd1ef
+[copro] INST: $50002418: $000005cd
+[copro] INST: $5000241a: $c83fd1ef
+[copro] INST: $5000241e: $00000000
+[copro] INST: $50002402: $500025b7
+[copro] INST: $50002406: $c0458593
+[copro] INST: $5000240a: $cd3fd0ef
+[copro] INST: $5000240e: $0000828e
+[copro] INST: $50002410: $000015b5
+[copro] INST: $50002412: $0000e199
+[copro] INST: $50002414: $c89fd1ef
+[copro] INST: $50002418: $000005cd
+[copro] INST: $5000241a: $c83fd1ef
+[copro] PROF allocated = 4372(delta: 76)
+
+[copro] registered: function=$4080b678 basicblock=$4080daa0
+[copro] CODE allocated = 1672(delta: 30)
+
+[copro] INST: $50002414: $00e0006f
+[copro] INST: $50002430: $000015d5
+[copro] INST: $50002432: $0000e199
+[copro] INST: $50002434: $c69fd1ef
+[copro] INST: $50002438: $000005ad
+[copro] INST: $5000243a: $c63fd1ef
+[copro] INST: $5000243e: $00000000
+[copro] INST: $50002422: $500025b7
+[copro] INST: $50002426: $c0858593
+[copro] INST: $5000242a: $cb3fd0ef
+[copro] INST: $5000242e: $0000830e
+[copro] INST: $50002430: $000015d5
+[copro] INST: $50002432: $0000e199
+[copro] INST: $50002434: $c69fd1ef
+[copro] INST: $50002438: $000005ad
+[copro] INST: $5000243a: $c63fd1ef
+[copro] PROF allocated = 4448(delta: 76)
+
+[copro] registered: function=$4080b678 basicblock=$4080daf0
+[copro] CODE allocated = 1704(delta: 32)
+
+[copro] INST: $50002434: $00e0006f
+[copro] INST: $50002442: $00008ba2
+[copro] INST: $50002444: $0000855e
+[copro] INST: $50002446: $00008596
+[copro] INST: $50002448: $0000861a
+[copro] INST: $5000244a: $bb7fd0ef
+[copro] INST: $5000244e: $00008baa
+[copro] INST: $50002450: $c4dfd1ef
+[copro] INST: $50002454: $000000b9
+[copro] INST: $50002456: $00008baa
+[copro] INST: $50002458: $000040b2
+[copro] INST: $5000245a: $00009b96
+[copro] INST: $5000245c: $41fa5593
+[copro] Gotcha! (INST: OP_ENTER).
+[copro] INST: $5000244a: $c19ff0ef
+[copro] miain_to_copro 1 $500035e0
+[copro] A AND NARG: 7, 2, method_id: read_for_1sec
+[copro] Register 0 x8: MRBC_TT_PROC $4080b210->$4080b210
+[copro] Register 1 x9: MRBC_TT_EMPTY $00000000->$00000000
+[copro] Register 2 x18: MRBC_TT_INTEGER $00000fa0->$00000fa0
+[copro] Register 3 x19: MRBC_TT_INTEGER $00000000->$00000000
+[copro] Register 4 x20: MRBC_TT_INTEGER $0000bb80->$0000bb80
+[copro] Register 5 x21: MRBC_TT_INTEGER $0000000c->$0000000c
+[copro] [OBJMAN] Translation Registered type=9, main=4080e588, copro=50001834
+[copro] Register 6 x22: MRBC_TT_OBJECT $4080e588->$50001834
+[copro] Register 0 x8: MRBC_TT_PROC $4080b210 -> $4080b210
+[copro] Register 2 x18: MRBC_TT_INTEGER $00000fa0 -> $00000fa0
+[copro] Register 3 x19: MRBC_TT_INTEGER $00000000 -> $00000000
+[copro] Register 4 x20: MRBC_TT_INTEGER $0000bb80 -> $0000bb80
+[copro] Register 5 x21: MRBC_TT_INTEGER $0000000c -> $0000000c
+[copro] Register 6 x22: MRBC_TT_OBJECT $4080e588 -> $50001834
+[copro] [OBJMAN] Translation Registered type=9, main=4080bc18, copro=500015ec
+[copro] Register 0 x10: MRBC_TT_OBJECT $4080bc18 -> $500015ec
+[copro] [OBJMAN] Translation Registered type=9, main=4080b5e4, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080b5f8, copro=500015f4
+[copro] Register 1 x11: MRBC_TT_OBJECT $4080b5f8 -> $500015f4
+[copro] [OBJMAN] Translation Registered type=9, main=4080b634, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080b660, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080b864, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080b888, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080e464, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080e488, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080e4ac, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080cfdc, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080d000, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080d024, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080e6c8, copro=0
+[copro] [OBJMAN] Translation Registered type=11, main=4080b0e4, copro=50002460
+[copro] Register 2 x12: MRBC_TT_ARRAY $4080b0e4 -> $50002460
+[copro] register_set:
+[copro] INST: $500024a0: $500020b7
+[copro] INST: $500024a4: $44e08093
+[copro] INST: $500024a8: $50003137
+[copro] INST: $500024ac: $5e010113
+[copro] INST: $500024b0: $4080b437
+[copro] INST: $500024b4: $21040413
+[copro] INST: $500024b8: $00004481
+[copro] INST: $500024ba: $50001537
+[copro] INST: $500024be: $5ec50513
+[copro] INST: $500024c2: $500015b7
+[copro] INST: $500024c6: $5f458593
+[copro] INST: $500024ca: $50002637
+[copro] INST: $500024ce: $46060613
+[copro] INST: $500024d2: $00001937
+[copro] INST: $500024d6: $fa090913
+[copro] INST: $500024da: $00004981
+[copro] INST: $500024dc: $0000ca37
+[copro] INST: $500024e0: $b80a0a13
+[copro] INST: $500024e4: $00004ab1
+[copro] INST: $500024e6: $50002b37
+[copro] INST: $500024ea: $834b0b13
+[copro] INST: $500024ee: $b75ff06f
+[copro] [GLOBALMAN] sent copro:4080c14c <--> main:50001c04(type:9)
+[copro] [GLOBALMAN] sent copro:4080c16c <--> main:50001c08(type:11)
+[copro] [GLOBALMAN] sent copro:4080cc08 <--> main:50001c0c(type:11)
+[copro] [OBJMAN] Translation Registered type=11, main=4080b9f8, copro=0
+[copro] [GLOBALMAN] sent copro:4080cc50 <--> main:50001c10(type:11)
+[copro] [OBJMAN] Translation Registered type=11, main=4080baa8, copro=0
+[copro] [GLOBALMAN] sent copro:4080cc20 <--> main:50001c14(type:11)
+[copro] [OBJMAN] Translation Registered type=11, main=4080ba40, copro=0
+[copro] [GLOBALMAN] Object Sent: count=5
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[0] REGISTERD: 4080b5e4 -> 500015fc
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[1] REGISTERD: 4080b9f8 -> 50001844
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[2] REGISTERD: 4080baa8 -> 50001604
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[3] REGISTERD: 4080ba40 -> 500019d4
+[copro] Wake up. stopreason=0
+[copro] [OBJMAN] Translation Updated type=9, main=4080bc18, copro=500015ec
+[copro] [OBJMAN] Translation Updated type=9, main=4080b5f8, copro=500015f4
+[copro] [OBJMAN] Translation Updated type=9, main=4080b5e4, copro=500015fc
+[copro] [OBJMAN] Translation Updated type=11, main=4080baa8, copro=50001604
+[copro] [OBJMAN] Translation Updated type=9, main=4080e588, copro=50001834
+[copro] [OBJMAN] Translation Updated type=11, main=4080b9f8, copro=50001844
+[copro] [OBJMAN] Translation Registered type=12, main=4080b3cc, copro=50001854
+[copro] [OBJMAN] Catch addr:50001864 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080f1d4, copro=50001864
+[copro] [OBJMAN] Translation Registered type=12, main=4080d774, copro=50001874
+[copro] [OBJMAN] Catch addr:50001884 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080b7a4, copro=50001884
+[copro] [OBJMAN] Translation Registered type=12, main=4080b7b8, copro=50001894
+[copro] [OBJMAN] Catch addr:500018a4 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080b7c8, copro=500018a4
+[copro] [OBJMAN] Translation Registered type=12, main=4080e148, copro=500018b4
+[copro] [OBJMAN] Catch addr:500018c4 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080e158, copro=500018c4
+[copro] [OBJMAN] Translation Registered type=12, main=4080e16c, copro=500018d4
+[copro] [OBJMAN] Catch addr:500018e4 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080e17c, copro=500018e4
+[copro] [OBJMAN] Translation Registered type=12, main=4080e190, copro=500018f4
+[copro] [OBJMAN] Catch addr:50001904 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080e1a0, copro=50001904
+[copro] [OBJMAN] Translation Registered type=12, main=4080e1b4, copro=50001914
+[copro] [OBJMAN] Catch addr:50001924 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080e1c4, copro=50001924
+[copro] [OBJMAN] Translation Registered type=12, main=4080e1d8, copro=50001934
+[copro] [OBJMAN] Catch addr:50001944 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080e1e8, copro=50001944
+[copro] [OBJMAN] Translation Registered type=12, main=4080e1fc, copro=50001954
+[copro] [OBJMAN] Catch addr:50001964 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080e20c, copro=50001964
+[copro] [OBJMAN] Translation Registered type=12, main=4080e220, copro=50001974
+[copro] [OBJMAN] Catch addr:50001984 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080e230, copro=50001984
+[copro] [OBJMAN] Translation Registered type=12, main=4080e244, copro=50001994
+[copro] [OBJMAN] Catch addr:500019a4 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080e254, copro=500019a4
+[copro] [OBJMAN] Translation Registered type=12, main=4080e268, copro=500019b4
+[copro] [OBJMAN] Catch addr:500019c4 tt:21
+[copro] [OBJMAN] Translation Registered type=9, main=4080e278, copro=500019c4
+[copro] [OBJMAN] Translation Updated type=11, main=4080ba40, copro=500019d4
+[copro] [OBJMAN] Translation Updated type=11, main=4080b0e4, copro=50002460
+[copro] [OBJMAN] Updated 4080bc18(9)
+[copro] [OBJMAN] Updated 4080b5f8(9)
+[copro] [OBJMAN] Updated 4080b5e4(9)
+[copro] [OBJMAN] Updated 4080baa8(11)
+[copro] [OBJMAN] Updated 4080e588(9)
+[copro] [OBJMAN] Updated 4080b9f8(11)
+[copro] [OBJMAN] Updated 4080b3cc(12)
+[copro] [OBJMAN] Updated 4080f1d4(9)
+[copro] [OBJMAN] Updated 4080d774(12)
+[copro] [OBJMAN] Updated 4080b7a4(9)
+[copro] [OBJMAN] Updated 4080b7b8(12)
+[copro] [OBJMAN] Updated 4080b7c8(9)
+[copro] [OBJMAN] Updated 4080e148(12)
+[copro] [OBJMAN] Updated 4080e158(9)
+[copro] [OBJMAN] Updated 4080e16c(12)
+[copro] [OBJMAN] Updated 4080e17c(9)
+[copro] [OBJMAN] Updated 4080e190(12)
+[copro] [OBJMAN] Updated 4080e1a0(9)
+[copro] [OBJMAN] Updated 4080e1b4(12)
+[copro] [OBJMAN] Updated 4080e1c4(9)
+[copro] [OBJMAN] Updated 4080e1d8(12)
+[copro] [OBJMAN] Updated 4080e1e8(9)
+[copro] [OBJMAN] Updated 4080e1fc(12)
+[copro] [OBJMAN] Updated 4080e20c(9)
+[copro] [OBJMAN] Updated 4080e220(12)
+[copro] [OBJMAN] Updated 4080e230(9)
+[copro] [OBJMAN] Updated 4080e244(12)
+[copro] [OBJMAN] Updated 4080e254(9)
+[copro] [OBJMAN] Updated 4080e268(12)
+[copro] [OBJMAN] Updated 4080e278(9)
+[copro] [OBJMAN] Updated 4080ba40(11)
+[copro] [OBJMAN] Updated 4080b0e4(11)
+[copro] safe_decref 4080b14c
+[copro] safe_decref 4080cc08
+[copro] safe_decref 4080cc50
+[copro] safe_decref 4080cc20
+[copro] [GLOBALMAN] Object Received: count=5
+[copro] [copro_to_main] x11: 3
+[copro] [copro_to_main] cur: $500035e0, ra?: $50002450
+[copro] [copro_to_main] function: $4080b678 basicblock: $4080daf0 STACK RA: $50002442
+[copro] [cpy_to_interpreter_stack] regLen = 11
+[copro] [cpy_to_interp_stack] restore to interp.: x8 -> R0(4080c75c) (value: $4080b210, type: 10)
+[copro] [cpy_to_interp_stack] restore to interp.: x9 -> R1(4080c76c) (value: $00000000, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x18 -> R2(4080c77c) (value: $00000fa0, type: 4)
+[copro] [cpy_to_interp_stack] restore to interp.: x19 -> R3(4080c78c) (value: $00000000, type: 4)
+[copro] [cpy_to_interp_stack] restore to interp.: x20 -> R4(4080c79c) (value: $0000bb80, type: 4)
+[copro] [cpy_to_interp_stack] restore to interp.: x21 -> R5(4080c7ac) (value: $0000000c, type: 4)
+[copro] [cpy_to_interp_stack] restore to interp.: x22 -> R6(4080c7bc) (value: $50001834, type: 21)
+[copro] [cpy_to_interp_stack] restore to interp.: x23 -> R7(4080c7cc) (value: $00000001, type: 3[UNKNOWN])
+[copro] [cpy_to_interp_stack] restore to interp.: x5 -> R8(4080c7dc) (value: $00000002, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x6 -> R9(4080c7ec) (value: $0000001d, type: 0)
+[copro] [cpy_to_interp_stack] restore to interp.: x7 -> R10(4080c7fc) (value: $500019d4, type: 0)
+[copro] [copro_to_main] interpreter_stack current: $4080c75c sentinel: $4080c2ac
+[copro] st=$4080e834, tt=$4080e28c, st->functions_current=$4080b678, tt->function=$4080b678
+[copro] [copro_to_main] reserve = 1, popcnt = 1
+[copro] [copro_to_main] pop call info
+[copro] --- CALLINFO(addr = $4080e69c) ---
+[copro] cur_irep = $4080b5b4
+[copro] inst = $42023446
+[copro] cur_regs = $4080c17c
+[copro] target_class = $40809a60 (name:Object)
+[copro] own_class = $40809a60 (name:Object)
+[copro] karg_keep = $00000000
+[copro] method_id = $00000119 (name:read_for_1sec)
+[copro] reg_offset = 7
+[copro] n_args = 2
+[copro] is_called_super = 0
+[copro] -----------------------------------
+[copro] cpy from $4080c75c to $4080c17c (length: $000000b0)
+[copro] <<REWRITTEN>>
+[copro] INST: $50002450: $000015f5
+[copro] INST: $50002452: $0000e199
+[copro] INST: $50002454: $c49fd1ef
+[copro] INST: $50002458: $0000058d
+[copro] INST: $5000245a: $c43fd1ef
+[copro] INST: $5000245e: $000041fa
+[copro] PROF allocated = 4524(delta: 76)
+
+[copro] registered: function=$4080b678 basicblock=$4080e28c
+[copro] OP_JMPIF
+[copro] PROF allocated = 4600(delta: 76)
+
+[copro] registered: function=$4080b678 basicblock=$4080f340
+[copro] CODE allocated = 1718(delta: 14)
+
+[copro] INST: $50002454: $be2ff06f
+[copro] INST: $50001836: $000b8463
+[copro] INST: $5000183a: $0000006f
+[copro] INST: $5000183e: $85ffe1ef
+[copro] OP_JMPNOT
+[copro] CODE allocated = 1742(delta: 24)
+
+[copro] INST: $5000183a: $4290006f
+[copro] INST: $50002462: $00004b85
+[copro] INST: $50002464: $00004901
+[copro] INST: $50002466: $00004981
+[copro] INST: $50002468: $00004a01
+[copro] INST: $5000246a: $00004a81
+[copro] INST: $5000246c: $000b8463
+[copro] INST: $50002470: $0000006f
+[copro] INST: $50002474: $c29fd1ef
+[copro] INST: $50002470: $b73ff06f
+[copro] miain_to_copro 0 $500035e0
+[copro] Register 0 x8: MRBC_TT_PROC $4080b210 -> $4080b210
+[copro] Register 2 x18: MRBC_TT_INTEGER $00000000 -> $00000000
+[copro] Register 3 x19: MRBC_TT_INTEGER $00000000 -> $00000000
+[copro] Register 4 x20: MRBC_TT_INTEGER $00000000 -> $00000000
+[copro] Register 5 x21: MRBC_TT_INTEGER $00000000 -> $00000000
+[copro] [OBJMAN] Translation Registered type=9, main=4080e588, copro=50001844
+[copro] Register 6 x22: MRBC_TT_OBJECT $4080e588 -> $50001844
+[copro] Register 7 x23: MRBC_TT_TRUE $00000000 -> $00000001
+[copro] Register 8 x5: MRBC_TT_INTEGER $0000000c -> $0000000c
+[copro] register_set:
+[copro] INST: $50002480: $00004081
+[copro] INST: $50002482: $50003137
+[copro] INST: $50002486: $5e010113
+[copro] INST: $5000248a: $000042b1
+[copro] INST: $5000248c: $4080b437
+[copro] INST: $50002490: $21040413
+[copro] INST: $50002494: $00004901
+[copro] INST: $50002496: $00004981
+[copro] INST: $50002498: $00004a01
+[copro] INST: $5000249a: $00004a81
+[copro] INST: $5000249c: $50002b37
+[copro] INST: $500024a0: $844b0b13
+[copro] INST: $500024a4: $00004b85
+[copro] INST: $500024a6: $b3dff06f
+[copro] [GLOBALMAN] sent copro:4080c14c <--> main:50001c04(type:9)
+[copro] [OBJMAN] Translation Registered type=9, main=4080b5f8, copro=0
+[copro] [GLOBALMAN] sent copro:4080c16c <--> main:50001c08(type:11)
+[copro] [OBJMAN] Translation Registered type=11, main=4080b0e4, copro=0
+[copro] [GLOBALMAN] sent copro:4080cc08 <--> main:50001c0c(type:11)
+[copro] [OBJMAN] Translation Registered type=11, main=4080b9f8, copro=0
+[copro] [GLOBALMAN] sent copro:4080cc50 <--> main:50001c10(type:11)
+[copro] [OBJMAN] Translation Registered type=11, main=4080baa8, copro=0
+[copro] [GLOBALMAN] sent copro:4080cc20 <--> main:50001c14(type:11)
+[copro] [OBJMAN] Translation Registered type=11, main=4080ba40, copro=0
+[copro] [GLOBALMAN] Object Sent: count=5
+[copro] Wake up. stopreason=1
+[copro] [OBJMAN] Translation Registered type=9, main=4080f1d4, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080b7a4, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080b7c8, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080e158, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080e17c, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080e1a0, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080e1c4, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080e1e8, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080e20c, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080e230, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080e254, copro=0
+[copro] [OBJMAN] Translation Registered type=9, main=4080e278, copro=0
+[copro] TRANSLATION[0] REGISTERD: 4080b0e4 -> 50002480
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[1] REGISTERD: 4080f1d4 -> 500019d4
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[2] REGISTERD: 4080b7a4 -> 500019e4
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[3] REGISTERD: 4080b7c8 -> 500019f4
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[0] REGISTERD: 4080e158 -> 50001a04
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[1] REGISTERD: 4080e17c -> 50001a14
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[2] REGISTERD: 4080e1a0 -> 50001a24
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[3] REGISTERD: 4080e1c4 -> 50001a34
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[0] REGISTERD: 4080e1e8 -> 50001a44
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[1] REGISTERD: 4080e20c -> 50001a54
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[2] REGISTERD: 4080e230 -> 50001a64
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[3] REGISTERD: 4080e254 -> 50001a74
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[0] REGISTERD: 4080e278 -> 50001a84
+[copro] Wake up. stopreason=1
+[copro] [OBJMAN] Translation Registered type=9, main=4080b5e4, copro=0
+[copro] TRANSLATION[1] REGISTERD: 4080b5f8 -> 500015ec
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[2] REGISTERD: 4080b5e4 -> 500015f4
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[3] REGISTERD: 4080b9f8 -> 50001a94
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[0] REGISTERD: 4080baa8 -> 500015fc
+[copro] Wake up. stopreason=1
+[copro] TRANSLATION[1] REGISTERD: 4080ba40 -> 50002520

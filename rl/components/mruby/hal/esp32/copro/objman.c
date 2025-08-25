@@ -326,6 +326,7 @@ int mrbcopro_objman_from_copro_update_value_without_checking(struct VM * vm, mrb
       int i;
       for(i = 0; i < ary->length; ++i) // if rc of each element is 1, objman maintains the reference.
         mrbcopro_objman_translate_from_copro(vm, objman, &(dary->data[i]), ary->data[i]);
+
       for(;i < arysize; ++i)
         mrbcopro_objman_safe_decref(vm, objman, &(dary->data[i]));
       if(dary->n_stored != ary->length)

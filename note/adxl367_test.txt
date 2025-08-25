@@ -1,0 +1,47 @@
+>>> import machine
+>>> i2c = machine.I2C(scl = machine.Pin(5), sda = machine.Pin(4))
+>>> ADXL = 29
+>>> i2c.readfrom(ADXL, 0x0E)
+b'\xad\x1d\xf7\x03\x01x\xa3N\x00\x00\x00\xc0\x00\x00'
+>>> i2c.writeto_mem(ADXL, 0x29, b'\x01')
+>>> i2c.writeto_mem(ADXL, 0x2D, b'\x02')
+>>> i2c.writeto_mem(ADXL, 0x28, b'\x02')
+>>> i2c.readfrom_mem(ADXL, 0x18, 6)
+b'?\xef\x7f\xe4\x8f\xb3'
+>>> def conv(ary, base):
+...   return ((ary[base] << 26) >> 18) + ary[base+1]
+...
+
+>>> def read():
+...   v = i2c.readfrom_mem(ADXL, 0x18, 6)
+...   return (conv(v, 0), conv(v, 2), conv(v, 4))
+...
+
+>>> read()
+(300, 16727, 36753)
+>>>
+>>> read()
+(176, 32671, 36829)
+>>> read()
+(16062, 32755, 36766)
+>>> read()
+(16250, 32464, 36722)
+>>> read()
+(148, 16413, 36685)
+>>> read()
+(506, 16393, 36783)
+>>> read()
+(651, 16769, 36731)
+>>> def repeating():
+...     while true:
+...         print(read())
+...         time.sleep_ms(500)
+...
+>>> import time
+
+>>> def repeating():
+...     while True:
+...         print(read())
+...         time.sleep_ms(500)
+...
+...

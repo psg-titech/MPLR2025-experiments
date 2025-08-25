@@ -1,0 +1,25 @@
+Procedure:
+1. Flush the programs
+2. Test the program with the physical LED.
+3. Measure without the LED (i.e. open) for 35 min.
+4. Re-check with the physical LED without rebooting.
+5. Check GPIO4 was pulsed and GPIO6 was pulsed.
+
+Connection:
+ESP32C6
+GPIO0 - OPEN - BUTTON
+GPIO1 - PPK2 D0 - copro signal
+GPIO6 - PPK2 D1 - LED
+
+8/18
+INVALID [RL] 10:58 30C
+INVALID [RM-PWM] 11:46 30C
+[RM] 13:02 32C
+INVALID [CM-PWM] 13:46 31C
+[CM] 14:32 30C
+INVALID [CL] 15:13 30C
+
+[CL] 21:50 31C
+[RL] 22:35 31C
+[CM-PWM] 23:23 31C
+[RM-PWM] 0:04 31C

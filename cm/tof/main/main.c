@@ -132,9 +132,10 @@ void app_main(void)
         .wakeup_source = ULP_LP_CORE_WAKEUP_SOURCE_HP_CPU,
     };
     lp_gpio_init();
-    lp_core_init();
+    rtc_gpio_set_level(1, 1);
     // AUTO makes the RTC IO unstable.
     esp_sleep_pd_config(ESP_PD_DOMAIN_RTC_PERIPH, ESP_PD_OPTION_ON);
+    lp_core_init();
     while(1) {
         rtc_gpio_set_level(1, 0);
         app_app_main();

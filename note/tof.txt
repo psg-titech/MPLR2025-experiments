@@ -1,0 +1,36 @@
+Procedure:
+1. Flush the programs
+2. Measure without the LED (i.e. open) for 35 min.
+3. Check the ESP32 simulator shows that the received packets are 600.
+
+Connection:
+ESP32C6 ESP32 PPK
+GPIO0 - IO25(ECHO) - @
+GPIO1 - @ - D0
+GPIO6 - IO26(TRIG) - D1
+3V3 - @ - VOUT
+GND - GND - GND
+@ - 3V3 - @
+
+8/20 
+INVALID: [CM] 11:03 31C
+INVALID: [CL] 13:42 32C
+INVALID: [RM] 14:29 31C
+INVALID: [RL] 15:19 31C
+
+[CL] 13:47 32C
+INVALID: [CM] 14:56 30C
+From this, measure for 32 min instead of 35 min.
+[RL] 15:44 30C
+[RM] 16:28 30C
+
+8/22
+[CM] 15:49 31C
+[CL] 16:40 31C
+
+From now, the simulator is configured as 1 meter.
+8/25
+[CM] 12:14 32C
+[CL] 13:09 32C
+[RM] 13:58 32C
+[RL] 14:37 32C

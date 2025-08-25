@@ -216,9 +216,9 @@ int gen_compiled_array_set(mrbc_profile_profiler * prof, mrbc_method * method, i
   struct register_saving_analysis_result_t anresult = register_saving(prof, a, narg);
   // conversion
   int delta = 0;
-  if(recv[1].tt == MRBC_TT_INTEGER)
+  if(recv[2].tt == MRBC_TT_INTEGER)
     delta = 1;
-  else if(recv[1].tt == MRBC_TT_TRUE || recv[1].tt == MRBC_TT_FALSE)
+  else if(recv[2].tt == MRBC_TT_TRUE || recv[2].tt == MRBC_TT_FALSE)
     delta = 2;
   if(delta > 0) {
     mrbcopro_vector_append16(prof->vm, &(prof->buf), RISCV_C_SHIFT_LEFT_IMM(12, delta));

@@ -31,7 +31,6 @@ static void lp_i2c_init(void)
     ESP_ERROR_CHECK(lp_core_i2c_master_init(LP_I2C_NUM_0, &i2c_cfg));
 }
 
-extern int ulp_counter;
 void app_main(void)
 {
     rtc_gpio_init(1);
@@ -45,7 +44,6 @@ void app_main(void)
     lp_i2c_init();
     lp_core_init();
     while(1) {
-        ulp_counter = 0;
         ESP_ERROR_CHECK(esp_sleep_enable_ulp_wakeup());
         rtc_gpio_set_level(1, 0);
         ESP_ERROR_CHECK(ulp_lp_core_run(&cfg));

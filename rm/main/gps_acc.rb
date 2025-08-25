@@ -16,13 +16,17 @@ class ADXLResult
   end
 end
 class ADXL
-  DEV_ADDR = 0x53
+  DEV_ADDR = 0x1D
   CTRL_REG = 0x2D
   CMD_MEASURE = [CTRL_REG, 2]
   CMD_STANDBY = [CTRL_REG, 0]
+  CMD_SOFTRESET = [0x1f, 0x52]
   CMD_FIFO = [0x18]
   def initialize(i2c)
     @i2c = i2c
+    @i2c.write(DEV_ADDR, CMD_SOFTRESET)
+    @i2c.write(DEV_ADDR, [0x29, 1])
+    @i2c.write(DEV_ADDR, [0x28, 2])
   end
   def on()
     @i2c.write(DEV_ADDR, CMD_MEASURE)
@@ -100,9 +104,8 @@ def read_for_1sec(acc, buffer)
 end
 
 Copro.gpio(1,false)
-#Copro.run_and_sleep do
+#Copro.sleep_and_run do
   while true do
-    Copro.delayMs(7000-100) # 7 sec
     break unless read_for_1sec(acc, buf)
     x = 0; y = 0; z = 0; i = 0
     while i < 12 do
@@ -113,9 +116,10 @@ Copro.gpio(1,false)
       i += 1
     end
     x = (x.abs() + y.abs() + z.abs())/12
-    break if (x - GRAVITY) > THRESHOLD
+    break if (x - GRAVITY).abs() > THRESHOLD
+    Copro.delayMs(7000) # 7 sec
   end
 #end
 Copro.gpio(1,true)
-
+p buf
 # do something with gps.

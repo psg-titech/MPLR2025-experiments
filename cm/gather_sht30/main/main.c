@@ -36,25 +36,6 @@ static uint32_t getCpuFrequencyMhz() {
   return conf.freq_mhz;
 }
 
-static void delayUs(int wait) {
-  if(wait > 100) {
-    esp_sleep_disable_wakeup_source(ESP_SLEEP_WAKEUP_ALL);
-    esp_sleep_enable_timer_wakeup(wait);
-    esp_light_sleep_start();
-    esp_sleep_disable_wakeup_source(ESP_SLEEP_WAKEUP_ALL);
-    goto FIN;
-  }
-  if(wait > 1000) {
-    vTaskDelay(wait / 1000 / portTICK_PERIOD_MS);
-    wait = wait % 1000;
-  }
-  if(wait == 0) goto FIN;
-  uint32_t end = (wait * getCpuFrequencyMhz()) + esp_cpu_get_cycle_count();
-  while(esp_cpu_get_cycle_count()< end);
-FIN:
-  return;
-}
-
 static void delayMs(int wait) {
   esp_sleep_disable_wakeup_source(ESP_SLEEP_WAKEUP_ALL);
   esp_sleep_enable_timer_wakeup(1000 * wait);
@@ -90,7 +71,6 @@ void read_sensor(int index) {
     rh[index] = rhv;
 }
 
-int counter = 0;
 int app_app_main(void) {
   for(int i = 0; i < NUM; ++i) {
     read_sensor(i);
@@ -109,9 +89,12 @@ void app_main(void)
     rtc_gpio_set_level(1, 1);
     lp_i2c_init();
     lp_core_init();
+    esp_sleep_pd_config(ESP_PD_DOMAIN_RTC_PERIPH, ESP_PD_OPTION_ON);
     while(1) {
         rtc_gpio_set_level(1, 0);
         app_app_main();
         rtc_gpio_set_level(1, 1);
+        for(int i = 0;i < NUM; ++i) printf("RESULT[%d] %ld %ld\n", i, tmp[i], rh[i]);
+        return;
     }
 }

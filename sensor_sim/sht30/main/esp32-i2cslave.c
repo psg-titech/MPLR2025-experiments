@@ -23,19 +23,7 @@
 
 static const char *TAG = "sht30_sim_slave";
 
-/**
- * @brief ダミーのCRC-8値を計算します。
- * SHT30の実際のCRC計算とは異なりますが、シミュレーション用です。
- * @param data CRCを計算するデータ配列
- * @param len データ長
- * @return 計算されたダミーCRC値
- */
 uint8_t calculate_dummy_crc8(const uint8_t *data, int len) {
-    // このシミュレーションでは固定値を返します。
-    // SHT30の実際のCRCは多項式 0x31 (x^8 + x^5 + x^4 + 1)、初期値 0xFF を使用します。
-    // ここでは、それらしい値として0xBDを返します（例）。
-    (void)data; // 未使用引数
-    (void)len;  // 未使用引数
     return 0xBD;
 }
 
@@ -46,11 +34,11 @@ uint8_t calculate_dummy_crc8(const uint8_t *data, int len) {
  */
 void generate_sht30_data(uint8_t *data_buf) {
     // 気温をシミュレート: 20.0℃ ～ 30.0℃
-    float temperature = 20.0f + (float)rand() / (float)(RAND_MAX / 10.0f);
+    float temperature = 20.0f;// + (float)rand() / (float)(RAND_MAX / 10.0f);
     // 湿度をシミュレート: 40.0%RH ～ 60.0%RH
-    float humidity = 40.0f + (float)rand() / (float)(RAND_MAX / 20.0f);
+    float humidity = 40.0f;// + (float)rand() / (float)(RAND_MAX / 20.0f);
 
-    ESP_LOGI(TAG, "生成データ: 気温 = %.2f C, 湿度 = %.2f %%RH", temperature, humidity);
+    //ESP_LOGI(TAG, "生成データ: 気温 = %.2f C, 湿度 = %.2f %%RH", temperature, humidity);
 
     // 気温をSHT30の生データ形式に変換 (SHT40と同じ式)
     // T [°C] = -45 + 175 * ST / (2^16 - 1)  =>  ST = (T + 45) / 175 * (2^16 - 1)
@@ -164,14 +152,9 @@ void app_main(void) {
     io_conf.mode = GPIO_MODE_OUTPUT;
     io_conf.pin_bit_mask = 1 << INDICATOR_LED;
     gpio_config(&io_conf);
-    ESP_LOGI(TAG, "SHT30 I2C スレーブシミュレータ起動中...");
-    esp_err_t ret = i2c_slave_init();
-    if (ret != ESP_OK) {
-        ESP_LOGE(TAG, "I2Cスレーブ初期化に失敗しました。処理を停止します。");
-        return;
-    }
+    ESP_LOGI(TAG, "SHT30 I2C Slave Simulator is starting...");
+    ESP_ERROR_CHECK(i2c_slave_init());
 
     // I2Cスレーブ処理タスクを作成・実行
     xTaskCreate(i2c_slave_task, "i2c_slave_task", 2048 * 2, NULL, 10, NULL);
-    ESP_LOGI(TAG, "SHT30 I2C スレーブシミュレータタスク起動完了。");
 }

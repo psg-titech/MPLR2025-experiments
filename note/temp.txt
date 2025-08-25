@@ -1,0 +1,20 @@
+Procedure:
+1. Flush the programs
+2. Measure without the LED (i.e. open) for 32 min.
+3. Check the ESP32 simulator shows that the received packets are 30.
+
+Connection:
+ESP32C6 ESP32 PPK
+GPIO1 - @ - D0
+GPIO6 - GPIO21(SDA) - @
+GPIO7 - GPIO22(SCL) - @
+@ - GPIO23 - D1
+3V3 - @ - VOUT
+GND - GND - GND
+@ - 3V3 - @
+
+8/23
+[CM] 15:06 32C
+[CL] 15:53 32C
+[RM] 16:35 32C
+[RL] 17:40 32C
