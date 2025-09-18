@@ -3,27 +3,16 @@ This directory contains results for Table 6 and Figure 4.
 
 # Structure
 * Raw data (not available)
- * main_gather_sht30.ppk2 : RM TEMP
- * main_gps_acc.ppk2 : RM LOC
- * c_gather_sht30.ppk2 : CL TEMP
- * c_gps_acc.ppk2 : CL LOC
- * gather_sht30.ppk2 : RL TEMP
- * gps_acc.ppk2 : RL LOC
-* For Figure 4
- * result_main_gather_sht30.txt : RM TEMP
- * result_main_gps_acc.txt : RM LOC
- * result_c_gather_sht30.txt : CL TEMP
- * result_c_gps_acc.txt : CL LOC
- * result_gather_sht30.txt : RL TEMP
- * result_gps_acc.txt : RL LOC
+* For Figure 4 (not available)
 * Figure 4
  * power_consumption.ods : LOC and TEMP
  * TEMP_fig.pdf : TEMP
  * LOC_fig.pdf : LOC
+ * WL_fig.pdf : WL
 
 # Reproduction
-## PPK2 files
-The sizes of the raw data are very large.  
+## PPK2 files and TXT files
+The sizes of the raw data are too large for Git.  
 If you need, please notify us.  
 
 ### Environments
@@ -31,6 +20,8 @@ If you need, please notify us.
  - Ammeter: Nordic Power Profiler Kit 2 (PPK2)
  - Sensor Simulator: ESP32_Core_Board_V2
  - (Actual Temperature and Humidity Sensor): SENSIRION SHT30
+ - (Actual Acceleratometer): Analog Devices ADXL367
+ - (Actual ToF Sensor): Rainbow Technology HC-SR04
  
 ### Setup
 #### Circuit
@@ -59,13 +50,13 @@ Build and execute the projects on `cl/gather_sht30` and `cl/gps_acc`.
 #### RM (Ruby programs with the Main processor)
 Build and execute the projects on `rm`.  
 Make sure that `main.c` includes correct C files.
-`rm/main.c:18-23`:  
+`rm/main.c`:  
 ```c
 ///// CHANGE HERE!
-
-//#include "main_gather_sht30.c"
-#include "main_gps_acc.c"
-
+#include "gather_sht30.c"
+#include "gps_acc.c"
+#include "tofsense.c"
+#include "breathingled.c"
 /////
 ```
 
@@ -75,12 +66,15 @@ Make sure that `main.c` includes correct C files.
 #### RL (Ruby programs with theLp coprocessor)
 Build and execute the projects on `rl`.  
 Make sure that `main.c` includes correct C files.
-`rl/main.c:18-22`:  
+`rl/main.c`:  
 ```c
 ///// CHANGE HERE!
-//#include "gather_sht30_fast.c"
-//#include "gather_sht30.c"
+#include "gather_sht30_fast.c"
+#include "gather_sht30.c"
 #include "gps_acc.c"
+#include "tofsense_fast.c"
+#include "tofsense.c"
+#include "breathingled.c"
 /////
 ```
 
@@ -110,6 +104,7 @@ We extracted the values from txt files.
 ### Methodology
 For TEMP, we used the first 29 iterations whose duration is approx. 60 s (59.5 - 60.5 s).  
 For LOC, we used the first 225 iterations whose duration is approx. 8 s (7.5 - 8.5 s).
+For WL, we used the first 29 iterations whose duration is approx. 1 min (59.9 - 60.1 s).  
 
 ### Reason
 The PPK2 begins to capture before the evaluation board is powered up.

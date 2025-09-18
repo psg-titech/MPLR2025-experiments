@@ -13,7 +13,7 @@ This directory contains results for Table 3 and 4.
 ## Reproduction
 Please build [`../cl`](../cl).  
 Make sure disable all debug outputs:
-`hal/esp32/copro/compile.merged.c:78`
+`hal/esp32/copro/compile.c:78`
 ```c
 #define DBG_ALLOCATION_PROFILE 0
 ```

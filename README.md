@@ -8,9 +8,10 @@ Actually: `Copro#sleep_and_run`
 
 # Directory Structure
 ```
-cl : C programs executed on the LP coprocessor
+cm : C programs executed on the Main processor
+cl : C programs executed on the Lp coprocessor
 rm : mRuby programs executed entirely on the Main processor using the original mruby/c interpreter
-rl : mRuby programs executed on the LP coprocessor using our modified interpreter
+rl : mRuby programs executed on the Lp coprocessor using our modified interpreter
 
 sensor_sim : Sensor simulator programs running on the sensor simulator (ESP32).
 
@@ -23,8 +24,7 @@ To reproduce the experimental results, see `README.md` on each directory.
 
 # Compilation
 ## Prerequisites
-You need: ESP-IDF SDK v5.5 alpha with the commit hash `28ac0243bb65f2d3ad6fc4e90c54365b10d435b9`  
-[https://github.com/espressif/esp-idf/tree/28ac0243bb65f2d3ad6fc4e90c54365b10d435b9](https://github.com/espressif/esp-idf/tree/28ac0243bb65f2d3ad6fc4e90c54365b10d435b9)  
+We are tested with ESP-IDF SDK v5.5.
 
 We need a small modification to ESP-IDF SDK.  
 Please modify `components/ulp/esp32ulp_mapgen.py`:  
@@ -41,8 +41,8 @@ Please modify `components/ulp/esp32ulp_mapgen.py`:
 ```
 
 
-`rl` and `rm` are based on mruby/c v3.4 alpha with the commit hash `58ec64d56d144dd1ca0a9bba85e4c4f5c832e473`.  
-[https://github.com/mrubyc/mrubyc/tree/58ec64d56d144dd1ca0a9bba85e4c4f5c832e473](https://github.com/mrubyc/mrubyc/tree/58ec64d56d144dd1ca0a9bba85e4c4f5c832e473)  
+`rl` and `rm` are based on mruby/c v3.4.    
+[https://github.com/mrubyc/mrubyc/tree/release3.4](https://github.com/mrubyc/mrubyc/tree/release3.4)  
 The software license are under the Revised BSD License (a.k.a. 3-caluse license). See [`rm/components/mruby/LICENSE`](rm/components/mruby/LICENSE) and [`rl/components/mruby/LICENSE`](rl/components/mruby/LICENSE).
 
 ## How to compile
@@ -51,6 +51,12 @@ Please execute `idf.py build` under the following directories:
 * `rm`
 * `cl/gather_sht30` : CL TEMP
 * `cl/gps_acc` : CL LOC
+* `cl/tof` : CL WL
+* `cl/breathingled` : CL BLED
+* `cm/gather_sht30` : CM TEMP
+* `cm/gps_acc` : CM LOC
+* `cm/tof` : CM WL
+* `cm/breathingled` : CM BLED
 * `sensor_sim/sht30` : For TEMP
 * `sensor_sim/adxl367` : For LOC
 
@@ -59,10 +65,12 @@ Because compiler options are stored in `sdkconfig`, you do not need to specify t
 ## How to switch the executing program
 `cl` programs are split into `TEMP` and `LOC`. However, `rl` and `rm` are not.  
 You can switch the executing program by modifying `main.c`.  
- * `TEMP` : Please `#include "gather_sht30.c"` or `#include "main_gather_sht30.c"`.
- * `LOC` : Please `#include "gps_acc.c"` or `#include "main_gps_acc.c"`.
+ * `TEMP` : Please `#include "gather_sht30.c"` or `#include "gather_sht30_fast.c"`.
+ * `LOC` : Please `#include "gps_acc.c"`.  
+ * `WL` : Please `#include "tofsense.c"` or `#include "tofsense_fast.c"`.  
+ * `BLED` : Please `#include "breathingled.c"`.  
 
-`gather_sht30_fast.c` is a variant of `gather_sht30.c`. We modified the sleep duration.
+`FOO_fast.c` is a variant of `FOO.c`. We modified the sleep duration.
 
 ## How to translate ruby scripts to mruby bytecodes
 ### Prerequisites
@@ -84,7 +92,7 @@ $ mrbc -Bmrbbuf $FILENAME
 ```
 
 ### Allocations for Metadata and Generated Code
-`hal/esp32/copro/compile.merged.c:78`
+`hal/esp32/copro/compile.c:78`
 ```c
 #define DBG_ALLOCATION_PROFILE 1
 ```
